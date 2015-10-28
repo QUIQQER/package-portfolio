@@ -1,12 +1,11 @@
 /**
- *
+ * Control for the porfolio list
  *
  * @module package/quiqqer/portfolio/bin/controls/List
  * @author www.pcsg.de (Henning Leutz)
  *
  * @require qui/QUI
  * @require qui/controls/Control
- * @require qui/controls/windows/Window
  */
 define('package/quiqqer/portfolio/bin/controls/List', [
 
@@ -51,8 +50,6 @@ define('package/quiqqer/portfolio/bin/controls/List', [
             // categories
             var openCategory = function () {
 
-                var catId = this.get('html').trim();
-
                 if (this.hasClass('quiqqer-portfolio-category__active')) {
                     return;
                 }
@@ -60,6 +57,21 @@ define('package/quiqqer/portfolio/bin/controls/List', [
                 categories.removeClass('quiqqer-portfolio-category__active');
 
                 this.addClass('quiqqer-portfolio-category__active');
+
+                if (this.hasClass('quiqqer-portfolio-categories-all')) {
+                    moofx(entries).animate({
+                        height : 300,
+                        opacity: 1,
+                        padding: 10,
+                        width  : self.$childWidth
+                    }, {
+                        duration: 250
+                    });
+
+                    return;
+                }
+
+                var catId = this.get('html').trim();
 
                 // found entries
                 var inResult = entries.filter(function (Child) {

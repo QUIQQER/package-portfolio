@@ -1,12 +1,17 @@
 
 <div data-qui="package/quiqqer/portfolio/bin/controls/List">
+    {if count($categories)}
     <section class="quiqqer-portfolio-categories">
+        <div class="quiqqer-portfolio-categories-entry quiqqer-portfolio-categories-all">
+            Alle
+        </div>
         {foreach from=$categories item=Data}
         <div class="quiqqer-portfolio-categories-entry" title="{$Data.description|escape:'html'}">
             {$Data.category}
         </div>
         {/foreach}
     </section>
+    {/if}
 
     <section class="quiqqer-portfolio-list">
         {foreach from=$portfolio item=Child}
