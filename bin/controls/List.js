@@ -49,9 +49,9 @@ define('package/quiqqer/portfolio/bin/controls/List', [
             this.$childWidth = entries[0].getComputedSize().width;
 
             // categories
-            var openCategory = function (event) {
+            var openCategory = function () {
 
-                var catId = this.get('data-id');
+                var catId = this.get('html').trim();
 
                 if (this.hasClass('quiqqer-portfolio-category__active')) {
                     return;
