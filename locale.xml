@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locales>
+    <groups name="quiqqer/portfolio" datatype="php,js">
+        <locale name="package.title">
+            <de><![CDATA[QUIQQER - Referenzen - Portfolio]]></de>
+            <en><![CDATA[QUIQQER - Portfolio]]></en>
+        </locale>
+        <locale name="package.description" html="true">
+            <de><![CDATA[]]></de>
+            <en><![CDATA[]]></en>
+        </locale>
+
+        <locale name="admin.types.portfolio.categories">
+            <de><![CDATA[Referenz-Kategorien]]></de>
+            <en><![CDATA[Portfolio categories]]></en>
+        </locale>
+
+        <locale name="admin.types.portfolio.list">
+            <de><![CDATA[Referenzliste]]></de>
+            <en><![CDATA[Portfolio list]]></en>
+        </locale>
+        <locale name="admin.types.portfolio.entry">
+            <de><![CDATA[Referenzeintrag]]></de>
+            <en><![CDATA[Portfolio entry]]></en>
+        </locale>
+
+
+    </groups>
+    <groups name="quiqqer/portfolio" datatype="php">
+
+    </groups>
+</locales>

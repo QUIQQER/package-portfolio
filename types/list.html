@@ -1,0 +1,35 @@
+
+<div data-qui="package/quiqqer/portfolio/bin/controls/List">
+    <section class="quiqqer-portfolio-categories">
+        {foreach from=$categories item=Data}
+        <div class="quiqqer-portfolio-categories-entry" title="{$Data.description|escape:"html"}">
+            {$Data.category}
+        </div>
+        {/foreach}
+    </section>
+
+    <section class="quiqqer-portfolio-list">
+        {foreach from=$portfolio item=Child}
+        <div class="quiqqer-portfolio-list-entry"
+             data-id="{$Child->getId()}"
+             data-categories=""
+                >
+            <div class="quiqqer-portfolio-list-entry-container"
+                    style="background-image: url('{image src=$Child->getAttribute('image_site') onlysrc=true height=300}')"
+                    >
+
+                <header class="quiqqer-portfolio-list-entry-container-header quiqqer-portfolio-animate">
+                    {$Child->getAttribute('title')}
+                </header>
+
+                <a href="{url site=$Child}"
+                   class="quiqqer-portfolio-list-entry-container-details quiqqer-portfolio-animate"
+                        >
+                    <span class="fa fa-search icon-search"></span>
+                </a>
+
+            </div>
+        </div>
+    {/foreach}
+    </section>
+</div>

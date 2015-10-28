@@ -1,0 +1,25 @@
+
+.qui-control-portfolio-reference-list ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+}
+
+.qui-control-portfolio-reference-list input {
+    margin: 0 10px 0 0;
+    padding: 0;
+}
+
+.qui-control-portfolio-reference-list li {
+    color: #666699;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.qui-control-portfolio-reference-list li:nth-child(even) {
+    background: #e8edff;
+}
+
+.qui-control-portfolio-reference-list li:hover {
+    background: #eee;
+}
