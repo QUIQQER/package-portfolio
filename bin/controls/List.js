@@ -71,19 +71,19 @@ define('package/quiqqer/portfolio/bin/controls/List', [
                     return;
                 }
 
-                var catId = this.get('html').trim();
+                var catId = this.get('text').trim();
 
                 // found entries
                 var inResult = entries.filter(function (Child) {
                     return Child.get('data-categories')
                         .toString()
-                        .match(',' + catId + ',');
+                        .contains(',' + catId + ',');
                 });
 
                 var notInResult = entries.filter(function (Child) {
                     return !Child.get('data-categories')
                         .toString()
-                        .match(',' + catId + ',');
+                        .contains(',' + catId + ',');
                 });
 
                 if (notInResult.length) {

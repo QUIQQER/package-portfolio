@@ -46,7 +46,7 @@
 
 .quiqqer-portfolio-list-entry-container {
     background-position: center center;
-    background-size: cover;
+    background-size: contain;
     cursor: pointer;
     float: left;
     height: 100%;
