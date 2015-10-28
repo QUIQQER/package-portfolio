@@ -1,4 +1,7 @@
 
+@import "list.style3.css";
+
+
 .quiqqer-portfolio-list,
 .quiqqer-portfolio-categories {
     clear: both;
@@ -44,15 +47,20 @@
     width: 33.3333%;
 }
 
-.quiqqer-portfolio-list-entry-container {
-    background-position: center center;
-    background-size: contain;
+.quiqqer-portfolio-list-entry figure {
+    border: 1px solid #ddd;
     cursor: pointer;
     float: left;
     height: 100%;
     position: relative;
     width: 100%;
 }
+
+.quiqqer-portfolio-list-entry figure img {
+    max-width: 100%;
+}
+
+/*
 
 .quiqqer-portfolio-list-entry-container-header {
     background: rgba(0,0,0,0.7);
@@ -86,3 +94,4 @@
 .quiqqer-portfolio-list-entry-container:hover .quiqqer-portfolio-list-entry-container-details {
     opacity: 1;
 }
+*/

@@ -19,21 +19,27 @@
              data-id="{$Child->getId()}"
              data-categories=",{$Child->getAttribute('quiqqer.portfolio.settings.categories')|implode:','},"
                 >
-            <div class="quiqqer-portfolio-list-entry-container"
-                    style="background-image: url('{image src=$Child->getAttribute('image_site') onlysrc=true height=300}')"
-                    >
-
-                <header class="quiqqer-portfolio-list-entry-container-header quiqqer-portfolio-animate">
-                    {$Child->getAttribute('title')}
-                </header>
-
+            <figure>
+                {*
                 <a href="{url site=$Child}"
                    class="quiqqer-portfolio-list-entry-container-details quiqqer-portfolio-animate"
                         >
                     <span class="fa fa-search icon-search"></span>
                 </a>
+                *}
 
-            </div>
+                {image src=$Child->getAttribute('image_site') height=300}
+
+                <figcaption>
+                    <h3 class="quiqqer-portfolio-list-entry-container-header quiqqer-portfolio-animate">
+                        {$Child->getAttribute('title')}
+                    </h3>
+                    <div>
+                        {$Child->getAttribute('short')}
+                    </div>
+                </figcaption>
+
+            </figure>
         </div>
     {/foreach}
     </section>
