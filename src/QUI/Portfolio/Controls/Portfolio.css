@@ -16,13 +16,19 @@
 /** portfolio categories
  * ===================================================== */
 
+.quiqqer-portfolio-categories {
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    margin: 0 0 20px 0;
+    padding-bottom: 20px;
+}
+
 .quiqqer-portfolio-categories-entry {
     background: #eff0f0;
     border: 1px solid #d6d9d9;
     color: #555;
     cursor: pointer;
     float: left;
-    margin: 10px 0 10px 10px;
+    margin: 10px 10px 10px 0;
     padding: 5px 10px;
 }
 
