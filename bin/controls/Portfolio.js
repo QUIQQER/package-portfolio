@@ -122,11 +122,17 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
 
                 var Entry = this;
 
+                if (!Entry.hasClass('quiqqer-portfolio-list-entry')) {
+                    Entry = Entry.getParent('.quiqqer-portfolio-list-entry');
+                }
+
                 require([
-                    'package/quiqqer/portfolio/bin/controls/PortfolioEntryPopup'
+                    'package/quiqqer/portfolio/bin/controls/PortfolioPopup'
                 ], function (Popup) {
                     new Popup({
-                        id: Entry.get('data-id')
+                        project: QUIQQER_PROJECT.name,
+                        lang   : QUIQQER_PROJECT.lang,
+                        siteId : Entry.get('data-id')
                     }).open();
                 });
             };

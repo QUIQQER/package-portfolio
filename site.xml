@@ -59,6 +59,7 @@
             <!-- extra attributes -->
             <attributes>
                 <attribute>quiqqer.portfolio.settings.categories</attribute>
+                <attribute>quiqqer.portfolio.settings.mediaFolder</attribute>
             </attributes>
 
             <tab name="quiqqer.portfolio.categories">
@@ -69,6 +70,24 @@
                 <onload require="package/quiqqer/portfolio/bin/SitePanelReference"/>
             </tab>
 
+            <!-- list settings -->
+            <settings>
+
+                <category name="portfolio-settings">
+                    <settings>
+                        <title>
+                            <locale group="quiqqer/portfolio" var="quiqqer.portfolio.reference.settings.title"/>
+                        </title>
+
+                        <input conf="quiqqer.portfolio.settings.mediaFolder" class="media-folder">
+                            <text>
+                                <locale group="quiqqer/portfolio" var="quiqqer.portfolio.settings.mediaFolder"/>
+                            </text>
+                        </input>
+                    </settings>
+                </category>
+
+            </settings>
         </type>
     </types>
 

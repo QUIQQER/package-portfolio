@@ -51,8 +51,8 @@ class Portfolio extends QUI\Control
 
             default:
                 $effectFile = dirname(__FILE__) . '/Portfolio.style3.css';
-
                 $this->addCSSClass('quiqqer-portfolio-style3');
+                break;
         }
 
         $this->addCSSFile($effectFile);

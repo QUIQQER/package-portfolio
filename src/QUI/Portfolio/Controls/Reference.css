@@ -1,0 +1,24 @@
+.quiqqer-porfolio-reference {
+    height: 100%;
+}
+
+.quiqqer-porfolio-reference-data,
+.quiqqer-porfolio-reference-slider {
+    float: left;
+    height: 100%;
+    position: relative;
+    width: 50%;
+}
+
+.quiqqer-porfolio-reference-slider img.previewImage {
+    max-width: 100%;
+}
+
+.quiqqer-porfolio-reference-slider {
+    background: #333;
+}
+
+.quiqqer-porfolio-reference-data {
+    overflow: auto;
+    padding: 20px;
+}
