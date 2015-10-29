@@ -24,7 +24,8 @@
     padding: 20px;
 }
 
-.quiqqer-porfolio-reference-data {
+.quiqqer-porfolio-reference-data,
+.quiqqer-porfolio-reference-data p {
     font-size: 18px;
 }
 
