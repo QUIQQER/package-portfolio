@@ -1,3 +1,4 @@
+
 .quiqqer-porfolio-reference {
     height: 100%;
 }
@@ -15,8 +16,10 @@
 }
 
 .quiqqer-porfolio-reference-slider {
-    background: #333;
-    text-align: center;
+    background-color: #333;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
 }
 
 .quiqqer-porfolio-reference-data {
@@ -31,4 +34,45 @@
 
 .quiqqer-porfolio-reference-data h1 {
     font-size: 32px;
+}
+
+.quiqqer-porfolio-reference-close {
+    border-bottom-left-radius: 30px;
+        -webkit-border-bottom-left-radius: 30px;
+        -moz-border-radius-bottomleft: 30px;
+    cursor: pointer;
+    background: #fff;
+    font-size: 24px;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    right: 0;
+    width: 40px;
+    z-index: 10;
+}
+
+.quiqqer-porfolio-reference-close .fa {
+    left: 4px;
+    position: relative;
+    top: -3px;
+}
+
+
+@media screen and (max-width: 767px) {
+    .quiqqer-porfolio-reference-slider {
+        clear: both;
+        height: 300px;
+        width: 100%;
+    }
+
+    .quiqqer-porfolio-reference-data {
+        height: calc(100% - 300px);
+        width: 100%;
+    }
+
+    .quiqqer-porfolio-reference-slider img {
+        max-height: 100%;
+    }
 }

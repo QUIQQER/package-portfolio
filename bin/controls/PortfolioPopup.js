@@ -24,7 +24,8 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
         Type   : 'package/quiqqer/portfolio/bin/controls/PortfolioPopup',
 
         Binds: [
-            '$onOpen'
+            '$onOpen',
+            '$onResize'
         ],
 
         options: {
@@ -47,13 +48,16 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
             this.$images   = [];
             this.$Slider   = null;
 
+            this.$mobile = false;
+
             this.addEvents({
                 onOpen : this.$onOpen,
                 onClose: function () {
                     if (this.$Slider) {
                         this.$Slider.destroy();
                     }
-                }.bind(this)
+                }.bind(this),
+                onResize :  this.$onResize
             });
         },
 
@@ -61,12 +65,35 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
          * event : on open
          */
         $onOpen: function () {
-
             var self = this;
 
             this.refresh().catch(function () {
                 self.close();
             });
+        },
+
+        /**
+         * event : on resize
+         */
+        $onResize: function () {
+            if (!this.$images.length) {
+                return;
+            }
+
+            var winSize = QUI.getWindowSize();
+
+            if (this.$Slider) {
+                this.$Slider.resize();
+            }
+
+            if (winSize.x < 767 && this.$mobile === false) {
+                this.$mobile = true;
+                return;
+            }
+
+            if (winSize.x >= 767 && this.$mobile === true) {
+                this.$mobile = false;
+            }
         },
 
         /**
@@ -110,19 +137,9 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
                     Content.set('html', self.$template + self.$css);
 
                     new Element('div', {
-                        html  : '<span class="fa fa-remove icon-remove"></span>',
-                        styles: {
-                            cursor    : 'pointer',
-                            fontSize  : 24,
-                            height    : 40,
-                            lineHeight: 40,
-                            position  : 'absolute',
-                            textAlign : 'center',
-                            top       : 0,
-                            right     : 0,
-                            width     : 40
-                        },
-                        events: {
+                        html   : '<span class="fa fa-remove icon-remove"></span>',
+                        'class': 'quiqqer-porfolio-reference-close',
+                        events : {
                             click: function () {
                                 self.close();
                             }
@@ -138,39 +155,11 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
 
                         require(['image!' + self.$images[0].url], function (Image) {
 
-                            var ImageElm = new Element('img', {
-                                src    : Image.src,
-                                'class': 'previewImage',
-                                styles : {
-                                    opacity : 0,
-                                    position: 'relative'
-                                }
-                            }).inject(SliderContainer);
-
-                            var top = ((SliderContainer.getSize().y - ImageElm.height) / 2).ceil();
-
-                            if (top < 0) {
-                                top = 0;
-                            }
-
-                            ImageElm.setStyles({
-                                top: top
+                            SliderContainer.setStyles({
+                                backgroundImage : 'url("'+ Image.src +'")'
                             });
 
-                            moofx(ImageElm).animate({
-                                opacity: 1
-                            });
-
-                            //
-                            //self.$Elm
-                            //    .getElement('.quiqqer-porfolio-reference')
-                            //    .setStyle('overflow', 'hidden');
-                            //
-                            //self.setAttribute('maxHeight', ImageElm.getSize().y);
-                            //
-                            //self.resize(true, function() {
                             resolve();
-                            //});
 
                         }, reject);
 
