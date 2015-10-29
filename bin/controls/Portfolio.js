@@ -1,13 +1,13 @@
 /**
  * Control for the porfolio list
  *
- * @module package/quiqqer/portfolio/bin/controls/List
+ * @module package/quiqqer/portfolio/bin/controls/Portfolio
  * @author www.pcsg.de (Henning Leutz)
  *
  * @require qui/QUI
  * @require qui/controls/Control
  */
-define('package/quiqqer/portfolio/bin/controls/List', [
+define('package/quiqqer/portfolio/bin/controls/Portfolio', [
 
     'qui/QUI',
     'qui/controls/Control'
@@ -18,7 +18,7 @@ define('package/quiqqer/portfolio/bin/controls/List', [
     return new Class({
 
         Extends: QUIControl,
-        Type   : 'package/quiqqer/portfolio/bin/controls/List',
+        Type   : 'package/quiqqer/portfolio/bin/controls/Portfolio',
 
         Binds: [
             '$onImport'

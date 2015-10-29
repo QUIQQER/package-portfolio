@@ -1,0 +1,40 @@
+.quiqqer-portfolio-style6 figure img {
+    transition: transform 0.4s;
+        -webkit-transition: -webkit-transform 0.4s;
+        -moz-transition: -moz-transform 0.4s;
+    z-index: 10;
+}
+
+.quiqqer-portfolio-style6 figure:hover img {
+    transform: translateY(-50px) scale(0.5);
+        -webkit-transform: translateY(-50px) scale(0.5);
+        -moz-transform: translateY(-50px) scale(0.5);
+        -ms-transform: translateY(-50px) scale(0.5);
+}
+
+.quiqqer-portfolio-style6 figcaption {
+    background: #ddd;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    transition: opacity 0.4s;
+        -webkit-transition: opacity 0.4s;
+        -moz-transition: opacity 0.4s;
+    top: 0;
+    width: 100%;
+}
+
+.quiqqer-portfolio-style6 figure:hover figcaption {
+    opacity: 1;
+}
+
+.quiqqer-portfolio-style6 figcaption h3 {
+    margin-top: 60%;
+}
+
+.quiqqer-portfolio-style6 figcaption a {
+    bottom: 20px;
+    position: absolute;
+    right: 20px;
+}

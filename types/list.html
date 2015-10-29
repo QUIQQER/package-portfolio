@@ -1,46 +1,22 @@
+<section class="content-header grid-100 mobile-grid-100">
+    <header>
+        <h1>{$Site->getAttribute('title')}</h1>
+    </header>
 
-<div data-qui="package/quiqqer/portfolio/bin/controls/List" style="width: 100%">
-    {if count($categories)}
-    <section class="quiqqer-portfolio-categories">
-        <div class="quiqqer-portfolio-categories-entry quiqqer-portfolio-categories-all">
-            Alle
-        </div>
-        {foreach from=$categories item=Data}
-        <div class="quiqqer-portfolio-categories-entry" title="{$Data.description|escape:'html'}">
-            {$Data.category}
-        </div>
-        {/foreach}
-    </section>
+    {if $Site->getAttribute('short')}
+    <div class="content-short">
+        {$Site->getAttribute('short')}
+    </div>
     {/if}
+</section>
 
-    <section class="quiqqer-portfolio-list">
-        {foreach from=$portfolio item=Child}
-        <div class="quiqqer-portfolio-list-entry"
-             data-id="{$Child->getId()}"
-             data-categories=",{$Child->getAttribute('quiqqer.portfolio.settings.categories')|implode:','},"
-                >
-            <figure>
-                {*
-                <a href="{url site=$Child}"
-                   class="quiqqer-portfolio-list-entry-container-details quiqqer-portfolio-animate"
-                        >
-                    <span class="fa fa-search icon-search"></span>
-                </a>
-                *}
+{if $Site->getAttribute('content')}
+<section class="content-body grid-100 mobile-grid-100">
+    {$Site->getAttribute('content')}
+</section>
+{/if}
 
-                {image src=$Child->getAttribute('image_site') height=300}
+<section class="content-template grid-100 mobile-grid-100">
+    {$Portfolio->create()}
+</section>
 
-                <figcaption>
-                    <h3 class="quiqqer-portfolio-list-entry-container-header quiqqer-portfolio-animate">
-                        {$Child->getAttribute('title')}
-                    </h3>
-                    <div>
-                        {$Child->getAttribute('short')}
-                    </div>
-                </figcaption>
-
-            </figure>
-        </div>
-    {/foreach}
-    </section>
-</div>

@@ -1,18 +1,15 @@
 
-.quiqqer-portfolio-list-entry figure {
+.quiqqer-portfolio-style3 figure {
     overflow: hidden;
 }
 
-.quiqqer-portfolio-list-entry figure img {
-    max-width: 100%;
-    display: block;
-    position: relative;
+.quiqqer-portfolio-style3 figure img {
     transition: transform 0.4s;
         -webkit-transition: -webkit-transform 0.4s;
         -moz-transition: -moz-transform 0.4s;
 }
 
-.quiqqer-portfolio-list-entry figcaption {
+.quiqqer-portfolio-style3 figcaption {
     background: #ccc none repeat scroll 0 0;
     bottom: 0;
     color: #666;
@@ -30,12 +27,12 @@
     width: 100%;
 }
 
-.quiqqer-portfolio-list-entry figcaption h3 {
+.quiqqer-portfolio-style3 figcaption h3 {
     color: #666;
     font-weight: bold;
 }
 
-.quiqqer-portfolio-list-entry figcaption:after {
+.quiqqer-portfolio-style3 figcaption:after {
     background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0px, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0;
     content: "";
     height: 5px;
@@ -47,14 +44,14 @@
     z-index: 10;
 }
 
-.quiqqer-portfolio-list-entry figure:hover img {
+.quiqqer-portfolio-style3 .quiqqer-portfolio-list-entry figure:hover img {
     transform: translateY(-50px);
         -webkit-transform: translateY(-50px);
         -moz-transform: translateY(-50px);
         -ms-transform: translateY(-50px);
 }
 
-.quiqqer-portfolio-list-entry figure:hover figcaption {
+.quiqqer-portfolio-style3 .quiqqer-portfolio-list-entry figure:hover figcaption {
     opacity: 1;
     transform: translateY(0px);
         -webkit-transform: translateY(0px);

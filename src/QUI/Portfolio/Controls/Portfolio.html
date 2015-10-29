@@ -1,0 +1,45 @@
+
+{if count($categories)}
+<section class="quiqqer-portfolio-categories">
+    <div class="quiqqer-portfolio-categories-entry quiqqer-portfolio-categories-all">
+        Alle
+    </div>
+    {foreach from=$categories item=Data}
+    <div class="quiqqer-portfolio-categories-entry" title="{$Data.description|escape:'html'}">
+        {$Data.category}
+    </div>
+    {/foreach}
+</section>
+{/if}
+
+<section class="quiqqer-portfolio-list">
+    {foreach from=$portfolio item=Child}
+    <div class="quiqqer-portfolio-list-entry"
+         data-id="{$Child->getId()}"
+         data-categories=",{$Child->getAttribute('quiqqer.portfolio.settings.categories')|implode:','},"
+            >
+        <figure>
+            {*
+            <a href="{url site=$Child}"
+               class="quiqqer-portfolio-list-entry-container-details quiqqer-portfolio-animate"
+                    >
+                <span class="fa fa-search icon-search"></span>
+            </a>
+            *}
+
+            {image src=$Child->getAttribute('image_site') height=300}
+
+            <figcaption>
+                <h3 class="quiqqer-portfolio-list-entry-container-header quiqqer-portfolio-animate">
+                    {$Child->getAttribute('title')}
+                </h3>
+                <div>
+                    {$Child->getAttribute('short')}
+                </div>
+            </figcaption>
+
+        </figure>
+    </div>
+    {/foreach}
+</section>
+

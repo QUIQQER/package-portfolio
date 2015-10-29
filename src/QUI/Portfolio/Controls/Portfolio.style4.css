@@ -1,0 +1,81 @@
+.quiqqer-portfolio-style4 {
+    perspective: 1700px;
+        -webkit-perspective: 1700px;
+        -moz-perspective: 1700px;
+    perspective-origin: 0 50%;
+        -webkit-perspective-origin: 0 50%;
+        -moz-perspective-origin: 0 50%;
+    position: relative;
+    z-index: 1;
+}
+
+.quiqqer-portfolio-style4 .quiqqer-portfolio-list-entry:hover {
+    z-index: 2;
+}
+
+.quiqqer-portfolio-style4 figure {
+    transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+}
+
+.quiqqer-portfolio-style4 figure > div {
+    overflow: hidden;
+}
+
+.quiqqer-portfolio-style4 figure img {
+    transition: transform 0.4s;
+        -webkit-transition: -webkit-transform 0.4s;
+        -moz-transition: -moz-transform 0.4s;
+}
+
+.quiqqer-portfolio-style4 .quiqqer-portfolio-list-entry:hover img {
+    transform: translateX(25%);
+        -webkit-transform: translateX(25%);
+        -moz-transform: translateX(25%);
+        -ms-transform: translateX(25%);
+    z-index: 2
+}
+
+.quiqqer-portfolio-style4 figcaption {
+    background: #ddd;
+
+    backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+
+    height: 100%;
+    opacity: 0;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+
+    transform-origin: 0 0;
+        -webkit-transform-origin: 0 0;
+        -moz-transform-origin: 0 0;
+
+    transform: rotateY(-90deg);
+        -webkit-transform: rotateY(-90deg);
+        -moz-transform: rotateY(-90deg);
+
+    transition: transform 0.4s, opacity 0.1s 0.3s;
+        -webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+        -moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
+}
+
+.quiqqer-portfolio-style4 .quiqqer-portfolio-list-entry:hover figcaption {
+    opacity: 1;
+    transform: rotateY(0deg);
+        -webkit-transform: rotateY(0deg);
+        -moz-transform: rotateY(0deg);
+    transition: transform 0.4s, opacity 0.1s;
+        -webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+        -moz-transition: -moz-transform 0.4s, opacity 0.1s;
+    z-index: 2;
+}
+
+.quiqqer-portfolio-style4 figcaption a {
+    bottom: 20px;
+    position: absolute;
+    right: 20px;
+}
