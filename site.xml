@@ -4,14 +4,15 @@
     <types>
 
         <type type="types/list" extend="QUI\Portfolio\PortfolioList" icon="icon-star">
-            <locale group="quiqqer/portfolio" var="admin.types.portfolio.list" />
+            <locale group="quiqqer/portfolio" var="admin.types.portfolio.list"/>
             <desc>
-                <locale group="quiqqer/portfolio" var="admin.types.portfolio.list.desc" />
+                <locale group="quiqqer/portfolio" var="admin.types.portfolio.list.desc"/>
             </desc>
 
             <!-- extra attributes -->
             <attributes>
                 <attribute>quiqqer.portfolio.settings.categories</attribute>
+                <attribute>quiqqer.portfolio.settings.portfolioEffect</attribute>
             </attributes>
 
             <tab name="quiqqer.portfolio.categories">
@@ -19,14 +20,40 @@
                     <locale group="quiqqer/portfolio" var="admin.types.portfolio.categories"/>
                 </text>
                 <image>icon-star</image>
-                <onload require="package/quiqqer/portfolio/bin/SitePanelList" />
+                <onload require="package/quiqqer/portfolio/bin/SitePanelList"/>
             </tab>
+
+            <!-- list settings -->
+            <settings>
+
+                <category name="portfolio-settings">
+                    <settings>
+                        <title>
+                            <locale group="quiqqer/portfolio" var="quiqqer.portfolio.settings.title"/>
+                        </title>
+
+                        <select conf="quiqqer.portfolio.settings.portfolioEffect">
+                            <text>
+                                <locale group="quiqqer/portfolio" var="quiqqer.portfolio.settings.portfolioEffect"/>
+                            </text>
+                            <option value="style1">Style 1</option>
+                            <option value="style2">Style 2</option>
+                            <option value="style3">Style 3</option>
+                            <option value="style4">Style 4</option>
+                            <option value="style5">Style 5</option>
+                            <option value="style6">Style 6</option>
+                            <option value="style7">Style 7</option>
+                        </select>
+                    </settings>
+                </category>
+
+            </settings>
         </type>
 
         <type type="types/entry" extend="QUI\Portfolio\Entry" icon="icon-star-empty">
-            <locale group="quiqqer/portfolio" var="admin.types.portfolio.entry" />
+            <locale group="quiqqer/portfolio" var="admin.types.portfolio.entry"/>
             <desc>
-                <locale group="quiqqer/portfolio" var="admin.types.portfolio.entry.desc" />
+                <locale group="quiqqer/portfolio" var="admin.types.portfolio.entry.desc"/>
             </desc>
 
             <!-- extra attributes -->
@@ -39,7 +66,7 @@
                     <locale group="quiqqer/portfolio" var="admin.types.portfolio.categories"/>
                 </text>
                 <image>icon-star</image>
-                <onload require="package/quiqqer/portfolio/bin/SitePanelReference" />
+                <onload require="package/quiqqer/portfolio/bin/SitePanelReference"/>
             </tab>
 
         </type>

@@ -1,7 +1,7 @@
 <?php
 
 $Portfolio = new \QUI\Portfolio\Controls\Portfolio(array(
-    'entry-effect' => 'style3',
+    'entry-effect' => $Site->getAttribute('quiqqer.portfolio.settings.portfolioEffect'),
     'Site'         => $Site
 ));
 
