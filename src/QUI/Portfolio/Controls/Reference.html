@@ -1,9 +1,29 @@
-<div class="quiqqer-porfolio-reference-slider">
+<div itemscope itemtype="http://schema.org/CreativeWork"
+        class="{$sliderExtraClass}"
+        data-qui="package/quiqqer/portfolio/bin/controls/Reference"
+        data-siteid="{$Site->getId()}"
+        data-project="{$Site->getProject()->getName()}"
+        data-lang="{$Site->getProject()->getLang()}"
+    >
+    {if $this->getAttribute('sliderpos') == 'bottom'}
+        <div class="quiqqer-porfolio-reference-data">
+            <header>
+                <h1 itemprop="name">{$Site->getAttribute('title')}</h1>
+            </header>
+        </div>
 
-</div>
-<div class="quiqqer-porfolio-reference-data">
-    <header>
-        <h1>{$Site->getAttribute('title')}</h1>
-        {$Site->getAttribute('content')}
-    </header>
+        <div class="quiqqer-porfolio-reference-data">
+            {$Site->getAttribute('content')}
+        </div>
+
+        <div class="quiqqer-porfolio-reference-slider"></div>
+    {else}
+        <div class="quiqqer-porfolio-reference-slider"></div>
+        <div class="quiqqer-porfolio-reference-data">
+            <header>
+                <h1 itemprop="name">{$Site->getAttribute('title')}</h1>
+                {$Site->getAttribute('content')}
+            </header>
+        </div>
+    {/if}
 </div>

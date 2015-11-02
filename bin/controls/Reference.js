@@ -1,120 +1,65 @@
 /**
- * Display a portfolio entry in a window
+ * Control for the porfolio reference entry
  *
- * @module package/quiqqer/portfolio/bin/controls/PortfolioPopup
+ * @module package/quiqqer/portfolio/bin/controls/Reference
  * @author www.pcsg.de (Henning Leutz)
  *
  * @require qui/QUI
  * @require qui/controls/Control
- * @require qui/controls/windows/Window
- * @require Ajax
  */
-define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
+define('package/quiqqer/portfolio/bin/controls/Reference', [
 
     'qui/QUI',
     'qui/controls/Control',
-    'qui/controls/windows/Popup',
     'Ajax'
 
-], function (QUI, QUIControl, QUIPopup, Ajax) {
+], function (QUI, QUIControl, Ajax) {
     "use strict";
 
     return new Class({
 
-        Extends: QUIPopup,
-        Type   : 'package/quiqqer/portfolio/bin/controls/PortfolioPopup',
+        Extends: QUIControl,
+        Type   : 'package/quiqqer/portfolio/bin/controls/Reference',
 
         Binds: [
-            '$onOpen',
-            '$onResize'
+            '$onImport'
         ],
 
         options: {
-            siteId : false,
             project: false,
             lang   : false,
-            buttons: false
+            siteId : false
         },
 
         initialize: function (options) {
-            this.setAttributes({
-                maxHeight: 600,
-                maxWidth : 1200
-            });
-
             this.parent(options);
 
-            this.$template = false;
-            this.$css      = '';
-            this.$images   = [];
-            this.$Slider   = null;
-
-            this.$mobile = false;
-
             this.addEvents({
-                onOpen  : this.$onOpen,
-                onClose : function () {
-                    if (this.$Slider) {
-                        this.$Slider.destroy();
-                    }
-                }.bind(this),
-                onResize: this.$onResize
+                onImport: this.$onImport
             });
         },
 
         /**
-         * event : on open
+         * events : on import
          */
-        $onOpen: function () {
-            var self = this;
+        $onImport: function () {
 
-            this.refresh().catch(function () {
-                self.close();
+            var self    = this,
+                siteId  = this.getElm().get('data-siteid'),
+                project = this.getElm().get('data-project'),
+                lang    = this.getElm().get('data-lang');
+
+            this.setAttribute('siteId', siteId);
+            this.setAttribute('project', project);
+            this.setAttribute('lang', lang);
+
+            this.$draw().then(function () {
+
+                console.log(self.$images);
+
             });
         },
 
-        /**
-         * event : on resize
-         */
-        $onResize: function () {
-            if (!this.$images.length) {
-                return;
-            }
-
-            var winSize = QUI.getWindowSize();
-
-            if (this.$Slider) {
-                this.$Slider.resize();
-            }
-
-            if (winSize.x < 767 && this.$mobile === false) {
-                this.$mobile = true;
-                return;
-            }
-
-            if (winSize.x >= 767 && this.$mobile === true) {
-                this.$mobile = false;
-            }
-        },
-
-        /**
-         * Refresh the data
-         *
-         * @returns {Promise}
-         */
-        refresh: function () {
-
-            var self = this;
-
-            this.Loader.show();
-
-            return new Promise(function (resolve, reject) {
-                self.$draw().then(function () {
-                    self.Loader.hide();
-                    resolve();
-                }).catch(reject);
-            });
-        },
 
         /**
          * internal draw data
@@ -129,25 +74,8 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
 
                 self.$getData().then(function () {
 
-                    var Content = self.getContent();
 
-                    Content.setStyles({
-                        padding: 0
-                    });
-
-                    Content.set('html', self.$template + self.$css);
-
-                    new Element('div', {
-                        html   : '<span class="fa fa-remove icon-remove"></span>',
-                        'class': 'quiqqer-porfolio-reference-close',
-                        events : {
-                            click: function () {
-                                self.close();
-                            }
-                        }
-                    }).inject(Content);
-
-                    var SliderContainer = Content.getElement(
+                    var SliderContainer = self.getElm().getElement(
                         '.quiqqer-porfolio-reference-slider'
                     );
 
@@ -175,7 +103,7 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
                             controls: false,
                             zoom    : false,
                             styles  : {
-                                height: '100%'
+                                height: 400
                             }
                         });
 
@@ -200,6 +128,7 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
                         resolve();
 
                     }, reject);
+
                 });
 
             });
@@ -222,9 +151,7 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
 
                 Ajax.get('package_quiqqer_portfolio_ajax_getReference', function (data) {
 
-                    self.$images   = data.images;
-                    self.$template = data.template;
-                    self.$css      = data.css;
+                    self.$images = data.images;
 
                     resolve();
 
@@ -241,6 +168,5 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
                 });
             });
         }
-
     });
 });

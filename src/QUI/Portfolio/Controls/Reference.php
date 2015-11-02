@@ -21,7 +21,9 @@ class Reference extends QUI\Control
     public function __construct($attributes = array())
     {
         // default options
-        $this->setAttributes(array());
+        $this->setAttributes(array(
+            'sliderpos' => 'left' // left or bottom
+        ));
 
         parent::__construct($attributes);
 
@@ -40,9 +42,17 @@ class Reference extends QUI\Control
         $Engine = QUI::getTemplateManager()->getEngine();
         $Site   = $this->_getSite();
 
+        $sliderExtraClass = 'quiqqer-porfolio-reference__left';
+
+        if ($this->getAttribute('sliderpos') == 'bottom') {
+            $sliderExtraClass = 'quiqqer-porfolio-reference__bottom';
+        }
+
         $Engine->assign(array(
-            'Site'   => $Site,
-            'images' => $this->getImages()
+            'this'             => $this,
+            'Site'             => $Site,
+            'images'           => $this->getImages(),
+            'sliderExtraClass' => $sliderExtraClass
         ));
 
         return $Engine->fetch(dirname(__FILE__) . '/Reference.html');
