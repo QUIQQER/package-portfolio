@@ -43,9 +43,7 @@ define('package/quiqqer/portfolio/bin/controls/Reference', [
          * events : on import
          */
         $onImport: function () {
-
-            var self    = this,
-                siteId  = this.getElm().get('data-siteid'),
+            var siteId  = this.getElm().get('data-siteid'),
                 project = this.getElm().get('data-project'),
                 lang    = this.getElm().get('data-lang');
 
@@ -53,13 +51,8 @@ define('package/quiqqer/portfolio/bin/controls/Reference', [
             this.setAttribute('project', project);
             this.setAttribute('lang', lang);
 
-            this.$draw().then(function () {
-
-                console.log(self.$images);
-
-            });
+            this.$draw();
         },
-
 
         /**
          * internal draw data
