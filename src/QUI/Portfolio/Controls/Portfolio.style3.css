@@ -10,9 +10,7 @@
 }
 
 .quiqqer-portfolio-style3 figcaption {
-    background: #ccc none repeat scroll 0 0;
     bottom: 0;
-    color: #666;
     left: 0;
     opacity: 0;
     padding: 20px;
@@ -28,7 +26,6 @@
 }
 
 .quiqqer-portfolio-style3 figcaption h3 {
-    color: #666;
     font-weight: bold;
 }
 

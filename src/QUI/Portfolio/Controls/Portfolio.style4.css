@@ -38,8 +38,6 @@
 }
 
 .quiqqer-portfolio-style4 figcaption {
-    background: #ddd;
-
     backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
         -moz-backface-visibility: hidden;

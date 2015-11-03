@@ -28,15 +28,10 @@
 .quiqqer-portfolio-style7 .quiqqer-portfolio-list-entry:hover figcaption {
     background: #2c3f52;
     box-shadow: 0 0 0 10px #2c3f52;
-    color: #fff;
     height: 130%;
     opacity: 1;
     position: absolute;
     top: 0;
-}
-
-.quiqqer-portfolio-style7 figcaption h3 {
-    color: #fff;
 }
 
 .quiqqer-portfolio-style7 figcaption h3,

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiqqer>
+    <bricks>
+
+        <brick control="\QUI\Portfolio\Bricks\PortfolioList">
+            <title>
+                <locale group="quiqqer/portfolio"
+                        var="bricks.tags.title"
+                />
+            </title>
+            <description>
+                <locale group="quiqqer/portfolio"
+                        var="bricks.tags.description"
+                />
+            </description>
+            <settings>
+                <setting name="site" data-qui="controls/projects/project/site/Select">
+                    <locale group="quiqqer/portfolio" var="brick.control.portfolio.setting.site"/>
+                </setting>
+                <setting name="order" type="select">
+                    <locale group="quiqqer/portfolio" var="brick.control.portfolio.setting.order"/>
+
+                    <option value="name ASC">
+                        <locale group="quiqqer/system" var="name_asc"/>
+                    </option>
+                    <option value="name DESC">
+                        <locale group="quiqqer/system" var="name_desc"/>
+                    </option>
+                    <option value="title ASC">
+                        <locale group="quiqqer/system" var="title_asc"/>
+                    </option>
+                    <option value="title DESC">
+                        <locale group="quiqqer/system" var="title_desc"/>
+                    </option>
+                    <option value="c_date ASC">
+                        <locale group="quiqqer/system" var="c_date_asc"/>
+                    </option>
+                    <option value="c_date DESC">
+                        <locale group="quiqqer/system" var="c_date_desc"/>
+                    </option>
+                    <option value="e_date ASC">
+                        <locale group="quiqqer/system" var="e_date_asc"/>
+                    </option>
+                    <option value="e_date DESC">
+                        <locale group="quiqqer/system" var="e_date_desc"/>
+                    </option>
+                    <option value="release_from ASC">
+                        <locale group="quiqqer/system" var="release_from_asc"/>
+                    </option>
+                    <option value="release_from DESC">
+                        <locale group="quiqqer/system" var="release_from_desc"/>
+                    </option>
+                </setting>
+                <setting name="showImage" type="checkbox">
+                    <locale group="quiqqer/portfolio" var="brick.control.portfolio.setting.showImage"/>
+                </setting>
+                <setting name="showTitle" type="checkbox">
+                    <locale group="quiqqer/portfolio" var="brick.control.portfolio.setting.showTitle"/>
+                </setting>
+                <setting name="showShort" type="checkbox">
+                    <locale group="quiqqer/portfolio" var="brick.control.portfolio.setting.showShort"/>
+                </setting>
+            </settings>
+        </brick>
+
+    </bricks>
+</quiqqer>

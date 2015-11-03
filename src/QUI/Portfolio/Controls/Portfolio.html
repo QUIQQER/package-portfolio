@@ -22,17 +22,9 @@
          data-categories=",{$Child->getAttribute('quiqqer.portfolio.settings.categories')|implode:','},"
             >
         <figure>
-            {*
-            <a href="{url site=$Child}"
-               class="quiqqer-portfolio-list-entry-container-details quiqqer-portfolio-animate"
-                    >
-                <span class="fa fa-search icon-search"></span>
-            </a>
-            *}
-
             {image src=$Child->getAttribute('image_site') height=300}
 
-            <figcaption>
+            <figcaption class="control-background">
                 <h3 class="quiqqer-portfolio-list-entry-container-header quiqqer-portfolio-animate">
                     {$Child->getAttribute('title')}
                 </h3>
