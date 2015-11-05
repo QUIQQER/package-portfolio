@@ -24,7 +24,18 @@
             <en><![CDATA[Portfolio entry]]></en>
         </locale>
 
-
+        <locale name="quiqqer.portfolio.settings.title">
+            <de><![CDATA[Referenz Einstellungen]]></de>
+            <en><![CDATA[Portfolio settings]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.settings.portfolioEffect">
+            <de><![CDATA[Effekt]]></de>
+            <en><![CDATA[Effect]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.settings.portfolioEntryWidth">
+            <de><![CDATA[Breite eines Referenzeintrags]]></de>
+            <en><![CDATA[Width of a portfolio entry]]></en>
+        </locale>
     </groups>
     <groups name="quiqqer/portfolio" datatype="php">
 

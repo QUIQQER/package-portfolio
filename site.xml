@@ -13,6 +13,7 @@
             <attributes>
                 <attribute>quiqqer.portfolio.settings.categories</attribute>
                 <attribute>quiqqer.portfolio.settings.portfolioEffect</attribute>
+                <attribute>quiqqer.portfolio.settings.portfolioEntryWidth</attribute>
             </attributes>
 
             <tab name="quiqqer.portfolio.categories">
@@ -43,6 +44,18 @@
                             <option value="style5">Style 5</option>
                             <option value="style6">Style 6</option>
                             <option value="style7">Style 7</option>
+                        </select>
+
+                        <select conf="quiqqer.portfolio.settings.portfolioEntryWidth">
+                            <text>
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio.settings.portfolioEntryWidth"/>
+                            </text>
+                            <option value="10%">10%</option>
+                            <option value="20%">20%</option>
+                            <option value="25%">25%</option>
+                            <option value="33.3333%">33% (1/3)</option>
+                            <option value="50%">50%</option>
                         </select>
                     </settings>
                 </category>

@@ -20,6 +20,7 @@
     <div class="quiqqer-portfolio-list-entry"
          data-id="{$Child->getId()}"
          data-categories=",{$Child->getAttribute('quiqqer.portfolio.settings.categories')|implode:','},"
+         style="width: {$entryWidth}"
             >
         <figure>
             {image src=$Child->getAttribute('image_site') height=300}

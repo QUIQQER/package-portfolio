@@ -22,6 +22,7 @@ class Portfolio extends QUI\Control
         // default options
         $this->setAttributes(array(
             'entry-effect' => 'style3',
+            'entry-width'  => '33.3333%',
             'qui-class'    => 'package/quiqqer/portfolio/bin/controls/Portfolio'
         ));
 
@@ -56,7 +57,6 @@ class Portfolio extends QUI\Control
         }
 
         $this->addCSSFile($effectFile);
-
     }
 
     /**
@@ -64,9 +64,13 @@ class Portfolio extends QUI\Control
      */
     public function getBody()
     {
-        $Engine = QUI::getTemplateManager()->getEngine();
-        $Site   = $this->_getSite();
+        $Engine     = QUI::getTemplateManager()->getEngine();
+        $Site       = $this->_getSite();
+        $entryWidth = '33.3333%';
 
+        if ($this->getAttribute('entry-width')) {
+            $entryWidth = $this->getAttribute('entry-width');
+        }
 
         $portfolio = $Site->getChildren(array(
             'where' => array(
@@ -91,6 +95,7 @@ class Portfolio extends QUI\Control
         }
 
         $Engine->assign(array(
+            'entryWidth' => $entryWidth,
             'portfolio'  => $portfolio,
             'categories' => json_decode($categories, true)
         ));
