@@ -45,7 +45,11 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
             var categories = document.getElements('.quiqqer-portfolio-categories-entry');
             var entries    = document.getElements('.quiqqer-portfolio-list-entry');
 
-            this.$childWidth = entries[0].getComputedSize().width;
+            this.$childWidth = entries[0].getSize().x;
+
+            if (entries[0].getStyle('width').contains('%')) {
+                this.$childWidth = entries[0].getStyle('width');
+            }
 
             // categories
             var openCategory = function () {
