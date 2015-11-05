@@ -93,7 +93,12 @@ define('package/quiqqer/portfolio/bin/SitePanelReference', [
                 var i, len;
                 var List = new Element('ul');
 
-                var liClick = function () {
+                var liClick = function (event) {
+
+                    if (event.target.nodeName === 'INPUT') {
+                        return;
+                    }
+
                     var Input = this.getElement('input');
                     Input.checked = !Input.checked;
                 };
