@@ -19,8 +19,14 @@ class PortfolioList extends QUI\Control
      */
     public function getBody()
     {
+        $Project = QUI::getRewrite()->getProject();
+
+        $Portfolio = new QUI\Portfolio\Controls\Portfolio(array(
+//            'Site'  => $Project->get(43),
+            'limit' => 3
+        ));
 
 
-        return 'sss';
+        return $Portfolio->create();
     }
 }

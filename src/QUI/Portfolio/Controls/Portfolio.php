@@ -21,6 +21,7 @@ class Portfolio extends QUI\Control
     {
         // default options
         $this->setAttributes(array(
+            'limit'        => false,
             'entry-effect' => 'style3',
             'entry-width'  => '33.3333%',
             'qui-class'    => 'package/quiqqer/portfolio/bin/controls/Portfolio'
@@ -67,15 +68,21 @@ class Portfolio extends QUI\Control
         $Engine     = QUI::getTemplateManager()->getEngine();
         $Site       = $this->_getSite();
         $entryWidth = '33.3333%';
+        $limit      = false;
 
         if ($this->getAttribute('entry-width')) {
             $entryWidth = $this->getAttribute('entry-width');
         }
 
+        if ($this->getAttribute('limit')) {
+            $limit = (int)$this->getAttribute('limit');
+        }
+
         $portfolio = $Site->getChildren(array(
             'where' => array(
                 'type' => 'quiqqer/portfolio:types/entry'
-            )
+            ),
+            'limit' => $limit
         ));
 
         $categories = $Site->getAttribute(
