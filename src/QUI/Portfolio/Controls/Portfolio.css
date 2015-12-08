@@ -3,6 +3,7 @@
 .quiqqer-portfolio-categories {
     clear: both;
     float: left;
+    position: relative;
     width: 100%;
 }
 
@@ -71,4 +72,27 @@
     display: inline-block;
     height: 100%;
     vertical-align: middle;
+}
+
+/* design classes */
+.quiqqer-portfolio-list-entry-10 { width: 10%; }
+.quiqqer-portfolio-list-entry-20 { width: 20%; }
+.quiqqer-portfolio-list-entry-33 { width: 33.3333% }
+.quiqqer-portfolio-list-entry-50 { width: 50% }
+.quiqqer-portfolio-list-entry-100 { width: 100% }
+
+@media screen and (max-width: 767px) {
+    .quiqqer-portfolio-list-entry-10 { width: 25%; }
+    .quiqqer-portfolio-list-entry-20 { width: 50%; }
+    .quiqqer-portfolio-list-entry-33 { width: 50%; }
+    .quiqqer-portfolio-list-entry-50 { width: 100%; }
+    .quiqqer-portfolio-list-entry-100 { width: 100%; }
+}
+
+@media screen and (max-width: 460px) {
+    .quiqqer-portfolio-list-entry-10 { width: 50%; }
+    .quiqqer-portfolio-list-entry-20 { width: 100%; }
+    .quiqqer-portfolio-list-entry-33 { width: 100%; }
+    .quiqqer-portfolio-list-entry-50 { width: 100%; }
+    .quiqqer-portfolio-list-entry-100 { width: 100%; }
 }

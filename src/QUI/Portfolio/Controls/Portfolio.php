@@ -21,10 +21,10 @@ class Portfolio extends QUI\Control
     {
         // default options
         $this->setAttributes(array(
-            'limit'        => false,
+            'limit' => false,
             'entry-effect' => 'style3',
-            'entry-width'  => '33.3333%',
-            'qui-class'    => 'package/quiqqer/portfolio/bin/controls/Portfolio'
+            'entry-width' => false,
+            'qui-class' => 'package/quiqqer/portfolio/bin/controls/Portfolio'
         ));
 
         $this->addCSSFile(
@@ -36,7 +36,6 @@ class Portfolio extends QUI\Control
 
 
         switch ($this->getAttribute('entry-effect')) {
-
             case 'style1':
             case 'style2':
             case 'style3':
@@ -65,14 +64,9 @@ class Portfolio extends QUI\Control
      */
     public function getBody()
     {
-        $Engine     = QUI::getTemplateManager()->getEngine();
-        $Site       = $this->_getSite();
-        $entryWidth = '33.3333%';
-        $limit      = false;
-
-        if ($this->getAttribute('entry-width')) {
-            $entryWidth = $this->getAttribute('entry-width');
-        }
+        $Engine = QUI::getTemplateManager()->getEngine();
+        $Site   = $this->getSite();
+        $limit  = false;
 
         if ($this->getAttribute('limit')) {
             $limit = (int)$this->getAttribute('limit');
@@ -101,9 +95,36 @@ class Portfolio extends QUI\Control
             $Child->setAttribute('quiqqer.portfolio.settings.categories', $cats);
         }
 
+        switch ($this->getAttribute('entry-width')) {
+            case "10%":
+                $cssClass = 'quiqqer-portfolio-list-entry-10';
+                break;
+
+            case "20%":
+                $cssClass = 'quiqqer-portfolio-list-entry-20';
+                break;
+
+            case "25%":
+                $cssClass = 'quiqqer-portfolio-list-entry-25';
+                break;
+
+            case "50%":
+                $cssClass = 'quiqqer-portfolio-list-entry-50';
+                break;
+
+            case "100%":
+                $cssClass = 'quiqqer-portfolio-list-entry-100';
+                break;
+
+            default:
+            case "33.3333%":
+                $cssClass = 'quiqqer-portfolio-list-entry-33';
+                break;
+        }
+
         $Engine->assign(array(
-            'entryWidth' => $entryWidth,
-            'portfolio'  => $portfolio,
+            'cssClass' => $cssClass,
+            'portfolio' => $portfolio,
             'categories' => json_decode($categories, true)
         ));
 
@@ -115,7 +136,7 @@ class Portfolio extends QUI\Control
      * Return current site
      * @return QUI\Projects\Site
      */
-    protected function _getSite()
+    protected function getSite()
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');

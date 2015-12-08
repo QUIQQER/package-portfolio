@@ -30,8 +30,6 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
             this.addEvents({
                 onImport: this.$onImport
             });
-
-            this.$childWidth = 0;
         },
 
         /**
@@ -41,21 +39,35 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
 
             var i, len;
 
-            var self       = this;
-            var categories = document.getElements('.quiqqer-portfolio-categories-entry');
-            var entries    = document.getElements('.quiqqer-portfolio-list-entry');
+            var categories = document.getElements(
+                '.quiqqer-portfolio-categories-entry'
+            );
 
-            this.$childWidth = entries[0].getSize().x;
-
-            if (entries[0].getStyle('width').contains('%')) {
-                this.$childWidth = entries[0].getStyle('width');
-            }
+            var entries = document.getElements(
+                '.quiqqer-portfolio-list-entry'
+            );
 
             // categories
             var openCategory = function () {
 
                 if (this.hasClass('quiqqer-portfolio-category__active')) {
                     return;
+                }
+
+                var childWidth = entries[0].getSize().x;
+
+                if (!childWidth) {
+                    entries[0].setStyles({
+                        position: 'absolute',
+                        width   : null
+                    });
+
+                    childWidth = entries[0].getSize().x;
+
+                    entries[0].setStyles({
+                        position: null,
+                        width   : 0
+                    });
                 }
 
                 categories.removeClass('quiqqer-portfolio-category__active');
@@ -67,9 +79,12 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                         height : 300,
                         opacity: 1,
                         padding: 10,
-                        width  : self.$childWidth
+                        width  : childWidth
                     }, {
-                        duration: 250
+                        duration: 250,
+                        callback: function () {
+                            entries.setStyle('width', null);
+                        }
                     });
 
                     return;
@@ -106,9 +121,12 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                         height : 300,
                         opacity: 1,
                         padding: 10,
-                        width  : self.$childWidth
+                        width  : childWidth
                     }, {
-                        duration: 250
+                        duration: 250,
+                        callback: function () {
+                            inResult.setStyle('width', null);
+                        }
                     });
                 }
             };
