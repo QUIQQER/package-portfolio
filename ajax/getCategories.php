@@ -3,9 +3,9 @@
 /**
  * Return the portfolio categories
  *
- * @param String $project - JSON project data
- * @param String|Integer $childId - ID of the current page
- * @return Array
+ * @param string $project - JSON project data
+ * @param string|integer $childId - ID of the current page
+ * @return array
  */
 function package_quiqqer_portfolio_ajax_getCategories($project, $childId)
 {
