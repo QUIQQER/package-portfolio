@@ -40,7 +40,7 @@ class Reference extends QUI\Control
     public function getBody()
     {
         $Engine = QUI::getTemplateManager()->getEngine();
-        $Site   = $this->_getSite();
+        $Site   = $this->getSite();
 
         $sliderExtraClass = 'quiqqer-porfolio-reference__left';
 
@@ -49,9 +49,9 @@ class Reference extends QUI\Control
         }
 
         $Engine->assign(array(
-            'this'             => $this,
-            'Site'             => $Site,
-            'images'           => $this->getImages(),
+            'this' => $this,
+            'Site' => $Site,
+            'images' => $this->getImages(),
             'sliderExtraClass' => $sliderExtraClass
         ));
 
@@ -66,16 +66,15 @@ class Reference extends QUI\Control
     public function getImages()
     {
         $images      = array();
-        $imageFolder = $this->_getSite()->getAttribute(
+        $imageFolder = $this->getSite()->getAttribute(
             'quiqqer.portfolio.settings.mediaFolder'
         );
 
         try {
-            $siteImage = $this->_getSite()->getAttribute('image_site');
+            $siteImage = $this->getSite()->getAttribute('image_site');
             $images[]  = QUI\Projects\Media\Utils::getImageByUrl($siteImage);
 
         } catch (QUI\Exception $Exception) {
-
         }
 
 
@@ -90,7 +89,7 @@ class Reference extends QUI\Control
         } catch (QUI\Exception $Exception) {
             QUI\System\Log::addDebug($Exception->getMessage(), array(
                 'control' => '\QUI\Portfolio\Controls\Reference',
-                'Site'    => $this->_getSite()->__toString()
+                'Site' => $this->getSite()->__toString()
             ));
         }
 
@@ -101,7 +100,7 @@ class Reference extends QUI\Control
      * Return current site
      * @return QUI\Projects\Site
      */
-    protected function _getSite()
+    protected function getSite()
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');
