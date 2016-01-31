@@ -36,6 +36,10 @@
             <de><![CDATA[Breite eines Referenzeintrags]]></de>
             <en><![CDATA[Width of a portfolio entry]]></en>
         </locale>
+        <locale name="quiqqer.portfolio.settings.portfolioNoPopup">
+            <de><![CDATA[Referenzpopups nicht öffnen]]></de>
+            <en><![CDATA[Not open portfolio popups]]></en>
+        </locale>
     </groups>
     <groups name="quiqqer/portfolio" datatype="php">
 

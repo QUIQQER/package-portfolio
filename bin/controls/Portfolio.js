@@ -24,6 +24,10 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
             '$onImport'
         ],
 
+        options: {
+            nopopups: false
+        },
+
         initialize: function (options) {
             this.parent(options);
 
@@ -131,13 +135,17 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                 }
             };
 
-
             for (i = 0, len = categories.length; i < len; i++) {
                 categories[i].addEvent('click', openCategory);
             }
 
 
             // entries
+            if (this.getAttribute('nopopups')) {
+                this.getElm().getElements('figure').setStyle('cursor', 'default');
+                return;
+            }
+
             var openEntry = function (event) {
 
                 event.stop();

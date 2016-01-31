@@ -24,7 +24,8 @@ class Portfolio extends QUI\Control
             'limit' => false,
             'entry-effect' => 'style3',
             'entry-width' => false,
-            'qui-class' => 'package/quiqqer/portfolio/bin/controls/Portfolio'
+            'qui-class' => 'package/quiqqer/portfolio/bin/controls/Portfolio',
+            'data-qui-options-nopopups' => false
         ));
 
         $this->addCSSFile(
