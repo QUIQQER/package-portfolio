@@ -138,7 +138,7 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
                     Content.set('html', self.$template + self.$css);
 
                     new Element('div', {
-                        html   : '<span class="fa fa-remove icon-remove"></span>',
+                        html   : '<span class="fa fa-remove"></span>',
                         'class': 'quiqqer-porfolio-reference-close',
                         events : {
                             click: function () {

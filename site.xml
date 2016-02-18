@@ -3,7 +3,7 @@
 
     <types>
 
-        <type type="types/list" extend="QUI\Portfolio\PortfolioList" icon="icon-star">
+        <type type="types/list" extend="QUI\Portfolio\PortfolioList" icon="fa fa-star">
             <locale group="quiqqer/portfolio" var="admin.types.portfolio.list"/>
             <desc>
                 <locale group="quiqqer/portfolio" var="admin.types.portfolio.list.desc"/>
@@ -21,7 +21,7 @@
                 <text>
                     <locale group="quiqqer/portfolio" var="admin.types.portfolio.categories"/>
                 </text>
-                <image>icon-star</image>
+                <image>fa fa-star</image>
                 <onload require="package/quiqqer/portfolio/bin/SitePanelList"/>
             </tab>
 
@@ -71,7 +71,7 @@
             </settings>
         </type>
 
-        <type type="types/entry" extend="QUI\Portfolio\Entry" icon="icon-star-empty">
+        <type type="types/entry" extend="QUI\Portfolio\Entry" icon="fa fa-star-o">
             <locale group="quiqqer/portfolio" var="admin.types.portfolio.entry"/>
             <desc>
                 <locale group="quiqqer/portfolio" var="admin.types.portfolio.entry.desc"/>
@@ -87,7 +87,7 @@
                 <text>
                     <locale group="quiqqer/portfolio" var="admin.types.portfolio.categories"/>
                 </text>
-                <image>icon-star</image>
+                <image>fa fa-star</image>
                 <onload require="package/quiqqer/portfolio/bin/SitePanelReference"/>
             </tab>
 

@@ -77,7 +77,7 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
                 buttons       : [{
                     name     : 'add',
                     text     : 'Hinzufügen',
-                    textimage: 'icon-plus fa fa-plus',
+                    textimage: 'fa fa-plus',
                     events   : {
                         onClick: this.openAddCategoryDialog
                     }
@@ -86,7 +86,7 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
                 }, {
                     name     : 'up',
                     text     : 'Hoch',
-                    textimage: 'icon-angle-up fa fa-angle-up',
+                    textimage: 'fa fa-angle-up',
                     disabled : true,
                     events   : {
                         onClick: function () {
@@ -96,7 +96,7 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
                 }, {
                     name     : 'down',
                     text     : 'Runter',
-                    textimage: 'icon-angle-down fa fa-angle-down',
+                    textimage: 'fa fa-angle-down',
                     disabled : true,
                     events   : {
                         onClick: function () {
@@ -277,17 +277,17 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
 
             new QUIPrompt({
                 title        : 'Kategorie hinzufügen',
-                icon         : 'icon-plus fa fa-plus',
+                icon         : 'fa fa-plus',
                 information  : 'Wählen Sie bitte einen Namen für Ihre Kategorie',
                 maxHeight    : 300,
                 maxWidth     : 450,
                 cancel_button: {
                     text     : QUILocale.get('quiqqer/system', 'cancel'),
-                    textimage: 'icon-remove fa fa-remove'
+                    textimage: 'fa fa-remove'
                 },
                 ok_button    : {
                     text     : QUILocale.get('quiqqer/system', 'add'),
-                    textimage: 'icon-plus fa fa-plus'
+                    textimage: 'fa fa-plus'
                 },
                 events       : {
                     onSubmit: function (value) {
@@ -344,7 +344,7 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
 
             return {
                 remove     : {
-                    icon  : 'fa fa-remove icon-remove',
+                    icon  : 'fa fa-remove',
                     events: {
                         onClick: this.$deleteRow
                     },
