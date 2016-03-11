@@ -62,7 +62,7 @@
 
 .quiqqer-portfolio-list-entry figure img {
     left: -2px;
-    max-width: calc(100% - 4px) !important;
+    max-width: calc(100% - 5px) !important;
     position: relative;
     vertical-align: middle;
 }
