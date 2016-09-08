@@ -49,9 +49,9 @@ class Reference extends QUI\Control
         }
 
         $Engine->assign(array(
-            'this' => $this,
-            'Site' => $Site,
-            'images' => $this->getImages(),
+            'this'             => $this,
+            'Site'             => $Site,
+            'images'           => $this->getImages(),
             'sliderExtraClass' => $sliderExtraClass
         ));
 
@@ -73,7 +73,6 @@ class Reference extends QUI\Control
         try {
             $siteImage = $this->getSite()->getAttribute('image_site');
             $images[]  = QUI\Projects\Media\Utils::getImageByUrl($siteImage);
-
         } catch (QUI\Exception $Exception) {
         }
 
@@ -85,11 +84,10 @@ class Reference extends QUI\Control
             if (QUI\Projects\Media\Utils::isFolder($Folder)) {
                 $images = $Folder->getImages();
             }
-
         } catch (QUI\Exception $Exception) {
             QUI\System\Log::addDebug($Exception->getMessage(), array(
                 'control' => '\QUI\Portfolio\Controls\Reference',
-                'Site' => $this->getSite()->__toString()
+                'Site'    => $this->getSite()->__toString()
             ));
         }
 

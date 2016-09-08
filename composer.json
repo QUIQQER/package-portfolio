@@ -1,31 +1,29 @@
 {
-    "name" : "quiqqer/portfolio",
-    "type" : "quiqqer-module",
-    "description" : "Portfolio listing",
-    "version" : "dev-master",
-    "license" : "",
-
-    "authors" : [{
-        "name": "Henning Leutz",
-        "email": "support@pcsg.de",
-        "homepage": "http://www.pcsg.de",
-        "role": "Developer"
-    }],
-
-    "support" : {
-        "email": "support@pcsg.de",
-        "url": "http://www.pcsg.de"
-    },
-
-    "require": {
-        "php" : ">=5.3",
-        "quiqqer/quiqqer" : "*@dev",
-        "quiqqer/gallery" : "*@dev"
-    },
-
-    "autoload": {
-        "psr-0" : {
-            "QUI" : "src/"
-        }
+  "name": "quiqqer/portfolio",
+  "type": "quiqqer-module",
+  "description": "Portfolio listing",
+  "version": "dev-master",
+  "license": "",
+  "authors": [
+    {
+      "name": "Henning Leutz",
+      "email": "support@pcsg.de",
+      "homepage": "http://www.pcsg.de",
+      "role": "Developer"
     }
+  ],
+  "support": {
+    "email": "support@pcsg.de",
+    "url": "http://www.pcsg.de"
+  },
+  "require": {
+    "php": ">=5.3",
+    "quiqqer/quiqqer": "*@dev",
+    "quiqqer/gallery": "*@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "QUI\\Portfolio\\": "src/QUI/Portfolio"
+    }
+  }
 }

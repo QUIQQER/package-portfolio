@@ -21,10 +21,10 @@ class Portfolio extends QUI\Control
     {
         // default options
         $this->setAttributes(array(
-            'limit' => false,
-            'entry-effect' => 'style3',
-            'entry-width' => false,
-            'qui-class' => 'package/quiqqer/portfolio/bin/controls/Portfolio',
+            'limit'                     => false,
+            'entry-effect'              => 'style3',
+            'entry-width'               => false,
+            'qui-class'                 => 'package/quiqqer/portfolio/bin/controls/Portfolio',
             'data-qui-options-nopopups' => false
         ));
 
@@ -124,8 +124,8 @@ class Portfolio extends QUI\Control
         }
 
         $Engine->assign(array(
-            'cssClass' => $cssClass,
-            'portfolio' => $portfolio,
+            'cssClass'   => $cssClass,
+            'portfolio'  => $portfolio,
             'categories' => json_decode($categories, true)
         ));
 
