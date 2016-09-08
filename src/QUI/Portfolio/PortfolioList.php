@@ -32,7 +32,7 @@ class PortfolioList
         $Site = new QUI\Projects\Site\Edit($Project, $newId);
 
         $Site->setAttribute('release_from', date('Y-m-d H:i:s'));
-        $Site->setAttribute('type', 'quiqqer/portfolio:types/category');
+        $Site->setAttribute('type', 'quiqqer/portfolio:types/entry');
         $Site->save();
     }
 }
