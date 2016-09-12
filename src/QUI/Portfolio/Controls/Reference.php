@@ -41,6 +41,7 @@ class Reference extends QUI\Control
     {
         $Engine = QUI::getTemplateManager()->getEngine();
         $Site   = $this->getSite();
+        $List   = $this->getList();
         $Next   = null;
         $Prev   = null;
         $images = $this->getImages();
@@ -62,7 +63,10 @@ class Reference extends QUI\Control
         }
 
         // slider
-        $Slider = new QUI\Bricks\Controls\Slider\PromosliderWallpaper2Content(array());
+        $Slider = new QUI\Bricks\Controls\Slider\PromosliderWallpaper2Content(array(
+            'position' => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-position'),
+            'size'     => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-size')
+        ));
 
         foreach ($images as $Image) {
             /* @var $Image QUI\Projects\Media\Image */
@@ -143,5 +147,27 @@ class Reference extends QUI\Control
         }
 
         return QUI::getRewrite()->getSite();
+    }
+
+    /**
+     * Return the portfolio list
+     *
+     * @return QUI\Projects\Site
+     */
+    protected function getList()
+    {
+        $Site = $this->getSite();
+
+        if ($Site->getAttribute('type') === 'quiqqer/portfolio:types/list') {
+            return $Site;
+        }
+
+        $Parent = $Site->getParent();
+
+        if ($Parent->getAttribute('type') === 'quiqqer/portfolio:types/list') {
+            return $Parent;
+        }
+
+        return $Site->getProject()->firstChild();
     }
 }

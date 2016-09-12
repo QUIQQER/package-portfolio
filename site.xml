@@ -148,7 +148,7 @@
             </settings>
         </type>
 
-        <type type="types/entry" extend="QUI\Portfolio\Entry" icon="fa fa-star-o">
+        <type type="types/entry" icon="fa fa-star-o">
             <locale group="quiqqer/portfolio" var="admin.types.portfolio.entry"/>
             <desc>
                 <locale group="quiqqer/portfolio" var="admin.types.portfolio.entry.desc"/>
