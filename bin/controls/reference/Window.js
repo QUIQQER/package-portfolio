@@ -61,6 +61,7 @@ define('package/quiqqer/portfolio/bin/controls/reference/Window', [
 
             this.$Website = false;
             this.$Submit  = null;
+            this.$Slider  = null;
 
             this.addEvents({
                 onOpen: this.$onOpen
@@ -73,7 +74,14 @@ define('package/quiqqer/portfolio/bin/controls/reference/Window', [
         $onOpen: function () {
             this.Loader.show();
 
-            this.setAttribute('maxHeight', QUI.getWindowSize().y - 60);
+            var winSize = QUI.getWindowSize();
+
+            if (winSize.y < 800) {
+                this.setAttribute('maxHeight', winSize.y);
+            } else {
+                this.setAttribute('maxHeight', winSize.y - 60);
+            }
+
             this.resize();
 
             this.Loader.hide();
@@ -231,6 +239,16 @@ define('package/quiqqer/portfolio/bin/controls/reference/Window', [
                             this.$Submit.show();
                         }
 
+                        var SliderNode = Content.getElement(
+                            '[data-qui="package/quiqqer/bricks/bin/Controls/Slider/PromosliderWallpaper"]'
+                        );
+
+                        this.$Slider = QUI.Controls.getById(SliderNode.get('data-quiid'));
+                        this.$Slider.setAttribute(
+                            'height',
+                            Math.round(QUI.getWindowSize().y / 2)
+                        );
+
                         // next / prev
                         var Next = Content.getElements('a.quiqqer-porfolio-reference-data-next');
                         var Prev = Content.getElements('a.quiqqer-porfolio-reference-data-prev');
@@ -238,8 +256,9 @@ define('package/quiqqer/portfolio/bin/controls/reference/Window', [
                         Next.addEvent('click', this.next);
                         Prev.addEvent('click', this.previous);
 
-                        resolve();
-                    }.bind(this));
+                        return this.$Slider.onResize();
+
+                    }.bind(this)).then(resolve);
 
                 }.bind(this), {
                     'package': 'quiqqer/portfolio',
