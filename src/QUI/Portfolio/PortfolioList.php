@@ -19,7 +19,7 @@ class PortfolioList
     /**
      * event on child create
      *
-     * @param integer                 $newId
+     * @param integer $newId
      * @param \QUI\Projects\Site\Edit $Parent
      */
     public static function onChildCreate($newId, $Parent)
@@ -29,10 +29,11 @@ class PortfolioList
         }
 
         $Project = $Parent->getProject();
-        $Site = new QUI\Projects\Site\Edit($Project, $newId);
+        $Site    = new QUI\Projects\Site\Edit($Project, $newId);
 
         $Site->setAttribute('release_from', date('Y-m-d H:i:s'));
         $Site->setAttribute('type', 'quiqqer/portfolio:types/entry');
+        $Site->setAttribute('nav_hide', 1);
         $Site->save();
     }
 }

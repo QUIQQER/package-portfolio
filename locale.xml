@@ -45,11 +45,11 @@
             <en><![CDATA[Portfolio popup type]]></en>
         </locale>
         <locale name="quiqqer.portfolio.settings.portfolioPopup.type.short">
-            <de><![CDATA[Linke Vorschau und rechter text]]></de>
+            <de><![CDATA[Linke Vorschau und rechter Text]]></de>
             <en><![CDATA[Left preview und right text]]></en>
         </locale>
         <locale name="quiqqer.portfolio.settings.portfolioPopup.type.reference">
-            <de><![CDATA[Komplette Referenz ansicht]]></de>
+            <de><![CDATA[Komplette Referenz Ansicht]]></de>
             <en><![CDATA[Complete portfolio view]]></en>
         </locale>
         <locale name="quiqqer.portfolio.visit.website">

@@ -78,16 +78,16 @@
                         <select conf="quiqqer.portfolio.settings.portfolioPopup.type">
                             <text>
                                 <locale group="quiqqer/portfolio"
-                                        var="quiqqer.portfolio.settings.portfolioNoPopup.type"/>
+                                        var="quiqqer.portfolio.settings.portfolioPopup.type"/>
                             </text>
 
                             <option value="short">
                                 <locale group="quiqqer/portfolio"
-                                        var="quiqqer.portfolio.settings.portfolioNoPopup.type.short"/>
+                                        var="quiqqer.portfolio.settings.portfolioPopup.type.short"/>
                             </option>
                             <option value="reference">
-                                <locale group="quiqqer/bricks"
-                                        var="quiqqer.portfolio.settings.portfolioNoPopup.type.reference"/>
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio.settings.portfolioPopup.type.reference"/>
                             </option>
                         </select>
 
