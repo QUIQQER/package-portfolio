@@ -23,6 +23,8 @@ QUI::$Ajax->registerFunction(
             'size'     => $Site->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-size')
         ));
 
+        $Slider->setAttribute('showarrows', false);
+
         // slider
         $images = $Control->getImages();
 

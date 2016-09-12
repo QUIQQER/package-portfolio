@@ -43,15 +43,7 @@ define('package/quiqqer/portfolio/bin/controls/reference/Window', [
             siteId   : false,
             maxHeight: 600,
             maxWidth : 800,
-
-            cancel_button: {
-                text     : QUILocale.get('quiqqer/system', 'close'),
-                textimage: 'icon-remove fa fa-remove'
-            },
-            ok_button    : {
-                text     : QUILocale.get('quiqqer/portfolio', 'quiqqer.portfolio.visit.website'),
-                textimage: 'icon-ok fa fa-globe'
-            }
+            buttons  : false
         },
 
         initialize: function (options) {
@@ -79,16 +71,11 @@ define('package/quiqqer/portfolio/bin/controls/reference/Window', [
 
             var winSize = QUI.getWindowSize();
 
-            if (winSize.y < 800) {
-                this.setAttribute('maxHeight', winSize.y);
-            } else {
-                this.setAttribute('maxHeight', winSize.y - 60);
-            }
+            this.setAttribute('maxHeight', winSize.y);
+            this.setAttribute('maxWidth', '100%');
 
             this.getElm().addClass('qui-portfolio-window');
             this.resize();
-
-            this.$Submit = this.getButton('submit');
 
             this.$loadReference()
                 .then(function () {
@@ -225,25 +212,31 @@ define('package/quiqqer/portfolio/bin/controls/reference/Window', [
             Content.set('html', '');
             Content.addClass('qui-portfolio-window-content');
 
+            var Container = new Element('div', {
+                'class': 'qui-portfolio-window-content-container page-multible-content'
+            }).inject(Content);
+
             return new Promise(function (resolve) {
 
                 QUIAjax.get('package_quiqqer_portfolio_ajax_getReferenceControl', function (result) {
-                    Content.set('html', result);
-                    Content.getElement('.quiqqer-porfolio-reference').setStyles({
+                    Container.set('html', result);
+                    Container.getElement('.quiqqer-porfolio-reference').setStyles({
                         opacity: 0,
                         top    : -50
                     });
+
+                    new Element('div', {
+                        'class': 'quiqqer-porfolio-reference-close',
+                        html   : '<span class="fa fa-remove"></span>',
+                        events : {
+                            click: this.close.bind(this)
+                        }
+                    }).inject(Content);
 
                     QUI.parse(Content).then(function () {
                         this.$Website = Content.getElement(
                             '.quiqqer-porfolio-reference-website-button'
                         );
-
-                        if (!this.$Website) {
-                            this.$Submit.hide();
-                        } else {
-                            this.$Submit.show();
-                        }
 
                         var SliderNode = Content.getElement(
                             '[data-qui="package/quiqqer/bricks/bin/Controls/Slider/PromosliderWallpaper"]'
@@ -254,6 +247,10 @@ define('package/quiqqer/portfolio/bin/controls/reference/Window', [
                             'height',
                             Math.round(QUI.getWindowSize().y / 2)
                         );
+
+                        if (!this.$Slider.getSlides().length) {
+                            this.$Slider.getElm().setStyle('display', 'none');
+                        }
 
                         // next / prev
                         var Next = Content.getElements('a.quiqqer-porfolio-reference-data-next');

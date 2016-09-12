@@ -68,6 +68,8 @@ class Reference extends QUI\Control
             'size'     => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-size')
         ));
 
+        $Slider->setAttribute('showarrows', false);
+
         foreach ($images as $Image) {
             /* @var $Image QUI\Projects\Media\Image */
             $Slider->addSlide($Image->getUrl());
