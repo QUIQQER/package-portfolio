@@ -53,8 +53,8 @@
             <en><![CDATA[Complete portfolio view]]></en>
         </locale>
         <locale name="quiqqer.portfolio.settings.portfolioPopup.type.referenceNextPrev">
-            <de><![CDATA[Bild oben Text unten]]></de>
-            <en><![CDATA[Image top Text bottom]]></en>
+            <de><![CDATA[Komplette Referenz Ansicht (schwarz)]]></de>
+            <en><![CDATA[Complete portfolio view (black)]]></en>
         </locale>
         <locale name="quiqqer.portfolio.visit.website">
             <de><![CDATA[Die Webseite besuchen]]></de>
