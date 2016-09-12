@@ -17,10 +17,12 @@ QUI::$Ajax->registerFunction(
             'Site' => $Site
         ));
 
+        $List = $Control->getList();
+
         $Slider = new QUI\Bricks\Controls\Slider\PromosliderWallpaper2Content(array(
             'pagefit'  => false,
-            'position' => $Site->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-position'),
-            'size'     => $Site->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-size')
+            'position' => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-position'),
+            'size'     => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-size')
         ));
 
         $Slider->setAttribute('showarrows', false);

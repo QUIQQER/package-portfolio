@@ -156,7 +156,7 @@ class Reference extends QUI\Control
      *
      * @return QUI\Projects\Site
      */
-    protected function getList()
+    public function getList()
     {
         $Site = $this->getSite();
 
