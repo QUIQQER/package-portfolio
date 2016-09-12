@@ -88,14 +88,16 @@ define('package/quiqqer/portfolio/bin/controls/reference/Window', [
             this.getElm().addClass('qui-portfolio-window');
             this.resize();
 
-            this.Loader.hide();
             this.$Submit = this.getButton('submit');
 
             this.$loadReference()
                 .then(function () {
                     this.getElm().getElements('.quiqqer-porfolio-reference').set('top', 0);
                 }.bind(this))
-                .then(this.$showReference);
+                .then(this.$showReference)
+                .then(function () {
+                    this.Loader.hide();
+                }.bind(this));
         },
 
         /**
