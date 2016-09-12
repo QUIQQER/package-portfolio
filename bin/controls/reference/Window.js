@@ -4,7 +4,10 @@
  *
  * @require qui/QUI
  * @require qui/controls/windows/Confirm
+ * @require qui/utils/Elements
  * @require Ajax
+ * @require Locale
+ * @require css!package/quiqqer/portfolio/bin/controls/reference/Window.css
  */
 define('package/quiqqer/portfolio/bin/controls/reference/Window', [
 
@@ -82,6 +85,7 @@ define('package/quiqqer/portfolio/bin/controls/reference/Window', [
                 this.setAttribute('maxHeight', winSize.y - 60);
             }
 
+            this.getElm().addClass('qui-portfolio-window');
             this.resize();
 
             this.Loader.hide();
@@ -89,7 +93,7 @@ define('package/quiqqer/portfolio/bin/controls/reference/Window', [
 
             this.$loadReference()
                 .then(function () {
-                    this.getElm().getElement('.quiqqer-porfolio-reference').set('top', 0);
+                    this.getElm().getElements('.quiqqer-porfolio-reference').set('top', 0);
                 }.bind(this))
                 .then(this.$showReference);
         },

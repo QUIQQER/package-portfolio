@@ -24,3 +24,8 @@
 .qui-portfolio-window-content .quiqqer-porfolio-reference-website-button {
     display: none;
 }
+
+.qui-portfolio-window .qui-window-popup-buttons {
+    padding: 0 10px !important;
+    font-size: 14px;
+}
