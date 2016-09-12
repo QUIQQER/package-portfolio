@@ -89,6 +89,10 @@
                                 <locale group="quiqqer/portfolio"
                                         var="quiqqer.portfolio.settings.portfolioPopup.type.reference"/>
                             </option>
+                            <option value="referenceNextPrev">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio.settings.portfolioPopup.type.referenceNextPrev"/>
+                            </option>
                         </select>
 
                         <select conf="quiqqer.portfolio.settings.portfolioPopup.wallpaper-size">

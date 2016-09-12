@@ -55,7 +55,6 @@ define('package/quiqqer/portfolio/bin/controls/reference/Window', [
             });
 
             this.$Website = false;
-            this.$Submit  = null;
             this.$Slider  = null;
 
             this.addEvents({
