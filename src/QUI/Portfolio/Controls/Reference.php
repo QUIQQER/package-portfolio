@@ -41,6 +41,9 @@ class Reference extends QUI\Control
     {
         $Engine = QUI::getTemplateManager()->getEngine();
         $Site   = $this->getSite();
+        $Next   = null;
+        $Prev   = null;
+        $images = $this->getImages();
 
         $sliderExtraClass = 'quiqqer-porfolio-reference__left';
 
@@ -48,9 +51,44 @@ class Reference extends QUI\Control
             $sliderExtraClass = 'quiqqer-porfolio-reference__bottom';
         }
 
+        try {
+            $Next = $Site->nextSibling();
+        } catch (QUI\Exception $Exception) {
+        }
+
+        try {
+            $Prev = $Site->previousSibling();
+        } catch (QUI\Exception $Exception) {
+        }
+
+        // slider
+        $Slider = new QUI\Bricks\Controls\Slider\PromosliderWallpaper2Content(array());
+
+        foreach ($images as $Image) {
+            /* @var $Image QUI\Projects\Media\Image */
+            $Slider->addSlide($Image->getUrl());
+            $Slider->addMobileSlide($Image->getUrl());
+        }
+
+        // website
+        $website = false;
+
+        if ($Site->getAttribute('quiqqer.portfolio.settings.website')) {
+            $website = $Site->getAttribute('quiqqer.portfolio.settings.website');
+
+            if (strpos($website, 'http://') === false) {
+                $website = 'http://' . $website;
+            }
+        }
+
         $Engine->assign(array(
-            'this'             => $this,
-            'Site'             => $Site,
+            'this'    => $this,
+            'Site'    => $Site,
+            'Next'    => $Next,
+            'Prev'    => $Prev,
+            'website' => $website,
+
+            'Slider'           => $Slider,
             'images'           => $this->getImages(),
             'sliderExtraClass' => $sliderExtraClass
         ));

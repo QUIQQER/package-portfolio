@@ -21,11 +21,12 @@ class Portfolio extends QUI\Control
     {
         // default options
         $this->setAttributes(array(
-            'limit'                     => false,
-            'entry-effect'              => 'style3',
-            'entry-width'               => false,
-            'qui-class'                 => 'package/quiqqer/portfolio/bin/controls/Portfolio',
-            'data-qui-options-nopopups' => false
+            'limit'                      => false,
+            'entry-effect'               => 'style3',
+            'entry-width'                => false,
+            'qui-class'                  => 'package/quiqqer/portfolio/bin/controls/Portfolio',
+            'data-qui-options-nopopups'  => false,
+            'data-qui-options-popuptype' => 'short'
         ));
 
         $this->addCSSFile(

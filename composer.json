@@ -19,7 +19,8 @@
   "require": {
     "php": ">=5.3",
     "quiqqer/quiqqer": "*@dev",
-    "quiqqer/gallery": "*@dev"
+    "quiqqer/gallery": "*@dev",
+    "quiqqer/bricks": "*@dev"
   },
   "autoload": {
     "psr-4": {

@@ -1,29 +1,67 @@
 <div itemscope itemtype="http://schema.org/CreativeWork"
-        class="{$sliderExtraClass}"
-        data-qui="package/quiqqer/portfolio/bin/controls/Reference"
-        data-siteid="{$Site->getId()}"
-        data-project="{$Site->getProject()->getName()}"
-        data-lang="{$Site->getProject()->getLang()}"
-    >
-    {if $this->getAttribute('sliderpos') == 'bottom'}
-        <div class="quiqqer-porfolio-reference-data">
-            <header>
-                <h1 itemprop="name">{$Site->getAttribute('title')}</h1>
-            </header>
-        </div>
+     class="{$sliderExtraClass}"
+     data-qui="package/quiqqer/portfolio/bin/controls/Reference"
+     data-siteid="{$Site->getId()}"
+     data-project="{$Site->getProject()->getName()}"
+     data-lang="{$Site->getProject()->getLang()}"
+>
 
-        <div class="quiqqer-porfolio-reference-data">
-            {$Site->getAttribute('content')}
-        </div>
-
-        <div class="quiqqer-porfolio-reference-slider"></div>
-    {else}
-        <div class="quiqqer-porfolio-reference-slider"></div>
-        <div class="quiqqer-porfolio-reference-data">
-            <header>
-                <h1 itemprop="name">{$Site->getAttribute('title')}</h1>
-                {$Site->getAttribute('content')}
-            </header>
-        </div>
+    {if $this->getAttribute('sliderpos') != 'bottom'}
+    {$Slider->create()}
     {/if}
+
+    <div class="quiqqer-porfolio-reference-data">
+        {if $Prev}
+        <a href="{url site=$Prev}" class="quiqqer-porfolio-reference-data-prev"
+           data-id="{$Prev->getId()}"
+        >
+            <span class="fa fa-angle-left"></span>
+        </a>
+        {else}
+        <div class="quiqqer-porfolio-reference-data-prev">
+            <span class="fa fa-angle-left"></span>
+        </div>
+        {/if}
+        <header>
+            <h1 itemprop="name">
+                {$Site->getAttribute('title')}
+            </h1>
+            <p>
+                {$Site->getAttribute('short')}
+            </p>
+        </header>
+        {if $Next}
+        <a href="{url site=$Next}" class="quiqqer-porfolio-reference-data-next"
+           data-id="{$Next->getId()}"
+        >
+            <span class="fa fa-angle-right"></span>
+        </a>
+        {else}
+        <div class="quiqqer-porfolio-reference-data-next">
+            <span class="fa fa-angle-right"></span>
+        </div>
+        {/if}
+    </div>
+
+    {if $this->getAttribute('sliderpos') == 'bottom'}
+    <div class="quiqqer-porfolio-reference-slider">
+        {$Slider->create()}
+    </div>
+    {/if}
+
+    <div class="quiqqer-porfolio-reference-content">
+        {$Site->getAttribute('content')}
+    </div>
+
+    {if $website}
+    <div class="quiqqer-porfolio-reference-website">
+        <a href="{$website}"
+           class="button action-button quiqqer-porfolio-reference-website-button"
+           target="_blank"
+        >
+            {locale group="quiqqer/portfolio" var="quiqqer.portfolio.visit.website"}
+        </a>
+    </div>
+    {/if}
+
 </div>

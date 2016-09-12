@@ -3,28 +3,38 @@
     height: 100%;
 }
 
-.quiqqer-porfolio-reference-data,
-.quiqqer-porfolio-reference-slider {
-    float: left;
-    height: 100%;
-    position: relative;
-    width: 50%;
-}
-
-.quiqqer-porfolio-reference-slider img.previewImage {
-    max-width: 100%;
-}
-
-.quiqqer-porfolio-reference-slider {
-    background-color: #333;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-}
-
 .quiqqer-porfolio-reference-data {
+    clear: both;
+    float: left;
+    /*height: 100%;*/
+    margin-bottom: 20px;
     overflow: auto;
-    padding: 20px;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+.quiqqer-porfolio-reference-data-prev,
+.quiqqer-porfolio-reference-data-next {
+    float: left;
+    font-size: 50px;
+    opacity: 0.2;
+    padding: 20px 0;
+    text-align: center;
+    width: 30px;
+}
+
+a.quiqqer-porfolio-reference-data-prev,
+a.quiqqer-porfolio-reference-data-next {
+    opacity: 1;
+}
+
+.quiqqer-porfolio-reference-data header {
+    float: left;
+    font-size: 30px;
+    padding: 20px 0 0;
+    width: calc(100% - 60px);
 }
 
 .quiqqer-porfolio-reference-data,
@@ -36,21 +46,8 @@
     font-size: 32px;
 }
 
-.quiqqer-porfolio-reference-close {
-    border-bottom-left-radius: 30px;
-        -webkit-border-bottom-left-radius: 30px;
-        -moz-border-radius-bottomleft: 30px;
-    cursor: pointer;
-    background: #fff;
-    font-size: 24px;
-    height: 40px;
-    line-height: 40px;
-    position: absolute;
-    text-align: center;
-    top: 0;
-    right: 0;
-    width: 40px;
-    z-index: 10;
+.quiqqer-porfolio-reference-content {
+    margin-bottom: 20px;
 }
 
 .quiqqer-porfolio-reference-close .fa {
@@ -63,30 +60,23 @@
     height: 100%;
 }
 
-.quiqqer-porfolio-reference__bottom .quiqqer-porfolio-reference-data,
-.quiqqer-porfolio-reference__bottom .quiqqer-porfolio-reference-slider {
+.quiqqer-porfolio-reference-slider {
     clear: both;
-    padding: 0;
+    float: left;
+    padding-bottom: 20px;
     width: 100%;
 }
 
-.quiqqer-porfolio-reference__bottom .quiqqer-porfolio-reference-slider {
-    margin-top: 20px;
+.quiqqer-porfolio-reference-website {
+    clear: both;
+    float: left;
+    text-align: center;
+    width: 100%;
 }
 
 @media screen and (max-width: 767px) {
-    .quiqqer-porfolio-reference-slider {
-        clear: both;
-        height: 300px;
-        width: 100%;
-    }
-
     .quiqqer-porfolio-reference-data {
-        height: calc(100% - 300px);
+        /*height: calc(100% - 300px);*/
         width: 100%;
-    }
-
-    .quiqqer-porfolio-reference-slider img {
-        max-height: 100%;
     }
 }

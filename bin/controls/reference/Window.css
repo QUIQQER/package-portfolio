@@ -1,0 +1,26 @@
+.qui-portfolio-window-content {
+    padding: 0 !important;
+}
+
+.qui-portfolio-window-content .quiqqer-porfolio-reference {
+    position: relative;
+}
+
+.qui-portfolio-window-content .quiqqer-porfolio-reference-content {
+    clear: both;
+    float: left;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.qui-portfolio-window-content .quiqqer-porfolio-reference-data {
+    padding: 0 20px;
+}
+
+.qui-portfolio-window-content .quiqqer-porfolio-reference-website {
+    padding: 20px 0;
+}
+
+.qui-portfolio-window-content .quiqqer-porfolio-reference-website-button {
+    display: none;
+}

@@ -25,7 +25,8 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
         ],
 
         options: {
-            nopopups: false
+            nopopups : false,
+            popuptype: 'short'
         },
 
         initialize: function (options) {
@@ -147,25 +148,34 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
             }
 
             var openEntry = function (event) {
-
                 event.stop();
 
-                var Entry = this;
+                var control;
+                var Entry = event.target;
 
                 if (!Entry.hasClass('quiqqer-portfolio-list-entry')) {
                     Entry = Entry.getParent('.quiqqer-portfolio-list-entry');
                 }
 
-                require([
-                    'package/quiqqer/portfolio/bin/controls/PortfolioPopup'
-                ], function (Popup) {
+                switch (this.getAttribute('popuptype')) {
+                    default:
+                    case'short':
+                        control = 'package/quiqqer/portfolio/bin/controls/reference/WindowShort';
+                        break;
+
+                    case 'reference':
+                        control = 'package/quiqqer/portfolio/bin/controls/reference/Window';
+                        break;
+                }
+
+                require([control], function (Popup) {
                     new Popup({
                         project: QUIQQER_PROJECT.name,
                         lang   : QUIQQER_PROJECT.lang,
                         siteId : Entry.get('data-id')
                     }).open();
                 });
-            };
+            }.bind(this);
 
             for (i = 0, len = entries.length; i < len; i++) {
                 entries[i].addEvent('click', openEntry);

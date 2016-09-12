@@ -60,6 +60,10 @@
     width: 100%;
 }
 
+.quiqqer-portfolio-list-entry .quiqqer-icon {
+    font-size: 100px;
+}
+
 .quiqqer-portfolio-list-entry figure img {
     left: -2px;
     max-width: calc(100% - 5px) !important;

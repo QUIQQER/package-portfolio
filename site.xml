@@ -15,6 +15,9 @@
                 <attribute>quiqqer.portfolio.settings.portfolioEffect</attribute>
                 <attribute>quiqqer.portfolio.settings.portfolioEntryWidth</attribute>
                 <attribute>quiqqer.portfolio.settings.portfolioNoPopup</attribute>
+                <attribute>quiqqer.portfolio.settings.portfolioPopup.type</attribute>
+                <attribute>quiqqer.portfolio.settings.portfolioPopup.wallpaper-position</attribute>
+                <attribute>quiqqer.portfolio.settings.portfolioPopup.wallpaper-size</attribute>
             </attributes>
 
             <tab name="quiqqer.portfolio.categories">
@@ -58,6 +61,12 @@
                             <option value="33.3333%">33% (1/3)</option>
                             <option value="50%">50%</option>
                         </select>
+                    </settings>
+
+                    <settings>
+                        <title>
+                            <locale group="quiqqer/portfolio" var="quiqqer.portfolio.popup.settings.title"/>
+                        </title>
 
                         <input conf="quiqqer.portfolio.settings.portfolioNoPopup" type="checkbox">
                             <text>
@@ -65,6 +74,74 @@
                                         var="quiqqer.portfolio.settings.portfolioNoPopup"/>
                             </text>
                         </input>
+
+                        <select conf="quiqqer.portfolio.settings.portfolioPopup.type">
+                            <text>
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio.settings.portfolioNoPopup.type"/>
+                            </text>
+
+                            <option value="short">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio.settings.portfolioNoPopup.type.short"/>
+                            </option>
+                            <option value="reference">
+                                <locale group="quiqqer/bricks"
+                                        var="quiqqer.portfolio.settings.portfolioNoPopup.type.reference"/>
+                            </option>
+                        </select>
+
+                        <select conf="quiqqer.portfolio.settings.portfolioPopup.wallpaper-size">
+                            <text>
+                                <locale group="quiqqer/bricks"
+                                        var="brick.control.promoslider.image-wallpaper-size"/>
+                            </text>
+
+                            <option value="cover">
+                                <locale group="quiqqer/bricks"
+                                        var="brick.control.promoslider.image-wallpaper-size.cover"/>
+                            </option>
+                            <option value="contain">
+                                <locale group="quiqqer/bricks"
+                                        var="brick.control.promoslider.image-wallpaper-size.contain"/>
+                            </option>
+                        </select>
+
+                        <select conf="quiqqer.portfolio.settings.portfolioPopup.wallpaper-position">
+                            <text>
+                                <locale group="quiqqer/bricks"
+                                        var="brick.control.promoslider.image-wallpaper-position"/>
+                            </text>
+
+                            <option value=""/>
+                            <option value="top-left">
+                                <locale group="quiqqer/system" var="watermark.position.top.left"/>
+                            </option>
+                            <option value="top">
+                                <locale group="quiqqer/system" var="watermark.position.top"/>
+                            </option>
+                            <option value="top-right">
+                                <locale group="quiqqer/system" var="watermark.position.top.right"/>
+                            </option>
+                            <option value="left">
+                                <locale group="quiqqer/system" var="watermark.position.left"/>
+                            </option>
+                            <option value="center">
+                                <locale group="quiqqer/system" var="watermark.position.center"/>
+                            </option>
+                            <option value="right">
+                                <locale group="quiqqer/system" var="watermark.position.right"/>
+                            </option>
+                            <option value="bottom-left">
+                                <locale group="quiqqer/system" var="watermark.position.bottom.left"/>
+                            </option>
+                            <option value="bottom">
+                                <locale group="quiqqer/system" var="watermark.position.bottom"/>
+                            </option>
+                            <option value="bottom-right">
+                                <locale group="quiqqer/system" var="watermark.position.bottom.right"/>
+                            </option>
+                        </select>
                     </settings>
                 </category>
 
@@ -81,6 +158,7 @@
             <attributes>
                 <attribute>quiqqer.portfolio.settings.categories</attribute>
                 <attribute>quiqqer.portfolio.settings.mediaFolder</attribute>
+                <attribute>quiqqer.portfolio.settings.website</attribute>
             </attributes>
 
             <tab name="quiqqer.portfolio.categories">
@@ -103,6 +181,11 @@
                         <input conf="quiqqer.portfolio.settings.mediaFolder" class="media-folder">
                             <text>
                                 <locale group="quiqqer/portfolio" var="quiqqer.portfolio.settings.mediaFolder"/>
+                            </text>
+                        </input>
+                        <input conf="quiqqer.portfolio.settings.website">
+                            <text>
+                                <locale group="quiqqer/portfolio" var="quiqqer.portfolio.settings.website"/>
                             </text>
                         </input>
                     </settings>

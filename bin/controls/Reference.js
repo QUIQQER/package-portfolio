@@ -60,7 +60,7 @@ define('package/quiqqer/portfolio/bin/controls/Reference', [
          * @return {Promise}
          */
         $draw: function () {
-
+            return;
             var self = this;
 
             return new Promise(function (resolve, reject) {

@@ -40,8 +40,39 @@
             <de><![CDATA[Referenzpopups nicht öffnen]]></de>
             <en><![CDATA[Not open portfolio popups]]></en>
         </locale>
+        <locale name="quiqqer.portfolio.settings.portfolioPopup.type">
+            <de><![CDATA[Referenzpopups Type]]></de>
+            <en><![CDATA[Portfolio popup type]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.settings.portfolioPopup.type.short">
+            <de><![CDATA[Linke Vorschau und rechter text]]></de>
+            <en><![CDATA[Left preview und right text]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.settings.portfolioPopup.type.reference">
+            <de><![CDATA[Komplette Referenz ansicht]]></de>
+            <en><![CDATA[Complete portfolio view]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.visit.website">
+            <de><![CDATA[Die Webseite besuchen]]></de>
+            <en><![CDATA[Visit the website]]></en>
+        </locale>
     </groups>
     <groups name="quiqqer/portfolio" datatype="php">
-
+        <locale name="quiqqer.portfolio.reference.settings.title">
+            <de><![CDATA[Referenz Eigenschaften]]></de>
+            <en><![CDATA[Referenz properties]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.settings.mediaFolder">
+            <de><![CDATA[Media Ordner]]></de>
+            <en><![CDATA[Media folder]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.settings.website">
+            <de><![CDATA[URL zur Webseite]]></de>
+            <en><![CDATA[Adress tot he website]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.popup.settings.title">
+            <de><![CDATA[Referenzpopup Einstellungen]]></de>
+            <en><![CDATA[portfolio popup settings]]></en>
+        </locale>
     </groups>
 </locales>

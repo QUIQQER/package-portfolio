@@ -9,12 +9,14 @@
  * @require qui/controls/windows/Window
  * @require Ajax
  */
-define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
+define('package/quiqqer/portfolio/bin/controls/reference/WindowShort', [
 
     'qui/QUI',
     'qui/controls/Control',
     'qui/controls/windows/Popup',
-    'Ajax'
+    'Ajax',
+
+    'css!package/quiqqer/portfolio/bin/controls/reference/WindowShort.css'
 
 ], function (QUI, QUIControl, QUIPopup, Ajax) {
     "use strict";
@@ -22,7 +24,7 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
     return new Class({
 
         Extends: QUIPopup,
-        Type   : 'package/quiqqer/portfolio/bin/controls/PortfolioPopup',
+        Type   : 'package/quiqqer/portfolio/bin/controls/reference/WindowShort',
 
         Binds: [
             '$onOpen',
@@ -44,12 +46,12 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
 
             this.parent(options);
 
-            this.$template = false;
-            this.$css      = '';
-            this.$images   = [];
-            this.$Slider   = null;
+            this.$Slider = null;
 
-            this.$mobile = false;
+            this.$content = false;
+            this.$slider  = '';
+            this.$images  = [];
+            this.$mobile  = false;
 
             this.addEvents({
                 onOpen  : this.$onOpen,
@@ -68,7 +70,8 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
         $onOpen: function () {
             var self = this;
 
-            this.refresh().catch(function () {
+            this.refresh().catch(function (err) {
+                console.error(err);
                 self.close();
             });
         },
@@ -103,7 +106,6 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
          * @returns {Promise}
          */
         refresh: function () {
-
             var self = this;
 
             this.Loader.show();
@@ -122,7 +124,6 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
          * @return {Promise}
          */
         $draw: function () {
-
             var self = this;
 
             return new Promise(function (resolve, reject) {
@@ -131,15 +132,18 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
 
                     var Content = self.getContent();
 
-                    Content.setStyles({
-                        padding: 0
+                    Content.set({
+                        'class': 'quiqqer-porfolio-reference-windowShort',
+                        html   : '<div class="slider"></div>' +
+                                 '<div class="content"></div>',
+                        styles : {
+                            padding: 0
+                        }
                     });
-
-                    Content.set('html', self.$template + self.$css);
 
                     new Element('div', {
                         html   : '<span class="fa fa-remove"></span>',
-                        'class': 'quiqqer-porfolio-reference-close',
+                        'class': 'quiqqer-porfolio-reference-windowShort-close',
                         events : {
                             click: function () {
                                 self.close();
@@ -147,61 +151,31 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
                         }
                     }).inject(Content);
 
-                    var SliderContainer = Content.getElement(
-                        '.quiqqer-porfolio-reference-slider'
-                    );
+                    var SliderContainer  = Content.getElement('.slider'),
+                        ContentContainer = Content.getElement('.content');
 
+                    ContentContainer.set('html', self.$content);
+                    SliderContainer.set('html', self.$slider);
 
-                    if (self.$images.length === 1) {
-
-                        require(['image!' + self.$images[0].url], function (Image) {
-
-                            SliderContainer.setStyles({
-                                backgroundImage: 'url("' + Image.src + '")'
-                            });
-
-                            resolve();
-
-                        }, reject);
-
-                        return;
-                    }
-
-                    require([
-                        'package/quiqqer/gallery/bin/controls/Slider'
-                    ], function (Slider) {
-
-                        self.$Slider = new Slider({
-                            controls: false,
-                            zoom    : false,
-                            styles  : {
-                                height: '100%'
-                            }
-                        });
-
-                        for (var i = 0, len = self.$images.length; i < len; i++) {
-                            self.$Slider.addImage(
-                                self.$images[i].url,
-                                self.$images[i].title,
-                                self.$images[i].short
+                    QUI.parse(SliderContainer).then(function () {
+                        var height = Content.getSize().y,
+                            Slider = QUI.Controls.getById(
+                                Content.getElement(
+                                    '.quiqqer-bricks-promoslider-wallpaper'
+                                ).get('data-quiid')
                             );
-                        }
 
-                        self.$Slider.inject(SliderContainer);
-
-                        if (!self.$images.length) {
-
-                            self.$Slider.Loader.hide();
-                            resolve();
+                        if (!Slider.getSlides().length) {
+                            Slider.destroy();
+                            SliderContainer.destroy();
+                            ContentContainer.setStyle('width', '100%');
                             return;
                         }
 
-                        self.$Slider.next();
-                        resolve();
-
-                    }, reject);
+                        Slider.setAttribute('height', height);
+                        Slider.onResize();
+                    }).then(resolve).catch(reject);
                 });
-
             });
         },
 
@@ -210,24 +184,24 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
          * @returns {Promise}
          */
         $getData: function () {
-
             var self = this;
 
             return new Promise(function (resolve, reject) {
 
-                if (self.$template) {
+                if (self.$content) {
                     resolve();
                     return;
                 }
 
-                Ajax.get('package_quiqqer_portfolio_ajax_getReference', function (data) {
-
-                    self.$images   = data.images;
-                    self.$template = data.template;
-                    self.$css      = data.css;
+                Ajax.get([
+                    'package_quiqqer_portfolio_ajax_getReference',
+                    'package_quiqqer_portfolio_ajax_getWallpaperSlider'
+                ], function (data, slider) {
+                    self.$images  = data.images;
+                    self.$content = data.content;
+                    self.$slider  = slider.css + slider.html;
 
                     resolve();
-
                 }, {
                     'package': 'quiqqer/portfolio',
                     project  : JSON.encode({
@@ -241,6 +215,5 @@ define('package/quiqqer/portfolio/bin/controls/PortfolioPopup', [
                 });
             });
         }
-
     });
 });
