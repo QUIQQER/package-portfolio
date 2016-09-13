@@ -15,11 +15,10 @@ define('package/quiqqer/portfolio/bin/controls/reference/Window', [
     'qui/controls/windows/Confirm',
     'qui/utils/Elements',
     'Ajax',
-    'Locale',
 
     'css!package/quiqqer/portfolio/bin/controls/reference/Window.css'
 
-], function (QUI, QUIConfirm, QUIElementUtils, QUIAjax, QUILocale) {
+], function (QUI, QUIConfirm, QUIElementUtils, QUIAjax) {
     "use strict";
 
     return new Class({

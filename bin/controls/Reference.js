@@ -121,9 +121,7 @@ define('package/quiqqer/portfolio/bin/controls/Reference', [
                         resolve();
 
                     }, reject);
-
                 });
-
             });
         },
 

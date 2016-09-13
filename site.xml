@@ -93,6 +93,10 @@
                                 <locale group="quiqqer/portfolio"
                                         var="quiqqer.portfolio.settings.portfolioPopup.type.referenceNextPrev"/>
                             </option>
+                            <option value="image">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio.settings.portfolioPopup.type.image"/>
+                            </option>
                         </select>
 
                         <select conf="quiqqer.portfolio.settings.portfolioPopup.wallpaper-size">

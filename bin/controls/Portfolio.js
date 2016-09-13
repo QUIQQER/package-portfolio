@@ -170,6 +170,10 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                     case 'referenceNextPrev':
                         control = 'package/quiqqer/portfolio/bin/controls/reference/WindowNextPrev';
                         break;
+
+                    case 'image':
+                        control = 'package/quiqqer/portfolio/bin/controls/reference/Image';
+                        break;
                 }
 
                 require([control], function (Popup) {

@@ -1,0 +1,71 @@
+.qui-portfolio-image {
+    background: transparent;
+    color: #fff;
+    outline: none;
+    text-align: center;
+}
+
+.qui-portfolio-image img {
+    height: 100%;
+}
+
+.qui-portfolio-image-container {
+    background: #000;
+    border: 1px solid #333;
+    margin: 30px auto;
+    max-height: calc(100% - 100px);
+    max-width: 780px;
+    position: relative;
+    width: calc(100% - 200px);
+}
+
+.qui-portfolio-image-container-ratio {
+    width: 100%;
+    padding-bottom: 56.25%;
+    position: relative;
+}
+
+.qui-portfolio-image-container-ratio-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    color: white;
+    font-size: 24px;
+    text-align: center;
+}
+
+.qui-portfolio-image-close {
+    cursor: pointer;
+    color: #fff;
+    font-size: 40px;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    text-align: center;
+    top: -40px;
+    right: -40px;
+    width: 40px;
+    z-index: 10;
+}
+
+.qui-portfolio-image-next,
+.qui-portfolio-image-prev {
+    cursor: pointer;
+    font-size: 60px;
+    margin-top: -50px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 40px;
+}
+
+.qui-portfolio-image-next {
+    right: -40px;
+}
+
+.qui-portfolio-image-prev {
+    left: -40px;
+}
