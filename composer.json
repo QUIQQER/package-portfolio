@@ -2,7 +2,7 @@
   "name": "quiqqer/portfolio",
   "type": "quiqqer-module",
   "description": "Portfolio listing",
-  "version": "dev-dev",
+  "version": "dev-master",
   "license": "",
   "authors": [
     {
