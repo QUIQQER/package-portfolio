@@ -33,7 +33,7 @@ a.quiqqer-porfolio-reference-data-next {
 .quiqqer-porfolio-reference-data header {
     float: left;
     font-size: 30px;
-    padding: 20px 0 0;
+    padding: 20px 20px 0;
     width: calc(100% - 60px);
 }
 
