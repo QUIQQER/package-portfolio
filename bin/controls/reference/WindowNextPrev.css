@@ -11,6 +11,10 @@
     position: relative;
 }
 
+.qui-portfolio-windowNextPrev-container h1 {
+    color: #fff;
+}
+
 .qui-portfolio-windowNextPrev-close {
     color: #fff;
     cursor: pointer;
