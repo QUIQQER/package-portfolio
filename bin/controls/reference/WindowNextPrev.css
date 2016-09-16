@@ -1,5 +1,5 @@
 .qui-portfolio-windowNextPrev {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.6) !important;
 }
 
 .qui-portfolio-windowNextPrev-container {
@@ -9,6 +9,10 @@
     max-width: 1200px;
     padding-top: 60px;
     position: relative;
+}
+
+.qui-portfolio-windowNextPrev-container h1 {
+    color: #fff;
 }
 
 .qui-portfolio-windowNextPrev-close {
