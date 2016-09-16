@@ -13,6 +13,7 @@ Features (Funktionen)
 
 - Seitentyp: Referenzliste
 - Seitentyp: Referenzeintrag
+- Verschiedenen JavaScript Referenz Popups
 
 Installation
 ------------
