@@ -1,8 +1,8 @@
 {
   "name": "quiqqer/portfolio",
   "type": "quiqqer-module",
-  "description": "Portfolio listing",
   "version": "dev-master",
+  "description": "Module to show your portfolio",
   "license": "",
   "authors": [
     {
