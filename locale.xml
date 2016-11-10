@@ -82,5 +82,12 @@
             <de><![CDATA[Referenz Einstellungen]]></de>
             <en><![CDATA[Portfolio entry settings]]></en>
         </locale>
+
+        <!--  -->
+        <locale name="quiqqer.portfolio.category.all">
+            <de><![CDATA[Alle]]></de>
+            <en><![CDATA[All]]></en>
+            <pl><![CDATA[Wszystkie]]></pl>
+        </locale>
     </groups>
 </locales>
