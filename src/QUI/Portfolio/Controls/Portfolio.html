@@ -1,7 +1,7 @@
 {if count($categories)}
 <section class="quiqqer-portfolio-categories">
     <div class="quiqqer-portfolio-categories-entry quiqqer-portfolio-categories-all">
-        Alle
+        {locale group="quiqqer/portfolio" var="quiqqer.portfolio.category.all"}
     </div>
     {foreach from=$categories item=Data}
     <div class="quiqqer-portfolio-categories-entry" title="{$Data.description|escape:'html'}">
