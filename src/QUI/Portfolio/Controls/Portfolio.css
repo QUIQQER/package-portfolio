@@ -65,10 +65,17 @@
 }
 
 .quiqqer-portfolio-list-entry figure img {
-    left: -2px;
-    max-width: calc(100% - 5px) !important;
-    position: relative;
-    vertical-align: middle;
+    height: 300px;
+    left: 0;
+    max-height: 300px;
+    min-width: 100%;
+    object-fit: cover; /* Fit logo in the image size */
+    -o-object-fit: cover; /* Fit logo fro opera browser */
+    object-position: top; /* Set logo position */
+    -o-object-position: top; /* Logo position for opera browser */
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
 
 .quiqqer-portfolio-list-entry figure:before {
