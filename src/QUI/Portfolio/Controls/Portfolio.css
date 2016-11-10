@@ -78,25 +78,75 @@
     vertical-align: middle;
 }
 
+.quiqqer-portfolio-list-entry figure img {
+    left: 0;
+    min-width: 100%;
+    position: absolute;
+    top: 0;
+    vertical-align: middle;
+}
+
 /* design classes */
-.quiqqer-portfolio-list-entry-10 { width: 10%; }
-.quiqqer-portfolio-list-entry-20 { width: 20%; }
-.quiqqer-portfolio-list-entry-33 { width: 33.3333% }
-.quiqqer-portfolio-list-entry-50 { width: 50% }
-.quiqqer-portfolio-list-entry-100 { width: 100% }
+.quiqqer-portfolio-list-entry-10 {
+    width: 10%;
+}
+
+.quiqqer-portfolio-list-entry-20 {
+    width: 20%;
+}
+
+.quiqqer-portfolio-list-entry-33 {
+    width: 33.3333%
+}
+
+.quiqqer-portfolio-list-entry-50 {
+    width: 50%
+}
+
+.quiqqer-portfolio-list-entry-100 {
+    width: 100%
+}
 
 @media screen and (max-width: 767px) {
-    .quiqqer-portfolio-list-entry-10 { width: 25%; }
-    .quiqqer-portfolio-list-entry-20 { width: 50%; }
-    .quiqqer-portfolio-list-entry-33 { width: 50%; }
-    .quiqqer-portfolio-list-entry-50 { width: 100%; }
-    .quiqqer-portfolio-list-entry-100 { width: 100%; }
+    .quiqqer-portfolio-list-entry-10 {
+        width: 25%;
+    }
+
+    .quiqqer-portfolio-list-entry-20 {
+        width: 50%;
+    }
+
+    .quiqqer-portfolio-list-entry-33 {
+        width: 50%;
+    }
+
+    .quiqqer-portfolio-list-entry-50 {
+        width: 100%;
+    }
+
+    .quiqqer-portfolio-list-entry-100 {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 460px) {
-    .quiqqer-portfolio-list-entry-10 { width: 50%; }
-    .quiqqer-portfolio-list-entry-20 { width: 100%; }
-    .quiqqer-portfolio-list-entry-33 { width: 100%; }
-    .quiqqer-portfolio-list-entry-50 { width: 100%; }
-    .quiqqer-portfolio-list-entry-100 { width: 100%; }
+    .quiqqer-portfolio-list-entry-10 {
+        width: 50%;
+    }
+
+    .quiqqer-portfolio-list-entry-20 {
+        width: 100%;
+    }
+
+    .quiqqer-portfolio-list-entry-33 {
+        width: 100%;
+    }
+
+    .quiqqer-portfolio-list-entry-50 {
+        width: 100%;
+    }
+
+    .quiqqer-portfolio-list-entry-100 {
+        width: 100%;
+    }
 }
