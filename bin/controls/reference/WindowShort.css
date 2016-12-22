@@ -1,5 +1,6 @@
 .quiqqer-porfolio-reference-windowShort {
     float: left;
+    overflow-y: auto;
     width: 100%;
 }
 
@@ -31,4 +32,17 @@
     right: 0;
     width: 40px;
     z-index: 10;
+}
+
+@media screen and (max-width: 767px) {
+    .quiqqer-porfolio-reference-windowShort .slider,
+    .quiqqer-porfolio-reference-windowShort .content {
+        float: none;
+        width: 100%;
+    }
+}
+
+/* bis fontawesome keinen dünnen Closebutton hat wird das verwendet (&times;)*/
+.fa-times-thin:before {
+    content: '\00d7';
 }
