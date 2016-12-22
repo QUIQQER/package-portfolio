@@ -35,10 +35,17 @@
 }
 
 @media screen and (max-width: 767px) {
+    .qui-window-popup.box {
+        overflow-y: auto;
+    }
+
     .quiqqer-porfolio-reference-windowShort .slider,
     .quiqqer-porfolio-reference-windowShort .content {
-        float: none;
         width: 100%;
+    }
+
+    .quiqqer-porfolio-reference-windowShort .content {
+        overflow-y: hidden;
     }
 }
 
