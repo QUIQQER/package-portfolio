@@ -1,6 +1,5 @@
 .quiqqer-porfolio-reference-windowShort {
     float: left;
-    overflow-y: auto;
     width: 100%;
 }
 
@@ -13,6 +12,7 @@
 }
 
 .quiqqer-porfolio-reference-windowShort .content {
+    overflow-y: auto;
     padding: 20px;
 }
 
