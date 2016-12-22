@@ -32,3 +32,8 @@
 .qui-portfolio-windowNextPrev .quiqqer-porfolio-reference-data-prev {
     color: #fff;
 }
+
+/* bis fontawesome keinen dünnen Closebutton hat wird das verwendet (&times;)*/
+.fa-times-thin:before {
+    content: '\00d7';
+}

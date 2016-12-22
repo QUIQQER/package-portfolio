@@ -89,7 +89,7 @@ define('package/quiqqer/portfolio/bin/controls/reference/WindowNextPrev', [
 
                     new Element('div', {
                         'class': 'qui-portfolio-windowNextPrev-close',
-                        html   : '<span class="fa fa-remove"></span>',
+                        html   : '<span class="fa fa-times-thin"></span>',
                         events : {
                             click: this.close.bind(this)
                         }

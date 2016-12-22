@@ -225,7 +225,7 @@ define('package/quiqqer/portfolio/bin/controls/reference/Window', [
 
                     new Element('div', {
                         'class': 'quiqqer-porfolio-reference-close',
-                        html   : '<span class="fa fa-remove"></span>',
+                        html   : '<span class="fa fa-times-thin"></span>',
                         events : {
                             click: this.close.bind(this)
                         }

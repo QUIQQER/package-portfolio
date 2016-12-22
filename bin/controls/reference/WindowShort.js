@@ -142,7 +142,7 @@ define('package/quiqqer/portfolio/bin/controls/reference/WindowShort', [
                     });
 
                     new Element('div', {
-                        html   : '<span class="fa fa-remove"></span>',
+                        html   : '<span class="fa fa-times-thin"></span>',
                         'class': 'quiqqer-porfolio-reference-windowShort-close',
                         events : {
                             click: function () {

@@ -166,7 +166,7 @@ define('package/quiqqer/portfolio/bin/controls/reference/Image', [
                     );
 
                     new Element('div', {
-                        html   : '<span class="fa fa-remove"></span>',
+                        html   : '<span class="fa fa-times-thin"></span>',
                         'class': 'qui-portfolio-image-close',
                         events : {
                             click: this.close.bind(this)
