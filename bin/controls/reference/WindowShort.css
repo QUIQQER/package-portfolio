@@ -42,6 +42,7 @@
     .quiqqer-porfolio-reference-windowShort .slider,
     .quiqqer-porfolio-reference-windowShort .content {
         width: 100%;
+        height: auto;
     }
 
     .quiqqer-porfolio-reference-windowShort .content {
