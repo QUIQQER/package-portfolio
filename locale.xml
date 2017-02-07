@@ -82,12 +82,20 @@
             <de><![CDATA[Referenz Einstellungen]]></de>
             <en><![CDATA[Portfolio entry settings]]></en>
         </locale>
+        <locale name="quiqqer.portfolio.settings.randomButton">
+            <de><![CDATA[Zufalls Button anzeigen]]></de>
+            <en><![CDATA[Show random button]]></en>
+        </locale>
 
         <!--  -->
         <locale name="quiqqer.portfolio.category.all">
             <de><![CDATA[Alle]]></de>
             <en><![CDATA[All]]></en>
             <pl><![CDATA[Wszystkie]]></pl>
+        </locale>
+        <locale name="quiqqer.portfolio.category.random">
+            <de><![CDATA[Zufällig]]></de>
+            <en><![CDATA[Random]]></en>
         </locale>
     </groups>
 </locales>
