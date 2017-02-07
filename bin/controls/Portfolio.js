@@ -213,6 +213,8 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
 
             entries.shuffle();
 
+            self.$List.setStyle('height', self.$List.getSize().y);
+
             moofx(entries).animate({
                 height : 0,
                 opacity: 0,
@@ -238,6 +240,8 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                             entries.each(function (Entry) {
                                 Entry.setStyle('width', null);
                             });
+
+                            self.$List.setStyle('height', null);
                         }
                     });
                 }
