@@ -32,6 +32,13 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
         initialize: function (options) {
             this.parent(options);
 
+            this.$List       = null;
+            this.$Categories = null;
+
+            this.$entries    = [];
+            this.$categories = [];
+            this.$randomize  = false;
+
             this.addEvents({
                 onImport: this.$onImport
             });
@@ -43,44 +50,43 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
         $onImport: function () {
 
             var i, len;
+            var self = this;
 
-            var categories = document.getElements(
-                '.quiqqer-portfolio-categories-entry'
-            );
+            this.$Categories = this.getElm().getElement('.quiqqer-portfolio-categories');
+            this.$List       = this.getElm().getElement('.quiqqer-portfolio-list');
 
-            var entries = document.getElements(
-                '.quiqqer-portfolio-list-entry'
-            );
+            this.$categories = this.$Categories.getElements('.quiqqer-portfolio-categories-entry');
+            this.$entries    = this.$List.getElements('.quiqqer-portfolio-list-entry');
+
+            for (i = 0, len = this.$entries.length; i < len; i++) {
+                this.$entries[i].set('data-no', i);
+            }
 
             // categories
             var openCategory = function () {
+                self.$categories.removeClass('quiqqer-portfolio-category__active');
+
+                // randomize
+                if (this.hasClass('quiqqer-portfolio-categories-random')) {
+                    self.randomize();
+                    return;
+                }
+
+                if (self.$randomize) {
+                    self.normalize().then(openCategory.bind(this));
+                    return;
+                }
 
                 if (this.hasClass('quiqqer-portfolio-category__active')) {
                     return;
                 }
 
-                var childWidth = entries[0].getSize().x;
-
-                if (!childWidth) {
-                    entries[0].setStyles({
-                        position: 'absolute',
-                        width   : null
-                    });
-
-                    childWidth = entries[0].getSize().x;
-
-                    entries[0].setStyles({
-                        position: null,
-                        width   : 0
-                    });
-                }
-
-                categories.removeClass('quiqqer-portfolio-category__active');
-
                 this.addClass('quiqqer-portfolio-category__active');
 
+                var childWidth = self.getChildWidth();
+
                 if (this.hasClass('quiqqer-portfolio-categories-all')) {
-                    moofx(entries).animate({
+                    moofx(self.$entries).animate({
                         height : 300,
                         opacity: 1,
                         padding: 10,
@@ -88,7 +94,7 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                     }, {
                         duration: 250,
                         callback: function () {
-                            entries.setStyle('width', null);
+                            self.$entries.setStyle('width', null);
                         }
                     });
 
@@ -98,13 +104,13 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                 var catId = this.get('text').trim();
 
                 // found entries
-                var inResult = entries.filter(function (Child) {
+                var inResult = self.$entries.filter(function (Child) {
                     return Child.get('data-categories')
                         .toString()
                         .contains(',' + catId + ',');
                 });
 
-                var notInResult = entries.filter(function (Child) {
+                var notInResult = self.$entries.filter(function (Child) {
                     return !Child.get('data-categories')
                         .toString()
                         .contains(',' + catId + ',');
@@ -136,8 +142,12 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                 }
             };
 
-            for (i = 0, len = categories.length; i < len; i++) {
-                categories[i].addEvent('click', openCategory);
+            for (i = 0, len = self.$categories.length; i < len; i++) {
+                self.$categories[i].addEvent('click', openCategory);
+            }
+
+            if (this.$Categories.getElement('.quiqqer-portfolio-categories-random')) {
+                this.randomize();
             }
 
 
@@ -185,9 +195,127 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                 });
             }.bind(this);
 
-            for (i = 0, len = entries.length; i < len; i++) {
-                entries[i].addEvent('click', openEntry);
+            for (i = 0, len = self.$entries.length; i < len; i++) {
+                self.$entries[i].addEvent('click', openEntry);
             }
+        },
+
+        /**
+         * Randomize
+         */
+        randomize: function () {
+            this.$randomize = true;
+
+            var self    = this;
+            var entries = self.$entries.map(function (Entry) {
+                return Entry;
+            });
+
+            entries.shuffle();
+
+            moofx(entries).animate({
+                height : 0,
+                opacity: 0,
+                padding: 0,
+                width  : 0
+            }, {
+                duration: 250,
+                callback: function () {
+                    entries.shuffle();
+
+                    for (var i = 0, len = entries.length; i < len; i++) {
+                        entries[i].inject(self.$List);
+                    }
+
+                    moofx(entries).animate({
+                        height : 300,
+                        opacity: 1,
+                        padding: 10,
+                        width  : self.getChildWidth()
+                    }, {
+                        duration: 250,
+                        callback: function () {
+                            entries.each(function (Entry) {
+                                Entry.setStyle('width', null);
+                            });
+                        }
+                    });
+                }
+            });
+        },
+
+        /**
+         * Normalize the portfolio
+         *
+         * @returns {Promise}
+         */
+        normalize: function () {
+            var self = this;
+
+            return new Promise(function (resolve) {
+                var entries = self.$List.getElements(
+                    '.quiqqer-portfolio-list-entry'
+                ).sort(function (A, B) {
+                    var aNo = A.get('data-no');
+                    var bNo = B.get('data-no');
+
+                    if (aNo > bNo) {
+                        return 1;
+                    }
+
+                    if (aNo < bNo) {
+                        return -1;
+                    }
+
+                    return 0;
+                });
+
+                moofx(entries).animate({
+                    height : 0,
+                    opacity: 0,
+                    padding: 0,
+                    width  : 0
+                }, {
+                    duration: 250,
+                    callback: function () {
+                        for (var i = 0, len = entries.length; i < len; i++) {
+                            entries[i].inject(self.$List);
+                        }
+
+                        entries.each(function (Entry) {
+                            Entry.setStyle('width', null);
+                        });
+
+                        self.$randomize = false;
+                        resolve();
+                    }
+                });
+            });
+        },
+
+        /**
+         * Return the child width
+         *
+         * @returns {Number}
+         */
+        getChildWidth: function () {
+            var childWidth = this.$entries[0].getSize().x;
+
+            if (!childWidth) {
+                this.$entries[0].setStyles({
+                    position: 'absolute',
+                    width   : null
+                });
+
+                childWidth = this.$entries[0].getSize().x;
+
+                this.$entries[0].setStyles({
+                    position: null,
+                    width   : 0
+                });
+            }
+
+            return childWidth;
         }
     });
 });

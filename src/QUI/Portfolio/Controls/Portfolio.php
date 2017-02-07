@@ -21,6 +21,7 @@ class Portfolio extends QUI\Control
     {
         // default options
         $this->setAttributes(array(
+            'showRandomButton'           => false,
             'limit'                      => false,
             'entry-effect'               => 'style3',
             'entry-width'                => false,
@@ -125,6 +126,7 @@ class Portfolio extends QUI\Control
         }
 
         $Engine->assign(array(
+            'this'       => $this,
             'cssClass'   => $cssClass,
             'portfolio'  => $portfolio,
             'categories' => json_decode($categories, true)

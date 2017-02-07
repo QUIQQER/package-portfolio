@@ -1,13 +1,23 @@
 {if count($categories)}
 <section class="quiqqer-portfolio-categories">
+    {if $this->getAttribute('showRandomButton')}
+    <div class="quiqqer-portfolio-categories-entry quiqqer-portfolio-categories-random"
+        title="{locale group="quiqqer/portfolio" var="quiqqer.portfolio.category.random"}"
+    >
+        <span class="fa fa-random"></span>
+    </div>
+    {/if}
+
     <div class="quiqqer-portfolio-categories-entry quiqqer-portfolio-categories-all">
         {locale group="quiqqer/portfolio" var="quiqqer.portfolio.category.all"}
     </div>
+
     {foreach from=$categories item=Data}
     <div class="quiqqer-portfolio-categories-entry" title="{$Data.description|escape:'html'}">
         {$Data.category}
     </div>
     {/foreach}
+
 </section>
 
 <hr/>
