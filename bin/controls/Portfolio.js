@@ -35,8 +35,8 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
             this.$List       = null;
             this.$Categories = null;
 
-            this.$entries    = [];
-            this.$categories = [];
+            this.$entries    = new Elements();
+            this.$categories = new Elements();
             this.$randomize  = false;
 
             this.addEvents({
@@ -55,8 +55,13 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
             this.$Categories = this.getElm().getElement('.quiqqer-portfolio-categories');
             this.$List       = this.getElm().getElement('.quiqqer-portfolio-list');
 
-            this.$categories = this.$Categories.getElements('.quiqqer-portfolio-categories-entry');
-            this.$entries    = this.$List.getElements('.quiqqer-portfolio-list-entry');
+            if (this.$Categories) {
+                this.$categories = this.$Categories.getElements('.quiqqer-portfolio-categories-entry');
+            }
+
+            if (this.$List) {
+                this.$entries = this.$List.getElements('.quiqqer-portfolio-list-entry');
+            }
 
             for (i = 0, len = this.$entries.length; i < len; i++) {
                 this.$entries[i].set('data-no', i);
@@ -146,7 +151,8 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                 self.$categories[i].addEvent('click', openCategory);
             }
 
-            if (this.$Categories.getElement('.quiqqer-portfolio-categories-random')) {
+            if (this.$Categories &&
+                this.$Categories.getElement('.quiqqer-portfolio-categories-random')) {
                 this.randomize();
             }
 
