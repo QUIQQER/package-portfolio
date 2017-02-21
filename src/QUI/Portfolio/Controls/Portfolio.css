@@ -65,14 +65,18 @@
 }
 
 .quiqqer-portfolio-list-entry figure img {
-    height: 300px;
+    /*height: 300px;*/
+    height: 100%; /* wegen neuer Einstellung */
     left: 0;
     max-height: 300px;
     min-width: 100%;
-    object-fit: cover; /* Fit logo in the image size */
-    -o-object-fit: cover; /* Fit logo fro opera browser */
-    object-position: top; /* Set logo position */
-    -o-object-position: top; /* Logo position for opera browser */
+    /* wegen neuer Einstellung */
+    /*object-fit: cover; !* Fit logo in the image size *!
+    -o-object-fit: cover; !* Fit logo fro opera browser *!
+    object-position: top; !* Set logo position *!
+    -o-object-position: top; !* Logo position for opera browser *!*/
+    object-position: center;
+    -o-object-position: center;
     position: absolute;
     top: 0;
     width: 100%;
