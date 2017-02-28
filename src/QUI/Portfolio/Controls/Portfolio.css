@@ -30,15 +30,32 @@
     float: left;
     margin: 10px 10px 10px 0;
     padding: 5px 10px;
+    position: relative;
 }
 
 .quiqqer-portfolio-categories-entry:hover {
     opacity: 0.5;
 }
 
-.quiqqer-portfolio-category__active {
-    border-top: 2px solid red;
+/* besser als pspeudoelement, da mit float und größeren Border
+die untere divs verschoben werden */
+.quiqqer-portfolio-categories-entry:before {
+    content: '';
+    background: red;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: calc(100% + 2px); /* weil parent border jeweils 1px */
+    height: 0;
 }
+
+.quiqqer-portfolio-category__active:before {
+    height: 2px;
+}
+
+/*.quiqqer-portfolio-category__active {
+    border-top: 2px solid red;
+}*/
 
 /** portfolio list
  * ===================================================== */
