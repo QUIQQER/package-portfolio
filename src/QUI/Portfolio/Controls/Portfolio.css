@@ -9,9 +9,9 @@
 
 .quiqqer-portfolio-animate {
     transition: 0.2s ease-in-out;
-    -webkit-transition: 0.2s ease-in-out;
     -moz-transition: 0.2s ease-in-out;
     -o-transition: 0.2s ease-in-out;
+    -webkit-transition: 0.2s ease-in-out;
 }
 
 /** portfolio categories
@@ -40,13 +40,13 @@
 /* besser als pspeudoelement, da mit float und größeren Border
 die untere divs verschoben werden */
 .quiqqer-portfolio-categories-entry:before {
-    content: '';
     background: red;
+    content: '';
+    height: 0;
+    left: -1px;
     position: absolute;
     top: -1px;
-    left: -1px;
     width: calc(100% + 2px); /* weil parent border jeweils 1px */
-    height: 0;
 }
 
 .quiqqer-portfolio-category__active:before {
@@ -92,11 +92,11 @@ die untere divs verschoben werden */
     -o-object-fit: cover; !* Fit logo fro opera browser *!
     object-position: top; !* Set logo position *!
     -o-object-position: top; !* Logo position for opera browser *!*/
-    object-position: center;
-    -o-object-position: center;
     position: absolute;
     top: 0;
     width: 100%;
+    object-position: center;
+    -o-object-position: center;
 }
 
 .quiqqer-portfolio-list-entry figure:before {
