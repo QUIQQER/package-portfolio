@@ -47,8 +47,8 @@ class Portfolio extends QUI\Control
             case 'style6':
             case 'style7':
                 $effectFile = dirname(__FILE__)
-                              . '/Portfolio.'
-                              . $this->getAttribute('entry-effect') . '.css';
+                    . '/Portfolio.'
+                    . $this->getAttribute('entry-effect') . '.css';
 
                 $this->addCSSClass('quiqqer-portfolio-' . $this->getAttribute('entry-effect'));
                 break;
@@ -125,11 +125,23 @@ class Portfolio extends QUI\Control
                 break;
         }
 
+        switch ($this->getAttribute('img-position')) {
+            case 'cover':
+                $imgPosition = 'object-fit: cover; -o-object-fit: cover;';
+                break;
+
+            case 'center':
+            default:
+                $imgPosition = 'object-fit: contain; -o-object-fit: contain;';
+                break;
+        }
+
         $Engine->assign(array(
-            'this'       => $this,
-            'cssClass'   => $cssClass,
-            'portfolio'  => $portfolio,
-            'categories' => json_decode($categories, true)
+            'this'        => $this,
+            'cssClass'    => $cssClass,
+            'portfolio'   => $portfolio,
+            'categories'  => json_decode($categories, true),
+            'imgPosition' => $imgPosition
         ));
 
 

@@ -9,9 +9,9 @@
 
 .quiqqer-portfolio-animate {
     transition: 0.2s ease-in-out;
-    -webkit-transition: 0.2s ease-in-out;
     -moz-transition: 0.2s ease-in-out;
     -o-transition: 0.2s ease-in-out;
+    -webkit-transition: 0.2s ease-in-out;
 }
 
 /** portfolio categories
@@ -30,15 +30,32 @@
     float: left;
     margin: 10px 10px 10px 0;
     padding: 5px 10px;
+    position: relative;
 }
 
 .quiqqer-portfolio-categories-entry:hover {
     opacity: 0.5;
 }
 
-.quiqqer-portfolio-category__active {
-    border-top: 2px solid red;
+/* besser als pspeudoelement, da mit float und größeren Border
+die untere divs verschoben werden */
+.quiqqer-portfolio-categories-entry:before {
+    background: red;
+    content: '';
+    height: 0;
+    left: -1px;
+    position: absolute;
+    top: -1px;
+    width: calc(100% + 2px); /* weil parent border jeweils 1px */
 }
+
+.quiqqer-portfolio-category__active:before {
+    height: 2px;
+}
+
+/*.quiqqer-portfolio-category__active {
+    border-top: 2px solid red;
+}*/
 
 /** portfolio list
  * ===================================================== */
@@ -65,17 +82,21 @@
 }
 
 .quiqqer-portfolio-list-entry figure img {
-    height: 300px;
+    /*height: 300px;*/
+    height: 100%; /* wegen neuer Einstellung */
     left: 0;
     max-height: 300px;
     min-width: 100%;
-    object-fit: cover; /* Fit logo in the image size */
-    -o-object-fit: cover; /* Fit logo fro opera browser */
-    object-position: top; /* Set logo position */
-    -o-object-position: top; /* Logo position for opera browser */
+    /* wegen neuer Einstellung */
+    /*object-fit: cover; !* Fit logo in the image size *!
+    -o-object-fit: cover; !* Fit logo fro opera browser *!
+    object-position: top; !* Set logo position *!
+    -o-object-position: top; !* Logo position for opera browser *!*/
     position: absolute;
     top: 0;
     width: 100%;
+    object-position: center;
+    -o-object-position: center;
 }
 
 .quiqqer-portfolio-list-entry figure:before {

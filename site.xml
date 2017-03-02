@@ -15,6 +15,7 @@
                 <attribute>quiqqer.portfolio.settings.portfolioEffect</attribute>
                 <attribute>quiqqer.portfolio.settings.portfolioEntryWidth</attribute>
                 <attribute>quiqqer.portfolio.settings.showRandomButton</attribute>
+                <attribute>quiqqer.portfolio.settings.imgPosition</attribute>
                 <attribute>quiqqer.portfolio.settings.portfolioNoPopup</attribute>
                 <attribute>quiqqer.portfolio.settings.portfolioPopup.type</attribute>
                 <attribute>quiqqer.portfolio.settings.portfolioPopup.wallpaper-position</attribute>
@@ -71,6 +72,21 @@
                                         var="quiqqer.portfolio.settings.randomButton"/>
                             </text>
                         </input>
+
+                        <select conf="quiqqer.portfolio.settings.imgPosition">
+                            <text>
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio.settings.imgPosition"/>
+                            </text>
+                            <option value="center">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio.settings.imgPosition.center"/>
+                                </option>
+                            <option value="cover">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio.settings.imgPosition.cover"/>
+                            </option>
+                        </select>
                     </settings>
 
                     <settings>

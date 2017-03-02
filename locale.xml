@@ -87,6 +87,20 @@
             <en><![CDATA[Show random button]]></en>
         </locale>
 
+
+        <locale name="quiqqer.portfolio.settings.imgPosition">
+            <de><![CDATA[Bild]]></de>
+            <en><![CDATA[Image]]></en>
+        </locale>
+            <locale name="quiqqer.portfolio.settings.imgPosition.center">
+                <de><![CDATA[zentriert]]></de>
+                <en><![CDATA[centered]]></en>
+            </locale>
+            <locale name="quiqqer.portfolio.settings.imgPosition.cover">
+                <de><![CDATA[gefüllt]]></de>
+                <en><![CDATA[filled]]></en>
+            </locale>
+
         <!--  -->
         <locale name="quiqqer.portfolio.category.all">
             <de><![CDATA[Alle]]></de>

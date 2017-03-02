@@ -1,3 +1,7 @@
+.qui-window-popup {
+    -webkit-overflow-scrolling: touch;
+}
+
 .quiqqer-porfolio-reference-windowShort {
     float: left;
     width: 100%;
