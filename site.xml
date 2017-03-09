@@ -17,6 +17,7 @@
                 <attribute>quiqqer.portfolio.settings.showRandomButton</attribute>
                 <attribute>quiqqer.portfolio.settings.imgPosition</attribute>
                 <attribute>quiqqer.portfolio.settings.portfolioNoPopup</attribute>
+                <attribute default="1">quiqqer.portfolio.settings.showArrows</attribute>
                 <attribute>quiqqer.portfolio.settings.portfolioPopup.type</attribute>
                 <attribute default="cover">quiqqer.portfolio.settings.portfolioPopup.wallpaper-position</attribute>
                 <attribute default="contain">quiqqer.portfolio.settings.portfolioPopup.wallpaper-size</attribute>
@@ -98,6 +99,13 @@
                             <text>
                                 <locale group="quiqqer/portfolio"
                                         var="quiqqer.portfolio.settings.portfolioNoPopup"/>
+                            </text>
+                        </input>
+
+                        <input conf="quiqqer.portfolio.settings.showArrows" type="checkbox">
+                            <text>
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio.settings.showArrows"/>
                             </text>
                         </input>
 
