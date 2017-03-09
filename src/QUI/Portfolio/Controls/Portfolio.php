@@ -130,7 +130,7 @@ class Portfolio extends QUI\Control
                 $imgPosition = 'object-fit: cover; -o-object-fit: cover;';
                 break;
 
-            case 'center':
+            case 'contain':
             default:
                 $imgPosition = 'object-fit: contain; -o-object-fit: contain;';
                 break;

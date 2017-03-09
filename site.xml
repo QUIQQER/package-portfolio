@@ -18,8 +18,8 @@
                 <attribute>quiqqer.portfolio.settings.imgPosition</attribute>
                 <attribute>quiqqer.portfolio.settings.portfolioNoPopup</attribute>
                 <attribute>quiqqer.portfolio.settings.portfolioPopup.type</attribute>
-                <attribute>quiqqer.portfolio.settings.portfolioPopup.wallpaper-position</attribute>
-                <attribute>quiqqer.portfolio.settings.portfolioPopup.wallpaper-size</attribute>
+                <attribute default="cover">quiqqer.portfolio.settings.portfolioPopup.wallpaper-position</attribute>
+                <attribute default="contain">quiqqer.portfolio.settings.portfolioPopup.wallpaper-size</attribute>
             </attributes>
 
             <tab name="quiqqer.portfolio.categories">
@@ -78,9 +78,9 @@
                                 <locale group="quiqqer/portfolio"
                                         var="quiqqer.portfolio.settings.imgPosition"/>
                             </text>
-                            <option value="center">
+                            <option value="contain">
                                 <locale group="quiqqer/portfolio"
-                                        var="quiqqer.portfolio.settings.imgPosition.center"/>
+                                        var="quiqqer.portfolio.settings.imgPosition.contain"/>
                                 </option>
                             <option value="cover">
                                 <locale group="quiqqer/portfolio"
