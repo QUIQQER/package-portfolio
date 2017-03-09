@@ -44,13 +44,13 @@
                             <text>
                                 <locale group="quiqqer/portfolio" var="quiqqer.portfolio.settings.portfolioEffect"/>
                             </text>
-                            <option value="style1">Style 1</option>
-                            <option value="style2">Style 2</option>
-                            <option value="style3">Style 3</option>
-                            <option value="style4">Style 4</option>
-                            <option value="style5">Style 5</option>
-                            <option value="style6">Style 6</option>
-                            <option value="style7">Style 7</option>
+                            <option value="style1">1</option>
+                            <option value="style2">2</option>
+                            <option value="style3">3</option>
+                            <option value="style4">4</option>
+                            <option value="style5">5</option>
+                            <option value="style6">6</option>
+                            <option value="style7">7</option>
                         </select>
 
                         <select conf="quiqqer.portfolio.settings.portfolioEntryWidth">
