@@ -40,6 +40,10 @@
             <de><![CDATA[Referenzpopups nicht öffnen]]></de>
             <en><![CDATA[Not open portfolio popups]]></en>
         </locale>
+        <locale name="quiqqer.portfolio.settings.showArrows">
+            <de><![CDATA[Navigationspfeile anzeigen]]></de>
+            <en><![CDATA[Show navigation arrows]]></en>
+        </locale>
         <locale name="quiqqer.portfolio.settings.portfolioPopup.type">
             <de><![CDATA[Referenzpopups Type]]></de>
             <en><![CDATA[Portfolio popup type]]></en>
