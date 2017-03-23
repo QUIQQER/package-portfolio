@@ -5,20 +5,20 @@
         <brick control="\QUI\Portfolio\Bricks\PortfolioList">
             <title>
                 <locale group="quiqqer/portfolio"
-                        var="bricks.tags.title"
+                        var="bricks.control.portfolio.title"
                 />
             </title>
             <description>
                 <locale group="quiqqer/portfolio"
-                        var="bricks.tags.description"
+                        var="bricks.control.portfolio.description"
                 />
             </description>
             <settings>
-                <setting name="site" data-qui="controls/projects/project/site/Select">
+                <!--<setting name="site" data-qui="controls/projects/project/site/Select">
                     <locale group="quiqqer/portfolio" var="brick.control.portfolio.setting.site"/>
-                </setting>
+                </setting>-->
                 <setting name="order" type="select">
-                    <locale group="quiqqer/portfolio" var="brick.control.portfolio.setting.order"/>
+                    <locale group="quiqqer/bricks" var="brick.control.setting.order"/>
 
                     <option value="name ASC">
                         <locale group="quiqqer/system" var="name_asc"/>

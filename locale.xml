@@ -68,8 +68,41 @@
             <de><![CDATA[Die Webseite besuchen]]></de>
             <en><![CDATA[Visit the website]]></en>
         </locale>
+
+        <!-- portfolio brick -->
+        <locale name="bricks.control.portfolio.title">
+            <de><![CDATA[Portfolio: Referenzliste]]></de>
+            <en><![CDATA[Portfolio: List]]></en>
+            <pl><![CDATA[Portfolio: Lista]]></pl>
+        </locale>
+        <locale name="bricks.control.portfolio.description">
+            <de><![CDATA[Der Brick stellt eine Liste mit Referenzen dar. Dem Benutzer
+                        stehen einige Einstellungen zur Verfügung.]]></de>
+            <en><![CDATA[A simple portfolio list with some settings to adjust the behavior
+                        and apperance]]></en>
+            <pl><![CDATA[Prosty widget, za pomoca ktorego mozna umiescic na swojej stronie
+                        liste z referencjami. Widget oferuje kilka podstawowych ustawien.]]></pl>
+        </locale>
+
+        <locale name="brick.control.portfolio.setting.showImage">
+            <de><![CDATA[Bild]]></de>
+            <en><![CDATA[Image]]></en>
+            <pl><![CDATA[Zdjęcie]]></pl>
+        </locale>
+        <locale name="brick.control.portfolio.setting.showTitle">
+            <de><![CDATA[Titel]]></de>
+            <en><![CDATA[Title]]></en>
+            <pl><![CDATA[Tytuł]]></pl>
+        </locale>
+        <locale name="brick.control.portfolio.setting.showShort">
+            <de><![CDATA[Kurzbeschreibung]]></de>
+            <en><![CDATA[Short text]]></en>
+            <pl><![CDATA[Skrócony opis]]></pl>
+        </locale>
     </groups>
     <groups name="quiqqer/portfolio" datatype="php">
+
+        <!-- portfolio entry -->
         <locale name="quiqqer.portfolio.reference.settings.title">
             <de><![CDATA[Referenz Eigenschaften]]></de>
             <en><![CDATA[Referenz properties]]></en>
@@ -82,6 +115,8 @@
             <de><![CDATA[URL zur Webseite]]></de>
             <en><![CDATA[Adress to the website]]></en>
         </locale>
+
+        <!-- portfolio list (site) -->
         <locale name="quiqqer.portfolio.popup.settings.title">
             <de><![CDATA[Referenz Darstellung]]></de>
             <en><![CDATA[Portfolio presentation]]></en>
@@ -92,7 +127,6 @@
             <pl><![CDATA[Pokazać przycisk "losowy"]]></pl>
         </locale>
 
-
         <locale name="quiqqer.portfolio.settings.imgPosition">
             <de><![CDATA[Bild Verhalten]]></de>
             <en><![CDATA[Image behavior]]></en>
@@ -100,7 +134,7 @@
         </locale>
             <locale name="quiqqer.portfolio.settings.imgPosition.contain">
                 <de><![CDATA[Bild vollständig anzeigen]]></de>
-                <en><![CDATA[Show total image]]></en>
+                <en><![CDATA[Show complete image]]></en>
                 <pl><![CDATA[Pokaż cały obrazek]]></pl>
             </locale>
             <locale name="quiqqer.portfolio.settings.imgPosition.cover">

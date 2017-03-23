@@ -75,7 +75,8 @@ class Portfolio extends QUI\Control
             $limit = (int)$this->getAttribute('limit');
         }
 
-        $portfolio = $Site->getChildren(array(
+        // getProject()->getSites() muss wegen Brick.
+        $portfolio = $Site->getProject()->getSites(array(
             'where' => array(
                 'type' => 'quiqqer/portfolio:types/entry'
             ),
@@ -89,7 +90,10 @@ class Portfolio extends QUI\Control
         foreach ($portfolio as $Child) {
             /* @var $Child QUI\Projects\Site */
             $cats = $Child->getAttribute('quiqqer.portfolio.settings.categories');
-            $cats = json_decode($cats, true);
+
+            if (is_string($cats)) {
+                $cats = json_decode($cats, true);
+            }
 
             if (!$cats) {
                 $cats = array();
