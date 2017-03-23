@@ -83,8 +83,8 @@
             <en><![CDATA[Adress to the website]]></en>
         </locale>
         <locale name="quiqqer.portfolio.popup.settings.title">
-            <de><![CDATA[Referenz Popup Einstellungen]]></de>
-            <en><![CDATA[Portfolio popup settings]]></en>
+            <de><![CDATA[Referenz Darstellung]]></de>
+            <en><![CDATA[Portfolio presentation]]></en>
         </locale>
         <locale name="quiqqer.portfolio.settings.randomButton">
             <de><![CDATA[Zufalls Button anzeigen]]></de>
