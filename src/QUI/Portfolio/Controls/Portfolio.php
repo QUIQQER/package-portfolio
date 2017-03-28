@@ -3,6 +3,7 @@
 /**
  * This file contains \QUI\Portfolio\Controls\Portfolio
  */
+
 namespace QUI\Portfolio\Controls;
 
 use QUI;
@@ -47,8 +48,8 @@ class Portfolio extends QUI\Control
             case 'style6':
             case 'style7':
                 $effectFile = dirname(__FILE__)
-                    . '/Portfolio.'
-                    . $this->getAttribute('entry-effect') . '.css';
+                              . '/Portfolio.'
+                              . $this->getAttribute('entry-effect') . '.css';
 
                 $this->addCSSClass('quiqqer-portfolio-' . $this->getAttribute('entry-effect'));
                 break;
@@ -75,7 +76,8 @@ class Portfolio extends QUI\Control
             $limit = (int)$this->getAttribute('limit');
         }
 
-        $portfolio = $Site->getChildren(array(
+        // getProject()->getSites() muss wegen Brick.
+        $portfolio = $Site->getProject()->getSites(array(
             'where' => array(
                 'type' => 'quiqqer/portfolio:types/entry'
             ),
@@ -89,9 +91,12 @@ class Portfolio extends QUI\Control
         foreach ($portfolio as $Child) {
             /* @var $Child QUI\Projects\Site */
             $cats = $Child->getAttribute('quiqqer.portfolio.settings.categories');
-            $cats = json_decode($cats, true);
 
-            if (!$cats) {
+            if (is_string($cats)) {
+                $cats = json_decode($cats, true);
+            }
+
+            if (!$cats || !is_array($cats)) {
                 $cats = array();
             }
 

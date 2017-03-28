@@ -6,8 +6,16 @@
             <en><![CDATA[QUIQQER - Portfolio]]></en>
         </locale>
         <locale name="package.description" html="true">
-            <de><![CDATA[]]></de>
-            <en><![CDATA[]]></en>
+            <de><![CDATA[
+            Mit dem Portfolio-Modul können Referenzen / Portfolios verwaltet werden.<br />
+            Es liefert Seitentypen mit unterschiedlichen Darstellungen der Referenzen,
+            listet diese auf und ermöglicht die Einstellung unterschiedlicher Effekte.
+            ]]></de>
+            <en><![CDATA[
+            With the portfolio module, references / portfolios can be managed. <br />
+            It provides page types with different representations of the references,
+            lists them and allows you to set different effects.
+            ]]></en>
         </locale>
 
         <locale name="admin.types.portfolio.categories">
@@ -68,8 +76,69 @@
             <de><![CDATA[Die Webseite besuchen]]></de>
             <en><![CDATA[Visit the website]]></en>
         </locale>
+
+        <!-- portfolio brick -->
+        <locale name="bricks.control.portfolio.title">
+            <de><![CDATA[Portfolio: Referenz-Liste]]></de>
+            <en><![CDATA[Portfolio: List]]></en>
+            <pl><![CDATA[Portfolio: Lista]]></pl>
+        </locale>
+        <locale name="bricks.control.portfolio.description">
+            <de><![CDATA[Der Brick stellt eine Liste mit Referenzen dar. Dem Benutzer
+                        stehen einige Einstellungen zur Verfügung.]]></de>
+            <en><![CDATA[A simple portfolio list with some settings to adjust the behavior
+                        and apperance]]></en>
+            <pl><![CDATA[Prosty widget, za pomoca ktorego mozna umiescic na swojej stronie
+                        liste z referencjami. Widget oferuje kilka podstawowych ustawien.]]></pl>
+        </locale>
+
+        <locale name="brick.control.portfolio.setting.showImage">
+            <de><![CDATA[Bild]]></de>
+            <en><![CDATA[Image]]></en>
+            <pl><![CDATA[Zdjęcie]]></pl>
+        </locale>
+        <locale name="brick.control.portfolio.setting.showTitle">
+            <de><![CDATA[Titel]]></de>
+            <en><![CDATA[Title]]></en>
+            <pl><![CDATA[Tytuł]]></pl>
+        </locale>
+        <locale name="brick.control.portfolio.setting.showShort">
+            <de><![CDATA[Kurzbeschreibung]]></de>
+            <en><![CDATA[Short text]]></en>
+            <pl><![CDATA[Skrócony opis]]></pl>
+        </locale>
+        <locale name="quiqqer/portfolio:types/list.title">
+            <de><![CDATA[Referenz-Liste]]></de>
+            <en><![CDATA[Portfolio list]]></en>
+        </locale>
+        <locale name="quiqqer/portfolio:types/list.description">
+            <de><![CDATA[
+            Dieser Seitentyp listet alle Kind-Seiten vom Typ Referenz-Eintrag auf.
+            Er bietet unterschiedliche Einstellungsmöglichkeiten für die Darstellung und Sortierung der Referenzen.
+            ]]></de>
+            <en><![CDATA[
+            This page type lists all child pages of type reference entry.
+            It offers different settings for the representation and sorting of the references.
+            ]]></en>
+        </locale>
+        <locale name="quiqqer/portfolio:types/entry.title">
+            <de><![CDATA[Referenz-Eintrag]]></de>
+            <en><![CDATA[Portfolio entry]]></en>
+        </locale>
+        <locale name="quiqqer/portfolio:types/entry.description" html="true">
+            <de><![CDATA[
+            In diesem Seitentyp können alle Informationen zu einer Referenz hinterlegt werden.
+            Wie zum Beispiel Bild / Logo, Bilder-Ordner für eine Slideshow, Beschreibung der Referenz und ggf. URL und weitere Informationen.
+            ]]></de>
+            <en><![CDATA[
+            In this page type, all information can be stored for a reference.
+            For example picture / logo, picture folder for a slideshow, description of the reference and possibly URL and further information.
+            ]]></en>
+        </locale>
     </groups>
+
     <groups name="quiqqer/portfolio" datatype="php">
+        <!-- portfolio entry -->
         <locale name="quiqqer.portfolio.reference.settings.title">
             <de><![CDATA[Referenz Eigenschaften]]></de>
             <en><![CDATA[Referenz properties]]></en>
@@ -82,9 +151,11 @@
             <de><![CDATA[URL zur Webseite]]></de>
             <en><![CDATA[Adress to the website]]></en>
         </locale>
+
+        <!-- portfolio list (site) -->
         <locale name="quiqqer.portfolio.popup.settings.title">
-            <de><![CDATA[Referenz Popup Einstellungen]]></de>
-            <en><![CDATA[Portfolio popup settings]]></en>
+            <de><![CDATA[Referenz Darstellung]]></de>
+            <en><![CDATA[Portfolio presentation]]></en>
         </locale>
         <locale name="quiqqer.portfolio.settings.randomButton">
             <de><![CDATA[Zufalls Button anzeigen]]></de>
@@ -92,22 +163,21 @@
             <pl><![CDATA[Pokazać przycisk "losowy"]]></pl>
         </locale>
 
-
         <locale name="quiqqer.portfolio.settings.imgPosition">
             <de><![CDATA[Bild Verhalten]]></de>
             <en><![CDATA[Image behavior]]></en>
             <pl><![CDATA[Zachowanie obrazka]]></pl>
         </locale>
-            <locale name="quiqqer.portfolio.settings.imgPosition.contain">
-                <de><![CDATA[Bild vollständig anzeigen]]></de>
-                <en><![CDATA[Show total image]]></en>
-                <pl><![CDATA[Pokaż cały obrazek]]></pl>
-            </locale>
-            <locale name="quiqqer.portfolio.settings.imgPosition.cover">
-                <de><![CDATA[Gesamte Fläche ausfüllen]]></de>
-                <en><![CDATA[Fill the whole area]]></en>
-                <pl><![CDATA[Wypełnić całą dostępną przestrzeń]]></pl>
-            </locale>
+        <locale name="quiqqer.portfolio.settings.imgPosition.contain">
+            <de><![CDATA[Bild vollständig anzeigen]]></de>
+            <en><![CDATA[Show complete image]]></en>
+            <pl><![CDATA[Pokaż cały obrazek]]></pl>
+        </locale>
+        <locale name="quiqqer.portfolio.settings.imgPosition.cover">
+            <de><![CDATA[Gesamte Fläche ausfüllen]]></de>
+            <en><![CDATA[Fill the whole area]]></en>
+            <pl><![CDATA[Wypełnić całą dostępną przestrzeń]]></pl>
+        </locale>
 
         <locale name="quiqqer.portfolio.category.all">
             <de><![CDATA[Alle]]></de>

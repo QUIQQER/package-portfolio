@@ -23,9 +23,8 @@ class PortfolioList extends QUI\Control
 
         $Portfolio = new QUI\Portfolio\Controls\Portfolio(array(
 //            'Site'  => $Project->get(43),
-            'limit' => 3
+//            'limit' => 3
         ));
-
 
         return $Portfolio->create();
     }
