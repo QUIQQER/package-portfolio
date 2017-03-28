@@ -3,6 +3,7 @@
 /**
  * This file contains \QUI\Portfolio\Controls\Portfolio
  */
+
 namespace QUI\Portfolio\Controls;
 
 use QUI;
@@ -47,8 +48,8 @@ class Portfolio extends QUI\Control
             case 'style6':
             case 'style7':
                 $effectFile = dirname(__FILE__)
-                    . '/Portfolio.'
-                    . $this->getAttribute('entry-effect') . '.css';
+                              . '/Portfolio.'
+                              . $this->getAttribute('entry-effect') . '.css';
 
                 $this->addCSSClass('quiqqer-portfolio-' . $this->getAttribute('entry-effect'));
                 break;
@@ -95,7 +96,7 @@ class Portfolio extends QUI\Control
                 $cats = json_decode($cats, true);
             }
 
-            if (!$cats) {
+            if (!$cats || !is_array($cats)) {
                 $cats = array();
             }
 
