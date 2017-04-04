@@ -82,7 +82,7 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
                         onClick: this.openAddCategoryDialog
                     }
                 }, {
-                    type: 'seperator'
+                    type: 'separator'
                 }, {
                     name     : 'up',
                     text     : 'Hoch',
