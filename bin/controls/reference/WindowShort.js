@@ -8,6 +8,7 @@
  * @require qui/controls/Control
  * @require qui/controls/windows/Window
  * @require Ajax
+ * @require css!package/quiqqer/portfolio/bin/controls/reference/WindowShort.css
  */
 define('package/quiqqer/portfolio/bin/controls/reference/WindowShort', [
 
@@ -129,13 +130,12 @@ define('package/quiqqer/portfolio/bin/controls/reference/WindowShort', [
             return new Promise(function (resolve, reject) {
 
                 self.$getData().then(function () {
-
                     var Content = self.getContent();
 
                     Content.set({
                         'class': 'quiqqer-porfolio-reference-windowShort',
                         html   : '<div class="slider"></div>' +
-                                 '<div class="content"></div>',
+                        '<div class="content"></div>',
                         styles : {
                             padding: 0
                         }

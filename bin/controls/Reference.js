@@ -6,6 +6,7 @@
  *
  * @require qui/QUI
  * @require qui/controls/Control
+ * @require Ajax
  */
 define('package/quiqqer/portfolio/bin/controls/Reference', [
 
