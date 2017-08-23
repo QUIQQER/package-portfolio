@@ -3,6 +3,7 @@
 /**
  * This file contains \QUI\Portfolio\Controls\Reference
  */
+
 namespace QUI\Portfolio\Controls;
 
 use QUI;
@@ -30,7 +31,7 @@ class Reference extends QUI\Control
         $this->addCSSClass('quiqqer-porfolio-reference');
 
         $this->addCSSFile(
-            dirname(__FILE__) . '/Reference.css'
+            dirname(__FILE__).'/Reference.css'
         );
     }
 
@@ -82,8 +83,8 @@ class Reference extends QUI\Control
         if ($Site->getAttribute('quiqqer.portfolio.settings.website')) {
             $website = $Site->getAttribute('quiqqer.portfolio.settings.website');
 
-            if (strpos($website, 'http://') === false) {
-                $website = 'http://' . $website;
+            if (strpos($website, 'http://') === false && strpos($website, 'https://') === false) {
+                $website = 'http://'.$website;
             }
         }
 
@@ -99,7 +100,7 @@ class Reference extends QUI\Control
             'sliderExtraClass' => $sliderExtraClass
         ));
 
-        return $Engine->fetch(dirname(__FILE__) . '/Reference.html');
+        return $Engine->fetch(dirname(__FILE__).'/Reference.html');
     }
 
     /**
