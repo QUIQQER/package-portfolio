@@ -32,7 +32,7 @@ class Portfolio extends QUI\Control
         ));
 
         $this->addCSSFile(
-            dirname(__FILE__) . '/Portfolio.css'
+            dirname(__FILE__).'/Portfolio.css'
         );
 
 
@@ -48,14 +48,14 @@ class Portfolio extends QUI\Control
             case 'style6':
             case 'style7':
                 $effectFile = dirname(__FILE__)
-                              . '/Portfolio.'
-                              . $this->getAttribute('entry-effect') . '.css';
+                              .'/Portfolio.'
+                              .$this->getAttribute('entry-effect').'.css';
 
-                $this->addCSSClass('quiqqer-portfolio-' . $this->getAttribute('entry-effect'));
+                $this->addCSSClass('quiqqer-portfolio-'.$this->getAttribute('entry-effect'));
                 break;
 
             default:
-                $effectFile = dirname(__FILE__) . '/Portfolio.style3.css';
+                $effectFile = dirname(__FILE__).'/Portfolio.style3.css';
                 $this->addCSSClass('quiqqer-portfolio-style3');
                 break;
         }
@@ -77,7 +77,10 @@ class Portfolio extends QUI\Control
         }
 
         // getProject()->getSites() muss wegen Brick.
-        $portfolio = $Site->getProject()->getSites(array(
+//        $portfolio = $Site->getProject()->getSites(array(
+        // @todo in den admin ein site select für die settings einführen
+        // dann kann getChildren raus
+        $portfolio = $Site->getChildren(array(
             'where' => array(
                 'type' => 'quiqqer/portfolio:types/entry'
             ),
@@ -150,7 +153,7 @@ class Portfolio extends QUI\Control
         ));
 
 
-        return $Engine->fetch(dirname(__FILE__) . '/Portfolio.html');
+        return $Engine->fetch(dirname(__FILE__).'/Portfolio.html');
     }
 
     /**
