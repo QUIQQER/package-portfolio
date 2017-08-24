@@ -84,9 +84,12 @@ define('package/quiqqer/portfolio/bin/SitePanelReference', [
             }
 
             Ajax.get('package_quiqqer_portfolio_ajax_getCategories', function (categories) {
-
                 var i, len;
                 var List = new Element('ul');
+
+                if (!categories) {
+                    categories = [];
+                }
 
                 var liClick = function (event) {
                     if (event.target.nodeName === 'INPUT') {
