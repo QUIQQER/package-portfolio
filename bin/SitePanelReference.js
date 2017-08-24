@@ -3,11 +3,6 @@
  *
  * @module package/quiqqer/portfolio/bin/SitePanelReference
  * @author www.pcsg.de (Henning Leutz)
- *
- * @require qui/QUI
- * @require qui/controls/Control
- * @require Locale
- * @require Ajax
  */
 define('package/quiqqer/portfolio/bin/SitePanelReference', [
 
@@ -94,25 +89,22 @@ define('package/quiqqer/portfolio/bin/SitePanelReference', [
                 var List = new Element('ul');
 
                 var liClick = function (event) {
-
                     if (event.target.nodeName === 'INPUT') {
                         return;
                     }
 
-                    var Input = this.getElement('input');
+                    var Input     = this.getElement('input');
                     Input.checked = !Input.checked;
                 };
 
                 for (i = 0, len = categories.length; i < len; i++) {
-
                     new Element('li', {
                         html  : '<input type="checkbox" value="' + categories[i].category + '" />' +
-                                '<span>' + categories[i].category + '</span>',
+                        '<span>' + categories[i].category + '</span>',
                         events: {
                             click: liClick
                         }
                     }).inject(List);
-
                 }
 
                 List.inject(self.$Elm);
@@ -121,7 +113,7 @@ define('package/quiqqer/portfolio/bin/SitePanelReference', [
                 for (i = 0, len = siteCategories.length; i < len; i++) {
 
                     List.getElements(
-                        'input[value="'+ siteCategories[i] +'"]'
+                        'input[value="' + siteCategories[i] + '"]'
                     ).set(
                         'checked', true
                     );
@@ -141,7 +133,7 @@ define('package/quiqqer/portfolio/bin/SitePanelReference', [
          * set the tags to the site
          */
         $onDestroy: function () {
-            var values = this.$Elm.getElements('input:checked').map(function(Elm) {
+            var values = this.$Elm.getElements('input:checked').map(function (Elm) {
                 return Elm.get('value');
             });
 
@@ -149,6 +141,13 @@ define('package/quiqqer/portfolio/bin/SitePanelReference', [
                 'quiqqer.portfolio.settings.categories',
                 JSON.encode(values)
             );
+        },
+
+        /**
+         * on control unload
+         */
+        unload: function () {
+            this.updateSite();
         }
     });
 });

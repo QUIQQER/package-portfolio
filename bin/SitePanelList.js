@@ -3,12 +3,6 @@
  *
  * @module package/quiqqer/portfolio/bin/SitePanelList
  * @author www.pcsg.de (Henning Leutz)
- *
- * @require qui/QUI
- * @require qui/controls/Control
- * @require qui/controls/windows/Prompt
- * @require controls/grid/Grid
- * @require Locale
  */
 define('package/quiqqer/portfolio/bin/SitePanelList', [
 
@@ -138,11 +132,11 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
 
                     for (var i = 0, len = buttons.length; i < len; i++) {
 
-                        if (buttons[i].getAttribute('name') == 'up') {
+                        if (buttons[i].getAttribute('name') === 'up') {
                             Up = buttons[i];
                         }
 
-                        if (buttons[i].getAttribute('name') == 'down') {
+                        if (buttons[i].getAttribute('name') === 'down') {
                             Down = buttons[i];
                         }
                     }
@@ -167,21 +161,21 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
                         oldValue = data.oldvalue,
                         index    = data.columnModel.dataIndex;
 
-                    if (index == 'description') {
+                    if (index === 'description') {
                         return;
                     }
 
+                    var i, len, rowData;
                     var currentData = self.$Grid.getData();
 
-                    for (var i = 0, len = currentData.length; i < len; i++) {
-                        if (i == index) {
+                    for (i = 0, len = currentData.length; i < len; i++) {
+                        if (i === index) {
                             continue;
                         }
 
                         // reset value
-                        if (currentData[i].category == value) {
-
-                            var rowData = self.$Grid.getDataByRow(data.row);
+                        if (currentData[i].category === value) {
+                            rowData = self.$Grid.getDataByRow(data.row);
 
                             if (index in rowData) {
                                 rowData[index] = oldValue;
@@ -191,7 +185,6 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
                                 rowData.category,
                                 rowData.description
                             ));
-
                             return;
                         }
                     }
@@ -308,7 +301,7 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
             var data = this.$Grid.getData();
 
             for (var i = 0, len = data.length; i < len; i++) {
-                if (data[i].category == str) {
+                if (data[i].category === str) {
                     return;
                 }
             }
@@ -323,7 +316,6 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
          * @param {DOMEvent} event
          */
         $deleteRow: function (Btn, event) {
-
             event.stop();
 
             this.$Grid.deleteRow(
@@ -339,7 +331,6 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
          * @returns {{remove: {icon: string, events: {onClick: (exports.$deleteRow|Function)}}, category: *}}
          */
         $createRowData: function (category, description) {
-
             description = description || '';
 
             return {
