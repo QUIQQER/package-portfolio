@@ -7,14 +7,10 @@
         </locale>
         <locale name="package.description" html="true">
             <de><![CDATA[
-            Mit dem Portfolio-Modul können Referenzen / Portfolios verwaltet werden.<br />
-            Es liefert Seitentypen mit unterschiedlichen Darstellungen der Referenzen,
-            listet diese auf und ermöglicht die Einstellung unterschiedlicher Effekte.
+            Verwalten Sie Ihre Referenzen / Kundenprojekte und präsentieren Sie diese auf Ihrer Webseite.
             ]]></de>
             <en><![CDATA[
-            With the portfolio module, references / portfolios can be managed. <br />
-            It provides page types with different representations of the references,
-            lists them and allows you to set different effects.
+            Manage your references / customer projects and present them on your website.
             ]]></en>
         </locale>
 
