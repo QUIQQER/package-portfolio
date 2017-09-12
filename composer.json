@@ -3,7 +3,7 @@
   "type": "quiqqer-module",
   "description": "Manage your references / customer projects and present them on your website.",
   "version": "dev-dev",
-  "license": "",
+  "license": ["PCSG QL-1.0","GPL-3.0+"],
   "authors": [
     {
       "name": "Henning Leutz",
