@@ -26,7 +26,8 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
 
         options: {
             nopopups : false,
-            popuptype: 'short'
+            popuptype: 'short',
+            useanchor: false
         },
 
         initialize: function (options) {
@@ -48,7 +49,6 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
          * events : on import
          */
         $onImport: function () {
-
             var i, len;
             var self = this;
 
@@ -111,14 +111,14 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                 // found entries
                 var inResult = self.$entries.filter(function (Child) {
                     return Child.get('data-categories')
-                        .toString()
-                        .contains(',' + catId + ',');
+                                .toString()
+                                .contains(',' + catId + ',');
                 });
 
                 var notInResult = self.$entries.filter(function (Child) {
                     return !Child.get('data-categories')
-                        .toString()
-                        .contains(',' + catId + ',');
+                                 .toString()
+                                 .contains(',' + catId + ',');
                 });
 
                 if (notInResult.length) {
@@ -164,7 +164,9 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
             }
 
             var openEntry = function (event) {
-                event.stop();
+                if (typeOf(event) === 'domevent') {
+                    event.stop();
+                }
 
                 var control;
                 var Entry = event.target;
@@ -193,16 +195,51 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                 }
 
                 require([control], function (Popup) {
+                    if (self.getAttribute('useanchor')) {
+                        window.location = '#' + Entry.get('data-id');
+                    }
+
                     new Popup({
                         project: QUIQQER_PROJECT.name,
                         lang   : QUIQQER_PROJECT.lang,
-                        siteId : Entry.get('data-id')
+                        siteId : Entry.get('data-id'),
+                        events : {
+                            onClose: function () {
+                                if (self.getAttribute('useanchor') === false) {
+                                    return;
+                                }
+
+                                if (typeof window.history !== 'undefined') {
+                                    history.pushState(
+                                        "",
+                                        document.title,
+                                        window.location.pathname + window.location.search
+                                    );
+
+                                    return;
+                                }
+
+                                window.location = window.location.href.split('#')[0];
+                            }
+                        }
                     }).open();
                 });
             }.bind(this);
 
             for (i = 0, len = self.$entries.length; i < len; i++) {
                 self.$entries[i].addEvent('click', openEntry);
+            }
+
+            if (self.getAttribute('useanchor')) {
+                var anchor = window.location.href.split('#');
+
+                if (typeof anchor[1] !== 'undefined') {
+                    var Child = this.getElm().getElement('[data-id="' + anchor[1] + '"]');
+
+                    if (Child) {
+                        Child.click();
+                    }
+                }
             }
         },
 

@@ -7,6 +7,7 @@ $Portfolio = new QUI\Portfolio\Controls\Portfolio(array(
     'img-position'               => $Site->getAttribute('quiqqer.portfolio.settings.imgPosition'),
     'data-qui-options-nopopups'  => $Site->getAttribute('quiqqer.portfolio.settings.portfolioNoPopup'),
     'data-qui-options-popuptype' => $Site->getAttribute('quiqqer.portfolio.settings.portfolioPopup.type'),
+    'data-qui-options-useanchor' => true,
     'Site'                       => $Site
 ));
 
