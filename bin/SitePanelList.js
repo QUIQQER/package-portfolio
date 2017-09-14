@@ -55,7 +55,6 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
          * @return {HTMLElement}
          */
         create: function () {
-
             var self = this;
 
             this.$Elm = new Element('div', {
@@ -70,7 +69,7 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
             this.$Grid = new Grid(this.$Elm.getElement('.grid'), {
                 buttons       : [{
                     name     : 'add',
-                    text     : 'Hinzufügen',
+                    text     : QUILocale.get('quiqqer/system', 'add'),
                     textimage: 'fa fa-plus',
                     events   : {
                         onClick: this.openAddCategoryDialog
@@ -79,7 +78,7 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
                     type: 'separator'
                 }, {
                     name     : 'up',
-                    text     : 'Hoch',
+                    text     : QUILocale.get(lg, 'quiqqer.portfolio.reference.settings.up'),
                     textimage: 'fa fa-angle-up',
                     disabled : true,
                     events   : {
@@ -89,7 +88,7 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
                     }
                 }, {
                     name     : 'down',
-                    text     : 'Runter',
+                    text     : QUILocale.get(lg, 'quiqqer.portfolio.reference.settings.down'),
                     textimage: 'fa fa-angle-down',
                     disabled : true,
                     events   : {
@@ -104,13 +103,13 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
                     dataType : 'button',
                     width    : 60
                 }, {
-                    header   : 'Kategorie',
+                    header   : QUILocale.get(lg, 'quiqqer.portfolio.reference.settings.category'),
                     dataIndex: 'category',
                     dataType : 'string',
                     width    : 200,
                     editable : true
                 }, {
-                    header   : 'Beschreibung',
+                    header   : QUILocale.get(lg, 'quiqqer.portfolio.reference.settings.description'),
                     dataIndex: 'description',
                     dataType : 'string',
                     width    : 500,
@@ -119,6 +118,19 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
                 pagination    : true,
                 editable      : true,
                 editondblclick: true
+            });
+
+            // workaround
+            this.$Grid.getElm().addEvent('mousedown', function (event) {
+                var Target = event.target;
+
+                if (Target.hasClass('fa-remove')) {
+                    Target = Target.getParent('.qui-button');
+                }
+
+                if (Target.hasClass('qui-button')) {
+                    self.$deleteRow(QUI.Controls.getById(Target.get('data-quiid')));
+                }
             });
 
             this.$Grid.addEvents({
@@ -156,7 +168,6 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
                  * @param {Object} data
                  */
                 editComplete: function (data) {
-
                     var value    = data.input.value,
                         oldValue = data.oldvalue,
                         index    = data.columnModel.dataIndex;
@@ -227,6 +238,13 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
         },
 
         /**
+         * unload the control
+         */
+        unload: function () {
+            this.$onDestroy();
+        },
+
+        /**
          * event : on destroy
          * set the tags to the site
          */
@@ -269,9 +287,9 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
             var self = this;
 
             new QUIPrompt({
-                title        : 'Kategorie hinzufügen',
+                title        : QUILocale.get(lg, 'quiqqer.portfolio.reference.settings.windowAdd.title'),
                 icon         : 'fa fa-plus',
-                information  : 'Wählen Sie bitte einen Namen für Ihre Kategorie',
+                information  : QUILocale.get(lg, 'quiqqer.portfolio.reference.settings.windowAdd.description'),
                 maxHeight    : 300,
                 maxWidth     : 450,
                 cancel_button: {
@@ -297,7 +315,6 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
          * @param {String} str
          */
         addCategory: function (str) {
-
             var data = this.$Grid.getData();
 
             for (var i = 0, len = data.length; i < len; i++) {
@@ -313,11 +330,8 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
          * Delete a row - category
          *
          * @param {Object} Btn
-         * @param {DOMEvent} event
          */
-        $deleteRow: function (Btn, event) {
-            event.stop();
-
+        $deleteRow: function (Btn) {
             this.$Grid.deleteRow(
                 Btn.getAttribute('data').row
             );
@@ -328,7 +342,7 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
          *
          * @param {String} category - Category name
          * @param {String} [description] - Description of the category
-         * @returns {{remove: {icon: string, events: {onClick: (exports.$deleteRow|Function)}}, category: *}}
+         * @returns {{remove: *, category: *, description: *}}
          */
         $createRowData: function (category, description) {
             description = description || '';
@@ -337,7 +351,7 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
                 remove     : {
                     icon  : 'fa fa-remove',
                     events: {
-                        onClick: this.$deleteRow
+                        click: this.$deleteRow
                     },
                     styles: {
                         lineHeight: 20,

@@ -131,6 +131,31 @@
             For example picture / logo, picture folder for a slideshow, description of the reference and possibly URL and further information.
             ]]></en>
         </locale>
+
+        <locale name="quiqqer.portfolio.reference.settings.up">
+            <de><![CDATA[Hoch]]></de>
+            <en><![CDATA[Up]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.reference.settings.down">
+            <de><![CDATA[Runter]]></de>
+            <en><![CDATA[Down]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.reference.settings.category">
+            <de><![CDATA[Kategorie]]></de>
+            <en><![CDATA[Category]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.reference.settings.description">
+            <de><![CDATA[Beschreibung]]></de>
+            <en><![CDATA[Description]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.reference.settings.windowAdd.title">
+            <de><![CDATA[Kategorie hinzufügen]]></de>
+            <en><![CDATA[Add category]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.reference.settings.windowAdd.description">
+            <de><![CDATA[Wählen Sie bitte einen Namen für Ihre Kategorie.]]></de>
+            <en><![CDATA[Please choose a name for your category.]]></en>
+        </locale>
     </groups>
 
     <groups name="quiqqer/portfolio" datatype="php">
