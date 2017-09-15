@@ -1,3 +1,5 @@
+![Porfolio](bin/images/Readme.jpg)
+
 Portfolio
 ========
 
@@ -38,7 +40,5 @@ dann können Sie gerne an support@pcsg.de eine E-Mail schreiben.
 
 Lizenz
 -------
-
-
-Entwickler
---------
+- PCSG QL-1.0
+- GPL-3.0+

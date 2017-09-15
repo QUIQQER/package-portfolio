@@ -2,8 +2,8 @@
   "name": "quiqqer/portfolio",
   "type": "quiqqer-module",
   "version": "dev-master",
-  "description": "Module to show your portfolio",
-  "license": "",
+  "description": "Manage your references / customer projects and present them on your website.",
+  "license": ["PCSG QL-1.0","GPL-3.0+"],
   "authors": [
     {
       "name": "Henning Leutz",
