@@ -1,3 +1,5 @@
+![Porfolio](bin/images/Readme.jpg)
+
 Portfolio
 ========
 
