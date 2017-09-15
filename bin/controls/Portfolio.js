@@ -175,6 +175,11 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                     Entry = Entry.getParent('.quiqqer-portfolio-list-entry');
                 }
 
+                var Loader = new Element('div', {
+                    html : '<span class="fa fa-spinner fa-spin"></span>',
+                    class: 'quiqqer-portfolio-list-entry-loader'
+                }).inject(Entry.getElement('figure'));
+
                 switch (this.getAttribute('popuptype')) {
                     default:
                     case'short':
@@ -223,6 +228,10 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                             }
                         }
                     }).open();
+
+                    Loader.destroy();
+                }, function () {
+                    Loader.destroy();
                 });
             }.bind(this);
 
