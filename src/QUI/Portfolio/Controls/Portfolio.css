@@ -82,6 +82,27 @@ die untere divs verschoben werden */
     font-size: 100px;
 }
 
+.quiqqer-portfolio-list-entry-loader {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 30px;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    width: 100%;
+    z-index: 100;
+}
+
+.quiqqer-portfolio-list-entry-loader .fa {
+    left: calc(50% - 15px);
+    line-height: 30px;
+    position: absolute;
+    top: calc(50% - 15px);
+    width: 30px;
+}
+
 .quiqqer-portfolio-list-entry figure img {
     /*height: 300px;*/
     height: 100%; /* wegen neuer Einstellung */
