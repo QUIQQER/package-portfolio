@@ -3,12 +3,6 @@
  *
  * @module package/quiqqer/portfolio/bin/controls/PortfolioPopup
  * @author www.pcsg.de (Henning Leutz)
- *
- * @require qui/QUI
- * @require qui/controls/Control
- * @require qui/controls/windows/Window
- * @require Ajax
- * @require css!package/quiqqer/portfolio/bin/controls/reference/WindowShort.css
  */
 define('package/quiqqer/portfolio/bin/controls/reference/WindowShort', [
 

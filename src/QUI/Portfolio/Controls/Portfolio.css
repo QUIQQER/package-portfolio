@@ -136,6 +136,15 @@ die untere divs verschoben werden */
     vertical-align: middle;
 }
 
+.quiqqer-portfolio-more {
+    clear: both;
+    display: block;
+    margin: 20px auto 0;
+    max-width: 100%;
+    text-align: center;
+    width: calc(33% - 20px);
+}
+
 /* design classes */
 .quiqqer-portfolio-list-entry-10 {
     width: 10%;

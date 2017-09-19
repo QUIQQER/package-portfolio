@@ -172,6 +172,10 @@
             <de><![CDATA[URL zur Webseite]]></de>
             <en><![CDATA[Adress to the website]]></en>
         </locale>
+        <locale name="quiqqer.portfolio.settings.referenceStartNumber">
+            <de><![CDATA[Anzahl der Referenzen zu beginn]]></de>
+            <en><![CDATA[Number of references at the beginning]]></en>
+        </locale>
 
         <!-- portfolio list (site) -->
         <locale name="quiqqer.portfolio.popup.settings.title">
@@ -209,6 +213,11 @@
             <de><![CDATA[Zufällig]]></de>
             <en><![CDATA[Random]]></en>
             <pl><![CDATA[Losowo]]></pl>
+        </locale>
+
+        <locale name="quiqqer.portfolio.category.more">
+            <de><![CDATA[Mehr]]></de>
+            <en><![CDATA[More]]></en>
         </locale>
     </groups>
 </locales>
