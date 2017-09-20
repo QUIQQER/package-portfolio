@@ -34,7 +34,7 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
             popuptype        : 'short',
             useanchor        : false,
             lazyloading      : true,
-            'start-reference': 6
+            'start-reference': 9
         },
 
         initialize: function (options) {
@@ -46,6 +46,7 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
             this.$entries    = new Elements();
             this.$categories = new Elements();
             this.$randomize  = false;
+            this.$loading    = false;
 
             this.addEvents({
                 onImport: this.$onImport
@@ -59,6 +60,7 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
             var i, len;
             var self = this;
 
+            this.$loading    = true;
             this.$Categories = this.getElm().getElement('.quiqqer-portfolio-categories');
             this.$List       = this.getElm().getElement('.quiqqer-portfolio-list');
 
@@ -120,6 +122,7 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
 
                 notInResult.set('data-available', 0);
                 inResult.set('data-available', 1);
+
                 var inComplete = inResult;
 
                 if (self.getAttribute('start-reference') &&
@@ -147,7 +150,15 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
 
             if (this.$Categories &&
                 this.$Categories.getElement('.quiqqer-portfolio-categories-random')) {
-                this.randomize();
+
+                this.randomize().then(function () {
+                    self.$loading = false;
+
+                    self.getElm().getElements('.quiqqer-portfolio-more')
+                        .addEvent('click', self.next);
+                });
+
+                return;
             }
 
 
@@ -178,6 +189,8 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
 
             this.getElm().getElements('.quiqqer-portfolio-more')
                 .addEvent('click', this.next);
+
+            self.$loading = false;
         },
 
         /**
@@ -186,47 +199,64 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
         randomize: function () {
             this.$randomize = true;
 
-            var self    = this;
-            var entries = self.$entries.map(function (Entry) {
-                return Entry;
-            });
+            var self    = this,
+                entries = this.$entries.map(function (Entry) {
+                    return Entry;
+                });
 
             entries.shuffle();
 
-            self.$List.setStyle('height', self.$List.getSize().y);
+            self.$List.setStyles({
+                height  : self.$List.getSize().y,
+                overflow: 'hidden'
+            });
 
-            moofx(entries).animate({
-                height : 0,
-                opacity: 0,
-                padding: 0,
-                width  : 0
-            }, {
-                duration: 250,
-                callback: function () {
-                    entries.shuffle();
+            var Start = Promise.resolve();
 
-                    for (var i = 0, len = entries.length; i < len; i++) {
-                        entries[i].inject(self.$List);
-                    }
+            if (this.$loading === false) {
+                Start = this.$hide(this.$entries);
+            }
 
-                    moofx(entries).animate({
-                        height : 300,
-                        opacity: 1,
-                        padding: 10,
-                        width  : self.getChildWidth()
-                    }, {
-                        duration: 250,
-                        callback: function () {
-                            entries.each(function (Entry) {
-                                Entry.setStyle('width', null);
-                            });
+            return Start.then(function () {
+                entries.shuffle();
 
-                            self.loadEntries(entries);
+                var rest = [];
 
-                            self.$List.setStyle('height', null);
-                        }
-                    });
+                for (var i = 0, len = entries.length; i < len; i++) {
+                    entries[i].inject(self.$List);
                 }
+
+                entries = self.$List.getElements('.quiqqer-portfolio-list-entry');
+                entries.set('data-available', 1);
+
+                if (self.getAttribute('start-reference') &&
+                    entries.length > self.getAttribute('start-reference')) {
+
+                    rest    = entries.slice(self.getAttribute('start-reference'));
+                    entries = new Elements(
+                        entries.slice(0, self.getAttribute('start-reference'))
+                    );
+                }
+
+                return self.$show(entries).then(function () {
+                    return self.loadEntries(entries);
+                }).then(function () {
+                    rest.each(function (entry) {
+                        entry.setStyle('display', 'none');
+                    });
+
+                    return new Promise(function (resolve) {
+                        moofx(self.$List).animate({
+                            height: self.$List.getScrollSize().y
+                        }, {
+                            duration: 200,
+                            callback: function () {
+                                self.$List.setStyle('height', null);
+                                resolve();
+                            }
+                        });
+                    });
+                });
             });
         },
 
@@ -256,25 +286,17 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                     return 0;
                 });
 
-                moofx(entries).animate({
-                    height : 0,
-                    opacity: 0,
-                    padding: 0,
-                    width  : 0
-                }, {
-                    duration: 250,
-                    callback: function () {
-                        for (var i = 0, len = entries.length; i < len; i++) {
-                            entries[i].inject(self.$List);
-                        }
-
-                        entries.each(function (Entry) {
-                            Entry.setStyle('width', null);
-                        });
-
-                        self.$randomize = false;
-                        resolve();
+                self.$hide(entries).then(function () {
+                    for (var i = 0, len = entries.length; i < len; i++) {
+                        entries[i].inject(self.$List);
                     }
+
+                    entries.each(function (Entry) {
+                        Entry.setStyle('width', null);
+                    });
+
+                    self.$randomize = false;
+                    resolve();
                 });
             });
         },
@@ -285,21 +307,29 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
          * @returns {Number}
          */
         getChildWidth: function () {
+            if (this.$childWidth) {
+                return this.$childWidth;
+            }
+
             var childWidth = this.$entries[0].getSize().x;
 
             if (!childWidth) {
                 this.$entries[0].setStyles({
+                    display : null,
+                    opacity : 0,
                     position: 'absolute',
                     width   : null
                 });
 
-                childWidth = this.$entries[0].getSize().x;
+                childWidth = this.$entries[0].getSize().x - 2;
 
                 this.$entries[0].setStyles({
                     position: null,
                     width   : 0
                 });
             }
+
+            this.$childWidth = childWidth;
 
             return childWidth;
         },
@@ -310,8 +340,13 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
          * @param {Array|Elements} list
          */
         loadEntries: function (list) {
+            var self = this,
+                load = function () {
+                    self.loadEntry(this);
+                };
+
             for (var i = 0, len = list.length; i < len; i++) {
-                this.loadEntry(list[i]);
+                (load).delay(i * 100, list[i]);
             }
 
             this.$refreshMoreButton();
@@ -381,8 +416,11 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                 overflow: 'hidden'
             });
 
-            for (var i = 0, len = this.$entries.length; i < len; i++) {
-                if (this.$entries[i].getStyle('display') !== 'none') {
+            var entries = this.$List.getElements('.quiqqer-portfolio-list-entry');
+            var list    = [];
+
+            for (var i = 0, len = entries.length; i < len; i++) {
+                if (entries[i].getStyle('display') !== 'none') {
                     continue;
                 }
 
@@ -390,28 +428,52 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                     break;
                 }
 
-                if (parseInt(this.$entries[i].get('data-available')) === 0) {
+                if (parseInt(entries[i].get('data-available')) === 0) {
                     continue;
                 }
 
-                this.loadEntry(this.$entries[i]);
+                list.push(entries[i]);
                 displayed++;
             }
 
-            var height = this.$List.getScrollSize().y;
+            this.$show(new Elements(list)).then(function () {
+                var promies = [];
 
-            this.$refreshMoreButton();
+                list.each(function (node) {
+                    promies.push(self.loadEntry(node));
+                });
 
-            moofx(this.$List).animate({
-                height: height
-            }, {
-                duration: 200,
-                callback: function () {
-                    self.$List.setStyles({
-                        height  : null,
-                        overflow: null
+                return Promise.all(promies);
+            }).then(function () {
+                var height = self.$List.getScrollSize().y;
+
+                self.$refreshMoreButton();
+
+                return new Promise(function (resolve) {
+
+                    moofx(self.$List).animate({
+                        height: height
+                    }, {
+                        duration: 200,
+                        callback: function () {
+                            self.$List.setStyles({
+                                height  : null,
+                                overflow: null
+                            });
+
+
+                            var displayed = self.$List.getElements(
+                                '.quiqqer-portfolio-list-entry'
+                            ).filter(function (Entry) {
+                                return Entry.getStyle('display') !== 'none';
+                            });
+
+                            self.setAttribute('start-reference', displayed.length);
+
+                            resolve();
+                        }
                     });
-                }
+                });
             });
         },
 
@@ -527,8 +589,7 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                 moofx(list).animate({
                     height : 0,
                     opacity: 0,
-                    padding: 0,
-                    width  : 0
+                    padding: 0
                 }, {
                     duration: 250,
                     callback: function () {
@@ -558,8 +619,7 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                 moofx(list).animate({
                     height : 300,
                     opacity: 1,
-                    padding: 10,
-                    width  : self.getChildWidth()
+                    padding: 10
                 }, {
                     duration: 250,
                     callback: resolve

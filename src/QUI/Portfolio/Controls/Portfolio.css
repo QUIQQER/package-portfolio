@@ -54,6 +54,10 @@ die untere divs verschoben werden */
     height: 2px;
 }
 
+.quiqqer-portfolio-categories-random {
+    float: right;
+}
+
 /*.quiqqer-portfolio-category__active {
     border-top: 2px solid red;
 }*/
