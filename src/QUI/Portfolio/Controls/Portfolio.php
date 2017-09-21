@@ -22,15 +22,17 @@ class Portfolio extends QUI\Control
     {
         // default options
         $this->setAttributes(array(
-            'showRandomButton'             => false,
-            'limit'                        => false,
-            'entry-effect'                 => 'style3',
-            'entry-width'                  => false,
-            'qui-class'                    => 'package/quiqqer/portfolio/bin/controls/Portfolio',
-            'data-qui-options-nopopups'    => false,
-            'data-qui-options-popuptype'   => 'short',
-            'data-qui-options-useanchor'   => false,
-            'data-qui-options-lazyloading' => false
+            'showRandomButton'                 => false,
+            'limit'                            => false,
+            'entry-effect'                     => 'style3',
+            'entry-width'                      => false,
+            'qui-class'                        => 'package/quiqqer/portfolio/bin/controls/Portfolio',
+            'data-qui-options-nopopups'        => false,
+            'data-qui-options-popuptype'       => 'short',
+            'data-qui-options-useanchor'       => false,
+            'data-qui-options-lazyloading'     => true,
+            'data-qui-options-start-reference' => 3
+
         ));
 
         $this->addCSSFile(
@@ -70,9 +72,10 @@ class Portfolio extends QUI\Control
      */
     public function getBody()
     {
-        $Engine = QUI::getTemplateManager()->getEngine();
-        $Site   = $this->getSite();
-        $limit  = false;
+        $Engine     = QUI::getTemplateManager()->getEngine();
+        $Site       = $this->getSite();
+        $limit      = false;
+        $displayNum = 3;
 
         if ($this->getAttribute('limit')) {
             $limit = (int)$this->getAttribute('limit');
@@ -146,12 +149,22 @@ class Portfolio extends QUI\Control
                 break;
         }
 
+        if ($this->getAttribute('data-qui-options-start-reference')) {
+            $displayNum = (int)$this->getAttribute('data-qui-options-start-reference');
+        }
+
+        if ($this->getAttribute('data-qui-options-lazyloading') === false) {
+            $displayNum = false;
+        }
+
         $Engine->assign(array(
             'this'        => $this,
             'cssClass'    => $cssClass,
             'portfolio'   => $portfolio,
             'categories'  => json_decode($categories, true),
-            'imgPosition' => $imgPosition
+            'imgPosition' => $imgPosition,
+            'displayNum'  => $displayNum,
+            'lazyloading' => $this->getAttribute('data-qui-options-lazyloading')
         ));
 
 

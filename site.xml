@@ -17,8 +17,10 @@
                 <attribute>quiqqer.portfolio.settings.showRandomButton</attribute>
                 <attribute>quiqqer.portfolio.settings.imgPosition</attribute>
                 <attribute>quiqqer.portfolio.settings.portfolioNoPopup</attribute>
-                <attribute default="1">quiqqer.portfolio.settings.showArrows</attribute>
                 <attribute>quiqqer.portfolio.settings.portfolioPopup.type</attribute>
+
+                <attribute default="15">quiqqer.portfolio.settings.referenceStartNumber</attribute>
+                <attribute default="1">quiqqer.portfolio.settings.showArrows</attribute>
                 <attribute default="cover">quiqqer.portfolio.settings.portfolioPopup.wallpaper-position</attribute>
                 <attribute default="contain">quiqqer.portfolio.settings.portfolioPopup.wallpaper-size</attribute>
             </attributes>
@@ -39,6 +41,14 @@
                         <title>
                             <locale group="quiqqer/portfolio" var="quiqqer.portfolio.settings.title"/>
                         </title>
+
+                        <input type="number"
+                               conf="quiqqer.portfolio.settings.referenceStartNumber">
+                            <text>
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio.settings.referenceStartNumber"/>
+                            </text>
+                        </input>
 
                         <select conf="quiqqer.portfolio.settings.portfolioEffect">
                             <text>
@@ -82,7 +92,7 @@
                             <option value="contain">
                                 <locale group="quiqqer/portfolio"
                                         var="quiqqer.portfolio.settings.imgPosition.contain"/>
-                                </option>
+                            </option>
                             <option value="cover">
                                 <locale group="quiqqer/portfolio"
                                         var="quiqqer.portfolio.settings.imgPosition.cover"/>

@@ -2,7 +2,7 @@
 <section class="quiqqer-portfolio-categories">
     {if $this->getAttribute('showRandomButton')}
     <div class="quiqqer-portfolio-categories-entry quiqqer-portfolio-categories-random"
-        title="{locale group="quiqqer/portfolio" var="quiqqer.portfolio.category.random"}"
+         title="{locale group='quiqqer/portfolio' var='quiqqer.portfolio.category.random'}"
     >
         <span class="fa fa-random"></span>
     </div>
@@ -24,15 +24,21 @@
 
 {/if}
 
+{assign var=c value=0}
 <section class="quiqqer-portfolio-list">
     {foreach from=$portfolio item=Child}
     <div class="quiqqer-portfolio-list-entry {$cssClass}"
          data-id="{$Child->getId()}"
          data-categories=",{$Child->getAttribute('quiqqer.portfolio.settings.categories')|implode:','},"
-    >
+         data-image="{image src=$Child->getAttribute('image_site') onlysrc=1}"
+         data-position="{$imgPosition}"
+         {if $displayNum && $displayNum <= $c}style="display: none"{/if}
+        >
         <figure>
             <a href="{url site=$Child}">
-                {image src=$Child->getAttribute('image_site') height=300 style="$imgPosition"}
+                <noscript>
+                    {image src=$Child->getAttribute('image_site') height=300 style="$imgPosition"}
+                </noscript>
             </a>
 
             <figcaption class="control-background">
@@ -44,7 +50,28 @@
                 </div>
             </figcaption>
         </figure>
+        <noscript>
+            <style>
+                [data-id="{$Child->getId()}"] {
+                    display: inline;
+                }
+            </style>
+        </noscript>
     </div>
+    {assign var=c value=$c+1}
     {/foreach}
 </section>
 
+{if $lazyloading}
+<div class="quiqqer-portfolio-more button">
+    {locale group="quiqqer/portfolio" var="quiqqer.portfolio.category.more"}
+</div>
+
+<noscript>
+    <style>
+        .quiqqer-portfolio-more {
+            display: inline;
+        }
+    </style>
+</noscript>
+{/if}

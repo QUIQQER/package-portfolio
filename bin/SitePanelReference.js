@@ -16,8 +16,6 @@ define('package/quiqqer/portfolio/bin/SitePanelReference', [
 ], function (QUI, QUIControl, QUILocale, Ajax) {
     "use strict";
 
-    var lg = 'quiqqer/portfolio';
-
     return new Class({
 
         Extends: QUIControl,
@@ -150,7 +148,7 @@ define('package/quiqqer/portfolio/bin/SitePanelReference', [
          * on control unload
          */
         unload: function () {
-            this.updateSite();
+            this.$onDestroy();
         }
     });
 });

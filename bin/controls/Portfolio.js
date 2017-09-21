@@ -15,19 +15,26 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
 ], function (QUI, QUIControl) {
     "use strict";
 
+    window.Slick.definePseudo('display', function (value) {
+        return Element.getStyle(this, 'display') == value;
+    });
+
     return new Class({
 
         Extends: QUIControl,
         Type   : 'package/quiqqer/portfolio/bin/controls/Portfolio',
 
         Binds: [
-            '$onImport'
+            '$onImport',
+            'next'
         ],
 
         options: {
-            nopopups : false,
-            popuptype: 'short',
-            useanchor: false
+            nopopups         : false,
+            popuptype        : 'short',
+            useanchor        : false,
+            lazyloading      : true,
+            'start-reference': 9
         },
 
         initialize: function (options) {
@@ -39,6 +46,7 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
             this.$entries    = new Elements();
             this.$categories = new Elements();
             this.$randomize  = false;
+            this.$loading    = false;
 
             this.addEvents({
                 onImport: this.$onImport
@@ -52,6 +60,7 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
             var i, len;
             var self = this;
 
+            this.$loading    = true;
             this.$Categories = this.getElm().getElement('.quiqqer-portfolio-categories');
             this.$List       = this.getElm().getElement('.quiqqer-portfolio-list');
 
@@ -65,6 +74,7 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
 
             for (i = 0, len = this.$entries.length; i < len; i++) {
                 this.$entries[i].set('data-no', i);
+                this.$entries.set('data-available', 1);
             }
 
             // categories
@@ -88,63 +98,50 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
 
                 this.addClass('quiqqer-portfolio-category__active');
 
-                var childWidth = self.getChildWidth();
+                var inResult    = new Elements(),
+                    notInResult = new Elements();
 
                 if (this.hasClass('quiqqer-portfolio-categories-all')) {
-                    moofx(self.$entries).animate({
-                        height : 300,
-                        opacity: 1,
-                        padding: 10,
-                        width  : childWidth
-                    }, {
-                        duration: 250,
-                        callback: function () {
-                            self.$entries.setStyle('width', null);
-                        }
+                    inResult = self.$entries;
+                } else {
+                    var catId = this.get('text').trim();
+
+                    // found entries
+                    inResult = self.$entries.filter(function (Child) {
+                        return Child.get('data-categories')
+                                    .toString()
+                                    .contains(',' + catId + ',');
                     });
 
-                    return;
+                    notInResult = self.$entries.filter(function (Child) {
+                        return !Child.get('data-categories')
+                                     .toString()
+                                     .contains(',' + catId + ',');
+                    });
                 }
 
-                var catId = this.get('text').trim();
+                notInResult.set('data-available', 0);
+                inResult.set('data-available', 1);
 
-                // found entries
-                var inResult = self.$entries.filter(function (Child) {
-                    return Child.get('data-categories')
-                                .toString()
-                                .contains(',' + catId + ',');
+                var inComplete = inResult;
+
+                if (self.getAttribute('start-reference') &&
+                    inResult.length > self.getAttribute('start-reference')) {
+                    inResult = new Elements(inResult.slice(0, self.getAttribute('start-reference')));
+                }
+
+                self.$hide(notInResult).then(function () {
+                    return self.$show(inResult);
+                }).then(function () {
+                    self.loadEntries(inResult);
+
+                    inComplete.setStyles({
+                        height : null,
+                        padding: null,
+                        width  : null,
+                        opacity: null
+                    });
                 });
-
-                var notInResult = self.$entries.filter(function (Child) {
-                    return !Child.get('data-categories')
-                                 .toString()
-                                 .contains(',' + catId + ',');
-                });
-
-                if (notInResult.length) {
-                    moofx(notInResult).animate({
-                        height : 0,
-                        opacity: 0,
-                        padding: 0,
-                        width  : 0
-                    }, {
-                        duration: 250
-                    });
-                }
-
-                if (inResult.length) {
-                    moofx(inResult).animate({
-                        height : 300,
-                        opacity: 1,
-                        padding: 10,
-                        width  : childWidth
-                    }, {
-                        duration: 250,
-                        callback: function () {
-                            inResult.setStyle('width', null);
-                        }
-                    });
-                }
             };
 
             for (i = 0, len = self.$categories.length; i < len; i++) {
@@ -153,15 +150,352 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
 
             if (this.$Categories &&
                 this.$Categories.getElement('.quiqqer-portfolio-categories-random')) {
-                this.randomize();
+
+                this.randomize().then(function () {
+                    self.$loading = false;
+
+                    self.getElm().getElements('.quiqqer-portfolio-more')
+                        .addEvent('click', self.next);
+                });
+
+                return;
             }
 
 
             // entries
             if (this.getAttribute('nopopups')) {
                 this.getElm().getElements('figure').setStyle('cursor', 'default');
-                return;
+            } else {
+                this.$initEvents();
+
+                if (self.getAttribute('useanchor')) {
+                    var anchor = window.location.href.split('#');
+
+                    if (typeof anchor[1] !== 'undefined') {
+                        var Child = this.getElm().getElement('[data-id="' + anchor[1] + '"]');
+
+                        if (Child) {
+                            Child.click();
+                        }
+                    }
+                }
             }
+
+            for (i = 0, len = this.$entries.length; i < len; i++) {
+                if (this.$entries[i].getStyle('display') !== 'none') {
+                    self.loadEntry(this.$entries[i]);
+                }
+            }
+
+            this.getElm().getElements('.quiqqer-portfolio-more')
+                .addEvent('click', this.next);
+
+            self.$loading = false;
+        },
+
+        /**
+         * Randomize
+         */
+        randomize: function () {
+            this.$randomize = true;
+
+            var self    = this,
+                entries = this.$entries.map(function (Entry) {
+                    return Entry;
+                });
+
+            entries.shuffle();
+
+            self.$List.setStyles({
+                height  : self.$List.getSize().y,
+                overflow: 'hidden'
+            });
+
+            var Start = Promise.resolve();
+
+            if (this.$loading === false) {
+                Start = this.$hide(this.$entries);
+            }
+
+            return Start.then(function () {
+                entries.shuffle();
+
+                var rest = [];
+
+                for (var i = 0, len = entries.length; i < len; i++) {
+                    entries[i].inject(self.$List);
+                }
+
+                entries = self.$List.getElements('.quiqqer-portfolio-list-entry');
+                entries.set('data-available', 1);
+
+                if (self.getAttribute('start-reference') &&
+                    entries.length > self.getAttribute('start-reference')) {
+
+                    rest    = entries.slice(self.getAttribute('start-reference'));
+                    entries = new Elements(
+                        entries.slice(0, self.getAttribute('start-reference'))
+                    );
+                }
+
+                return self.$show(entries).then(function () {
+                    return self.loadEntries(entries);
+                }).then(function () {
+                    rest.each(function (entry) {
+                        entry.setStyle('display', 'none');
+                    });
+
+                    return new Promise(function (resolve) {
+                        moofx(self.$List).animate({
+                            height: self.$List.getScrollSize().y
+                        }, {
+                            duration: 200,
+                            callback: function () {
+                                self.$List.setStyle('height', null);
+                                resolve();
+                            }
+                        });
+                    });
+                });
+            });
+        },
+
+        /**
+         * Normalize the portfolio
+         *
+         * @returns {Promise}
+         */
+        normalize: function () {
+            var self = this;
+
+            return new Promise(function (resolve) {
+                var entries = self.$List.getElements(
+                    '.quiqqer-portfolio-list-entry'
+                ).sort(function (A, B) {
+                    var aNo = A.get('data-no');
+                    var bNo = B.get('data-no');
+
+                    if (aNo > bNo) {
+                        return 1;
+                    }
+
+                    if (aNo < bNo) {
+                        return -1;
+                    }
+
+                    return 0;
+                });
+
+                self.$hide(entries).then(function () {
+                    for (var i = 0, len = entries.length; i < len; i++) {
+                        entries[i].inject(self.$List);
+                    }
+
+                    entries.each(function (Entry) {
+                        Entry.setStyle('width', null);
+                    });
+
+                    self.$randomize = false;
+                    resolve();
+                });
+            });
+        },
+
+        /**
+         * Return the child width
+         *
+         * @returns {Number}
+         */
+        getChildWidth: function () {
+            if (this.$childWidth) {
+                return this.$childWidth;
+            }
+
+            var childWidth = this.$entries[0].getSize().x;
+
+            if (!childWidth) {
+                this.$entries[0].setStyles({
+                    display : null,
+                    opacity : 0,
+                    position: 'absolute',
+                    width   : null
+                });
+
+                childWidth = this.$entries[0].getSize().x - 2;
+
+                this.$entries[0].setStyles({
+                    position: null,
+                    width   : 0
+                });
+            }
+
+            this.$childWidth = childWidth;
+
+            return childWidth;
+        },
+
+        /**
+         * Load entries
+         *
+         * @param {Array|Elements} list
+         */
+        loadEntries: function (list) {
+            var self = this,
+                load = function () {
+                    self.loadEntry(this);
+                };
+
+            for (var i = 0, len = list.length; i < len; i++) {
+                (load).delay(i * 100, list[i]);
+            }
+
+            this.$refreshMoreButton();
+        },
+
+        /**
+         *
+         * @param Node
+         * @return {Promise}
+         */
+        loadEntry: function (Node) {
+            if (!Node.hasClass('quiqqer-portfolio-list-entry')) {
+                return Promise.resolve();
+            }
+
+            return new Promise(function (resolve) {
+                Node.setStyle('display', null);
+
+                var image    = Node.get('data-image'),
+                    position = Node.get('data-position'),
+                    Parent   = Node.getElement('figure a');
+
+                var ending = image.substr(image.lastIndexOf('.'));
+                var split  = image.substr(0, image.lastIndexOf('.')).split('__')[0];
+                var width  = parseInt(Node.getSize().x);
+
+                image = split + '__' + width + ending;
+
+                require(['image!' + image], function () {
+                    var Image = new Element('img', {
+                        src   : image,
+                        styles: {
+                            opacity: 0
+                        }
+                    }).inject(Parent);
+
+                    position = position.trim().split(';');
+                    position.each(function (entry) {
+                        if (entry === '') {
+                            return;
+                        }
+
+                        entry = entry.split(':');
+                        Image.setStyle(entry[0].trim(), entry[1].trim());
+                    });
+
+                    moofx(Image).animate({
+                        opacity: 1
+                    }, {
+                        duration: 200,
+                        callback: resolve
+                    });
+                });
+            });
+        },
+
+        /**
+         * Shows the next portfolio entries
+         */
+        next: function () {
+            var self      = this,
+                max       = 6,
+                displayed = 0;
+
+            this.$List.setStyles({
+                height  : this.$List.getSize().y,
+                overflow: 'hidden'
+            });
+
+            var entries = this.$List.getElements('.quiqqer-portfolio-list-entry');
+            var list    = [];
+
+            for (var i = 0, len = entries.length; i < len; i++) {
+                if (entries[i].getStyle('display') !== 'none') {
+                    continue;
+                }
+
+                if (max <= displayed) {
+                    break;
+                }
+
+                if (parseInt(entries[i].get('data-available')) === 0) {
+                    continue;
+                }
+
+                list.push(entries[i]);
+                displayed++;
+            }
+
+            this.$show(new Elements(list)).then(function () {
+                var promies = [];
+
+                list.each(function (node) {
+                    promies.push(self.loadEntry(node));
+                });
+
+                return Promise.all(promies);
+            }).then(function () {
+                var height = self.$List.getScrollSize().y;
+
+                self.$refreshMoreButton();
+
+                return new Promise(function (resolve) {
+
+                    moofx(self.$List).animate({
+                        height: height
+                    }, {
+                        duration: 200,
+                        callback: function () {
+                            self.$List.setStyles({
+                                height  : null,
+                                overflow: null
+                            });
+
+
+                            var displayed = self.$List.getElements(
+                                '.quiqqer-portfolio-list-entry'
+                            ).filter(function (Entry) {
+                                return Entry.getStyle('display') !== 'none';
+                            });
+
+                            self.setAttribute('start-reference', displayed.length);
+
+                            resolve();
+                        }
+                    });
+                });
+            });
+        },
+
+        /**
+         * Look for more button
+         */
+        $refreshMoreButton: function () {
+            var hidden = this.$List.getElements('[data-available="1"]:display(none)'),
+                more   = this.getElm().getElements('.quiqqer-portfolio-more');
+
+            if (!hidden.length) {
+                more.setStyle('display', 'none');
+            } else {
+                more.setStyle('display', null);
+            }
+        },
+
+        /**
+         * init the js events for the entries
+         */
+        $initEvents: function () {
+            var self = this;
 
             var openEntry = function (event) {
                 if (typeOf(event) === 'domevent') {
@@ -235,114 +569,31 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                 });
             }.bind(this);
 
-            for (i = 0, len = self.$entries.length; i < len; i++) {
-                self.$entries[i].addEvent('click', openEntry);
-            }
-
-            if (self.getAttribute('useanchor')) {
-                var anchor = window.location.href.split('#');
-
-                if (typeof anchor[1] !== 'undefined') {
-                    var Child = this.getElm().getElement('[data-id="' + anchor[1] + '"]');
-
-                    if (Child) {
-                        Child.click();
-                    }
-                }
+            for (var i = 0, len = self.$entries.length; i < len; i++) {
+                this.$entries[i].addEvent('click', openEntry);
             }
         },
 
         /**
-         * Randomize
-         */
-        randomize: function () {
-            this.$randomize = true;
-
-            var self    = this;
-            var entries = self.$entries.map(function (Entry) {
-                return Entry;
-            });
-
-            entries.shuffle();
-
-            self.$List.setStyle('height', self.$List.getSize().y);
-
-            moofx(entries).animate({
-                height : 0,
-                opacity: 0,
-                padding: 0,
-                width  : 0
-            }, {
-                duration: 250,
-                callback: function () {
-                    entries.shuffle();
-
-                    for (var i = 0, len = entries.length; i < len; i++) {
-                        entries[i].inject(self.$List);
-                    }
-
-                    moofx(entries).animate({
-                        height : 300,
-                        opacity: 1,
-                        padding: 10,
-                        width  : self.getChildWidth()
-                    }, {
-                        duration: 250,
-                        callback: function () {
-                            entries.each(function (Entry) {
-                                Entry.setStyle('width', null);
-                            });
-
-                            self.$List.setStyle('height', null);
-                        }
-                    });
-                }
-            });
-        },
-
-        /**
-         * Normalize the portfolio
+         * hide elements
          *
-         * @returns {Promise}
+         * @param list
+         * @return {*|Promise}
          */
-        normalize: function () {
-            var self = this;
+        $hide: function (list) {
+            if (!list.length) {
+                return Promise.resolve();
+            }
 
             return new Promise(function (resolve) {
-                var entries = self.$List.getElements(
-                    '.quiqqer-portfolio-list-entry'
-                ).sort(function (A, B) {
-                    var aNo = A.get('data-no');
-                    var bNo = B.get('data-no');
-
-                    if (aNo > bNo) {
-                        return 1;
-                    }
-
-                    if (aNo < bNo) {
-                        return -1;
-                    }
-
-                    return 0;
-                });
-
-                moofx(entries).animate({
+                moofx(list).animate({
                     height : 0,
                     opacity: 0,
-                    padding: 0,
-                    width  : 0
+                    padding: 0
                 }, {
                     duration: 250,
                     callback: function () {
-                        for (var i = 0, len = entries.length; i < len; i++) {
-                            entries[i].inject(self.$List);
-                        }
-
-                        entries.each(function (Entry) {
-                            Entry.setStyle('width', null);
-                        });
-
-                        self.$randomize = false;
+                        list.setStyle('display', 'none');
                         resolve();
                     }
                 });
@@ -350,28 +601,30 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
         },
 
         /**
-         * Return the child width
+         * show elements
          *
-         * @returns {Number}
+         * @param list
+         * @return {*|Promise}
          */
-        getChildWidth: function () {
-            var childWidth = this.$entries[0].getSize().x;
-
-            if (!childWidth) {
-                this.$entries[0].setStyles({
-                    position: 'absolute',
-                    width   : null
-                });
-
-                childWidth = this.$entries[0].getSize().x;
-
-                this.$entries[0].setStyles({
-                    position: null,
-                    width   : 0
-                });
+        $show: function (list) {
+            if (!list.length) {
+                return Promise.resolve();
             }
 
-            return childWidth;
+            var self = this;
+
+            return new Promise(function (resolve) {
+                list.setStyle('display', null);
+
+                moofx(list).animate({
+                    height : 300,
+                    opacity: 1,
+                    padding: 10
+                }, {
+                    duration: 250,
+                    callback: resolve
+                });
+            });
         }
     });
 });
