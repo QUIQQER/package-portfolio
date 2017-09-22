@@ -148,20 +148,6 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                 self.$categories[i].addEvent('click', openCategory);
             }
 
-            if (this.$Categories &&
-                this.$Categories.getElement('.quiqqer-portfolio-categories-random')) {
-
-                this.randomize().then(function () {
-                    self.$loading = false;
-
-                    self.getElm().getElements('.quiqqer-portfolio-more')
-                        .addEvent('click', self.next);
-                });
-
-                return;
-            }
-
-
             // entries
             if (this.getAttribute('nopopups')) {
                 this.getElm().getElements('figure').setStyle('cursor', 'default');
@@ -181,14 +167,25 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                 }
             }
 
+            this.getElm().getElements('.quiqqer-portfolio-more')
+                .addEvent('click', this.next);
+
+            if (this.$Categories &&
+                this.$Categories.getElement('.quiqqer-portfolio-categories-random')) {
+
+                this.randomize().then(function () {
+                    self.$loading = false;
+                });
+
+                return;
+            }
+
+
             for (i = 0, len = this.$entries.length; i < len; i++) {
                 if (this.$entries[i].getStyle('display') !== 'none') {
                     self.loadEntry(this.$entries[i]);
                 }
             }
-
-            this.getElm().getElements('.quiqqer-portfolio-more')
-                .addEvent('click', this.next);
 
             self.$loading = false;
         },
@@ -416,6 +413,8 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                 overflow: 'hidden'
             });
 
+            var oldNext = '';
+            var Next    = this.getElm().getElement('.quiqqer-portfolio-more');
             var entries = this.$List.getElements('.quiqqer-portfolio-list-entry');
             var list    = [];
 
@@ -435,6 +434,12 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                 list.push(entries[i]);
                 displayed++;
             }
+
+            if (Next) {
+                oldNext = Next.get('html');
+                Next.set('html', '<span class="fa fa-spinner fa-spin"></span>');
+            }
+
 
             this.$show(new Elements(list)).then(function () {
                 var promies = [];
@@ -469,6 +474,10 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                             });
 
                             self.setAttribute('start-reference', displayed.length);
+
+                            if (Next) {
+                                Next.set('html', oldNext);
+                            }
 
                             resolve();
                         }
