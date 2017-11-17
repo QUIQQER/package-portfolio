@@ -32,7 +32,6 @@ class Portfolio extends QUI\Control
             'data-qui-options-useanchor'       => false,
             'data-qui-options-lazyloading'     => true,
             'data-qui-options-start-reference' => 3
-
         ));
 
         $this->addCSSFile(
