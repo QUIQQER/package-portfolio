@@ -1,3 +1,4 @@
+
 {if count($categories)}
 <section class="quiqqer-portfolio-categories">
     {if $this->getAttribute('showRandomButton')}
@@ -20,7 +21,7 @@
 
 </section>
 
-<hr/>
+<hr class="quiqqer-portfolio-line"/>
 
 {/if}
 
@@ -59,6 +60,7 @@
         </noscript>
     </div>
     {assign var=c value=$c+1}
+
     {/foreach}
 </section>
 
@@ -70,7 +72,16 @@
 <noscript>
     <style>
         .quiqqer-portfolio-more {
-            display: inline;
+            display: none;
+        }
+
+        .quiqqer-portfolio-list-entry {
+            display: block !important;
+        }
+
+        .quiqqer-portfolio-categories,
+        .quiqqer-portfolio-line {
+            display: none;
         }
     </style>
 </noscript>
