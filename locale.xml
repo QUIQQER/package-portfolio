@@ -201,7 +201,7 @@
         <locale name="quiqqer.portfolio.settings.imgPosition.cover">
             <de><![CDATA[Gesamte Fläche ausfüllen]]></de>
             <en><![CDATA[Fill the whole area]]></en>
-            <pl><![CDATA[Wypełnić całą dostępną przestrzeń]]></pl>
+            <pl><![CDATA[Wypełnij całą dostępną przestrzeń]]></pl>
         </locale>
 
         <locale name="quiqqer.portfolio.category.all">
@@ -218,6 +218,13 @@
         <locale name="quiqqer.portfolio.category.more">
             <de><![CDATA[Mehr]]></de>
             <en><![CDATA[More]]></en>
+            <pl><![CDATA[Więcej]]></pl>
+        </locale>
+
+        <locale name="quiqqer.portfolio.openPortfolio">
+            <de><![CDATA[Mehr]]></de>
+            <en><![CDATA[More]]></en>
+            <en><![CDATA[Więcej]]></en>
         </locale>
     </groups>
 </locales>

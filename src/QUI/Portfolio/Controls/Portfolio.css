@@ -149,6 +149,17 @@ die untere divs verschoben werden */
     width: calc(33% - 20px);
 }
 
+.quiqqer-portfolio-openPortfolio,
+.quiqqer-portfolio-openPortfolio:hover {
+    color: inherit;
+    text-decoration: underline;
+    display: block;
+}
+.quiqqer-portfolio-openPortfolio:hover {
+    opacity: 0.6;
+}
+
+
 /* design classes */
 .quiqqer-portfolio-list-entry-10 {
     width: 10%;

@@ -48,6 +48,11 @@
                 </h3>
                 <div>
                     {$Child->getAttribute('short')}
+                    <noscript>
+                        <a href="{url site=$Child}" class="quiqqer-portfolio-openPortfolio">
+                            {locale group="quiqqer/portfolio" var="quiqqer.portfolio.openPortfolio"}
+                        </a>
+                    </noscript>
                 </div>
             </figcaption>
         </figure>
