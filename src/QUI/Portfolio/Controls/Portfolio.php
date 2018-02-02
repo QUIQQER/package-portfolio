@@ -9,7 +9,6 @@ namespace QUI\Portfolio\Controls;
 use QUI;
 use QUI\Projects\Site\Utils;
 
-
 /**
  * Class Portfolio
  * @package QUI\Portfolio\Bricks
