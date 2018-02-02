@@ -105,7 +105,9 @@ class Portfolio extends QUI\Control
         }
 
         if (empty($portfolio)) {
-            QUI\System\Log::addError('Could not found any site of typ "quiqqer/portfolio:types/entry". Any site in portfolio brick setting selected? Right typ for portfolio entry sites?');
+            QUI\System\Log::addInfo(
+                QUI::getLocale()->get('quiqqer/portfolio', 'admin.portfolio.debug.noTypeFound')
+            );
             return '';
         }
 

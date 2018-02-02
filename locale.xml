@@ -27,6 +27,14 @@
             <de><![CDATA[Referenzeintrag]]></de>
             <en><![CDATA[Portfolio entry]]></en>
         </locale>
+        <locale name="admin.portfolio.debug.noTypeFound">
+            <de><![CDATA[Es konnte keine Seite vom Typ "quiqqqer/portfolio:types/entry" gefunden werden.
+            Baustein: wurde in Einstellungen mindestens eine Seite von Typ "Portfolio Eintrag" ausgewählt?
+            Portfoliolist: hat die Liste Kinder mit dem Typ "Portfolio Eintrag"?]]></de>
+            <en><![CDATA[Could not found any site of typ "quiqqer/portfolio:types/entry".
+            Any site in portfolio brick setting selected?
+            Site "portfolio list": does children have right typ?]]></en>
+        </locale>
 
         <locale name="quiqqer.portfolio.settings.title">
             <de><![CDATA[Referenz Listen Einstellungen]]></de>
@@ -234,5 +242,7 @@
             <en><![CDATA[More]]></en>
             <en><![CDATA[Więcej]]></en>
         </locale>
+
+
     </groups>
 </locales>
