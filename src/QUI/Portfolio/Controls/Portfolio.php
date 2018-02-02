@@ -104,6 +104,11 @@ class Portfolio extends QUI\Control
             ));
         }
 
+        if (empty($portfolio)) {
+            QUI\System\Log::addError('Could not found any site of typ "quiqqer/portfolio:types/entry". Any site in portfolio brick setting selected? Right typ for portfolio entry sites?');
+            return '';
+        }
+
         $categories = $Site->getAttribute(
             'quiqqer.portfolio.settings.categories'
         );
@@ -149,8 +154,6 @@ class Portfolio extends QUI\Control
                 $cssClass = 'quiqqer-portfolio-list-entry-33';
                 break;
         }
-
-        echo $this->getAttribute('img-position');
 
         switch ($this->getAttribute('img-position')) {
             case 'cover':

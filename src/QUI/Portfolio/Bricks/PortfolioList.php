@@ -19,7 +19,6 @@ class PortfolioList extends QUI\Control
      */
     public function getBody()
     {
-        var_dump($this->getAttribute('imgPosition'));
         $Portfolio = new QUI\Portfolio\Controls\Portfolio(array(
             'showRandomButton'                 => $this->getAttribute('showRandomButton'),
             'limit'                            => false,
