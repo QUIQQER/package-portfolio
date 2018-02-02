@@ -156,31 +156,11 @@
             <de><![CDATA[Wählen Sie bitte einen Namen für Ihre Kategorie.]]></de>
             <en><![CDATA[Please choose a name for your category.]]></en>
         </locale>
-    </groups>
 
-    <groups name="quiqqer/portfolio" datatype="php">
-        <!-- portfolio entry -->
-        <locale name="quiqqer.portfolio.reference.settings.title">
-            <de><![CDATA[Referenz Eigenschaften]]></de>
-            <en><![CDATA[Referenz properties]]></en>
-        </locale>
-        <locale name="quiqqer.portfolio.settings.mediaFolder">
-            <de><![CDATA[Media Ordner]]></de>
-            <en><![CDATA[Media folder]]></en>
-        </locale>
-        <locale name="quiqqer.portfolio.settings.website">
-            <de><![CDATA[URL zur Webseite]]></de>
-            <en><![CDATA[Adress to the website]]></en>
-        </locale>
+
         <locale name="quiqqer.portfolio.settings.referenceStartNumber">
             <de><![CDATA[Anzahl der Referenzen zu beginn]]></de>
             <en><![CDATA[Number of references at the beginning]]></en>
-        </locale>
-
-        <!-- portfolio list (site) -->
-        <locale name="quiqqer.portfolio.popup.settings.title">
-            <de><![CDATA[Referenz Darstellung]]></de>
-            <en><![CDATA[Portfolio presentation]]></en>
         </locale>
         <locale name="quiqqer.portfolio.settings.randomButton">
             <de><![CDATA[Zufalls Button anzeigen]]></de>
@@ -202,6 +182,34 @@
             <de><![CDATA[Gesamte Fläche ausfüllen]]></de>
             <en><![CDATA[Fill the whole area]]></en>
             <pl><![CDATA[Wypełnij całą dostępną przestrzeń]]></pl>
+        </locale>
+
+        <locale name="brick.control.portfolio.setting.site">
+            <de><![CDATA[Seiten hinzufügen]]></de>
+            <en><![CDATA[Add pages]]></en>
+            <pl><![CDATA[Dodawanie stron]]></pl>
+        </locale>
+    </groups>
+
+    <groups name="quiqqer/portfolio" datatype="php">
+        <!-- portfolio entry -->
+        <locale name="quiqqer.portfolio.reference.settings.title">
+            <de><![CDATA[Referenz Eigenschaften]]></de>
+            <en><![CDATA[Referenz properties]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.settings.mediaFolder">
+            <de><![CDATA[Media Ordner]]></de>
+            <en><![CDATA[Media folder]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.settings.website">
+            <de><![CDATA[URL zur Webseite]]></de>
+            <en><![CDATA[Adress to the website]]></en>
+        </locale>
+
+        <!-- portfolio list (site) -->
+        <locale name="quiqqer.portfolio.popup.settings.title">
+            <de><![CDATA[Referenz Darstellung]]></de>
+            <en><![CDATA[Portfolio presentation]]></en>
         </locale>
 
         <locale name="quiqqer.portfolio.category.all">
