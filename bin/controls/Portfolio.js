@@ -373,7 +373,9 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                     width = 300;
                 }
 
-                image = split + '__' + width + ending;
+                if (image.indexOf('data:image/png;base64,') !== 0) {
+                    image = split + '__' + width + ending;
+                }
 
                 require(['image!' + image], function () {
                     var Image = new Element('img', {
