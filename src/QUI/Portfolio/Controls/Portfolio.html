@@ -69,7 +69,7 @@
     {/foreach}
 </section>
 
-{if $lazyloading}
+{if $lazyloading  && $c > $displayNum}
 <div class="quiqqer-portfolio-more button">
     {locale group="quiqqer/portfolio" var="quiqqer.portfolio.category.more"}
 </div>
