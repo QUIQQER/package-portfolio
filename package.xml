@@ -8,7 +8,7 @@
             <locale group="quiqqer/portfolio" var="package.description"/>
         </description>
 
-        <image src="URL_OPT_DIR/quiqqer/package-portfolio/bin/images/Logo.jpg"/>
+        <image src="URL_OPT_DIR/quiqqer/portfolio/bin/images/Logo.jpg"/>
 
         <preview>
             <image src="URL_OPT_DIR/quiqqer/portfolio/bin/images/preview/1.jpg"/>
