@@ -377,6 +377,11 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                     image = split + '__' + width + ending;
                 }
 
+                // If there already is an image element, don't add another one
+                if (Parent.getElement('img')) {
+                    return;
+                }
+
                 require(['image!' + image], function () {
                     var Image = new Element('img', {
                         src   : image,
