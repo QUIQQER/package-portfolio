@@ -8,14 +8,20 @@
             <locale group="quiqqer/portfolio" var="package.description"/>
         </description>
 
-        <image src="URL_OPT_DIR/quiqqer/package-portfolio/bin/images/Logo.jpg"/>
+        <image src="URL_OPT_DIR/quiqqer/portfolio/bin/images/Logo.jpg"/>
+
+        <preview>
+            <image src="URL_OPT_DIR/quiqqer/portfolio/bin/images/preview/1.jpg"/>
+            <image src="URL_OPT_DIR/quiqqer/portfolio/bin/images/preview/2.jpg"/>
+            <image src="URL_OPT_DIR/quiqqer/portfolio/bin/images/preview/3.jpg"/>
+        </preview>
 
         <support>
-            <email>support@pcsg.de</email>
-            <forum>https://community.quiqqer.com</forum>
-            <source>https://dev.quiqqer.com/quiqqer/package-portfolio</source>
-            <issues>https://dev.quiqqer.com/quiqqer/package-portfolio/issues</issues>
-            <wiki>https://dev.quiqqer.com/quiqqer/package-portfolio/wikis/home</wiki>
+            <email><![CDATA[support@pcsg.de]]></email>
+            <forum><![CDATA[https://community.quiqqer.com]]></forum>
+            <source><![CDATA[https://dev.quiqqer.com/quiqqer/package-portfolio]]></source>
+            <issues><![CDATA[https://dev.quiqqer.com/quiqqer/package-portfolio/issues]]></issues>
+            <wiki><![CDATA[https://dev.quiqqer.com/quiqqer/package-portfolio/wikis/home]]></wiki>
         </support>
 
         <copyright>

@@ -16,7 +16,7 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
     "use strict";
 
     window.Slick.definePseudo('display', function (value) {
-        return Element.getStyle(this, 'display') == value;
+        return Element.getStyle(this, 'display') === value;
     });
 
     return new Class({
@@ -167,8 +167,7 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                 }
             }
 
-            this.getElm().getElements('.quiqqer-portfolio-more')
-                .addEvent('click', this.next);
+            this.getElm().getElements('.quiqqer-portfolio-more').addEvent('click', this.next);
 
             if (this.$Categories &&
                 this.$Categories.getElement('.quiqqer-portfolio-categories-random')) {
@@ -370,7 +369,13 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                 var split  = image.substr(0, image.lastIndexOf('.')).split('__')[0];
                 var width  = parseInt(Node.getSize().x);
 
-                image = split + '__' + width + ending;
+                if (width < 300) {
+                    width = 300;
+                }
+
+                if (image.indexOf('data:image/png;base64,') !== 0) {
+                    image = split + '__' + width + ending;
+                }
 
                 require(['image!' + image], function () {
                     var Image = new Element('img', {

@@ -3,27 +3,27 @@
 Portfolio
 ========
 
-Modul für Referenzen / Kundenprojekte etc
+Module for references/customer projects etc.
 
-Paketname:
+Package Name:
 
     quiqqer/portfolio
 
 
-Features (Funktionen)
+Features
 --------
 
-- Seitentyp: Referenzliste
-- Seitentyp: Referenzeintrag
-- Verschiedenen JavaScript Referenz Popups
+- Sitetype: Reference-List
+- Sitetype: Reference-Entry
+- Different JavaScript Reference Popups
 
 Installation
 ------------
 
-Der Paketname ist: quiqqer/portfolio
+The package name is: quiqqer/portfolio
 
 
-Mitwirken
+Contribute
 ----------
 
 - Project: https://dev.quiqqer.com/quiqqer/package-portfolio
@@ -34,11 +34,14 @@ Mitwirken
 Support
 -------
 
-Falls Sie ein Fehler gefunden haben, oder Verbesserungen wünschen,
-dann können Sie gerne an support@pcsg.de eine E-Mail schreiben.
+If you have found errors, wishes or suggestions for improvement,
+you can contact us by email at support@pcsg.de.
+
+We will try to meet your needs or send them to the responsible developers
+of the project.
 
 
-Lizenz
+License
 -------
 - PCSG QL-1.0
 - GPL-3.0+

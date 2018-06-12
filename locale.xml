@@ -27,6 +27,14 @@
             <de><![CDATA[Referenzeintrag]]></de>
             <en><![CDATA[Portfolio entry]]></en>
         </locale>
+        <locale name="admin.portfolio.debug.noTypeFound">
+            <de><![CDATA[Es konnte keine Seite vom Typ "quiqqqer/portfolio:types/entry" gefunden werden.
+            Baustein: wurde in Einstellungen mindestens eine Seite von Typ "Portfolio Eintrag" ausgewählt?
+            Portfoliolist: hat die Liste Kinder mit dem Typ "Portfolio Eintrag"?]]></de>
+            <en><![CDATA[Could not found any site of typ "quiqqer/portfolio:types/entry".
+            Any site in portfolio brick setting selected?
+            Site "portfolio list": does children have right typ?]]></en>
+        </locale>
 
         <locale name="quiqqer.portfolio.settings.title">
             <de><![CDATA[Referenz Listen Einstellungen]]></de>
@@ -156,31 +164,11 @@
             <de><![CDATA[Wählen Sie bitte einen Namen für Ihre Kategorie.]]></de>
             <en><![CDATA[Please choose a name for your category.]]></en>
         </locale>
-    </groups>
 
-    <groups name="quiqqer/portfolio" datatype="php">
-        <!-- portfolio entry -->
-        <locale name="quiqqer.portfolio.reference.settings.title">
-            <de><![CDATA[Referenz Eigenschaften]]></de>
-            <en><![CDATA[Referenz properties]]></en>
-        </locale>
-        <locale name="quiqqer.portfolio.settings.mediaFolder">
-            <de><![CDATA[Media Ordner]]></de>
-            <en><![CDATA[Media folder]]></en>
-        </locale>
-        <locale name="quiqqer.portfolio.settings.website">
-            <de><![CDATA[URL zur Webseite]]></de>
-            <en><![CDATA[Adress to the website]]></en>
-        </locale>
+
         <locale name="quiqqer.portfolio.settings.referenceStartNumber">
             <de><![CDATA[Anzahl der Referenzen zu beginn]]></de>
             <en><![CDATA[Number of references at the beginning]]></en>
-        </locale>
-
-        <!-- portfolio list (site) -->
-        <locale name="quiqqer.portfolio.popup.settings.title">
-            <de><![CDATA[Referenz Darstellung]]></de>
-            <en><![CDATA[Portfolio presentation]]></en>
         </locale>
         <locale name="quiqqer.portfolio.settings.randomButton">
             <de><![CDATA[Zufalls Button anzeigen]]></de>
@@ -201,7 +189,35 @@
         <locale name="quiqqer.portfolio.settings.imgPosition.cover">
             <de><![CDATA[Gesamte Fläche ausfüllen]]></de>
             <en><![CDATA[Fill the whole area]]></en>
-            <pl><![CDATA[Wypełnić całą dostępną przestrzeń]]></pl>
+            <pl><![CDATA[Wypełnij całą dostępną przestrzeń]]></pl>
+        </locale>
+
+        <locale name="brick.control.portfolio.setting.site">
+            <de><![CDATA[Seiten hinzufügen]]></de>
+            <en><![CDATA[Add pages]]></en>
+            <pl><![CDATA[Dodawanie stron]]></pl>
+        </locale>
+    </groups>
+
+    <groups name="quiqqer/portfolio" datatype="php">
+        <!-- portfolio entry -->
+        <locale name="quiqqer.portfolio.reference.settings.title">
+            <de><![CDATA[Referenz Eigenschaften]]></de>
+            <en><![CDATA[Referenz properties]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.settings.mediaFolder">
+            <de><![CDATA[Media Ordner]]></de>
+            <en><![CDATA[Media folder]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.settings.website">
+            <de><![CDATA[URL zur Webseite]]></de>
+            <en><![CDATA[Adress to the website]]></en>
+        </locale>
+
+        <!-- portfolio list (site) -->
+        <locale name="quiqqer.portfolio.popup.settings.title">
+            <de><![CDATA[Referenz Darstellung]]></de>
+            <en><![CDATA[Portfolio presentation]]></en>
         </locale>
 
         <locale name="quiqqer.portfolio.category.all">
@@ -218,6 +234,15 @@
         <locale name="quiqqer.portfolio.category.more">
             <de><![CDATA[Mehr]]></de>
             <en><![CDATA[More]]></en>
+            <pl><![CDATA[Więcej]]></pl>
         </locale>
+
+        <locale name="quiqqer.portfolio.openPortfolio">
+            <de><![CDATA[Mehr]]></de>
+            <en><![CDATA[More]]></en>
+            <en><![CDATA[Więcej]]></en>
+        </locale>
+
+
     </groups>
 </locales>

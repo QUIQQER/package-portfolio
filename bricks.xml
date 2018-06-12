@@ -14,9 +14,9 @@
                 />
             </description>
             <settings>
-                <!--<setting name="site" data-qui="controls/projects/project/site/Select">
+                <setting name="site" data-qui="controls/projects/project/site/Select">
                     <locale group="quiqqer/portfolio" var="brick.control.portfolio.setting.site"/>
-                </setting>-->
+                </setting>
                 <setting name="order" type="select">
                     <locale group="quiqqer/bricks" var="brick.control.setting.order"/>
 
@@ -51,14 +51,94 @@
                         <locale group="quiqqer/system" var="release_from_desc"/>
                     </option>
                 </setting>
-                <setting name="showImage" type="checkbox">
-                    <locale group="quiqqer/portfolio" var="brick.control.portfolio.setting.showImage"/>
+
+
+                <setting name="referenceStartNumber" type="number">
+                        <locale group="quiqqer/portfolio"
+                                var="quiqqer.portfolio.settings.referenceStartNumber"/>
                 </setting>
-                <setting name="showTitle" type="checkbox">
-                    <locale group="quiqqer/portfolio" var="brick.control.portfolio.setting.showTitle"/>
+
+                <setting name="portfolioEffect" type="select">
+                        <locale group="quiqqer/portfolio" var="quiqqer.portfolio.settings.portfolioEffect"/>
+
+                    <option value="style1">1</option>
+                    <option value="style2">2</option>
+                    <option value="style3">3</option>
+                    <option value="style4">4</option>
+                    <option value="style5">5</option>
+                    <option value="style6">6</option>
+                    <option value="style7">7</option>
                 </setting>
-                <setting name="showShort" type="checkbox">
-                    <locale group="quiqqer/portfolio" var="brick.control.portfolio.setting.showShort"/>
+
+                <setting name="portfolioEntryWidth" type="select">
+                    <text>
+                        <locale group="quiqqer/portfolio"
+                                var="quiqqer.portfolio.settings.portfolioEntryWidth"/>
+                    </text>
+                    <option value="10%">10%</option>
+                    <option value="20%">20%</option>
+                    <option value="25%">25%</option>
+                    <option value="33.3333%">33% (1/3)</option>
+                    <option value="50%">50%</option>
+                </setting>
+
+                <setting name="showRandomButton" type="checkbox">
+                    <text>
+                        <locale group="quiqqer/portfolio"
+                                var="quiqqer.portfolio.settings.randomButton"/>
+                    </text>
+                </setting>
+
+                <setting name="portfolioNoPopup" type="checkbox">
+                    <text>
+                        <locale group="quiqqer/portfolio"
+                                var="quiqqer.portfolio.settings.portfolioNoPopup"/>
+                    </text>
+                </setting>
+
+                <setting name="imgPosition" type="select">
+                    <text>
+                        <locale group="quiqqer/portfolio"
+                                var="quiqqer.portfolio.settings.imgPosition"/>
+                    </text>
+                    <option value="contain">
+                        <locale group="quiqqer/portfolio"
+                                var="quiqqer.portfolio.settings.imgPosition.contain"/>
+                    </option>
+                    <option value="cover">
+                        <locale group="quiqqer/portfolio"
+                                var="quiqqer.portfolio.settings.imgPosition.cover"/>
+                    </option>
+                </setting>
+
+
+                <setting name="showArrows" type="checkbox">
+                    <text>
+                        <locale group="quiqqer/portfolio"
+                                var="quiqqer.portfolio.settings.showArrows"/>
+                    </text>
+                </setting>
+
+                <setting name="popupType" type="select">
+                    <locale group="quiqqer/portfolio"
+                            var="quiqqer.portfolio.settings.portfolioPopup.type"/>
+
+                    <option value="short">
+                        <locale group="quiqqer/portfolio"
+                                var="quiqqer.portfolio.settings.portfolioPopup.type.short"/>
+                    </option>
+                    <option value="reference">
+                        <locale group="quiqqer/portfolio"
+                                var="quiqqer.portfolio.settings.portfolioPopup.type.reference"/>
+                    </option>
+                    <option value="referenceNextPrev">
+                        <locale group="quiqqer/portfolio"
+                                var="quiqqer.portfolio.settings.portfolioPopup.type.referenceNextPrev"/>
+                    </option>
+                    <option value="image">
+                        <locale group="quiqqer/portfolio"
+                                var="quiqqer.portfolio.settings.portfolioPopup.type.image"/>
+                    </option>
                 </setting>
             </settings>
         </brick>

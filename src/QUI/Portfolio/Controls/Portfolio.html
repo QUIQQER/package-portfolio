@@ -1,3 +1,4 @@
+
 {if count($categories)}
 <section class="quiqqer-portfolio-categories">
     {if $this->getAttribute('showRandomButton')}
@@ -20,7 +21,7 @@
 
 </section>
 
-<hr/>
+<hr class="quiqqer-portfolio-line"/>
 
 {/if}
 
@@ -47,6 +48,11 @@
                 </h3>
                 <div>
                     {$Child->getAttribute('short')}
+                    <noscript>
+                        <a href="{url site=$Child}" class="quiqqer-portfolio-openPortfolio">
+                            {locale group="quiqqer/portfolio" var="quiqqer.portfolio.openPortfolio"}
+                        </a>
+                    </noscript>
                 </div>
             </figcaption>
         </figure>
@@ -59,10 +65,11 @@
         </noscript>
     </div>
     {assign var=c value=$c+1}
+
     {/foreach}
 </section>
 
-{if $lazyloading}
+{if $lazyloading  && $c > $displayNum}
 <div class="quiqqer-portfolio-more button">
     {locale group="quiqqer/portfolio" var="quiqqer.portfolio.category.more"}
 </div>
@@ -70,7 +77,16 @@
 <noscript>
     <style>
         .quiqqer-portfolio-more {
-            display: inline;
+            display: none;
+        }
+
+        .quiqqer-portfolio-list-entry {
+            display: block !important;
+        }
+
+        .quiqqer-portfolio-categories,
+        .quiqqer-portfolio-line {
+            display: none;
         }
     </style>
 </noscript>

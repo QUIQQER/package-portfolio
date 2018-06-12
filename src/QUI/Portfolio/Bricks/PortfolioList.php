@@ -3,6 +3,7 @@
 /**
  * This file contains QUI\Portfolio\Bricks\PortfolioList
  */
+
 namespace QUI\Portfolio\Bricks;
 
 use QUI;
@@ -14,16 +15,22 @@ use QUI;
 class PortfolioList extends QUI\Control
 {
     /**
-     *
      * @return string
      */
     public function getBody()
     {
-        $Project = QUI::getRewrite()->getProject();
-
         $Portfolio = new QUI\Portfolio\Controls\Portfolio(array(
-//            'Site'  => $Project->get(43),
-//            'limit' => 3
+            'showRandomButton'                 => $this->getAttribute('showRandomButton'),
+            'limit'                            => false,
+            'entry-effect'                     => $this->getAttribute('portfolioEffect'),
+            'entry-width'                      => $this->getAttribute('portfolioEntryWidth'),
+            'qui-class'                        => 'package/quiqqer/portfolio/bin/controls/Portfolio',
+            'data-qui-options-nopopups'        => $this->getAttribute('portfolioNoPopup'),
+            'data-qui-options-popuptype'       => $this->getAttribute('popupType'),
+            'data-qui-options-start-reference' => $this->getAttribute('referenceStartNumber'),
+            'parentInputList'                  => $this->getAttribute('site'),
+            'img-position'                     => $this->getAttribute('imgPosition'),
+            'order'                            => $this->getAttribute('order')
         ));
 
         return $Portfolio->create();

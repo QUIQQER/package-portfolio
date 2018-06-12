@@ -7,6 +7,7 @@
 namespace QUI\Portfolio\Controls;
 
 use QUI;
+use QUI\Projects\Site\Utils;
 
 /**
  * Class Portfolio
@@ -31,12 +32,13 @@ class Portfolio extends QUI\Control
             'data-qui-options-popuptype'       => 'short',
             'data-qui-options-useanchor'       => false,
             'data-qui-options-lazyloading'     => true,
-            'data-qui-options-start-reference' => 3
-
+            'data-qui-options-start-reference' => 3,
+            'parentInputList'                  => false, // for example from qui site select
+            'order'                            => 'c_date DESC'
         ));
 
         $this->addCSSFile(
-            dirname(__FILE__).'/Portfolio.css'
+            dirname(__FILE__) . '/Portfolio.css'
         );
 
 
@@ -52,14 +54,14 @@ class Portfolio extends QUI\Control
             case 'style6':
             case 'style7':
                 $effectFile = dirname(__FILE__)
-                              .'/Portfolio.'
-                              .$this->getAttribute('entry-effect').'.css';
+                    . '/Portfolio.'
+                    . $this->getAttribute('entry-effect') . '.css';
 
-                $this->addCSSClass('quiqqer-portfolio-'.$this->getAttribute('entry-effect'));
+                $this->addCSSClass('quiqqer-portfolio-' . $this->getAttribute('entry-effect'));
                 break;
 
             default:
-                $effectFile = dirname(__FILE__).'/Portfolio.style3.css';
+                $effectFile = dirname(__FILE__) . '/Portfolio.style3.css';
                 $this->addCSSClass('quiqqer-portfolio-style3');
                 break;
         }
@@ -69,6 +71,7 @@ class Portfolio extends QUI\Control
 
     /**
      * @return string
+     * @throws QUI\Exception
      */
     public function getBody()
     {
@@ -81,16 +84,32 @@ class Portfolio extends QUI\Control
             $limit = (int)$this->getAttribute('limit');
         }
 
-        // getProject()->getSites() muss wegen Brick.
-//        $portfolio = $Site->getProject()->getSites(array(
-        // @todo in den admin ein site select für die settings einführen
-        // dann kann getChildren raus
-        $portfolio = $Site->getChildren(array(
-            'where' => array(
-                'type' => 'quiqqer/portfolio:types/entry'
-            ),
-            'limit' => $limit
-        ));
+        if ($this->getAttribute('parentInputList')) {
+            // for bricks
+            $parents   = $this->getAttribute('parentInputList');
+            $portfolio = Utils::getSitesByInputList($Site->getProject(), $parents, array(
+                'where' => array(
+                    'type' => 'quiqqer/portfolio:types/entry'
+                ),
+                'limit' => $limit,
+                'order' => $this->getAttribute('order')
+            ));
+        } else {
+            // for sites
+            $portfolio = $Site->getChildren(array(
+                'where' => array(
+                    'type' => 'quiqqer/portfolio:types/entry'
+                ),
+                'limit' => $limit
+            ));
+        }
+
+        if (empty($portfolio)) {
+            QUI\System\Log::addInfo(
+                QUI::getLocale()->get('quiqqer/portfolio', 'admin.portfolio.debug.noTypeFound')
+            );
+            return '';
+        }
 
         $categories = $Site->getAttribute(
             'quiqqer.portfolio.settings.categories'
@@ -168,7 +187,7 @@ class Portfolio extends QUI\Control
         ));
 
 
-        return $Engine->fetch(dirname(__FILE__).'/Portfolio.html');
+        return $Engine->fetch(dirname(__FILE__) . '/Portfolio.html');
     }
 
     /**
