@@ -501,12 +501,14 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
          */
         $refreshMoreButton: function () {
             var hidden = this.$List.getElements('[data-available="1"]:display(none)'),
-                more   = this.getElm().getElements('.quiqqer-portfolio-more');
+                more   = this.getElm().getElement('.quiqqer-portfolio-more');
 
             if (!hidden.length) {
-                more.setStyle('display', 'none');
+                more.setStyle('visibility', 'hidden');
+                more.style.setProperty('display', 'none', 'important');
             } else {
-                more.setStyle('display', null);
+                more.setStyle('visibility', 'visible');
+                more.style.setProperty('display', null);
             }
         },
 
