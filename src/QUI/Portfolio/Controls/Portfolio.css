@@ -169,6 +169,10 @@ die untere divs verschoben werden */
     width: 20%;
 }
 
+.quiqqer-portfolio-list-entry-25 {
+    width: 25%;
+}
+
 .quiqqer-portfolio-list-entry-33 {
     width: 33.3333%
 }
@@ -187,6 +191,10 @@ die untere divs verschoben werden */
     }
 
     .quiqqer-portfolio-list-entry-20 {
+        width: 50%;
+    }
+
+    .quiqqer-portfolio-list-entry-25 {
         width: 50%;
     }
 
@@ -209,6 +217,10 @@ die untere divs verschoben werden */
     }
 
     .quiqqer-portfolio-list-entry-20 {
+        width: 100%;
+    }
+
+    .quiqqer-portfolio-list-entry-25 {
         width: 100%;
     }
 
