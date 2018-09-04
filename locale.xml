@@ -192,6 +192,29 @@
             <pl><![CDATA[Wypełnij całą dostępną przestrzeń]]></pl>
         </locale>
 
+        <locale name="quiqqer.portfolio.settings.slider.title">
+            <de><![CDATA[Referenz Slider Eigenschaften]]></de>
+            <en><![CDATA[Reference slider properties]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.settings.slider.shownavigation">
+            <de><![CDATA[Navigations-Punkte anzeigen]]></de>
+            <en><![CDATA[Show navigation-dots]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.settings.slider.showarrows">
+            <de><![CDATA[Navigations-Pfeile anzeigen]]></de>
+            <en><![CDATA[Show navigation-arrows]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.settings.slider.autostart">
+            <de><![CDATA[Slideshow startet automatisch]]></de>
+            <en><![CDATA[Slideshows starts automatically]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.settings.slider.delay">
+            <de><![CDATA[Slideshow Intervall]]></de>
+            <en><![CDATA[Slideshow Interval]]></en>
+        </locale>
+
+
+
         <locale name="brick.control.portfolio.setting.site">
             <de><![CDATA[Seiten hinzufügen]]></de>
             <en><![CDATA[Add pages]]></en>

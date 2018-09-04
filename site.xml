@@ -211,6 +211,11 @@
                 <attribute>quiqqer.portfolio.settings.categories</attribute>
                 <attribute>quiqqer.portfolio.settings.mediaFolder</attribute>
                 <attribute>quiqqer.portfolio.settings.website</attribute>
+
+                <attribute default="1">quiqqer.portfolio.settings.slider.shownavigation</attribute>
+                <attribute default="1">quiqqer.portfolio.settings.slider.showarrows</attribute>
+                <attribute default="0">quiqqer.portfolio.settings.slider.autostart</attribute>
+                <attribute default="5000">quiqqer.portfolio.settings.slider.delay</attribute>
             </attributes>
 
             <tab name="quiqqer.portfolio.categories">
@@ -238,6 +243,34 @@
                         <input conf="quiqqer.portfolio.settings.website">
                             <text>
                                 <locale group="quiqqer/portfolio" var="quiqqer.portfolio.settings.website"/>
+                            </text>
+                        </input>
+                    </settings>
+                </category>
+
+                <category name="portfolio-slider-settings">
+                    <settings>
+                        <title>
+                            <locale group="quiqqer/portfolio" var="quiqqer.portfolio.settings.slider.title"/>
+                        </title>
+                        <input conf="quiqqer.portfolio.settings.slider.shownavigation" type="checkbox">
+                            <text>
+                                <locale group="quiqqer/portfolio" var="quiqqer.portfolio.settings.slider.shownavigation"/>
+                            </text>
+                        </input>
+                        <input conf="quiqqer.portfolio.settings.slider.showarrows" type="checkbox">
+                            <text>
+                                <locale group="quiqqer/portfolio" var="quiqqer.portfolio.settings.slider.showarrows"/>
+                            </text>
+                        </input>
+                        <input conf="quiqqer.portfolio.settings.slider.autostart" type="checkbox">
+                            <text>
+                                <locale group="quiqqer/portfolio" var="quiqqer.portfolio.settings.slider.autostart"/>
+                            </text>
+                        </input>
+                        <input conf="quiqqer.portfolio.settings.slider.delay" type="number">
+                            <text>
+                                <locale group="quiqqer/portfolio" var="quiqqer.portfolio.settings.slider.delay"/>
                             </text>
                         </input>
                     </settings>
