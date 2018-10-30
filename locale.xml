@@ -18,6 +18,10 @@
             <de><![CDATA[Referenz-Kategorien]]></de>
             <en><![CDATA[Portfolio categories]]></en>
         </locale>
+        <locale name="admin.types.portfolio.categories.none">
+            <de><![CDATA[Legen Sie zunächst Kategorien in den "Referenz-Kategorien"-Einstellungen der Elternseite an.]]></de>
+            <en><![CDATA[You need to create categories in the parent-page's "Portfolio categories"-settings first.]]></en>
+        </locale>
 
         <locale name="admin.types.portfolio.list">
             <de><![CDATA[Referenzliste]]></de>

@@ -89,6 +89,12 @@ define('package/quiqqer/portfolio/bin/SitePanelReference', [
                     categories = [];
                 }
 
+                if(categories.length === 0) {
+                    new Element('span', {
+                        html: QUILocale.get('quiqqer/portfolio', 'admin.types.portfolio.categories.none')
+                    }).inject(self.$Elm);
+                }
+
                 var liClick = function (event) {
                     if (event.target.nodeName === 'INPUT') {
                         return;
