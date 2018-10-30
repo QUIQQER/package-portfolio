@@ -37,9 +37,14 @@
         >
         <figure>
             <a href="{url site=$Child}">
-                <noscript>
-                    {image src=$Child->getAttribute('image_site') height=300 style="$imgPosition"}
-                </noscript>
+                {* Is the image an icon? *}
+                {if strpos($Child->getAttribute('image_site'), 'fa ') === 0}
+                    {image src=$Child->getAttribute('image_site')}
+                {else}
+                    <noscript>
+                        {image src=$Child->getAttribute('image_site') height=300 style="$imgPosition"}
+                    </noscript>
+                {/if}
             </a>
 
             <figcaption class="control-background">
