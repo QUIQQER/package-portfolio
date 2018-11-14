@@ -63,9 +63,6 @@ class Reference extends QUI\Control
         } catch (QUI\Exception $Exception) {
         }
 
-        QUI\System\Log::writeRecursive($Site->getAttributes());
-
-
         $showArrows = false;
 
         if ($Site->getAttribute('quiqqer.portfolio.settings.slider.showarrows') == 1) {
