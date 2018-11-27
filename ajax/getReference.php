@@ -33,8 +33,18 @@ QUI::$Ajax->registerFunction(
             );
         }
 
+        $url = false;
+        if ($Site->getAttribute('quiqqer.portfolio.settings.website')) {
+            $url = $Site->getAttribute('quiqqer.portfolio.settings.website');
+
+            if (strpos($url, 'http://') === false && strpos($url, 'https://') === false) {
+                $url = 'http://' . $url;
+            }
+        }
+
         return array(
             'content' => $Site->getAttribute('content'),
+            'url'     => $url,
             'images'  => $imageList
         );
     },
