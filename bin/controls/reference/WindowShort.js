@@ -10,10 +10,11 @@ define('package/quiqqer/portfolio/bin/controls/reference/WindowShort', [
     'qui/controls/Control',
     'qui/controls/windows/Popup',
     'Ajax',
+    'Locale',
 
     'css!package/quiqqer/portfolio/bin/controls/reference/WindowShort.css'
 
-], function (QUI, QUIControl, QUIPopup, Ajax) {
+], function (QUI, QUIControl, QUIPopup, Ajax, QUILocale) {
     "use strict";
 
     return new Class({
@@ -44,9 +45,11 @@ define('package/quiqqer/portfolio/bin/controls/reference/WindowShort', [
             this.$Slider = null;
 
             this.$content = false;
-            this.$slider  = '';
-            this.$images  = [];
-            this.$mobile  = false;
+            this.$slider = '';
+            this.$images = [];
+            this.$url = false;
+            this.$Website = null;
+            this.$mobile = false;
 
             this.addEvents({
                 onOpen  : this.$onOpen,
@@ -129,7 +132,9 @@ define('package/quiqqer/portfolio/bin/controls/reference/WindowShort', [
                     Content.set({
                         'class': 'quiqqer-porfolio-reference-windowShort',
                         html   : '<div class="slider"></div>' +
-                        '<div class="content"></div>',
+                            '<div class="content">' +
+                            '<div class="content-button-container"></div>' +
+                            '</div>',
                         styles : {
                             padding: 0
                         }
@@ -169,6 +174,22 @@ define('package/quiqqer/portfolio/bin/controls/reference/WindowShort', [
                         Slider.setAttribute('height', height);
                         Slider.onResize();
                     }).then(resolve).catch(reject);
+
+                    // create button (url)
+                    if (self.$url) {
+                        var ButtonContainer = new Element('div', {
+                            'class': 'content-button-container'
+                        }).inject(ContentContainer);
+
+                        self.$Website = new Element('a', {
+                            'class': 'button button--callToAction quiqqer-porfolio-reference-website-button',
+                            target : '_blank',
+                            href   : self.$url,
+                            html   : QUILocale.get('quiqqer/portfolio', 'quiqqer.portfolio.visit.website')
+                        });
+
+                        self.$Website.inject(ButtonContainer);
+                    }
                 });
             });
         },
@@ -191,9 +212,10 @@ define('package/quiqqer/portfolio/bin/controls/reference/WindowShort', [
                     'package_quiqqer_portfolio_ajax_getReference',
                     'package_quiqqer_portfolio_ajax_getWallpaperSlider'
                 ], function (data, slider) {
-                    self.$images  = data.images;
+                    self.$url = data.url;
+                    self.$images = data.images;
                     self.$content = data.content;
-                    self.$slider  = slider.css + slider.html;
+                    self.$slider = slider.css + slider.html;
 
                     resolve();
                 }, {

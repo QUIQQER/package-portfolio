@@ -63,13 +63,21 @@ class Reference extends QUI\Control
         } catch (QUI\Exception $Exception) {
         }
 
+        $showArrows = false;
+
+        if ($Site->getAttribute('quiqqer.portfolio.settings.slider.showarrows') == 1) {
+            $showArrows = 'showHoverScale';
+        }
+
         // slider
         $Slider = new QUI\Bricks\Controls\Slider\PromosliderWallpaper2Content(array(
-            'position' => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-position'),
-            'size'     => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-size')
+            'position'       => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-position'),
+            'size'           => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-size'),
+            'shownavigation' => $Site->getAttribute('quiqqer.portfolio.settings.slider.shownavigation') == 1,
+            'showarrows'     => $showArrows,
+            'autostart'      => $Site->getAttribute('quiqqer.portfolio.settings.slider.autostart') == 1,
+            'delay'          => $Site->getAttribute('quiqqer.portfolio.settings.slider.delay')
         ));
-
-        $Slider->setAttribute('showarrows', false);
 
         foreach ($images as $Image) {
             /* @var $Image QUI\Projects\Media\Image */

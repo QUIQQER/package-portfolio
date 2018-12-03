@@ -72,6 +72,11 @@ a.quiqqer-porfolio-reference-data-next {
     float: left;
     text-align: center;
     width: 100%;
+    margin-bottom: 20px;
+}
+
+.content-button-container {
+    text-align: center;
 }
 
 @media screen and (max-width: 767px) {

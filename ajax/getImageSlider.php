@@ -26,11 +26,21 @@ QUI::$Ajax->registerFunction(
             }
         }
 
+        $url = false;
+        if ($Site->getAttribute('quiqqer.portfolio.settings.website')) {
+            $url = $Site->getAttribute('quiqqer.portfolio.settings.website');
+
+            if (strpos($url, 'http://') === false && strpos($url, 'https://') === false) {
+                $url = 'http://' . $url;
+            }
+        }
+        
         return array(
             'id'    => $Site->getId(),
             'image' => $image,
             'short' => $Site->getAttribute('short'),
-            'title' => $Site->getAttribute('title')
+            'title' => $Site->getAttribute('title'),
+            'url'   => $url
         );
     },
     array('project', 'siteId')

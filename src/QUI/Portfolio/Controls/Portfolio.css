@@ -80,10 +80,14 @@ die untere divs verschoben werden */
     position: relative;
     text-align: center;
     width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .quiqqer-portfolio-list-entry .quiqqer-icon {
-    font-size: 100px;
+    font-size: 125px;
 }
 
 .quiqqer-portfolio-list-entry-loader {

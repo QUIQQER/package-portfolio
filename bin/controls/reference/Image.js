@@ -6,12 +6,13 @@ define('package/quiqqer/portfolio/bin/controls/reference/Image', [
     'qui/QUI',
     'qui/controls/windows/Popup',
     'Ajax',
+    'Locale',
     URL_OPT_DIR + 'bin/mustache/mustache.min.js',
 
     'text!package/quiqqer/portfolio/bin/controls/reference/Image.html',
     'css!package/quiqqer/portfolio/bin/controls/reference/Image.css'
 
-], function (QUI, QUIPopup, QUIAjax, Mustache, template) {
+], function (QUI, QUIPopup, QUIAjax, QUILocale, Mustache, template) {
     "use strict";
 
     return new Class({
@@ -190,6 +191,20 @@ define('package/quiqqer/portfolio/bin/controls/reference/Image', [
                             click: this.next.bind(this)
                         }
                     }).inject(RatioContainer);
+
+                    // create button (url)
+                    if (result.url) {
+                        var ButtonContainer = new Element('div', {
+                            'class': 'content-button-container'
+                        }).inject(this.$Container);
+
+                        new Element('a', {
+                            'class': 'button button--callToAction quiqqer-porfolio-reference-website-button',
+                            target : '_blank',
+                            href   : result.url,
+                            html   : QUILocale.get('quiqqer/portfolio', 'quiqqer.portfolio.visit.website')
+                        }).inject(ButtonContainer);
+                    }
 
                 }.bind(this))
                 .then(this.$showContent.bind(this));
