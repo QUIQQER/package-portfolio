@@ -20,6 +20,6 @@ function package_quiqqer_portfolio_ajax_getCategories($project, $childId)
 
 QUI::$Ajax->register(
     'package_quiqqer_portfolio_ajax_getCategories',
-    array('project', 'childId'),
+    ['project', 'childId'],
     'Permission::isAdmin'
 );

@@ -19,7 +19,7 @@ class PortfolioList extends QUI\Control
      */
     public function getBody()
     {
-        $Portfolio = new QUI\Portfolio\Controls\Portfolio(array(
+        $Portfolio = new QUI\Portfolio\Controls\Portfolio([
             'showRandomButton'                 => $this->getAttribute('showRandomButton'),
             'limit'                            => false,
             'entry-effect'                     => $this->getAttribute('portfolioEffect'),
@@ -31,7 +31,7 @@ class PortfolioList extends QUI\Control
             'parentInputList'                  => $this->getAttribute('site'),
             'img-position'                     => $this->getAttribute('imgPosition'),
             'order'                            => $this->getAttribute('order')
-        ));
+        ]);
 
         return $Portfolio->create();
     }
