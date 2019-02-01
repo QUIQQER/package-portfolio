@@ -22,12 +22,12 @@ QUI::$Ajax->registerFunction(
 
         require_once 'getImageSlider.php';
 
-        $result = QUI::$Ajax->callRequestFunction('package_quiqqer_portfolio_ajax_getImageSlider', array(
+        $result = QUI::$Ajax->callRequestFunction('package_quiqqer_portfolio_ajax_getImageSlider', [
             'project' => json_encode($Project->toArray()),
             'siteId'  => $Sibling->getId()
-        ));
+        ]);
 
         return $result['result'];
     },
-    array('project', 'siteId')
+    ['project', 'siteId']
 );

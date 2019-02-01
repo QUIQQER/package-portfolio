@@ -21,6 +21,7 @@ class PortfolioList
      *
      * @param integer $newId
      * @param \QUI\Projects\Site\Edit $Parent
+     * @throws QUI\Exception
      */
     public static function onChildCreate($newId, $Parent)
     {

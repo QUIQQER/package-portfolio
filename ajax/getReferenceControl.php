@@ -13,13 +13,13 @@ QUI::$Ajax->registerFunction(
         $Project = QUI::getProjectManager()->decode($project);
         $Site    = $Project->get($siteId);
 
-        $Control = new QUI\Portfolio\Controls\Reference(array(
+        $Control = new QUI\Portfolio\Controls\Reference([
             'Site' => $Site
-        ));
+        ]);
 
         $create = $Control->create();
 
-        return QUI\Control\Manager::getCSS() . $create;
+        return QUI\Control\Manager::getCSS().$create;
     },
-    array('project', 'siteId')
+    ['project', 'siteId']
 );

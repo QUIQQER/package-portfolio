@@ -34,6 +34,7 @@ QUI::$Ajax->registerFunction(
         }
 
         $url = false;
+
         if ($Site->getAttribute('quiqqer.portfolio.settings.website')) {
             $url = $Site->getAttribute('quiqqer.portfolio.settings.website');
 

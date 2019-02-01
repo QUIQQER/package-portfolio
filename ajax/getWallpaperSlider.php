@@ -13,17 +13,17 @@ QUI::$Ajax->registerFunction(
         $Project = QUI::getProjectManager()->decode($project);
         $Site    = $Project->get($siteId);
 
-        $Control = new QUI\Portfolio\Controls\Reference(array(
+        $Control = new QUI\Portfolio\Controls\Reference([
             'Site' => $Site
-        ));
+        ]);
 
         $List = $Control->getList();
 
-        $Slider = new QUI\Bricks\Controls\Slider\PromosliderWallpaper2Content(array(
-            'pagefit'    => false,
-            'position'   => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-position'),
-            'size'       => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-size')
-        ));
+        $Slider = new QUI\Bricks\Controls\Slider\PromosliderWallpaper2Content([
+            'pagefit'  => false,
+            'position' => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-position'),
+            'size'     => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-size')
+        ]);
 
         $Slider->setAttribute('showarrows', $List->getAttribute('quiqqer.portfolio.settings.showArrows')); // setting
 
@@ -36,10 +36,10 @@ QUI::$Ajax->registerFunction(
             $Slider->addMobileSlide($Image->getUrl());
         }
 
-        return array(
+        return [
             'html' => $Slider->create(),
             'css'  => QUI\Control\Manager::getCSS()
-        );
+        ];
     },
-    array('project', 'siteId')
+    ['project', 'siteId']
 );

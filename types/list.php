@@ -1,6 +1,6 @@
 <?php
 
-$Portfolio = new QUI\Portfolio\Controls\Portfolio(array(
+$Portfolio = new QUI\Portfolio\Controls\Portfolio([
     'showRandomButton'                 => $Site->getAttribute('quiqqer.portfolio.settings.showRandomButton'),
     'entry-effect'                     => $Site->getAttribute('quiqqer.portfolio.settings.portfolioEffect'),
     'entry-width'                      => $Site->getAttribute('quiqqer.portfolio.settings.portfolioEntryWidth'),
@@ -11,6 +11,6 @@ $Portfolio = new QUI\Portfolio\Controls\Portfolio(array(
     'data-qui-options-lazyloading'     => true,
     'data-qui-options-useanchor'       => true,
     'Site'                             => $Site
-));
+]);
 
 $Engine->assign('Portfolio', $Portfolio);

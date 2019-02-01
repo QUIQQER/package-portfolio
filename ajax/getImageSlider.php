@@ -31,17 +31,17 @@ QUI::$Ajax->registerFunction(
             $url = $Site->getAttribute('quiqqer.portfolio.settings.website');
 
             if (strpos($url, 'http://') === false && strpos($url, 'https://') === false) {
-                $url = 'http://' . $url;
+                $url = 'http://'.$url;
             }
         }
-        
-        return array(
+
+        return [
             'id'    => $Site->getId(),
             'image' => $image,
             'short' => $Site->getAttribute('short'),
             'title' => $Site->getAttribute('title'),
             'url'   => $url
-        );
+        ];
     },
-    array('project', 'siteId')
+    ['project', 'siteId']
 );

@@ -19,10 +19,10 @@ class Portfolio extends QUI\Control
      * constructor
      * @param array $attributes
      */
-    public function __construct($attributes = array())
+    public function __construct($attributes = [])
     {
         // default options
-        $this->setAttributes(array(
+        $this->setAttributes([
             'showRandomButton'                 => false,
             'limit'                            => false,
             'entry-effect'                     => 'style3',
@@ -35,10 +35,10 @@ class Portfolio extends QUI\Control
             'data-qui-options-start-reference' => 3,
             'parentInputList'                  => false, // for example from qui site select
             'order'                            => 'c_date DESC'
-        ));
+        ]);
 
         $this->addCSSFile(
-            dirname(__FILE__) . '/Portfolio.css'
+            dirname(__FILE__).'/Portfolio.css'
         );
 
 
@@ -54,14 +54,14 @@ class Portfolio extends QUI\Control
             case 'style6':
             case 'style7':
                 $effectFile = dirname(__FILE__)
-                    . '/Portfolio.'
-                    . $this->getAttribute('entry-effect') . '.css';
+                              .'/Portfolio.'
+                              .$this->getAttribute('entry-effect').'.css';
 
-                $this->addCSSClass('quiqqer-portfolio-' . $this->getAttribute('entry-effect'));
+                $this->addCSSClass('quiqqer-portfolio-'.$this->getAttribute('entry-effect'));
                 break;
 
             default:
-                $effectFile = dirname(__FILE__) . '/Portfolio.style3.css';
+                $effectFile = dirname(__FILE__).'/Portfolio.style3.css';
                 $this->addCSSClass('quiqqer-portfolio-style3');
                 break;
         }
@@ -87,27 +87,28 @@ class Portfolio extends QUI\Control
         if ($this->getAttribute('parentInputList')) {
             // for bricks
             $parents   = $this->getAttribute('parentInputList');
-            $portfolio = Utils::getSitesByInputList($Site->getProject(), $parents, array(
-                'where' => array(
+            $portfolio = Utils::getSitesByInputList($Site->getProject(), $parents, [
+                'where' => [
                     'type' => 'quiqqer/portfolio:types/entry'
-                ),
+                ],
                 'limit' => $limit,
                 'order' => $this->getAttribute('order')
-            ));
+            ]);
         } else {
             // for sites
-            $portfolio = $Site->getChildren(array(
-                'where' => array(
+            $portfolio = $Site->getChildren([
+                'where' => [
                     'type' => 'quiqqer/portfolio:types/entry'
-                ),
+                ],
                 'limit' => $limit
-            ));
+            ]);
         }
 
         if (empty($portfolio)) {
             QUI\System\Log::addInfo(
                 QUI::getLocale()->get('quiqqer/portfolio', 'admin.portfolio.debug.noTypeFound')
             );
+
             return '';
         }
 
@@ -124,7 +125,7 @@ class Portfolio extends QUI\Control
             }
 
             if (!$cats || !is_array($cats)) {
-                $cats = array();
+                $cats = [];
             }
 
             $Child->setAttribute('quiqqer.portfolio.settings.categories', $cats);
@@ -176,7 +177,7 @@ class Portfolio extends QUI\Control
             $displayNum = false;
         }
 
-        $Engine->assign(array(
+        $Engine->assign([
             'this'        => $this,
             'cssClass'    => $cssClass,
             'portfolio'   => $portfolio,
@@ -184,10 +185,10 @@ class Portfolio extends QUI\Control
             'imgPosition' => $imgPosition,
             'displayNum'  => $displayNum,
             'lazyloading' => $this->getAttribute('data-qui-options-lazyloading')
-        ));
+        ]);
 
 
-        return $Engine->fetch(dirname(__FILE__) . '/Portfolio.html');
+        return $Engine->fetch(dirname(__FILE__).'/Portfolio.html');
     }
 
     /**

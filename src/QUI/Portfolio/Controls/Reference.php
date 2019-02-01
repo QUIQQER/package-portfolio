@@ -19,12 +19,12 @@ class Reference extends QUI\Control
      * constructor
      * @param array $attributes
      */
-    public function __construct($attributes = array())
+    public function __construct($attributes = [])
     {
         // default options
-        $this->setAttributes(array(
+        $this->setAttributes([
             'sliderpos' => 'left' // left or bottom
-        ));
+        ]);
 
         parent::__construct($attributes);
 
@@ -40,7 +40,14 @@ class Reference extends QUI\Control
      */
     public function getBody()
     {
-        $Engine = QUI::getTemplateManager()->getEngine();
+        try {
+            $Engine = QUI::getTemplateManager()->getEngine();
+        } catch (QUI\Exception $Exception) {
+            QUI\System\Log::addDebug($Exception->getMessage());
+
+            return '';
+        }
+
         $Site   = $this->getSite();
         $List   = $this->getList();
         $Next   = null;
@@ -70,14 +77,14 @@ class Reference extends QUI\Control
         }
 
         // slider
-        $Slider = new QUI\Bricks\Controls\Slider\PromosliderWallpaper2Content(array(
+        $Slider = new QUI\Bricks\Controls\Slider\PromosliderWallpaper2Content([
             'position'       => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-position'),
             'size'           => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-size'),
             'shownavigation' => $Site->getAttribute('quiqqer.portfolio.settings.slider.shownavigation') == 1,
             'showarrows'     => $showArrows,
             'autostart'      => $Site->getAttribute('quiqqer.portfolio.settings.slider.autostart') == 1,
             'delay'          => $Site->getAttribute('quiqqer.portfolio.settings.slider.delay')
-        ));
+        ]);
 
         foreach ($images as $Image) {
             /* @var $Image QUI\Projects\Media\Image */
@@ -96,7 +103,7 @@ class Reference extends QUI\Control
             }
         }
 
-        $Engine->assign(array(
+        $Engine->assign([
             'this'    => $this,
             'Site'    => $Site,
             'Next'    => $Next,
@@ -106,7 +113,7 @@ class Reference extends QUI\Control
             'Slider'           => $Slider,
             'images'           => $this->getImages(),
             'sliderExtraClass' => $sliderExtraClass
-        ));
+        ]);
 
         return $Engine->fetch(dirname(__FILE__).'/Reference.html');
     }
@@ -118,7 +125,7 @@ class Reference extends QUI\Control
      */
     public function getImages()
     {
-        $images      = array();
+        $images      = [];
         $imageFolder = $this->getSite()->getAttribute(
             'quiqqer.portfolio.settings.mediaFolder'
         );
@@ -138,10 +145,10 @@ class Reference extends QUI\Control
                 $images = $Folder->getImages();
             }
         } catch (QUI\Exception $Exception) {
-            QUI\System\Log::addDebug($Exception->getMessage(), array(
+            QUI\System\Log::addDebug($Exception->getMessage(), [
                 'control' => '\QUI\Portfolio\Controls\Reference',
                 'Site'    => $this->getSite()->__toString()
-            ));
+            ]);
         }
 
         return $images;
