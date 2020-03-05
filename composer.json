@@ -2,6 +2,7 @@
     "name": "quiqqer\/portfolio",
     "type": "quiqqer-module",
     "description": "Manage your references \/ customer projects and present them on your website.",
+    "version": "1.3.0",
     "license": [
         "PCSG QL-1.0",
         "GPL-3.0+"
