@@ -382,6 +382,10 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                     return;
                 }
 
+                if (!image || image === '') {
+                    return;
+                }
+
                 require(['image!' + image], function () {
                     var Image = new Element('img', {
                         src   : image,
@@ -406,6 +410,9 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                         duration: 200,
                         callback: resolve
                     });
+                }, function(err) {
+                    resolve();
+                    console.error(err);
                 });
             });
         },
