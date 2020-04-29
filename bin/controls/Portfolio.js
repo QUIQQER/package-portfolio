@@ -410,7 +410,8 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                         duration: 200,
                         callback: resolve
                     });
-                }, function(err) { 
+                }, function(err) {
+                    resolve();
                     console.error(err);
                 });
             });
