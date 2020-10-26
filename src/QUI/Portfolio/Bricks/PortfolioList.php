@@ -33,6 +33,10 @@ class PortfolioList extends QUI\Control
             'order'                            => $this->getAttribute('order')
         ]);
 
+        foreach ($Portfolio->getCSSFiles() as $file) {
+            $this->addCSSFile($file);
+        }
+
         return $Portfolio->create();
     }
 }
