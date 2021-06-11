@@ -3,8 +3,11 @@
 }
 
 .quiqqer-porfolio-reference-windowShort {
-    float: left;
+    flex-grow: 0;
+    float: left; 
+    height: 100%;
     width: 100%;
+
 }
 
 .quiqqer-porfolio-reference-windowShort .slider,
