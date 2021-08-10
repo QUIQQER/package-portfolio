@@ -28,9 +28,14 @@
 {assign var=c value=0}
 <section class="quiqqer-portfolio-list">
     {foreach from=$portfolio item=Child}
+    {assign var=impl value=""}
+    {assign var=categories value=$Child->getAttribute('quiqqer.portfolio.settings.categories')}
+    {if $categories}
+        {assign var=impl value=implode(',', $categories)}
+    {/if}
     <div class="quiqqer-portfolio-list-entry {$cssClass}"
          data-id="{$Child->getId()}"
-         data-categories=",{$Child->getAttribute('quiqqer.portfolio.settings.categories')|implode:','},"
+         data-categories=",{$impl},"
          data-image="{image src=$Child->getAttribute('image_site') onlysrc=1}"
          data-position="{$imgPosition}"
          {if $displayNum && $displayNum <= $c}style="display: none"{/if}
