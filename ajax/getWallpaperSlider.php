@@ -23,7 +23,7 @@ QUI::$Ajax->registerFunction(
             'pagefit'           => false,
             'position'          => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-position'),
             'size'              => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-size'),
-            'preloadFirstSlide' => false
+            'preloadFirstImage' => false
         ]);
 
         $Slider->setAttribute('showarrows', $List->getAttribute('quiqqer.portfolio.settings.showArrows')); // setting
