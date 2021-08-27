@@ -20,9 +20,10 @@ QUI::$Ajax->registerFunction(
         $List = $Control->getList();
 
         $Slider = new QUI\Bricks\Controls\Slider\PromosliderWallpaper2Content([
-            'pagefit'  => false,
-            'position' => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-position'),
-            'size'     => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-size')
+            'pagefit'           => false,
+            'position'          => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-position'),
+            'size'              => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-size'),
+            'preloadFirstSlide' => false
         ]);
 
         $Slider->setAttribute('showarrows', $List->getAttribute('quiqqer.portfolio.settings.showArrows')); // setting
