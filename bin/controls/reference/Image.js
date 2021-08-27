@@ -7,7 +7,7 @@ define('package/quiqqer/portfolio/bin/controls/reference/Image', [
     'qui/controls/windows/Popup',
     'Ajax',
     'Locale',
-    URL_OPT_DIR + 'bin/mustache/mustache.min.js',
+    'Mustache',
 
     'text!package/quiqqer/portfolio/bin/controls/reference/Image.html',
     'css!package/quiqqer/portfolio/bin/controls/reference/Image.css'
