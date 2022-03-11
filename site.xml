@@ -3,7 +3,7 @@
 
     <types>
 
-        <type type="types/list" extend="QUI\Portfolio\PortfolioList" icon="fa fa-star">
+        <type type="types/list" extend="QUI\Portfolio\PortfolioList" icon="fa fa-star" child-type="quiqqer/portfolio:types/entry">
             <locale group="quiqqer/portfolio" var="admin.types.portfolio.list"/>
             <desc>
                 <locale group="quiqqer/portfolio" var="admin.types.portfolio.list.desc"/>
