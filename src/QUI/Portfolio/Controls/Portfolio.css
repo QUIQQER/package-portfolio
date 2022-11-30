@@ -142,7 +142,7 @@ die untere divs verschoben werden */
     vertical-align: middle;
 }
 
-.quiqqer-portfolio-more {
+.quiqqer-portfolio-more.button {
     clear: both;
     display: block;
     margin: 20px auto 0;
