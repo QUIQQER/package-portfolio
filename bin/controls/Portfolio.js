@@ -645,7 +645,6 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
                 list.setStyle('display', null);
 
                 moofx(list).animate({
-                    height : 300,
                     opacity: 1,
                     padding: 10
                 }, {

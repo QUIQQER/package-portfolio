@@ -1,11 +1,9 @@
 
 .quiqqer-portfolio-list,
 .quiqqer-portfolio-categories {
-    clear: both;
-    float: left;
     position: relative;
-    width: 100%;
     z-index: 1;
+    display: flow-root;
 }
 
 .quiqqer-portfolio-animate {
