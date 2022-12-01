@@ -3,6 +3,177 @@
 
     <types>
 
+<!--        <type type="types/list2022" extend="QUI\Portfolio\PortfolioList2022" icon="fa fa-star" child-type="quiqqer/portfolio:types/entry2022">-->
+<!--            <locale group="quiqqer/portfolio" var="admin.types.portfolio.list2022"/>-->
+<!--            <desc>-->
+<!--                <locale group="quiqqer/portfolio" var="admin.types.portfolio.list2022.desc"/>-->
+<!--            </desc>-->
+
+<!--            &lt;!&ndash; extra attributes &ndash;&gt;-->
+<!--            <attributes>-->
+<!--                <attribute>quiqqer.portfolio.settings.categories</attribute>-->
+<!--                <attribute>quiqqer.portfolio.settings.template</attribute>-->
+<!--                <attribute>quiqqer.portfolio.settings.showRandomButton</attribute>-->
+<!--                <attribute>quiqqer.portfolio.settings.imgPosition</attribute>-->
+<!--                <attribute>quiqqer.portfolio.settings.portfolioNoPopup</attribute>-->
+<!--                <attribute>quiqqer.portfolio.settings.portfolioPopup.type</attribute>-->
+
+<!--                <attribute default="15">quiqqer.portfolio.settings.referenceStartNumber</attribute>-->
+<!--                <attribute default="1">quiqqer.portfolio.settings.showArrows</attribute>-->
+<!--                <attribute default="cover">quiqqer.portfolio.settings.portfolioPopup.wallpaper-position</attribute>-->
+<!--                <attribute default="contain">quiqqer.portfolio.settings.portfolioPopup.wallpaper-size</attribute>-->
+<!--            </attributes>-->
+
+<!--            <tab name="quiqqer.portfolio.categories">-->
+<!--                <text>-->
+<!--                    <locale group="quiqqer/portfolio" var="admin.types.portfolio.categories"/>-->
+<!--                </text>-->
+<!--                <image>fa fa-star</image>-->
+<!--                <onload require="package/quiqqer/portfolio/bin/SitePanelList"/>-->
+<!--            </tab>-->
+
+<!--            &lt;!&ndash; list settings 2022 &ndash;&gt;-->
+<!--            <settings>-->
+
+<!--                <category name="portfolio-settings">-->
+<!--                    <settings>-->
+<!--                        <title>-->
+<!--                            <locale group="quiqqer/portfolio" var="quiqqer.portfolio.list2022.settings.title"/>-->
+<!--                        </title>-->
+
+<!--                        <input type="number"-->
+<!--                               conf="quiqqer.portfolio.settings.referenceStartNumber">-->
+<!--                            <text>-->
+<!--                                <locale group="quiqqer/portfolio"-->
+<!--                                        var="quiqqer.portfolio.settings.referenceStartNumber"/>-->
+<!--                            </text>-->
+<!--                        </input>-->
+
+<!--                        <input type="checkbox"-->
+<!--                               conf="quiqqer.portfolio.settings.showRandomButton"-->
+<!--                        >-->
+<!--                            <text>-->
+<!--                                <locale group="quiqqer/portfolio"-->
+<!--                                        var="quiqqer.portfolio.settings.randomButton"/>-->
+<!--                            </text>-->
+<!--                        </input>-->
+
+<!--                        <select conf="quiqqer.portfolio.settings.imgPosition">-->
+<!--                            <text>-->
+<!--                                <locale group="quiqqer/portfolio"-->
+<!--                                        var="quiqqer.portfolio.settings.imgPosition"/>-->
+<!--                            </text>-->
+<!--                            <option value="contain">-->
+<!--                                <locale group="quiqqer/portfolio"-->
+<!--                                        var="quiqqer.portfolio.settings.imgPosition.contain"/>-->
+<!--                            </option>-->
+<!--                            <option value="cover">-->
+<!--                                <locale group="quiqqer/portfolio"-->
+<!--                                        var="quiqqer.portfolio.settings.imgPosition.cover"/>-->
+<!--                            </option>-->
+<!--                        </select>-->
+<!--                    </settings>-->
+
+<!--                    <settings>-->
+<!--                        <title>-->
+<!--                            <locale group="quiqqer/portfolio" var="quiqqer.portfolio.popup.settings.title"/>-->
+<!--                        </title>-->
+
+<!--                        <input conf="quiqqer.portfolio.settings.portfolioNoPopup" type="checkbox">-->
+<!--                            <text>-->
+<!--                                <locale group="quiqqer/portfolio"-->
+<!--                                        var="quiqqer.portfolio.settings.portfolioNoPopup"/>-->
+<!--                            </text>-->
+<!--                        </input>-->
+
+<!--                        <input conf="quiqqer.portfolio.settings.showArrows" type="checkbox">-->
+<!--                            <text>-->
+<!--                                <locale group="quiqqer/portfolio"-->
+<!--                                        var="quiqqer.portfolio.settings.showArrows"/>-->
+<!--                            </text>-->
+<!--                        </input>-->
+
+<!--                        <select conf="quiqqer.portfolio.settings.portfolioPopup.type">-->
+<!--                            <text>-->
+<!--                                <locale group="quiqqer/portfolio"-->
+<!--                                        var="quiqqer.portfolio.settings.portfolioPopup.type"/>-->
+<!--                            </text>-->
+
+<!--                            <option value="short">-->
+<!--                                <locale group="quiqqer/portfolio"-->
+<!--                                        var="quiqqer.portfolio.settings.portfolioPopup.type.short"/>-->
+<!--                            </option>-->
+<!--                            <option value="reference">-->
+<!--                                <locale group="quiqqer/portfolio"-->
+<!--                                        var="quiqqer.portfolio.settings.portfolioPopup.type.reference"/>-->
+<!--                            </option>-->
+<!--                            <option value="referenceNextPrev">-->
+<!--                                <locale group="quiqqer/portfolio"-->
+<!--                                        var="quiqqer.portfolio.settings.portfolioPopup.type.referenceNextPrev"/>-->
+<!--                            </option>-->
+<!--                            <option value="image">-->
+<!--                                <locale group="quiqqer/portfolio"-->
+<!--                                        var="quiqqer.portfolio.settings.portfolioPopup.type.image"/>-->
+<!--                            </option>-->
+<!--                        </select>-->
+
+<!--                        <select conf="quiqqer.portfolio.settings.portfolioPopup.wallpaper-size">-->
+<!--                            <text>-->
+<!--                                <locale group="quiqqer/bricks"-->
+<!--                                        var="brick.control.promoslider.image-wallpaper-size"/>-->
+<!--                            </text>-->
+
+<!--                            <option value="cover">-->
+<!--                                <locale group="quiqqer/bricks"-->
+<!--                                        var="brick.control.promoslider.image-wallpaper-size.cover"/>-->
+<!--                            </option>-->
+<!--                            <option value="contain">-->
+<!--                                <locale group="quiqqer/bricks"-->
+<!--                                        var="brick.control.promoslider.image-wallpaper-size.contain"/>-->
+<!--                            </option>-->
+<!--                        </select>-->
+
+<!--                        <select conf="quiqqer.portfolio.settings.portfolioPopup.wallpaper-position">-->
+<!--                            <text>-->
+<!--                                <locale group="quiqqer/bricks"-->
+<!--                                        var="brick.control.promoslider.image-wallpaper-position"/>-->
+<!--                            </text>-->
+
+<!--                            <option value=""/>-->
+<!--                            <option value="top-left">-->
+<!--                                <locale group="quiqqer/system" var="watermark.position.top.left"/>-->
+<!--                            </option>-->
+<!--                            <option value="top">-->
+<!--                                <locale group="quiqqer/system" var="watermark.position.top"/>-->
+<!--                            </option>-->
+<!--                            <option value="top-right">-->
+<!--                                <locale group="quiqqer/system" var="watermark.position.top.right"/>-->
+<!--                            </option>-->
+<!--                            <option value="left">-->
+<!--                                <locale group="quiqqer/system" var="watermark.position.left"/>-->
+<!--                            </option>-->
+<!--                            <option value="center">-->
+<!--                                <locale group="quiqqer/system" var="watermark.position.center"/>-->
+<!--                            </option>-->
+<!--                            <option value="right">-->
+<!--                                <locale group="quiqqer/system" var="watermark.position.right"/>-->
+<!--                            </option>-->
+<!--                            <option value="bottom-left">-->
+<!--                                <locale group="quiqqer/system" var="watermark.position.bottom.left"/>-->
+<!--                            </option>-->
+<!--                            <option value="bottom">-->
+<!--                                <locale group="quiqqer/system" var="watermark.position.bottom"/>-->
+<!--                            </option>-->
+<!--                            <option value="bottom-right">-->
+<!--                                <locale group="quiqqer/system" var="watermark.position.bottom.right"/>-->
+<!--                            </option>-->
+<!--                        </select>-->
+<!--                    </settings>-->
+<!--                </category>-->
+
+<!--            </settings>-->
+<!--        </type>-->
+
         <type type="types/list" extend="QUI\Portfolio\PortfolioList" icon="fa fa-star" child-type="quiqqer/portfolio:types/entry">
             <locale group="quiqqer/portfolio" var="admin.types.portfolio.list"/>
             <desc>
