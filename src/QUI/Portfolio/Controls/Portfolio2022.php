@@ -77,11 +77,11 @@ class Portfolio2022 extends QUI\Control
         }
 
         if ($this->getAttribute('entryMinWidthDesktop')) {
-            $entryMinWidthDesktop = $this->getAttribute('entryMinWidthDesktop') . 'px';
+            $entryMinWidthDesktop = $this->getAttribute('entryMinWidthDesktop').'px';
         }
 
         if ($this->getAttribute('entryMinWidthMobile')) {
-            $entryMinWidthMobile = $this->getAttribute('entryMinWidthMobile') . 'px';
+            $entryMinWidthMobile = $this->getAttribute('entryMinWidthMobile').'px';
         }
 
         if ($this->getAttribute('aspectRatio')) {
