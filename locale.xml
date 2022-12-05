@@ -23,6 +23,125 @@
             <en><![CDATA[You need to create categories in the parent-page's "Portfolio categories"-settings first.]]></en>
         </locale>
 
+        <!-- Portfolio 2022 -->
+        <locale name="admin.types.portfolio.list2022">
+            <de><![CDATA[Referenzliste 2022]]></de>
+            <en><![CDATA[Portfolio list 2022]]></en>
+        </locale>
+        <locale name="admin.types.portfolio2022.desc">
+            <de><![CDATA[Kreative Darstellung der Referenzen und Projekte.]]></de>
+            <en><![CDATA[Creative presentation of references and projects.]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.title">
+            <de><![CDATA[Referenz Liste 2022 Einstellungen]]></de>
+            <en><![CDATA[Portfolio list 2022 settings]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.referenceStartNumber">
+            <de><![CDATA[Anzahl der Referenzen zu beginn]]></de>
+            <en><![CDATA[Number of references at the beginning]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.template">
+            <de><![CDATA[Template (Vorlage)]]></de>
+            <en><![CDATA[Template]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.template.default">
+            <de><![CDATA[Standard]]></de>
+            <en><![CDATA[Default]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.randomButton">
+            <de><![CDATA[Zufalls Button anzeigen]]></de>
+            <en><![CDATA[Show random button]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.imgPosition">
+            <de><![CDATA[Bild Verhalten]]></de>
+            <en><![CDATA[Image behavior]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.imgPosition.contain">
+            <de><![CDATA[Bild vollständig anzeigen]]></de>
+            <en><![CDATA[Show complete image]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.imgPosition.cover">
+            <de><![CDATA[Gesamte Fläche ausfüllen]]></de>
+            <en><![CDATA[Fill the whole area]]></en>
+        </locale>
+
+        <locale name="quiqqer.portfolio2022.settings.design">
+            <de><![CDATA[Diese Einstellungen bestimmte das allgemeine Aussehen der Referenzen-Liste]]></de>
+            <en><![CDATA[This settings affect general portfolio list design]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.entriesPerLine">
+            <de><![CDATA[Anzahl der Einträge pro Zeile]]></de>
+            <en><![CDATA[Entries per line]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.aspectRatio">
+            <de><![CDATA[Bild Seitenverhältnis]]></de>
+            <en><![CDATA[Image aspect ration]]></en>
+        </locale>
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.1-1">
+                <de><![CDATA[1:1 - Quadrat]]></de>
+                <en><![CDATA[1:1 - Square]]></en>
+            </locale>
+
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.3-4">
+                <de><![CDATA[Hochformat 3:4]]></de>
+                <en><![CDATA[Portrait format 3:4]]></en>
+            </locale>
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.2-3">
+                <de><![CDATA[Hochformat 2:3]]></de>
+                <en><![CDATA[Portrait format 2:3]]></en>
+            </locale>
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.3-4">
+                <de><![CDATA[Hochformat 3:4]]></de>
+                <en><![CDATA[Portrait format 3:4]]></en>
+            </locale>
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.4-5">
+                <de><![CDATA[Hochformat 4:5]]></de>
+                <en><![CDATA[Portrait format 4:5]]></en>
+            </locale>
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.9-16">
+                <de><![CDATA[Hochformat 9:16]]></de>
+                <en><![CDATA[Portrait format 9:16]]></en>
+            </locale>
+
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.4-3">
+                <de><![CDATA[Querformat 4:3]]></de>
+                <en><![CDATA[Landscape format 4:3]]></en>
+            </locale>
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.3-2">
+                <de><![CDATA[Querformat 3:2]]></de>
+                <en><![CDATA[Landscape format 3:2]]></en>
+            </locale>
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.5-4">
+                <de><![CDATA[Querformat 5:4]]></de>
+                <en><![CDATA[Landscape format 5:4]]></en>
+            </locale>
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.16-9">
+                <de><![CDATA[Querformat 16:9]]></de>
+                <en><![CDATA[Landscape format 16:9]]></en>
+            </locale>
+        <locale name="quiqqer.portfolio2022.settings.gap">
+            <de><![CDATA[Abstand zwischen Einträgen aktivieren]]></de>
+            <en><![CDATA[Enable space between entries]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.entryMinWidthDesktop">
+            <de><![CDATA[Minimale Eintrag-Breite (in Pixel)]]></de>
+            <en><![CDATA[Minimum entry width (in pixels)]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.entryMinWidthDesktop.desc">
+            <de><![CDATA[Diese Option bestimmt die minimale Breite jedes Eintrages. Diese Einstellung überschreibt "Anzahl der Einträge pro Zeile", wenn die Bedienung erfüllt wird.]]></de>
+            <en>This option determines the minimum width of each entry. This setting overrides "Entries per line" when the operation is fulfilled.</en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.entryMinWidthMobile">
+            <de><![CDATA[Minimale Eintrag-Breite (in Pixel) für mobile Geräte]]></de>
+            <en><![CDATA[Minimum entry width (in pixels) for mobile devices]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.entryMinWidthMobile.desc">
+            <de><![CDATA[Diese Option bestimmt die minimale Breite jedes Eintrages für mobile Geräte. Diese Einstellung überschreibt "Anzahl der Einträge pro Zeile", wenn die Bedienung erfüllt wird.]]></de>
+            <en>This option determines the minimum width of each entry for mobile devices. This setting overrides "Entries per line" when the operation is fulfilled.</en>
+        </locale>
+
+        <!-- END Portfolio 2022 -->
+
         <locale name="admin.types.portfolio.list">
             <de><![CDATA[Referenzliste]]></de>
             <en><![CDATA[Portfolio list]]></en>
@@ -177,7 +296,6 @@
         <locale name="quiqqer.portfolio.settings.randomButton">
             <de><![CDATA[Zufalls Button anzeigen]]></de>
             <en><![CDATA[Show random button]]></en>
-            <pl><![CDATA[Pokazać przycisk "losowy"]]></pl>
         </locale>
 
         <locale name="quiqqer.portfolio.settings.imgPosition">
@@ -264,10 +382,20 @@
             <pl><![CDATA[Więcej]]></pl>
         </locale>
 
+        <locale name="quiqqer.portfolio2022.category.more">
+            <de><![CDATA[Weitere Projekte laden]]></de>
+            <en><![CDATA[Load more projects]]></en>
+        </locale>
+
         <locale name="quiqqer.portfolio.openPortfolio">
             <de><![CDATA[Mehr]]></de>
             <en><![CDATA[More]]></en>
             <en><![CDATA[Więcej]]></en>
+        </locale>
+
+        <locale name="quiqqer.portfolio2022.openPortfolio">
+            <de><![CDATA[Weiter lesen]]></de>
+            <en><![CDATA[Learn more]]></en>
         </locale>
 
 

@@ -1,0 +1,46 @@
+<div class="quiqqer-portfolio-list2022-entry-inner">
+    <figure>
+        <a href="{url site=$Child}" class="quiqqer-portfolio-list2022-entry-imageContainer">
+            <div class="quiqqer-portfolio-list2022-entry-imageContainer-showLabel">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+                <span class="quiqqer-portfolio-list2022-entry-imageContainer-showLabel-text">
+                    {locale group="quiqqer/portfolio" var="quiqqer.portfolio2022.openPortfolio"}
+                </span>
+            </div>
+            {* Is the image an icon? *}
+            {if strpos($Child->getAttribute('image_site'), 'fa ') === 0}
+                {image src=$Child->getAttribute('image_site')}
+            {else}
+                <noscript>
+                    {image src=$Child->getAttribute('image_site') height="400" style="$imgPositionStyle"}
+                </noscript>
+            {/if}
+        </a>
+
+        <figcaption>
+            <h3 class="quiqqer-portfolio-list2022-entry-title">
+                {$Child->getAttribute('title')}
+            </h3>
+
+            <div class="quiqqer-portfolio-list2022-entry-desc">
+                {$Child->getAttribute('short')}
+                <noscript>
+                    <div class="quiqqer-portfolio-list2022-entry-desc-button">
+                        <a href="{url site=$Child}">
+                            {locale group="quiqqer/portfolio" var="quiqqer.portfolio2022.openPortfolio"}
+                        </a>
+                    </div>
+                </noscript>
+            </div>
+        </figcaption>
+    </figure>
+    <noscript>
+        <style>
+            [data-id="{$Child->getId()}"] {
+                display: inline;
+            }
+        </style>
+    </noscript>
+</div>

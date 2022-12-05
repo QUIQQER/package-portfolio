@@ -1,0 +1,74 @@
+
+{if $categories && count($categories)}
+<section class="quiqqer-portfolio-categories">
+    {if $this->getAttribute('showRandomButton')}
+    <div class="quiqqer-portfolio-categories-entry quiqqer-portfolio-categories-random"
+         title="{locale group='quiqqer/portfolio' var='quiqqer.portfolio.category.random'}"
+    >
+        <span class="fa fa-random"></span>
+    </div>
+    {/if}
+
+    <div class="quiqqer-portfolio-categories-entry quiqqer-portfolio-categories-all">
+        {locale group="quiqqer/portfolio" var="quiqqer.portfolio.category.all"}
+    </div>
+
+    {foreach from=$categories item=Data}
+    <div class="quiqqer-portfolio-categories-entry" title="{$Data.description|escape:'html'}">
+        {$Data.category}
+    </div>
+    {/foreach}
+
+</section>
+
+{/if}
+
+{assign var=c value=0}
+<section class="quiqqer-portfolio-list2022 quiqqer-portfolio-list2022__{$templateName}">
+    {foreach from=$portfolio item=Child}
+    {assign var=impl value=""}
+    {assign var=categories value=$Child->getAttribute('quiqqer.portfolio.settings.categories')}
+    {if $categories}
+        {assign var=impl value=implode(',', $categories)}
+    {/if}
+    <div class="quiqqer-portfolio-list2022-entry"
+         data-id="{$Child->getId()}"
+         data-categories=",{$impl},"
+         data-image-format="{$imageFormat}"
+         data-image="{image src=$Child->getAttribute('image_site') onlysrc=1}"
+         data-position="{$imgPositionStyle}"
+         {if $displayNum && $displayNum <= $c}style="display: none"{/if}
+        >
+
+        {include file="`$entryHtml`"}
+
+    </div>
+    {assign var=c value=$c+1}
+
+    {/foreach}
+</section>
+
+{if $lazyloading  && $c > $displayNum}
+<div class="quiqqer-portfolio-more">
+    <button class="btn btn-secondary">
+        {locale group="quiqqer/portfolio" var="quiqqer.portfolio2022.category.more"}
+    </button>
+</div>
+
+<noscript>
+    <style>
+        .quiqqer-portfolio-more {
+            display: none;
+        }
+
+        .quiqqer-portfolio-list2022-entry {
+            display: block !important;
+        }
+
+        .quiqqer-portfolio-categories,
+        .quiqqer-portfolio-line {
+            display: none;
+        }
+    </style>
+</noscript>
+{/if}

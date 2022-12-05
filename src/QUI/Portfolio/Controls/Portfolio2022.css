@@ -1,0 +1,116 @@
+/************************/
+/* portfolio categories */
+/************************/
+.quiqqer-portfolio-categories {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 var(--qui-spacing-2xl, 3rem) 0;
+    padding: 0;
+}
+
+.quiqqer-portfolio-categories-entry {
+    background: #eff0f0;
+    border: 1px solid #d6d9d9;
+    color: #555;
+    cursor: pointer;
+    margin: 10px 10px 10px 0;
+    padding: 5px 10px;
+    position: relative;
+}
+
+.quiqqer-portfolio-categories-entry:hover {
+    opacity: 0.5;
+}
+
+.quiqqer-portfolio-categories-entry:before {
+    background: red;
+    content: '';
+    height: 0;
+    left: -1px;
+    position: absolute;
+    top: -1px;
+    width: calc(100% + 2px); /* weil parent border jeweils 1px */
+}
+
+.quiqqer-portfolio-category__active:before {
+    height: 2px;
+}
+
+.quiqqer-portfolio-categories-random {
+    float: right;
+}
+
+/******************/
+/* Portfolio list */
+/******************/
+.quiqqer-portfolio-list2022 {
+    display: flex;
+    flex-wrap: wrap;
+    margin: calc(-1 * var(--qui-spacing, 1rem));
+    position: relative;
+}
+
+.quiqqer-portfolio-list2022-entry {
+    min-width: var(--quiqqer-portfolio2022-entryMinWidthDesktop);
+    padding: var(--qui-spacing, 1rem);
+    width: calc(100% / var(--quiqqer-portfolio2022-entriesPerLine, 3));
+    flex-grow: 1;
+}
+
+@media screen and (max-width: 767px) {
+    .quiqqer-portfolio-list2022-entry {
+        min-width: var(--quiqqer-portfolio2022-entryMinWidthMobile);
+    }
+}
+
+.quiqqer-portfolio-list2022-entry-inner {
+    height: 100%;
+}
+
+.quiqqer-portfolio-list2022-entry-inner figure {
+    display: block;
+    position: relative;
+}
+
+.quiqqer-portfolio-list2022-entry-imageContainer {
+    aspect-ratio: var(--quiqqer-portfolio2022-aspectRation, 1/1);
+    background-color: #f8f8f8;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.quiqqer-portfolio-list2022-entry-imageContainer picture,
+.quiqqer-portfolio-list2022-entry-imageContainer img {
+    display: block;
+    height: 100%;
+    object-fit: var(--quiqqer-portfolio2022-imgPosition, cover);
+    width: 100%;
+}
+
+.quiqqer-portfolio-list2022-entry-inner figure figcaption {
+    font-size: 1rem;
+}
+
+/* Loader */
+.quiqqer-portfolio-list2022-entry-loader {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 3rem;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* more button */
+.quiqqer-portfolio-more {
+    margin-top: var(--qui-spacing-2xl, 3rem);
+    text-align: center;
+}
