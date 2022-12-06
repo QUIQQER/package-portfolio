@@ -9,35 +9,22 @@
 }
 
 .quiqqer-portfolio-categories-entry {
-    background: #eff0f0;
-    border: 1px solid #d6d9d9;
-    color: #555;
+    text-transform: uppercase;
+    margin-right: 1em;
     cursor: pointer;
-    margin: 10px 10px 10px 0;
-    padding: 5px 10px;
+    color: var(--qui-color-muted);
     position: relative;
+    transition: var(--quiqqer-portfolio2022-transition);
 }
 
+.quiqqer-portfolio-category__active,
 .quiqqer-portfolio-categories-entry:hover {
-    opacity: 0.5;
-}
-
-.quiqqer-portfolio-categories-entry:before {
-    background: red;
-    content: '';
-    height: 0;
-    left: -1px;
-    position: absolute;
-    top: -1px;
-    width: calc(100% + 2px); /* weil parent border jeweils 1px */
-}
-
-.quiqqer-portfolio-category__active:before {
-    height: 2px;
+    color: var(--qui-color-body);
+    /*color: var(--qui-color-main);*/
 }
 
 .quiqqer-portfolio-categories-random {
-    float: right;
+
 }
 
 /******************/

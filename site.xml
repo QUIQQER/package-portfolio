@@ -65,6 +65,22 @@
                                 <locale group="quiqqer/portfolio"
                                         var="quiqqer.portfolio2022.settings.template.default"/>
                             </option>
+                            <option value="textOnImageHiddenCenter1">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.template.textOnImageHiddenCenter1"/>
+                            </option>
+                            <option value="textOnImageHiddenBottom1">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.template.textOnImageHiddenBottom1"/>
+                            </option>
+                            <option value="textOnImageVisibleBottom1">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.template.textOnImageVisibleBottom1"/>
+                            </option>
+                            <option value="textOnImageVisibleBottomWithArrow1">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.template.textOnImageVisibleBottomWithArrow1"/>
+                            </option>
                         </select>
 
                         <input type="checkbox"

@@ -12,19 +12,28 @@
         </a>
 
         <figcaption>
-            <h3 class="quiqqer-portfolio-list2022-entry-title">
-                {$Child->getAttribute('title')}
-            </h3>
+            <div class="quiqqer-portfolio-list2022-entry-info">
+                <h3 class="quiqqer-portfolio-list2022-entry-title">
+                    {$Child->getAttribute('title')}
+                </h3>
 
-            <div class="quiqqer-portfolio-list2022-entry-desc">
-                {$Child->getAttribute('short')}
-                <noscript>
-                    <div class="quiqqer-portfolio-list2022-entry-desc-button">
-                        <a href="{url site=$Child}">
-                            {locale group="quiqqer/portfolio" var="quiqqer.portfolio2022.openPortfolio"}
-                        </a>
-                    </div>
-                </noscript>
+                <div class="quiqqer-portfolio-list2022-entry-desc">
+                    {$Child->getAttribute('short')}
+
+                    {if !$showArrow}
+                        <noscript>
+                            <div class="quiqqer-portfolio-list2022-entry-desc-button">
+                                <a href="{url site=$Child}">
+                                    {locale group="quiqqer/portfolio" var="quiqqer.portfolio2022.openPortfolio"}
+                                </a>
+                            </div>
+                        </noscript>
+                    {/if}
+                </div>
+
+                {if $showArrow}
+                    {include file="`$arrowHtml`"}
+                {/if}
             </div>
         </figcaption>
     </figure>

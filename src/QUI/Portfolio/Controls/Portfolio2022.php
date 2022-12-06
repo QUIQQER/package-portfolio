@@ -163,18 +163,39 @@ class Portfolio2022 extends QUI\Control
             $displayNum = false;
         }
 
+        $showArrow = false;
+
         switch ($this->getAttribute('template')) {
-            case 'textOnImage1':
-                $templateName = 'textOnImage1';
-                $entryHtml    = dirname(__FILE__).'/Portfolio2022.textOnImage.html';
-                $css          = '/Portfolio2022.textOnImage.css';
+            case 'textOnImageHiddenCenter1':
+                $templateClass = 'quiqqer-portfolio-list2022__textOnImage quiqqer-portfolio-list2022__textOnImage-hiddenCenter1';
+                $entryHtml     = dirname(__FILE__).'/Portfolio2022.textOnImage.html';
+                $css           = '/Portfolio2022.textOnImageHidden.css';
+                break;
+
+            case 'textOnImageHiddenBottom1':
+                $templateClass = 'quiqqer-portfolio-list2022__textOnImage quiqqer-portfolio-list2022__textOnImage-hiddenBottom1';
+                $entryHtml     = dirname(__FILE__).'/Portfolio2022.textOnImage.html';
+                $css           = '/Portfolio2022.textOnImageHidden.css';
+                break;
+
+            case 'textOnImageVisibleBottom1':
+                $templateClass = 'quiqqer-portfolio-list2022__textOnImage quiqqer-portfolio-list2022__textOnImage-visibleBottom1';
+                $entryHtml     = dirname(__FILE__).'/Portfolio2022.textOnImage.html';
+                $css           = '/Portfolio2022.textOnImage.css';
+                break;
+
+            case 'textOnImageVisibleBottomWithArrow1':
+                $showArrow     = true;
+                $templateClass = 'quiqqer-portfolio-list2022__textOnImage quiqqer-portfolio-list2022__textOnImage-visibleBottomWithArrow1';
+                $entryHtml     = dirname(__FILE__).'/Portfolio2022.textOnImage.html';
+                $css           = '/Portfolio2022.textOnImage.css';
                 break;
 
             case 'default':
             default:
-                $templateName = 'default';
-                $entryHtml    = dirname(__FILE__).'/Portfolio2022.default.html';
-                $css          = '/Portfolio2022.default.css';
+                $templateClass = 'quiqqer-portfolio-list2022__default';
+                $entryHtml     = dirname(__FILE__).'/Portfolio2022.default.html';
+                $css           = '/Portfolio2022.default.css';
                 break;
         }
 
@@ -182,18 +203,33 @@ class Portfolio2022 extends QUI\Control
             dirname(__FILE__).$css
         );
 
-        $imageFormat = match ($this->getAttribute('aspectRatio')) {
-            default => 'landscape',
-            '1/1', '3/4', '2/3', '4/5', '9/16' => 'portrait',
-        };
+        switch ($this->getAttribute('aspectRatio')) {
+            case '4/3':
+            case '3/2':
+            case '5/4':
+            case '16/9':
+                $imageFormat = 'landscape';
+                break;
+
+            case '1/1':
+            case '3/4':
+            case '2/3':
+            case '4/5':
+            case '9/16':
+            default:
+                $imageFormat = 'portrait';
+                break;
+        }
 
         $this->setStyles([
-            '--quiqqer-portfolio2022-transition'           => '300ms ease all',
+            '--quiqqer-portfolio2022-transition-duration'  => '300ms',
+            '--quiqqer-portfolio2022-transition'           => 'var(--quiqqer-portfolio2022-transition-duration, 300ms) ease all',
             '--quiqqer-portfolio2022-imgPosition'          => $imgPosition,
             '--quiqqer-portfolio2022-aspectRation'         => $aspectRatio,
             '--quiqqer-portfolio2022-entriesPerLine'       => $entriesPerLine,
             '--quiqqer-portfolio2022-entryMinWidthDesktop' => $entryMinWidthDesktop,
             '--quiqqer-portfolio2022-entryMinWidthMobile'  => $entryMinWidthMobile,
+            '--quiqqer-portfolio2022-arrowHeight'          => '80px',
         ]);
 
         $Engine->assign([
@@ -204,7 +240,9 @@ class Portfolio2022 extends QUI\Control
             'lazyloading'      => $this->getAttribute('data-qui-options-lazyloading'),
             'imgPositionStyle' => $imgPositionStyle,
             'gao'              => $gap,
-            'templateName'     => $templateName,
+            'templateClass'    => $templateClass,
+            'showArrow'        => $showArrow,
+            'arrowHtml'        => dirname(__FILE__).'/Portfolio2022.arrow.html',
             'entryHtml'        => $entryHtml,
             'imageFormat'      => $imageFormat
         ]);
