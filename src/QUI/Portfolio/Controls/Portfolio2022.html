@@ -25,12 +25,15 @@
 
 {assign var=c value=0}
 <section class="quiqqer-portfolio-list2022 quiqqer-portfolio-list2022__{$templateName}">
+    <div class="quiqqer-portfolio-list2022-entries">
+
     {foreach from=$portfolio item=Child}
     {assign var=impl value=""}
     {assign var=categories value=$Child->getAttribute('quiqqer.portfolio.settings.categories')}
     {if $categories}
         {assign var=impl value=implode(',', $categories)}
     {/if}
+
     <div class="quiqqer-portfolio-list2022-entry"
          data-id="{$Child->getId()}"
          data-categories=",{$impl},"
@@ -39,13 +42,14 @@
          data-position="{$imgPositionStyle}"
          {if $displayNum && $displayNum <= $c}style="display: none"{/if}
         >
-
-        {include file="`$entryHtml`"}
-
+            {include file="`$entryHtml`"}
     </div>
     {assign var=c value=$c+1}
 
     {/foreach}
+        <div class="quiqqer-portfolio-list2022-entry" data-ignore="1"></div>
+        <div class="quiqqer-portfolio-list2022-entry" data-ignore="1"></div>
+        </div>
 </section>
 
 {if $lazyloading  && $c > $displayNum}

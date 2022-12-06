@@ -164,6 +164,12 @@ class Portfolio2022 extends QUI\Control
         }
 
         switch ($this->getAttribute('template')) {
+            case 'textOnImage1':
+                $templateName = 'textOnImage1';
+                $entryHtml    = dirname(__FILE__).'/Portfolio2022.textOnImage.html';
+                $css          = '/Portfolio2022.textOnImage.css';
+                break;
+
             case 'default':
             default:
                 $templateName = 'default';

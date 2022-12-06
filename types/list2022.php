@@ -1,7 +1,8 @@
 <?php
 
 $Portfolio2022 = new QUI\Portfolio\Controls\Portfolio2022([
-    'template'             => $Site->getAttribute('quiqqer.portfolio2022.settings.template'),
+//    'template'             => $Site->getAttribute('quiqqer.portfolio2022.settings.template'),
+    'template'             => 'textOnImage1',
     'imgPosition'          => $Site->getAttribute('quiqqer.portfolio2022.settings.imgPosition'),
     'entriesPerLine'       => $Site->getAttribute('quiqqer.portfolio2022.settings.entriesPerLine'),
     'aspectRatio'         => $Site->getAttribute('quiqqer.portfolio2022.settings.aspectRatio'),

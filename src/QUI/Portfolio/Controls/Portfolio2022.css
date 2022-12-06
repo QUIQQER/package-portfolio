@@ -43,7 +43,7 @@
 /******************/
 /* Portfolio list */
 /******************/
-.quiqqer-portfolio-list2022 {
+.quiqqer-portfolio-list2022-entries {
     display: flex;
     flex-wrap: wrap;
     margin: calc(-1 * var(--qui-spacing, 1rem));
@@ -51,10 +51,10 @@
 }
 
 .quiqqer-portfolio-list2022-entry {
+    flex-grow: 1;
     min-width: var(--quiqqer-portfolio2022-entryMinWidthDesktop);
     padding: var(--qui-spacing, 1rem);
     width: calc(100% / var(--quiqqer-portfolio2022-entriesPerLine, 3));
-    flex-grow: 1;
 }
 
 @media screen and (max-width: 767px) {
@@ -94,19 +94,19 @@
 
 /* Loader */
 .quiqqer-portfolio-list2022-entry-loader {
+    align-items: center;
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
+    display: flex;
     font-size: 3rem;
     height: 100%;
+    justify-content: center;
     left: 0;
     position: absolute;
     text-align: center;
     top: 0;
     width: 100%;
     z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 /* more button */
