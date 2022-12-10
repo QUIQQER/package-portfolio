@@ -1,14 +1,14 @@
 /************************/
 /* portfolio categories */
 /************************/
-.quiqqer-portfolio-categories {
+.quiqqer-portfolio-list2022-categories {
     display: flex;
     flex-wrap: wrap;
     margin: 0 0 var(--qui-spacing-2xl, 3rem) 0;
     padding: 0;
 }
 
-.quiqqer-portfolio-categories-entry {
+.quiqqer-portfolio-list2022-categories-entry {
     text-transform: uppercase;
     margin-right: 1em;
     cursor: pointer;
@@ -17,13 +17,13 @@
     transition: var(--quiqqer-portfolio2022-transition);
 }
 
-.quiqqer-portfolio-category__active,
-.quiqqer-portfolio-categories-entry:hover {
+.quiqqer-portfolio-list2022-category__active,
+.quiqqer-portfolio-list2022-categories-entry:hover {
     color: var(--qui-color-body);
     /*color: var(--qui-color-main);*/
 }
 
-.quiqqer-portfolio-categories-random {
+.quiqqer-portfolio-list2022-categories-random {
 
 }
 

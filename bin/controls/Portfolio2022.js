@@ -62,12 +62,12 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
             var self = this;
 
             this.$loading    = true;
-            this.$Categories = this.getElm().getElement('.quiqqer-portfolio-categories');
+            this.$Categories = this.getElm().getElement('.quiqqer-portfolio-list2022-categories');
             this.$List       = this.getElm().getElement('.quiqqer-portfolio-list2022');
             this.$ListInner  = this.getElm().getElement('.quiqqer-portfolio-list2022-entries');
 
             if (this.$Categories) {
-                this.$categories = this.$Categories.getElements('.quiqqer-portfolio-categories-entry');
+                this.$categories = this.$Categories.getElements('.quiqqer-portfolio-list2022-categories-entry');
             }
 
             if (this.$List) {
@@ -81,10 +81,10 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
 
             // categories
             var openCategory = function () {
-                self.$categories.removeClass('quiqqer-portfolio-category__active');
+                self.$categories.removeClass('quiqqer-portfolio-list2022-category__active');
 
                 // randomize
-                if (this.hasClass('quiqqer-portfolio-categories-random')) {
+                if (this.hasClass('quiqqer-portfolio-list2022-categories-random')) {
                     self.randomize();
                     return;
                 }
@@ -94,16 +94,16 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
                     return;
                 }
 
-                if (this.hasClass('quiqqer-portfolio-category__active')) {
+                if (this.hasClass('quiqqer-portfolio-list2022-category__active')) {
                     return;
                 }
 
-                this.addClass('quiqqer-portfolio-category__active');
+                this.addClass('quiqqer-portfolio-list2022-category__active');
 
                 var inResult    = new Elements(),
                     notInResult = new Elements();
 
-                if (this.hasClass('quiqqer-portfolio-categories-all')) {
+                if (this.hasClass('quiqqer-portfolio-list2022-categories-all')) {
                     inResult = self.$entries;
                 } else {
                     var catId = this.get('text').trim();
@@ -175,8 +175,7 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
             this.getElm().getElements('.quiqqer-portfolio-more').addEvent('click', this.next);
 
             if (this.$Categories &&
-                this.$Categories.getElement('.quiqqer-portfolio-categories-random')) {
-
+                this.$Categories.getElement('.quiqqer-portfolio-list2022-categories-random')) {
                 this.randomize().then(function () {
                     self.$loading = false;
                 });
@@ -225,10 +224,10 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
                 var rest = [];
 
                 for (var i = 0, len = entries.length; i < len; i++) {
-                    entries[i].inject(self.$List);
+                    entries[i].inject(self.$ListInner);
                 }
 
-                entries = self.$List.getElements('.quiqqer-portfolio-list2022-entry');
+                entries = self.$List.getElements('.quiqqer-portfolio-list2022-entry:not([data-ignore="1"])');
                 entries.set('data-available', 1);
 
                 if (self.getAttribute('start-reference') &&
@@ -247,17 +246,19 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
                         entry.setStyle('display', 'none');
                     });
 
-                    return new Promise(function (resolve) {
-                        moofx(self.$List).animate({
-                            height: self.$List.getScrollSize().y
-                        }, {
-                            duration: 200,
-                            callback: function () {
-                                self.$List.setStyle('height', null);
-                                resolve();
-                            }
-                        });
-                    });
+                    self.$List.setStyle('height', null);
+
+//                    return new Promise(function (resolve) {
+//                        moofx(self.$List).animate({
+//                            height: self.$List.getScrollSize().y
+//                        }, {
+//                            duration: 200,
+//                            callback: function () {
+//                                self.$List.setStyle('height', null);
+//                                resolve();
+//                            }
+//                        });
+//                    });
                 });
             });
         },
