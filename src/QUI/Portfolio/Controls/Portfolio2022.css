@@ -30,17 +30,26 @@
 /******************/
 /* Portfolio list */
 /******************/
+.quiqqer-portfolio-list2022 {
+    overflow: hidden;  /* gap hack */
+}
+
 .quiqqer-portfolio-list2022-entries {
     display: flex;
     flex-wrap: wrap;
-    margin: calc(-1 * var(--qui-spacing, 1rem));
+    margin: calc(-1 * var(--qui-spacing, 1rem)); /* gap hack */
     position: relative;
+
+    /*display: grid;*/
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+    /*grid-template-columns: repeat(auto-fill, minmax(min(var(--quiqqer-portfolio2022-entryMinWidthDesktop), 100%), 1fr));*/
+    /*gap: var(--qui-spacing, 1rem);*/
 }
 
 .quiqqer-portfolio-list2022-entry {
     flex-grow: 1;
     min-width: var(--quiqqer-portfolio2022-entryMinWidthDesktop);
-    padding: var(--qui-spacing, 1rem);
+    padding: var(--qui-spacing, 1rem); /* gap hack */
     width: calc(100% / var(--quiqqer-portfolio2022-entriesPerLine, 3));
 }
 
@@ -52,6 +61,7 @@
 
 .quiqqer-portfolio-list2022-entry-inner {
     height: 100%;
+    position: relative;
 }
 
 .quiqqer-portfolio-list2022-entry-inner figure {
@@ -100,4 +110,49 @@
 .quiqqer-portfolio-more {
     margin-top: var(--qui-spacing-2xl, 3rem);
     text-align: center;
+}
+
+/**************************************************************/
+/* Skeleton loading effect */
+/**************************************************************/
+.quiqqer-portfolio-list2022 .skeletonLoadingEffect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.quiqqer-portfolio-list2022 .skeletonLoadingEffect:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ececec;
+    background-image: linear-gradient(110deg, #ececec 180px, #f3f3f3 250px, #ececec 320px);
+    background-size: 2000px 100%;
+    animation: quiqqer-portfolio-list2022-skeleton-shining 3s infinite linear;
+    background-position: -350px 0;
+    background-repeat: no-repeat;
+    transition: 500ms opacity ease;
+}
+
+.quiqqer-portfolio-list2022 .quiqqer-portfolio-list2022-entry.imageLoaded .skeletonLoadingEffect:after {
+    opacity: 0;
+}
+
+.quiqqer-portfolio-list2022-entry:not(.imageLoaded) .quiqqer-portfolio-list2022-entry-inner figure {
+    visibility: hidden;
+    opacity: 0;
+}
+
+@keyframes quiqqer-portfolio-list2022-skeleton-shining {
+    0% {
+        background-position: -300px 0;
+    }
+    100% {
+        background-position: 1700px 0;
+    }
 }

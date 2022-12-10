@@ -113,6 +113,13 @@
     z-index: 1;
 }
 
+/* for skeleton loading effect */
+:where(.quiqqer-portfolio-list2022__textOnImage-visibleBottom1) .quiqqer-portfolio-list2022-entry:not(.imageLoaded) .quiqqer-portfolio-list2022-entry-inner:after,
+:where(.quiqqer-portfolio-list2022__textOnImage-visibleBottomWithArrow1) .quiqqer-portfolio-list2022-entry:not(.imageLoaded) .quiqqer-portfolio-list2022-entry-inner:after {
+    opacity: 0;
+}
+/* END for skeleton loading effect */
+
 :where(.quiqqer-portfolio-list2022__textOnImage-visibleBottom1) figcaption,
 :where(.quiqqer-portfolio-list2022__textOnImage-visibleBottomWithArrow1) figcaption {
     justify-content: flex-end;

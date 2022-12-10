@@ -47,8 +47,8 @@
     {assign var=c value=$c+1}
 
     {/foreach}
-        <div class="quiqqer-portfolio-list2022-entry" data-ignore="1"></div>
-        <div class="quiqqer-portfolio-list2022-entry" data-ignore="1"></div>
+        <div class="quiqqer-portfolio-list2022-entry" data-ignore="1" style="height: 0 !important; padding: 0 !important;"></div>
+        <div class="quiqqer-portfolio-list2022-entry" data-ignore="1" style="height: 0 !important; padding: 0 !important;"></div>
         </div>
 </section>
 
@@ -73,6 +73,16 @@
         .quiqqer-portfolio-line {
             display: none;
         }
+
+        .skeletonLoadingEffect {
+            display: none !important;
+        }
+
+        .quiqqer-portfolio-list2022-entry:not(.imageLoaded) .quiqqer-portfolio-list2022-entry-inner figure {
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
     </style>
 </noscript>
 {/if}
