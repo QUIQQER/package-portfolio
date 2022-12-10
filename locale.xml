@@ -48,6 +48,22 @@
             <de><![CDATA[Standard]]></de>
             <en><![CDATA[Default]]></en>
         </locale>
+        <locale name="quiqqer.portfolio2022.settings.template.textOnImageHiddenCenter1">
+            <de><![CDATA[Versteckter Text zentriert auf dem Bild]]></de>
+            <en><![CDATA[Hidden text centered on the image]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.template.textOnImageHiddenBottom1">
+            <de><![CDATA[Versteckter Text platziert unten auf dem Bild]]></de>
+            <en><![CDATA[Hidden text placed at the bottom on the image]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.template.textOnImageVisibleBottom1">
+            <de><![CDATA[Sichtbarer Text platziert unten auf dem Bild]]></de>
+            <en><![CDATA[Visible text placed at the bottom on the image]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.template.textOnImageVisibleBottomWithArrow1">
+            <de><![CDATA[Sichtbarer Text mit Pfeil platziert unten auf dem Bild]]></de>
+            <en><![CDATA[Visible text with an arrow placed at the bottom on the image]]></en>
+        </locale>
         <locale name="quiqqer.portfolio2022.settings.randomButton">
             <de><![CDATA[Zufalls Button anzeigen]]></de>
             <en><![CDATA[Show random button]]></en>
@@ -119,6 +135,24 @@
                 <de><![CDATA[Querformat 16:9]]></de>
                 <en><![CDATA[Landscape format 16:9]]></en>
             </locale>
+
+        <locale name="quiqqer.portfolio2022.settings.mainColor">
+            <de><![CDATA[Hauptfarbe]]></de>
+            <en><![CDATA[Main color]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.mainColor.desc">
+            <de><![CDATA[Farbe für Hauptelemente, z.B Hintergrund]]></de>
+            <en><![CDATA[Color for main elements, e.g. background.]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.accentColor">
+            <de><![CDATA[Akzentfarbe]]></de>
+            <en><![CDATA[Accent color]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.accentColor.desc">
+            <de><![CDATA[Akzentfarbe, z.B. für Texte auf einem Hintergrund.]]></de>
+            <en><![CDATA[Accent color, e.g. for texts on a background.]]></en>
+        </locale>
+
         <locale name="quiqqer.portfolio2022.settings.gap">
             <de><![CDATA[Abstand zwischen Einträgen aktivieren]]></de>
             <en><![CDATA[Enable space between entries]]></en>

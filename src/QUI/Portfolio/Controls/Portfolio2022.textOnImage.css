@@ -4,7 +4,7 @@
 }
 
 :where(.quiqqer-portfolio-list2022__textOnImage) .quiqqer-portfolio-list2022-entry-inner:before {
-    background-color: var(--qui-color-primary);
+    background-color: var(--quiqqer-portfolio2022-mainColor, var(--qui-color-primary));
     content: '';
     height: 100%;
     left: 0;
@@ -36,7 +36,7 @@
 
 :where(.quiqqer-portfolio-list2022__textOnImage) figcaption {
     background-color: transparent;
-    color: #fff;
+    color: var(--quiqqer-portfolio2022-accentColor, #fff);
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -125,7 +125,7 @@
 
 :where(.quiqqer-portfolio-list2022__textOnImage-visibleBottom1) .quiqqer-portfolio-list2022-entry-inner:hover img,
 :where(.quiqqer-portfolio-list2022__textOnImage-visibleBottomWithArrow1) .quiqqer-portfolio-list2022-entry-inner:hover img {
-    filter: blur(10px) grayscale(1) brightness(0.5);
+    filter: blur(7px) grayscale(1) brightness(0.5);
     transform: scale(1.04);
 }
 

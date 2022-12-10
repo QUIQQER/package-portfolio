@@ -10,12 +10,13 @@
 
 :where(.quiqqer-portfolio-list2022__default) .quiqqer-portfolio-list2022-entry-imageContainer:hover img {
     transform: scale(1.04);
+    filter: blur(7px);
 }
 
 
 :where(.quiqqer-portfolio-list2022__default) .quiqqer-portfolio-list2022-entry-imageContainer-showLabel {
     align-items: center;
-    color: #fff;
+    color: var(--quiqqer-portfolio2022-accentColor, #fff);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -29,7 +30,7 @@
 }
 
 :where(.quiqqer-portfolio-list2022__default) .quiqqer-portfolio-list2022-entry-imageContainer-showLabel:before {
-    background-color: #000;
+    background-color: var(--quiqqer-portfolio2022-mainColor, #000);
     content: '';
     height: 100%;
     left: 0;

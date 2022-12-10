@@ -13,6 +13,8 @@
             <attributes>
                 <attribute>quiqqer.portfolio.settings.categories</attribute>
                 <attribute default="default">quiqqer.portfolio2022.settings.template</attribute>
+                <attribute default="#2b2828">quiqqer.portfolio2022.settings.mainColor</attribute>
+                <attribute default="#ffffff">quiqqer.portfolio2022.settings.accentColor</attribute>
                 <attribute>quiqqer.portfolio2022.settings.showRandomButton</attribute>
                 <attribute>quiqqer.portfolio2022.settings.imgPosition</attribute>
 
@@ -170,6 +172,32 @@
                                         var="quiqqer.portfolio2022.settings.aspectRatio.16-9"/>
                             </option>
                         </select>
+
+                        <input type="color"
+                               conf="quiqqer.portfolio2022.settings.mainColor"
+                        >
+                            <text>
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.mainColor"/>
+                            </text>
+                            <description>
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.mainColor.desc"/>
+                            </description>
+                        </input>
+                        <input type="color"
+                               conf="quiqqer.portfolio2022.settings.accentColor"
+                        >
+                            <text>
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.accentColor"/>
+                            </text>
+                            <description>
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.accentColor.desc"/>
+                            </description>
+                        </input>
+
                         <input type="checkbox"
                                conf="quiqqer.portfolio2022.settings.gap"
                         >

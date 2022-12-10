@@ -33,12 +33,14 @@ class Portfolio2022 extends QUI\Control
             'data-qui-options-start-reference' => 3,
             'parentInputList'                  => false, // for example from qui site select
             'order'                            => 'c_date DESC',
-            'template'                         => 'default',
-            'aspectRatio'                      => '1/1', // any css valid aspect ratio: 1/1, 1/2: 4:3, 16:9, 9:16
 
             // design
+            'template'                         => 'default',
+            'aspectRatio'                      => '1/1', // any css valid aspect ratio: 1/1, 1/2: 4:3, 16:9, 9:16
             'imgPosition'                      => false,
             'gap'                              => '1rem',
+            'mainColor'                        => false,
+            'accentColor'                      => false,
             'entryMinWidthDesktop'             => 300,
             'entryMinWidthMobile'              => false
         ]);
@@ -169,13 +171,13 @@ class Portfolio2022 extends QUI\Control
             case 'textOnImageHiddenCenter1':
                 $templateClass = 'quiqqer-portfolio-list2022__textOnImage quiqqer-portfolio-list2022__textOnImage-hiddenCenter1';
                 $entryHtml     = dirname(__FILE__).'/Portfolio2022.textOnImage.html';
-                $css           = '/Portfolio2022.textOnImageHidden.css';
+                $css           = '/Portfolio2022.textOnImage.css';
                 break;
 
             case 'textOnImageHiddenBottom1':
                 $templateClass = 'quiqqer-portfolio-list2022__textOnImage quiqqer-portfolio-list2022__textOnImage-hiddenBottom1';
                 $entryHtml     = dirname(__FILE__).'/Portfolio2022.textOnImage.html';
-                $css           = '/Portfolio2022.textOnImageHidden.css';
+                $css           = '/Portfolio2022.textOnImage.css';
                 break;
 
             case 'textOnImageVisibleBottom1':
@@ -231,6 +233,14 @@ class Portfolio2022 extends QUI\Control
             '--quiqqer-portfolio2022-entryMinWidthMobile'  => $entryMinWidthMobile,
             '--quiqqer-portfolio2022-arrowHeight'          => '80px',
         ]);
+
+        if ($this->getAttribute('mainColor')) {
+            $this->setStyle('--quiqqer-portfolio2022-mainColor', $this->getAttribute('mainColor'));
+        }
+
+        if ($this->getAttribute('accentColor')) {
+            $this->setStyle('--quiqqer-portfolio2022-accentColor', $this->getAttribute('accentColor'));
+        }
 
         $Engine->assign([
             'this'             => $this,
