@@ -1,0 +1,46 @@
+<div class="quiqqer-portfolio-reference2022-nav">
+    {if $Prev}
+        <a href="{url site=$Prev}"
+           class="quiqqer-portfolio-reference2022-nav-entry quiqqer-portfolio-reference2022-nav-entry__prev"
+           data-id="{$Prev->getId()}"
+        >
+            <span class="fa fa-angle-left"></span>
+            <span class="quiqqer-portfolio-reference2022-nav-entry-label hide-on-mobile">
+                {locale group='quiqqer/portfolio' var='quiqqer.portfolio.reference.frontend.prevButton'}
+            </span>
+        </a>
+    {else}
+        <div class="quiqqer-portfolio-reference2022-nav-entry quiqqer-portfolio-reference2022-nav-entry__prev quiqqer-portfolio-reference2022-nav-entry__disabled">
+            <span class="fa fa-angle-left"></span>
+            <span class="quiqqer-portfolio-reference2022-nav-entry-label hide-on-mobile">
+                {locale group='quiqqer/portfolio' var='quiqqer.portfolio.reference.frontend.prevButton'}
+            </span>
+        </div>
+    {/if}
+
+    <a href="{url site=$Parent}"
+       class="quiqqer-portfolio-reference2022-nav-entry quiqqer-portfolio-reference2022-nav-entry__back"
+       data-id="{$Parent->getId()}" title="{locale group='quiqqer/portfolio' var='quiqqer.portfolio.reference.frontend.backButton'}"
+    >
+        <span class="fa fa-th-large"></span>
+    </a>
+
+    {if $Next}
+        <a href="{url site=$Next}"
+           class="quiqqer-portfolio-reference2022-nav-entry quiqqer-portfolio-reference2022-nav-entry__next"
+           data-id="{$Next->getId()}"
+        >
+            <span class="quiqqer-portfolio-reference2022-nav-entry-label hide-on-mobile">
+                {locale group='quiqqer/portfolio' var='quiqqer.portfolio.reference.frontend.nextButton'}
+            </span>
+            <span class="fa fa-angle-right"></span>
+        </a>
+    {else}
+        <div class="quiqqer-portfolio-reference2022-nav-entry quiqqer-portfolio-reference2022-nav-entry__next quiqqer-portfolio-reference2022-nav-entry__disabled">
+            <span class="fa fa-angle-right"></span>
+            <span class="quiqqer-portfolio-reference2022-nav-entry-label hide-on-mobile">
+                {locale group='quiqqer/portfolio' var='quiqqer.portfolio.reference.frontend.nextButton'}
+            </span>
+        </div>
+    {/if}
+</div>
