@@ -26,7 +26,7 @@ class Portfolio2022 extends QUI\Control
             'showRandomButton'                 => false,
             'limit'                            => false,
             'qui-class'                        => 'package/quiqqer/portfolio/bin/controls/Portfolio2022',
-            'data-qui-options-nopopups'        => false,
+            'data-qui-options-nopopups'        => true,
             'data-qui-options-popuptype'       => 'short',
             'data-qui-options-useanchor'       => false,
             'data-qui-options-lazyloading'     => true,
@@ -99,7 +99,10 @@ class Portfolio2022 extends QUI\Control
             $parents   = $this->getAttribute('parentInputList');
             $portfolio = Utils::getSitesByInputList($Site->getProject(), $parents, [
                 'where' => [
-                    'type' => 'quiqqer/portfolio:types/entry'
+                    'type' => [
+                        'type'  => 'IN',
+                        'value' => ['quiqqer/portfolio:types/entry2022', 'quiqqer/portfolio:types/entry']
+                    ]
                 ],
                 'limit' => $limit,
                 'order' => $this->getAttribute('order')
@@ -108,7 +111,10 @@ class Portfolio2022 extends QUI\Control
             // for sites
             $portfolio = $Site->getChildren([
                 'where' => [
-                    'type' => 'quiqqer/portfolio:types/entry'
+                    'type' => [
+                        'type'  => 'IN',
+                        'value' => ['quiqqer/portfolio:types/entry2022', 'quiqqer/portfolio:types/entry']
+                    ]
                 ],
                 'limit' => $limit
             ]);

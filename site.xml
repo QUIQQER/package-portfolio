@@ -3,10 +3,11 @@
 
     <types>
 
+        <!-- Portfolio 2022 -->
         <type type="types/list2022" extend="QUI\Portfolio\Portfolio2022" icon="fa fa-star" child-type="quiqqer/portfolio:types/entry2022">
-            <locale group="quiqqer/portfolio" var="admin.types.portfolio2022"/>
+            <locale group="quiqqer/portfolio" var="admin.types.portfolio.list2022"/>
             <desc>
-                <locale group="quiqqer/portfolio" var="admin.types.portfolio2022.desc"/>
+                <locale group="quiqqer/portfolio" var="admin.types.portfolio.list2022.desc"/>
             </desc>
 
             <!-- extra attributes -->
@@ -338,6 +339,171 @@
 
             </settings>
         </type>
+
+        <!-- Entry 2022 -->
+        <type type="types/entry2022" icon="fa fa-star-o">
+            <locale group="quiqqer/portfolio" var="admin.types.portfolio.entry2022"/>
+            <desc>
+                <locale group="quiqqer/portfolio" var="admin.types.portfolio.entry2022.desc"/>
+            </desc>
+
+            <!-- extra attributes -->
+            <attributes>
+                <attribute>quiqqer.portfolio.settings.categories</attribute>
+                <attribute>quiqqer.portfolio.settings.mediaFolder</attribute>
+                <attribute>quiqqer.portfolio.settings.website</attribute>
+                <attribute default="1">quiqqer.portfolio.entry2022.settings.showNav</attribute>
+
+                <attribute default="1">quiqqer.portfolio.entry2022.settings.gallery.enable</attribute>
+                <attribute default="3">quiqqer.portfolio.entry2022.settings.gallery.template</attribute>
+                <attribute default="random">quiqqer.portfolio.entry2022.settings.gallery.order</attribute>
+                <attribute default="1">quiqqer.portfolio.entry2022.settings.gallery.scaleImageOnHover</attribute>
+                <attribute default="1">quiqqer.portfolio.entry2022.settings.gallery.darkenImageOnHover</attribute>
+                <attribute default="1">quiqqer.portfolio.entry2022.settings.gallery.iconOnHover</attribute>
+            </attributes>
+
+            <tab name="quiqqer.portfolio.categories">
+                <text>
+                    <locale group="quiqqer/portfolio" var="admin.types.portfolio.categories"/>
+                </text>
+                <image>fa fa-star</image>
+                <onload require="package/quiqqer/portfolio/bin/SitePanelReference"/>
+            </tab>
+
+            <!-- list settings -->
+            <settings>
+
+                <category name="portfolio-settings">
+                    <settings>
+                        <title>
+                            <locale group="quiqqer/portfolio" var="quiqqer.portfolio.entry2022.settings.title"/>
+                        </title>
+
+                        <input conf="quiqqer.portfolio.settings.mediaFolder" class="media-folder">
+                            <text>
+                                <locale group="quiqqer/portfolio" var="quiqqer.portfolio.settings.mediaFolder"/>
+                            </text>
+                        </input>
+                        <input conf="quiqqer.portfolio.entry2022.settings.showNav" type="checkbox">
+                            <text>
+                                <locale group="quiqqer/portfolio" var="quiqqer.portfolio.entry2022.settings.showNav"/>
+                            </text>
+                        </input>
+                        <input conf="quiqqer.portfolio.settings.website">
+                            <text>
+                                <locale group="quiqqer/portfolio" var="quiqqer.portfolio.settings.website"/>
+                            </text>
+                        </input>
+                    </settings>
+                </category>
+
+                <category name="portfolio-gallery-settings">
+                    <settings>
+                        <title>
+                            <locale group="quiqqer/portfolio" var="quiqqer.portfolio.entry2022.settings.gallery.title"/>
+                        </title>
+                        <input conf="quiqqer.portfolio.entry2022.settings.gallery.enable" type="checkbox">
+                            <text>
+                                <locale group="quiqqer/portfolio" var="quiqqer.portfolio.entry2022.settings.gallery.enable"/>
+                            </text>
+                        </input>
+
+                        <select conf="quiqqer.portfolio.entry2022.settings.gallery.template">
+                            <text>
+                                <locale group="quiqqer/portfolio" var="quiqqer.portfolio.entry2022.settings.gallery.template"/>
+                            </text>
+                            <option value="1"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.1"/></option>
+                            <option value="2"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.2"/></option>
+                            <option value="3"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.3"/></option>
+                            <option value="4"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.4"/></option>
+                            <option value="5"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.5"/></option>
+                            <option value="6"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.6"/></option>
+                            <option value="7"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.7"/></option>
+                            <option value="8"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.8"/></option>
+                            <option value="9"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.9"/></option>
+                            <option value="10"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.10"/></option>
+                            <option value="2perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.2perRow"/></option>
+                            <option value="3perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.3perRow"/></option>
+                            <option value="4perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.4perRow"/></option>
+                            <option value="5perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.5perRow"/></option>
+                            <option value="6perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.6perRow"/></option>
+                        </select>
+
+                        <select conf="quiqqer.portfolio.entry2022.settings.gallery.order">
+                            <text>
+                                <locale group="quiqqer/bricks" var="brick.control.setting.order"/>
+                            </text>
+                            <option value="random">
+                                <locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.order.random"/>
+                            </option>
+                            <option value="name ASC">
+                                <locale group="quiqqer/system" var="name_asc"/>
+                            </option>
+                            <option value="name DESC">
+                                <locale group="quiqqer/system" var="name_desc"/>
+                            </option>
+                            <option value="title ASC">
+                                <locale group="quiqqer/system" var="title_asc"/>
+                            </option>
+                            <option value="title DESC">
+                                <locale group="quiqqer/system" var="title_desc"/>
+                            </option>
+                            <option value="c_date ASC">
+                                <locale group="quiqqer/system" var="c_date_asc"/>
+                            </option>
+                            <option value="c_date DESC">
+                                <locale group="quiqqer/system" var="c_date_desc"/>
+                            </option>
+                            <option value="e_date ASC">
+                                <locale group="quiqqer/system" var="e_date_asc"/>
+                            </option>
+                            <option value="e_date DESC">
+                                <locale group="quiqqer/system" var="e_date_desc"/>
+                            </option>
+                            <option value="release_from ASC">
+                                <locale group="quiqqer/system" var="release_from_asc"/>
+                            </option>
+                            <option value="release_from DESC">
+                                <locale group="quiqqer/system" var="release_from_desc"/>
+                            </option>
+                            <option value="priority ASC">
+                                <locale group="quiqqer/system" var="priority_asc"/>
+                            </option>
+                            <option value="priority DESC">
+                                <locale group="quiqqer/system" var="priority_desc"/>
+                            </option>
+                        </select>
+
+                        <input conf="quiqqer.portfolio.entry2022.settings.gallery.scaleImageOnHover" type="checkbox">
+                            <text>
+                                <locale group="quiqqer/portfolio" var="quiqqer.portfolio.entry2022.settings.gallery.scaleImageOnHover"/>
+                            </text>
+                            <description>
+                                <locale group="quiqqer/portfolio" var="quiqqer.portfolio.entry2022.settings.gallery.scaleImageOnHover.desc"/>
+                            </description>
+                        </input>
+                        <input conf="quiqqer.portfolio.entry2022.settings.gallery.darkenImageOnHover" type="checkbox">
+                            <text>
+                                <locale group="quiqqer/portfolio" var="quiqqer.portfolio.entry2022.settings.gallery.darkenImageOnHover"/>
+                            </text>
+                            <description>
+                                <locale group="quiqqer/portfolio" var="quiqqer.portfolio.entry2022.settings.gallery.darkenImageOnHover.desc"/>
+                            </description>
+                        </input>
+                        <input conf="quiqqer.portfolio.entry2022.settings.gallery.iconOnHover" type="checkbox">
+                            <text>
+                                <locale group="quiqqer/portfolio" var="quiqqer.portfolio.entry2022.settings.gallery.iconOnHover"/>
+                            </text>
+                            <description>
+                                <locale group="quiqqer/portfolio" var="quiqqer.portfolio.entry2022.settings.gallery.iconOnHover.desc"/>
+                            </description>
+                        </input>
+                    </settings>
+                </category>
+
+            </settings>
+        </type>
+
 
         <type type="types/list" extend="QUI\Portfolio\PortfolioList" icon="fa fa-star" child-type="quiqqer/portfolio:types/entry">
             <locale group="quiqqer/portfolio" var="admin.types.portfolio.list"/>

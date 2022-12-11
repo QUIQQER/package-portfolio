@@ -12,8 +12,8 @@ $Portfolio2022 = new QUI\Portfolio\Controls\Portfolio2022([
     'entryMinWidthMobile'  => $Site->getAttribute('quiqqer.portfolio2022.settings.entryMinWidthMobile'),
     'showRandomButton'     => $Site->getAttribute('quiqqer.portfolio2022.settings.showRandomButton'),
 
-    'data-qui-options-nopopups'        => $Site->getAttribute('quiqqer.portfolio2022.settings.portfolioNoPopup'),
-    'data-qui-options-popuptype'       => $Site->getAttribute('quiqqer.portfolio2022.settings.portfolioPopup.type'),
+//    'data-qui-options-nopopups'        => $Site->getAttribute('quiqqer.portfolio2022.settings.portfolioNoPopup'),
+//    'data-qui-options-popuptype'       => $Site->getAttribute('quiqqer.portfolio2022.settings.portfolioPopup.type'),
     'data-qui-options-start-reference' => $Site->getAttribute('quiqqer.portfolio2022.settings.referenceStartNumber'),
     'data-qui-options-lazyloading'     => true,
     'data-qui-options-useanchor'       => true,

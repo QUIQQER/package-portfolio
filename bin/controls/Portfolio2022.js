@@ -30,7 +30,7 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
         ],
 
         options: {
-            nopopups         : false,
+            nopopups         : true,
             popuptype        : 'short',
             useanchor        : false,
             lazyloading      : true,
@@ -155,6 +155,13 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
 
             // entries
             if (this.getAttribute('nopopups')) {
+                // todo - temporary, open all entries in browser tab
+                this.$entries.forEach((Entry) => {
+                    Entry.addEventListener('click', () => {
+                        window.location = Entry.querySelector('a').href;
+                    });
+                });
+
                 this.getElm().getElements('figure').setStyle('cursor', 'default');
             } else {
                 this.$initEvents();
