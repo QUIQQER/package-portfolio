@@ -1,26 +1,5 @@
-
 {if $categories && count($categories)}
-<section class="quiqqer-portfolio-list2022-categories">
-    {if $this->getAttribute('showRandomButton')}
-    <div class="quiqqer-portfolio-list2022-categories-entry quiqqer-portfolio-list2022-categories-random"
-         title="{locale group='quiqqer/portfolio' var='quiqqer.portfolio.category.random'}"
-    >
-        <span class="fa fa-random"></span>
-    </div>
-    {/if}
-
-    <div class="quiqqer-portfolio-list2022-categories-entry quiqqer-portfolio-list2022-categories-all">
-        {locale group="quiqqer/portfolio" var="quiqqer.portfolio.category.all"}
-    </div>
-
-    {foreach from=$categories item=Data}
-    <div class="quiqqer-portfolio-list2022-categories-entry" title="{$Data.description|escape:'html'}">
-        {$Data.category}
-    </div>
-    {/foreach}
-
-</section>
-
+    {include file="`$categoriesHtml`"}
 {/if}
 
 {assign var=c value=0}
@@ -47,8 +26,8 @@
     {assign var=c value=$c+1}
 
     {/foreach}
-        <div class="quiqqer-portfolio-list2022-entry" data-ignore="1" style="height: 0 !important; padding: 0 !important; order: 999999 !important;"></div>
-        <div class="quiqqer-portfolio-list2022-entry" data-ignore="1" style="height: 0 !important; padding: 0 !important; order: 999999 !important;"></div>
+        <div class="quiqqer-portfolio-list2022-entry" data-ignore="1" style="height: 0 !important; padding: 0 !important; order: 999999 !important; visibility: hidden !important;"></div>
+        <div class="quiqqer-portfolio-list2022-entry" data-ignore="1" style="height: 0 !important; padding: 0 !important; order: 999999 !important; visibility: hidden !important;"></div>
         </div>
 </section>
 

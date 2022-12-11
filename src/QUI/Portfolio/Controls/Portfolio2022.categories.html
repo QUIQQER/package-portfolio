@@ -1,0 +1,24 @@
+<section class="quiqqer-portfolio-list2022-categories">
+        <div class="quiqqer-portfolio-list2022-categories-entry quiqqer-portfolio-list2022-categories-all">
+        {locale group="quiqqer/portfolio" var="quiqqer.portfolio.category.all"}
+    </div>
+
+    {foreach from=$categories item=Data}
+        <div class="quiqqer-portfolio-list2022-categories-entry" title="{$Data.description|escape:'html'}">
+            {$Data.category}
+        </div>
+    {/foreach}
+
+    {if $this->getAttribute('showRandomButton')}
+        <div class="quiqqer-portfolio-list2022-categories-random-wrapper">
+{*        <span class="quiqqer-portfolio-list2022-categories-random-separator">&bull;</span>*}
+        <span class="quiqqer-portfolio-list2022-categories-random-separator">|</span>
+        <div class="quiqqer-portfolio-list2022-categories-entry quiqqer-portfolio-list2022-categories-random"
+             title="{locale group='quiqqer/portfolio' var='quiqqer.portfolio.category.random'}"
+        >
+
+            <span class="fa fa-random"></span>
+        </div>
+        </div>
+    {/if}
+</section>

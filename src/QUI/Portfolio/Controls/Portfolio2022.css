@@ -22,9 +22,17 @@
     color: var(--qui-color-body);
     /*color: var(--qui-color-main);*/
 }
+.quiqqer-portfolio-list2022-categories-random-wrapper {
+    display: inline-flex;
+}
 
 .quiqqer-portfolio-list2022-categories-random {
+    min-width: 50px;
+    text-align: center;
+}
 
+.quiqqer-portfolio-list2022-categories-random-separator {
+    opacity: 0.25;
 }
 
 /******************/
@@ -37,7 +45,7 @@
 .quiqqer-portfolio-list2022-entries {
     display: flex;
     flex-wrap: wrap;
-    margin: calc(-1 * var(--qui-spacing, 1rem)); /* gap hack */
+    margin: 0 calc(-1 * var(--qui-spacing, 1rem)); /* gap hack */
     position: relative;
 
     /*display: grid;*/

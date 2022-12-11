@@ -247,18 +247,6 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
                     });
 
                     self.$List.setStyle('height', null);
-
-//                    return new Promise(function (resolve) {
-//                        moofx(self.$List).animate({
-//                            height: self.$List.getScrollSize().y
-//                        }, {
-//                            duration: 200,
-//                            callback: function () {
-//                                self.$List.setStyle('height', null);
-//                                resolve();
-//                            }
-//                        });
-//                    });
                 });
             });
         },
@@ -271,9 +259,14 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
         normalize: function () {
             var self = this;
 
+            self.$List.setStyles({
+                height  : self.$List.getSize().y,
+                overflow: 'hidden'
+            });
+
             return new Promise(function (resolve) {
                 var entries = self.$List.getElements(
-                    '.quiqqer-portfolio-list2022-entry'
+                    '.quiqqer-portfolio-list2022-entry:not([data-ignore="1"])'
                 ).sort(function (A, B) {
                     var aNo = A.get('data-no');
                     var bNo = B.get('data-no');
@@ -291,12 +284,8 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
 
                 self.$hide(entries).then(function () {
                     for (var i = 0, len = entries.length; i < len; i++) {
-                        entries[i].inject(self.$List);
+                        entries[i].inject(self.$ListInner);
                     }
-
-                    entries.each(function (Entry) {
-                        Entry.setStyle('width', null);
-                    });
 
                     self.$randomize = false;
                     resolve();
@@ -506,16 +495,11 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
                 });
 
                 self.$setResultNewHeight();
-                console.log("cos sie dzieje....")
-                console.log(promies)
                 return Promise.all(promies);
             }).then(function () {
                 self.$refreshMoreButton();
 
                 return new Promise(function (resolve) {
-
-                    console.log("...i dzieje sie dalej!")
-
                     var displayed = self.$List.getElements(
                         '.quiqqer-portfolio-list2022-entry'
                     ).filter(function (Entry) {
@@ -682,12 +666,19 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
             });
         },
 
+        /**
+         * Set current height
+         */
         $setResultHeight: function () {
             this.$List.setStyle('height', this.$List.offsetHeight + 'px');
         },
 
+        /**
+         * Set height and reset css inline style
+         */
         $setResultNewHeight: function () {
             const self = this;
+
             moofx(this.$List).animate({
                 height: this.$ListInner.offsetHeight
             }, {

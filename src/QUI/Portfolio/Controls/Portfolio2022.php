@@ -254,6 +254,7 @@ class Portfolio2022 extends QUI\Control
             'showArrow'        => $showArrow,
             'arrowHtml'        => dirname(__FILE__).'/Portfolio2022.arrow.html',
             'entryHtml'        => $entryHtml,
+            'categoriesHtml'   => dirname(__FILE__).'/Portfolio2022.categories.html',
             'imageFormat'      => $imageFormat
         ]);
 
