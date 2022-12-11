@@ -16,7 +16,7 @@
                 <attribute default="#2b2828">quiqqer.portfolio2022.settings.mainColor</attribute>
                 <attribute default="#ffffff">quiqqer.portfolio2022.settings.accentColor</attribute>
                 <attribute>quiqqer.portfolio2022.settings.showRandomButton</attribute>
-                <attribute>quiqqer.portfolio2022.settings.imgPosition</attribute>
+                <attribute default="cover">quiqqer.portfolio2022.settings.imgPosition</attribute>
 
                 <attribute default="3">quiqqer.portfolio2022.settings.entriesPerLine</attribute>
                 <attribute default="1/1">quiqqer.portfolio2022.settings.aspectRatio</attribute>
@@ -99,13 +99,13 @@
                                 <locale group="quiqqer/portfolio"
                                         var="quiqqer.portfolio2022.settings.imgPosition"/>
                             </text>
-                            <option value="contain">
-                                <locale group="quiqqer/portfolio"
-                                        var="quiqqer.portfolio2022.settings.imgPosition.contain"/>
-                            </option>
                             <option value="cover">
                                 <locale group="quiqqer/portfolio"
                                         var="quiqqer.portfolio2022.settings.imgPosition.cover"/>
+                            </option>
+                            <option value="contain">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.imgPosition.contain"/>
                             </option>
                         </select>
 

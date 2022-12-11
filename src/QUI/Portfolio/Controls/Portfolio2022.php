@@ -37,7 +37,7 @@ class Portfolio2022 extends QUI\Control
             // design
             'template'                         => 'default',
             'aspectRatio'                      => '1/1', // any css valid aspect ratio: 1/1, 1/2: 4:3, 16:9, 9:16
-            'imgPosition'                      => false,
+            'imgPosition'                      => 'cover',
             'gap'                              => '1rem',
             'mainColor'                        => false,
             'accentColor'                      => false,
