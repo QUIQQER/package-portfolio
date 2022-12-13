@@ -34,6 +34,7 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
             popuptype        : 'short',
             useanchor        : false,
             lazyloading      : true,
+            loadmoreentries  : 6,
             'start-reference': 9
         },
 
@@ -462,8 +463,16 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
         next: function () {
             var self      = this,
                 max       = 6,
-                displayed = 0;
+                displayed = 0,
+                perLine   = this.getElm().getAttribute('data-qui-options-loadmoreentries');
 
+            if (perLine && perLine !== '0') {
+                if (perLine <= 5) {
+                    perLine = 2 * perLine;
+                }
+                max = perLine;
+            }
+            
             var oldNext = '';
             var NextBtn = this.getElm().getElement('.quiqqer-portfolio-more button');
             var entries = this.$List.getElements('.quiqqer-portfolio-list2022-entry');

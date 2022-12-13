@@ -38,6 +38,7 @@ class Portfolio2022 extends QUI\Control
             'template'                         => 'default',
             'aspectRatio'                      => '1/1', // any css valid aspect ratio: 1/1, 1/2: 4:3, 16:9, 9:16
             'imgPosition'                      => 'cover',
+            'entriesPerLine'                   => 3,
             'gap'                              => '1rem',
             'mainColor'                        => false,
             'accentColor'                      => false,
@@ -73,6 +74,8 @@ class Portfolio2022 extends QUI\Control
             (int)$this->getAttribute('entriesPerLine') < 10) {
             $entriesPerLine = (int)$this->getAttribute('entriesPerLine');
         }
+
+        $this->setJavaScriptControlOption('loadmoreentries', $entriesPerLine);
 
         if ($this->getAttribute('gap')) {
             $gap = $this->getAttribute('gap');
@@ -261,7 +264,8 @@ class Portfolio2022 extends QUI\Control
             'arrowHtml'        => dirname(__FILE__).'/Portfolio2022.arrow.html',
             'entryHtml'        => $entryHtml,
             'categoriesHtml'   => dirname(__FILE__).'/Portfolio2022.categories.html',
-            'imageFormat'      => $imageFormat
+            'imageFormat'      => $imageFormat,
+            'entriesPerLine'   => $entriesPerLine
         ]);
 
         return $Engine->fetch(dirname(__FILE__).'/Portfolio2022.html');

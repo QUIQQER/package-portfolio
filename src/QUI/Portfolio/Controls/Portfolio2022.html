@@ -26,9 +26,11 @@
     {assign var=c value=$c+1}
 
     {/foreach}
-        <div class="quiqqer-portfolio-list2022-entry" data-ignore="1" style="height: 0 !important; padding: 0 !important; order: 999999 !important; visibility: hidden !important;"></div>
-        <div class="quiqqer-portfolio-list2022-entry" data-ignore="1" style="height: 0 !important; padding: 0 !important; order: 999999 !important; visibility: hidden !important;"></div>
-        </div>
+
+    {for $counter=1 to $entriesPerLine - 1}
+        <div class="quiqqer-portfolio-list2022-entry quiqqer-portfolio-list2022-entry__placeholder" data-ignore="1"></div>
+    {/for}
+    </div>
 </section>
 
 {if $lazyloading  && $c > $displayNum}
