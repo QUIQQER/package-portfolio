@@ -24,7 +24,8 @@ class Reference2022 extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'sliderpos' => 'left' // left or bottom
+            'imageWidth'  => false, // in pixel, 0 (or false) = 100% widht
+            'imageHeight' => 300 // in pixel, 0 (or false) = auto image height
         ]);
 
         parent::__construct($attributes);
@@ -125,6 +126,10 @@ class Reference2022 extends QUI\Control
             }
         }
 
+        // image dimension
+        $imgHeight = $this->getImageDimension()['height'];
+        $imgWidth  = $this->getImageDimension()['width'];
+
         $Engine->assign([
             'this'    => $this,
             'Site'    => $Site,
@@ -133,6 +138,9 @@ class Reference2022 extends QUI\Control
             'Prev'    => $Prev,
             'Parent'  => $Parent,
             'website' => $website,
+
+            'imgHeight' => $imgHeight,
+            'imgWidth'  => $imgWidth,
 
             'Gallery' => $Gallery,
             'navHtml' => dirname(__FILE__).'/Reference2022.nav.html',
@@ -193,22 +201,48 @@ class Reference2022 extends QUI\Control
     /**
      * Return the portfolio list
      *
-     * @return QUI\Projects\Site
+     * @return null|QUI\Projects\Site
      */
     public function getList()
     {
         $Site = $this->getSite();
 
-        if ($Site->getAttribute('type') === 'quiqqer/portfolio:types/list') {
+        if ($Site->getAttribute('type') === 'quiqqer/portfolio:types/list2022') {
             return $Site;
         }
 
         $Parent = $Site->getParent();
 
-        if ($Parent->getAttribute('type') === 'quiqqer/portfolio:types/list') {
+        if ($Parent->getAttribute('type') === 'quiqqer/portfolio:types/list2022') {
             return $Parent;
         }
 
-        return $Site->getProject()->firstChild();
+        return null;
+    }
+
+    public function getImageDimension()
+    {
+        $List = $this->getList();
+
+        $dim = [
+            'height' => false,
+            'width'  => false
+        ];
+
+        if (!$List) {
+            return $dim;
+        }
+
+        if ($List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageWidth') ||
+            $List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageWidth') > 0) {
+            $dim['width'] = $List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageWidth');
+        }
+
+        if ($List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageHeight') ||
+            $List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageHeight') > 0) {
+            $dim['height'] = $List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageHeight');
+        }
+
+        return $dim;
     }
 }

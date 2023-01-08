@@ -3,6 +3,17 @@
          data-siteid="{$Site->getId()}"
          data-project="{$Site->getProject()->getName()}"
          data-lang="{$Site->getProject()->getLang()}"
+         style="
+         {if $imgWidth}
+            --quiqqer-portfolio2022-entry-mainImgWidth: {$imgWidth}px;
+         {/if}
+         {if $imgHeight}
+             --quiqqer-portfolio2022-entry-mainImgHeight: {$imgHeight}px;
+         {/if}
+         {if $imgWidth || $imgHeight}
+             --quiqqer-portfolio2022-entry-mainImgAspectRatio: {$imgWidth} / {$imgHeight};
+         {/if}
+         "
 >
 
     {if $showNav}
@@ -22,7 +33,7 @@
         </header>
     </div>
 
-    <div class="quiqqer-portfolio-reference2022-container  quiqqer-portfolio-reference2022-container__mainImage">
+    <div class="quiqqer-portfolio-reference2022-container quiqqer-portfolio-reference2022-container__mainImage">
         {if $Site->getAttribute('image_site')}
             {image src=$Site->getAttribute('image_site') class="quiqqer-portfolio-reference2022-mainImage" data-zoom="1"}
         {/if}

@@ -32,6 +32,10 @@
                 <attribute default="1">quiqqer.portfolio.settings.showArrows</attribute>
                 <attribute default="cover">quiqqer.portfolio.settings.portfolioPopup.wallpaper-position</attribute>
                 <attribute default="contain">quiqqer.portfolio.settings.portfolioPopup.wallpaper-size</attribute>
+
+                <!-- children settings -->
+                <attribute default="0">quiqqer.portfolio2022.settings.children.maxImageWidth</attribute>
+                <attribute default="300">quiqqer.portfolio2022.settings.children.maxImageHeight</attribute>
             </attributes>
 
             <tab name="quiqqer.portfolio.categories">
@@ -240,101 +244,34 @@
                         </input>
                     </settings>
 
-<!--                    <settings>-->
-<!--                        <title>-->
-<!--                            <locale group="quiqqer/portfolio" var="quiqqer.portfolio.popup.settings.title"/>-->
-<!--                        </title>-->
+                    <!-- Settings for children sites -->
+                    <settings>
+                        <title>
+                            <locale group="quiqqer/portfolio" var="quiqqer.portfolio2022.settings.children.title"/>
+                        </title>
 
-<!--                        <input conf="quiqqer.portfolio.settings.portfolioNoPopup" type="checkbox">-->
-<!--                            <text>-->
-<!--                                <locale group="quiqqer/portfolio"-->
-<!--                                        var="quiqqer.portfolio.settings.portfolioNoPopup"/>-->
-<!--                            </text>-->
-<!--                        </input>-->
+                        <input conf="quiqqer.portfolio2022.settings.children.maxImageWidth" type="number" min="0">
+                            <text>
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.children.maxImageWidth"/>
+                            </text>
+                            <description>
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.children.maxImageWidth.desc"/>
+                            </description>
+                        </input>
 
-<!--                        <input conf="quiqqer.portfolio.settings.showArrows" type="checkbox">-->
-<!--                            <text>-->
-<!--                                <locale group="quiqqer/portfolio"-->
-<!--                                        var="quiqqer.portfolio.settings.showArrows"/>-->
-<!--                            </text>-->
-<!--                        </input>-->
-
-<!--                        <select conf="quiqqer.portfolio.settings.portfolioPopup.type">-->
-<!--                            <text>-->
-<!--                                <locale group="quiqqer/portfolio"-->
-<!--                                        var="quiqqer.portfolio.settings.portfolioPopup.type"/>-->
-<!--                            </text>-->
-
-<!--                            <option value="short">-->
-<!--                                <locale group="quiqqer/portfolio"-->
-<!--                                        var="quiqqer.portfolio.settings.portfolioPopup.type.short"/>-->
-<!--                            </option>-->
-<!--                            <option value="reference">-->
-<!--                                <locale group="quiqqer/portfolio"-->
-<!--                                        var="quiqqer.portfolio.settings.portfolioPopup.type.reference"/>-->
-<!--                            </option>-->
-<!--                            <option value="referenceNextPrev">-->
-<!--                                <locale group="quiqqer/portfolio"-->
-<!--                                        var="quiqqer.portfolio.settings.portfolioPopup.type.referenceNextPrev"/>-->
-<!--                            </option>-->
-<!--                            <option value="image">-->
-<!--                                <locale group="quiqqer/portfolio"-->
-<!--                                        var="quiqqer.portfolio.settings.portfolioPopup.type.image"/>-->
-<!--                            </option>-->
-<!--                        </select>-->
-
-<!--                        <select conf="quiqqer.portfolio.settings.portfolioPopup.wallpaper-size">-->
-<!--                            <text>-->
-<!--                                <locale group="quiqqer/bricks"-->
-<!--                                        var="brick.control.promoslider.image-wallpaper-size"/>-->
-<!--                            </text>-->
-
-<!--                            <option value="cover">-->
-<!--                                <locale group="quiqqer/bricks"-->
-<!--                                        var="brick.control.promoslider.image-wallpaper-size.cover"/>-->
-<!--                            </option>-->
-<!--                            <option value="contain">-->
-<!--                                <locale group="quiqqer/bricks"-->
-<!--                                        var="brick.control.promoslider.image-wallpaper-size.contain"/>-->
-<!--                            </option>-->
-<!--                        </select>-->
-
-<!--                        <select conf="quiqqer.portfolio.settings.portfolioPopup.wallpaper-position">-->
-<!--                            <text>-->
-<!--                                <locale group="quiqqer/bricks"-->
-<!--                                        var="brick.control.promoslider.image-wallpaper-position"/>-->
-<!--                            </text>-->
-
-<!--                            <option value=""/>-->
-<!--                            <option value="top-left">-->
-<!--                                <locale group="quiqqer/system" var="watermark.position.top.left"/>-->
-<!--                            </option>-->
-<!--                            <option value="top">-->
-<!--                                <locale group="quiqqer/system" var="watermark.position.top"/>-->
-<!--                            </option>-->
-<!--                            <option value="top-right">-->
-<!--                                <locale group="quiqqer/system" var="watermark.position.top.right"/>-->
-<!--                            </option>-->
-<!--                            <option value="left">-->
-<!--                                <locale group="quiqqer/system" var="watermark.position.left"/>-->
-<!--                            </option>-->
-<!--                            <option value="center">-->
-<!--                                <locale group="quiqqer/system" var="watermark.position.center"/>-->
-<!--                            </option>-->
-<!--                            <option value="right">-->
-<!--                                <locale group="quiqqer/system" var="watermark.position.right"/>-->
-<!--                            </option>-->
-<!--                            <option value="bottom-left">-->
-<!--                                <locale group="quiqqer/system" var="watermark.position.bottom.left"/>-->
-<!--                            </option>-->
-<!--                            <option value="bottom">-->
-<!--                                <locale group="quiqqer/system" var="watermark.position.bottom"/>-->
-<!--                            </option>-->
-<!--                            <option value="bottom-right">-->
-<!--                                <locale group="quiqqer/system" var="watermark.position.bottom.right"/>-->
-<!--                            </option>-->
-<!--                        </select>-->
-<!--                    </settings>-->
+                        <input conf="quiqqer.portfolio2022.settings.children.maxImageHeight" type="number" min="0">
+                            <text>
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.children.maxImageHeight"/>
+                            </text>
+                            <description>
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.children.maxImageHeight.desc"/>
+                            </description>
+                        </input>
+                    </settings>
                 </category>
 
             </settings>

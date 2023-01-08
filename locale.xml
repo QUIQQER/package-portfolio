@@ -33,7 +33,7 @@
             <en><![CDATA[Creative presentation of references and projects.]]></en>
         </locale>
         <locale name="quiqqer.portfolio2022.settings.title">
-            <de><![CDATA[Referenz Liste 2022 Einstellungen]]></de>
+            <de><![CDATA[Referenzliste 2022 Einstellungen]]></de>
             <en><![CDATA[Portfolio list 2022 settings]]></en>
         </locale>
         <locale name="quiqqer.portfolio2022.settings.referenceStartNumber">
@@ -171,7 +171,28 @@
         </locale>
         <locale name="quiqqer.portfolio2022.settings.entryMinWidthMobile.desc">
             <de><![CDATA[Diese Option bestimmt die minimale Breite jedes Eintrages für mobile Geräte. Diese Einstellung überschreibt "Anzahl der Einträge pro Zeile", wenn die Bedienung erfüllt wird.]]></de>
-            <en>This option determines the minimum width of each entry for mobile devices. This setting overrides "Entries per line" when the operation is fulfilled.</en>
+            <en><![CDATA[This option determines the minimum width of each entry for mobile devices. This setting overrides "Entries per line" when the operation is fulfilled.]]></en>
+        </locale>
+        <!-- Portfolio 2022 - children settings -->
+        <locale name="quiqqer.portfolio2022.settings.children.title">
+            <de><![CDATA[Referenzliste 2022: Einstellungen der Referenzen-Einträgen]]></de>
+            <en><![CDATA[Portfolio list 2022: Settings for the portfolio entries]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.children.maxImageWidth">
+            <de><![CDATA[Breite des Hauptbildes (in Pixel)]]></de>
+            <en><![CDATA[Main image width (in pixel)]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.children.maxImageWidth.desc">
+            <de><![CDATA[Bestimmt die maximale Breite des Bildes über dem Inhalt. Eine "0" (oder kein Wert) bedeutet, dass das Bild 100% breit wird.]]></de>
+            <en><![CDATA[Determines the maximum width of the image over the content. A "0" (or no value) means that the image will be 100% wide.]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.children.maxImageHeight">
+            <de><![CDATA[Höhe des Hauptbildes (in Pixel)]]></de>
+            <en><![CDATA[Main image height (in pixel)]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.children.maxImageHeight.desc">
+            <de><![CDATA[Bestimmt die maximale Höhe des Bildes über dem Inhalt. Eine "0" (oder kein Wert) bedeutet, dass das Bild die maximale Höhe bekommt (abhängig von der Breite).]]></de>
+            <en><![CDATA[Determines the maximum width of the image over the content. A "0" (or no value) means that the image gets the maximum height (depending on the width).]]></en>
         </locale>
         <!-- END Portfolio 2022 -->
 

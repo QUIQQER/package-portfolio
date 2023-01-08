@@ -54,9 +54,11 @@
 
 /* Main image */
 .quiqqer-portfolio-reference2022-mainImage {
+    aspect-ratio: var(--quiqqer-portfolio2022-entry-mainImgAspectRatio, auto);
     display: block;
     width: 100%;
-    height: 300px;
+    max-width: var(--quiqqer-portfolio2022-entry-mainImgWidth, auto);
+    max-height: var(--quiqqer-portfolio2022-entry-mainImgHeight, auto);
     object-fit: cover;
     margin: var(--qui-spacing, 1rem) auto calc(3 * var(--qui-spacing, 1rem));
 }
