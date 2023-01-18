@@ -30,6 +30,7 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
         ],
 
         options: {
+            openentry: true,
             nopopups         : true,
             popuptype        : 'short',
             useanchor        : false,
@@ -155,26 +156,28 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
             }
 
             // entries
-            if (this.getAttribute('nopopups')) {
-                // todo - temporary, open all entries in browser tab
-                this.$entries.forEach((Entry) => {
-                    Entry.addEventListener('click', () => {
-                        window.location = Entry.querySelector('a').href;
+            if (this.getAttribute('openentry')) {
+                if (this.getAttribute('nopopups')) {
+                    // todo - temporary, open all entries in browser tab
+                    this.$entries.forEach((Entry) => {
+                        Entry.addEventListener('click', () => {
+                            window.location = Entry.querySelector('a').href;
+                        });
                     });
-                });
 
-                this.getElm().getElements('figure').setStyle('cursor', 'default');
-            } else {
-                this.$initEvents();
+                    this.getElm().getElements('figure').setStyle('cursor', 'default');
+                } else {
+                    this.$initEvents();
 
-                if (self.getAttribute('useanchor')) {
-                    var anchor = window.location.href.split('#');
+                    if (self.getAttribute('useanchor')) {
+                        var anchor = window.location.href.split('#');
 
-                    if (typeof anchor[1] !== 'undefined') {
-                        var Child = this.getElm().getElement('[data-id="' + anchor[1] + '"]');
+                        if (typeof anchor[1] !== 'undefined') {
+                            var Child = this.getElm().getElement('[data-id="' + anchor[1] + '"]');
 
-                        if (Child) {
-                            Child.click();
+                            if (Child) {
+                                Child.click();
+                            }
                         }
                     }
                 }
@@ -368,7 +371,7 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
 
                 var image    = Node.get('data-image'),
                     position = Node.get('data-position'),
-                    Parent   = Node.getElement('figure a');
+                    Parent   = Node.getElement('.quiqqer-portfolio-list2022-entry-imageContainer');
 
                 var ending       = image.substr(image.lastIndexOf('.'));
                 var split        = image.substr(0, image.lastIndexOf('.')).split('__')[0];

@@ -1,0 +1,50 @@
+<div class="quiqqer-portfolio-list2022-entry-inner">
+    <figure>
+        {if $openEntry}
+            <a href="{url site=$Child}" class="quiqqer-portfolio-list2022-entry-imageContainer">
+        {else}
+            <span class="quiqqer-portfolio-list2022-entry-imageContainer">
+        {/if}
+            {* Is the image an icon? *}
+            {if strpos($Child->getAttribute('image_site'), 'fa ') === 0}
+                {image src=$Child->getAttribute('image_site')}
+            {else}
+                <noscript>
+                    {image src=$Child->getAttribute('image_site') height="400" style="$imgPositionStyle"}
+                </noscript>
+            {/if}
+        {if $openEntry}
+            </a>
+        {else}
+            </span>
+        {/if}
+
+        {if $this->getAttribute('template') !== 'defaultNoHoverEffectNoText' && $this->getAttribute('template') !== 'defaultNoHoverEffectNoTextNoBg'}
+        <figcaption>
+            <h3 class="quiqqer-portfolio-list2022-entry-title">
+                {$Child->getAttribute('title')}
+            </h3>
+
+            <div class="quiqqer-portfolio-list2022-entry-desc">
+                {$Child->getAttribute('short')}
+                <noscript>
+                    <div class="quiqqer-portfolio-list2022-entry-desc-button">
+                        <a href="{url site=$Child}">
+                            {locale group="quiqqer/portfolio" var="quiqqer.portfolio2022.openPortfolio"}
+                        </a>
+                    </div>
+                </noscript>
+            </div>
+        </figcaption>
+        {/if}
+    </figure>
+
+    <div class="skeletonLoadingEffect"></div>
+    <noscript>
+        <style>
+            [data-id="{$Child->getId()}"] {
+                display: inline;
+            }
+        </style>
+    </noscript>
+</div>

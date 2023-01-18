@@ -2,6 +2,7 @@
 
 $Portfolio2022 = new QUI\Portfolio\Controls\Portfolio2022([
     'template'             => $Site->getAttribute('quiqqer.portfolio2022.settings.template'),
+    'openBehavior'             => $Site->getAttribute('quiqqer.portfolio2022.settings.openBehavior'),
     'imgPosition'          => $Site->getAttribute('quiqqer.portfolio2022.settings.imgPosition'),
     'entriesPerLine'       => $Site->getAttribute('quiqqer.portfolio2022.settings.entriesPerLine'),
     'aspectRatio'          => $Site->getAttribute('quiqqer.portfolio2022.settings.aspectRatio'),

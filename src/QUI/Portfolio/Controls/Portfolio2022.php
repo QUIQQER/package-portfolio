@@ -36,6 +36,7 @@ class Portfolio2022 extends QUI\Control
 
             // design
             'template'                         => 'default',
+            'openBehavior'                     => 'openInBrowser', // openInBrowser, noOpen
             'aspectRatio'                      => '1/1', // any css valid aspect ratio: 1/1, 1/2: 4:3, 16:9, 9:16
             'imgPosition'                      => 'cover',
             'entriesPerLine'                   => 3,
@@ -74,6 +75,14 @@ class Portfolio2022 extends QUI\Control
             (int)$this->getAttribute('entriesPerLine') < 10) {
             $entriesPerLine = (int)$this->getAttribute('entriesPerLine');
         }
+
+        // open behavior
+        $openEntry = false;
+        if ($this->getAttribute('openBehavior') === 'openInBrowser') {
+            $openEntry = true;
+        }
+
+        $this->setJavaScriptControlOption('openentry', $openEntry);
 
         $this->setJavaScriptControlOption('loadmoreentries', $entriesPerLine);
 
@@ -202,6 +211,24 @@ class Portfolio2022 extends QUI\Control
                 $css           = '/Portfolio2022.textOnImage.css';
                 break;
 
+            case 'defaultNoHoverEffect':
+                $templateClass = 'quiqqer-portfolio-list2022__defaultNoHoverEffect';
+                $entryHtml     = dirname(__FILE__).'/Portfolio2022.defaultNoHoverEffect.html';
+                $css           = '/Portfolio2022.defaultNoHoverEffect.css';
+                break;
+
+            case 'defaultNoHoverEffectNoText':
+                $templateClass = 'quiqqer-portfolio-list2022__defaultNoHoverEffect quiqqer-portfolio-list2022__defaultNoHoverEffectNoText';
+                $entryHtml     = dirname(__FILE__).'/Portfolio2022.defaultNoHoverEffect.html';
+                $css           = '/Portfolio2022.defaultNoHoverEffect.css';
+                break;
+
+            case 'defaultNoHoverEffectNoTextNoBg':
+                $templateClass = 'quiqqer-portfolio-list2022__defaultNoHoverEffect quiqqer-portfolio-list2022__defaultNoHoverEffectNoTextNoBg';
+                $entryHtml     = dirname(__FILE__).'/Portfolio2022.defaultNoHoverEffect.html';
+                $css           = '/Portfolio2022.defaultNoHoverEffect.css';
+                break;
+
             case 'default':
             default:
                 $templateClass = 'quiqqer-portfolio-list2022__default';
@@ -265,7 +292,8 @@ class Portfolio2022 extends QUI\Control
             'entryHtml'        => $entryHtml,
             'categoriesHtml'   => dirname(__FILE__).'/Portfolio2022.categories.html',
             'imageFormat'      => $imageFormat,
-            'entriesPerLine'   => $entriesPerLine
+            'entriesPerLine'   => $entriesPerLine,
+            'openEntry'        => $openEntry
         ]);
 
         return $Engine->fetch(dirname(__FILE__).'/Portfolio2022.html');

@@ -14,6 +14,7 @@
             <attributes>
                 <attribute>quiqqer.portfolio.settings.categories</attribute>
                 <attribute default="default">quiqqer.portfolio2022.settings.template</attribute>
+                <attribute default="openInBrowser">quiqqer.portfolio2022.settings.openBehavior</attribute>
                 <attribute default="#2b2828">quiqqer.portfolio2022.settings.mainColor</attribute>
                 <attribute default="#ffffff">quiqqer.portfolio2022.settings.accentColor</attribute>
                 <attribute>quiqqer.portfolio2022.settings.showRandomButton</attribute>
@@ -72,6 +73,18 @@
                                 <locale group="quiqqer/portfolio"
                                         var="quiqqer.portfolio2022.settings.template.default"/>
                             </option>
+                            <option value="defaultNoHoverEffect">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.template.defaultNoHoverEffect"/>
+                            </option>
+                            <option value="defaultNoHoverEffectNoText">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.template.defaultNoHoverEffectNoText"/>
+                            </option>
+                            <option value="defaultNoHoverEffectNoTextNoBg">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.template.defaultNoHoverEffectNoTextNoBg"/>
+                            </option>
                             <option value="textOnImageHiddenCenter1">
                                 <locale group="quiqqer/portfolio"
                                         var="quiqqer.portfolio2022.settings.template.textOnImageHiddenCenter1"/>
@@ -87,6 +100,21 @@
                             <option value="textOnImageVisibleBottomWithArrow1">
                                 <locale group="quiqqer/portfolio"
                                         var="quiqqer.portfolio2022.settings.template.textOnImageVisibleBottomWithArrow1"/>
+                            </option>
+                        </select>
+
+                        <select conf="quiqqer.portfolio2022.settings.openBehavior">
+                            <text>
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.openBehavior"/>
+                            </text>
+                            <option value="openInBrowser">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.openBehavior.openInBrowser"/>
+                            </option>
+                            <option value="noOpen">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.openBehavior.noOpen"/>
                             </option>
                         </select>
 

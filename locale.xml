@@ -48,6 +48,18 @@
             <de><![CDATA[Standard]]></de>
             <en><![CDATA[Default]]></en>
         </locale>
+        <locale name="quiqqer.portfolio2022.settings.template.defaultNoHoverEffect">
+            <de><![CDATA[Standard - ohne Mouse-Over Effekt]]></de>
+            <en><![CDATA[Default - with no mouse over effect]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.template.defaultNoHoverEffectNoText">
+            <de><![CDATA[Standard - ohne Mouse-Over Effekt und ohne Text]]></de>
+            <en><![CDATA[Default - with no mouse over effect and no text]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.template.defaultNoHoverEffectNoTextNoBg">
+            <de><![CDATA[Standard - ohne Mouse-Over Effekt, ohne Text und ohne Hintergrundfarbe]]></de>
+            <en><![CDATA[Default - with no mouse over effect, no text and no background color]]></en>
+        </locale>
         <locale name="quiqqer.portfolio2022.settings.template.textOnImageHiddenCenter1">
             <de><![CDATA[Versteckter Text zentriert auf dem Bild]]></de>
             <en><![CDATA[Hidden text centered on the image]]></en>
@@ -64,6 +76,20 @@
             <de><![CDATA[Sichtbarer Text mit Pfeil platziert unten auf dem Bild]]></de>
             <en><![CDATA[Visible text with an arrow placed at the bottom on the image]]></en>
         </locale>
+
+        <locale name="quiqqer.portfolio2022.settings.openBehavior">
+            <de><![CDATA[Referenz öffnen]]></de>
+            <en><![CDATA[Portfolio entry open]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.openBehavior.openInBrowser">
+            <de><![CDATA[In Browser öffnen (Standard Browser Verhalten)]]></de>
+            <en><![CDATA[Open in browser (default behavior)]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.openBehavior.noOpen">
+            <de><![CDATA[Eintrag nicht öffnen]]></de>
+            <en><![CDATA[Do not open entry]]></en>
+        </locale>
+
         <locale name="quiqqer.portfolio2022.settings.randomButton">
             <de><![CDATA[Zufalls Button anzeigen]]></de>
             <en><![CDATA[Show random button]]></en>
