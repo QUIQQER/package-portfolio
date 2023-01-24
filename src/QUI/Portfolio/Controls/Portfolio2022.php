@@ -33,6 +33,7 @@ class Portfolio2022 extends QUI\Control
             'data-qui-options-start-reference' => 3,
             'parentInputList'                  => false, // for example from qui site select
             'order'                            => 'c_date DESC',
+            'autoloadAfter'                    => 1, // disabled, 0, 1, 2, 3, 4
 
             // design
             'template'                         => 'default',
@@ -83,6 +84,7 @@ class Portfolio2022 extends QUI\Control
         }
 
         $this->setJavaScriptControlOption('openentry', $openEntry);
+        $this->setJavaScriptControlOption('autoload-after', $this->getAttribute('autoloadAfter'));
 
         $this->setJavaScriptControlOption('loadmoreentries', $entriesPerLine);
 

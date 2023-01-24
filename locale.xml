@@ -40,6 +40,38 @@
             <de><![CDATA[Anzahl der Referenzen zu beginn]]></de>
             <en><![CDATA[Number of references at the beginning]]></en>
         </locale>
+        <locale name="quiqqer.portfolio2022.settings.autoloadAfter">
+            <de><![CDATA[Autoload von weiteren Referenzen]]></de>
+            <en><![CDATA[Autoload more portfolio entries]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.autoloadAfter.desc">
+            <de><![CDATA[Die Option bestimmt, wie oft der Benutzer die nächsten Referenzen manuell laden (klicken auf "Mehr Laden" Button) muss, damit diese automatisch geladen werden.]]></de>
+            <en><![CDATA[The option determines how often the user has to load the next references manually (click on "Load more" button) so that they are loaded automatically.]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.autoloadAfter.disabled">
+            <de><![CDATA[Deaktiviert - weitere Referenzen werden nicht automatisch geladen]]></de>
+            <en><![CDATA[Disabled - do not automatically load next portfolio entries]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.autoloadAfter.0">
+            <de><![CDATA[0 - weitere Referenzen werden sofort automatisch nachgeladen]]></de>
+            <en><![CDATA[0 - next portfolio entries will be loaded automatically]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.autoloadAfter.1">
+            <de><![CDATA[1 - nach dem ersten Klick auf den Button]]></de>
+            <en><![CDATA[1 - after the first click on the button]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.autoloadAfter.2">
+            <de><![CDATA[2 - nach dem zweiten Klick auf den Button]]></de>
+            <en><![CDATA[2 - after the second click on the button]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.autoloadAfter.3">
+            <de><![CDATA[3 - nach dem dritten Klick auf den Button]]></de>
+            <en><![CDATA[3 - after the third click on the button]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.autoloadAfter.4">
+            <de><![CDATA[4 - nach dem vierten Klick auf den Button]]></de>
+            <en><![CDATA[4 - after the fourth click on the button]]></en>
+        </locale>
         <locale name="quiqqer.portfolio2022.settings.template">
             <de><![CDATA[Template (Vorlage)]]></de>
             <en><![CDATA[Template]]></en>

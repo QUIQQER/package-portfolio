@@ -10,9 +10,10 @@
 define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
 
     'qui/QUI',
-    'qui/controls/Control'
+    'qui/controls/Control',
+    'qui/utils/Elements'
 
-], function (QUI, QUIControl) {
+], function (QUI, QUIControl, QUIElementUtils) {
     "use strict";
 
     window.Slick.definePseudo('display', function (value) {
@@ -30,13 +31,14 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
         ],
 
         options: {
-            openentry: true,
+            openentry        : true,
             nopopups         : true,
             popuptype        : 'short',
             useanchor        : false,
             lazyloading      : true,
             loadmoreentries  : 6,
-            'start-reference': 9
+            'start-reference': 9,
+            'autoload-after' : 1
         },
 
         initialize: function (options) {
@@ -46,10 +48,15 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
             this.$ListInner  = null;
             this.$Categories = null;
 
-            this.$entries    = new Elements();
-            this.$categories = new Elements();
-            this.$randomize  = false;
-            this.$loading    = false;
+            this.$entries           = new Elements();
+            this.$categories        = new Elements();
+            this.$randomize         = false;
+            this.$loading           = false;
+            this.MoreBtn            = null;
+            this.$moreButtonClicked = 0;
+            this.moreBtnHidden      = false;
+            this.$loadingMore       = false;
+            this.$autoload          = false;
 
             this.addEvents({
                 onImport: this.$onImport
@@ -67,6 +74,7 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
             this.$Categories = this.getElm().getElement('.quiqqer-portfolio-list2022-categories');
             this.$List       = this.getElm().getElement('.quiqqer-portfolio-list2022');
             this.$ListInner  = this.getElm().getElement('.quiqqer-portfolio-list2022-entries');
+            this.MoreBtn     = this.getElm().getElement('.quiqqer-portfolio-more');
 
             if (this.$Categories) {
                 this.$categories = this.$Categories.getElements('.quiqqer-portfolio-list2022-categories-entry');
@@ -183,7 +191,10 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
                 }
             }
 
-            this.getElm().getElements('.quiqqer-portfolio-more').addEvent('click', this.next);
+            this.getElm().getElements('.quiqqer-portfolio-more').addEvent('click', () => {
+                this.$moreButtonClicked++;
+                this.next();
+            });
 
             if (this.$Categories &&
                 this.$Categories.getElement('.quiqqer-portfolio-list2022-categories-random')) {
@@ -203,6 +214,54 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
             }
 
             self.$loading = false;
+
+            this.initAutoloadAfter();
+        },
+
+        /**
+         * Init autoload after function
+         */
+        initAutoloadAfter: function () {
+            if (this.getAttribute('autoload-after') === 'disabled') {
+                this.$autoload = false;
+                return;
+            }
+
+            this.$autoloadAfter = parseInt(this.getAttribute('autoload-after'));
+
+            if (this.$autoloadAfter < 0) {
+                this.$autoloadAfter = 0;
+            }
+
+            // more button auto loading
+            QUI.addEvent('scroll', function () {
+                if (!this.MoreBtn) {
+                    return;
+                }
+
+                if (this.$moreButtonClicked < this.$autoloadAfter) {
+                    return;
+                }
+
+                this.$autoload = true;
+
+                this.$autoload = true;
+
+                if (this.moreBtnHidden) {
+                    this.$autoload = false;
+                    return;
+                }
+
+                if (this.$loadingMore) {
+                    return;
+                }
+
+                let isInView = QUIElementUtils.isInViewport(this.MoreBtn);
+
+                if (isInView) {
+                    this.next();
+                }
+            }.bind(this));
         },
 
         /**
@@ -469,13 +528,15 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
                 displayed = 0,
                 perLine   = this.getElm().getAttribute('data-qui-options-loadmoreentries');
 
+            this.$loadingMore = true;
+
             if (perLine && perLine !== '0') {
                 if (perLine <= 5) {
                     perLine = 2 * perLine;
                 }
                 max = perLine;
             }
-            
+
             var oldNext = '';
             var NextBtn = this.getElm().getElement('.quiqqer-portfolio-more button');
             var entries = this.$List.getElements('.quiqqer-portfolio-list2022-entry');
@@ -532,6 +593,14 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
                         NextBtn.setStyle('width', null);
                     }
 
+                    self.$loadingMore = false;
+
+                    if (self.$autoload &&
+                        !self.moreBtnHidden &&
+                        QUIElementUtils.isInViewport(self.MoreBtn)) {
+                        self.next();
+                    }
+
                     resolve();
                 });
             });
@@ -547,10 +616,14 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio2022', [
             if (!hidden.length) {
                 more.setStyle('visibility', 'hidden');
                 more.style.setProperty('display', 'none', 'important');
+                this.moreBtnHidden = true;
             } else {
                 more.setStyle('visibility', 'visible');
                 more.style.setProperty('display', null);
+                this.moreBtnHidden = false;
             }
+
+            this.$loadingMore = true;
         },
 
         /**

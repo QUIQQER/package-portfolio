@@ -2,7 +2,7 @@
 
 $Portfolio2022 = new QUI\Portfolio\Controls\Portfolio2022([
     'template'             => $Site->getAttribute('quiqqer.portfolio2022.settings.template'),
-    'openBehavior'             => $Site->getAttribute('quiqqer.portfolio2022.settings.openBehavior'),
+    'openBehavior'         => $Site->getAttribute('quiqqer.portfolio2022.settings.openBehavior'),
     'imgPosition'          => $Site->getAttribute('quiqqer.portfolio2022.settings.imgPosition'),
     'entriesPerLine'       => $Site->getAttribute('quiqqer.portfolio2022.settings.entriesPerLine'),
     'aspectRatio'          => $Site->getAttribute('quiqqer.portfolio2022.settings.aspectRatio'),
@@ -12,9 +12,8 @@ $Portfolio2022 = new QUI\Portfolio\Controls\Portfolio2022([
     'entryMinWidthDesktop' => $Site->getAttribute('quiqqer.portfolio2022.settings.entryMinWidthDesktop'),
     'entryMinWidthMobile'  => $Site->getAttribute('quiqqer.portfolio2022.settings.entryMinWidthMobile'),
     'showRandomButton'     => $Site->getAttribute('quiqqer.portfolio2022.settings.showRandomButton'),
+    'autoloadAfter'        => $Site->getAttribute('quiqqer.portfolio2022.settings.autoloadAfter'),
 
-//    'data-qui-options-nopopups'        => $Site->getAttribute('quiqqer.portfolio2022.settings.portfolioNoPopup'),
-//    'data-qui-options-popuptype'       => $Site->getAttribute('quiqqer.portfolio2022.settings.portfolioPopup.type'),
     'data-qui-options-start-reference' => $Site->getAttribute('quiqqer.portfolio2022.settings.referenceStartNumber'),
     'data-qui-options-lazyloading'     => true,
     'data-qui-options-useanchor'       => true,

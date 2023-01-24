@@ -13,6 +13,8 @@
             <!-- extra attributes -->
             <attributes>
                 <attribute>quiqqer.portfolio.settings.categories</attribute>
+                <attribute default="12">quiqqer.portfolio2022.settings.referenceStartNumber</attribute>
+                <attribute default="1">quiqqer.portfolio2022.settings.autoloadAfter</attribute>
                 <attribute default="default">quiqqer.portfolio2022.settings.template</attribute>
                 <attribute default="openInBrowser">quiqqer.portfolio2022.settings.openBehavior</attribute>
                 <attribute default="#2b2828">quiqqer.portfolio2022.settings.mainColor</attribute>
@@ -29,7 +31,6 @@
                 <attribute>quiqqer.portfolio2022.settings.portfolioNoPopup</attribute>
                 <attribute>quiqqer.portfolio2022.settings.portfolioPopup.type</attribute>
 
-                <attribute default="15">quiqqer.portfolio2022.settings.referenceStartNumber</attribute>
                 <attribute default="1">quiqqer.portfolio.settings.showArrows</attribute>
                 <attribute default="cover">quiqqer.portfolio.settings.portfolioPopup.wallpaper-position</attribute>
                 <attribute default="contain">quiqqer.portfolio.settings.portfolioPopup.wallpaper-size</attribute>
@@ -63,6 +64,41 @@
                                         var="quiqqer.portfolio2022.settings.referenceStartNumber"/>
                             </text>
                         </input>
+
+                        <select conf="quiqqer.portfolio2022.settings.autoloadAfter">
+                            <text>
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.autoloadAfter"/>
+                            </text>
+                            <description>
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.autoloadAfter.desc"/>
+                            </description>
+                            <option value="disabled">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.autoloadAfter.disabled"/>
+                            </option>
+                            <option value="0">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.autoloadAfter.0"/>
+                            </option>
+                            <option value="1">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.autoloadAfter.1"/>
+                            </option>
+                            <option value="2">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.autoloadAfter.2"/>
+                            </option>
+                            <option value="3">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.autoloadAfter.3"/>
+                            </option>
+                            <option value="4">
+                                <locale group="quiqqer/portfolio"
+                                        var="quiqqer.portfolio2022.settings.autoloadAfter.4"/>
+                            </option>
+                        </select>
 
                         <select conf="quiqqer.portfolio2022.settings.template">
                             <text>
