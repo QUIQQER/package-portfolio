@@ -43,6 +43,17 @@
     overflow: hidden; /* gap hack */
 }
 
+.quiqqer-portfolio-list2022-groups-header-contanier {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.quiqqer-portfolio-list2022-group-header__active a {
+    color: red;
+}
+
 .quiqqer-portfolio-list2022-entries {
     display: flex;
     flex-wrap: wrap;

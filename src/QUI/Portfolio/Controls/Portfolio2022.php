@@ -142,9 +142,27 @@ class Portfolio2022 extends QUI\Control
             return '';
         }
 
-        $categories = $Site->getAttribute(
+        $categoriesAjax = $Site->getAttribute(
             'quiqqer.portfolio.settings.categories'
         );
+
+        // set "ungrouped" value for empty group index in array
+        $categoriesArray = json_decode($categoriesAjax, true);
+
+        foreach ($categoriesArray as &$Category) {
+            if ($Category['group'] === "") {
+                $Category['group'] = "ungrouped";
+            }
+        }
+
+        // get array with unique groups
+        $uniqueGroups = $this->getUniqueGroups($categoriesArray);
+
+        // sort categories data into groups
+        $categoriesGroups = $this->sortCategories($categoriesArray, $uniqueGroups);
+        
+        $activeGroup = $this->getActiveGroup($uniqueGroups);
+        $categories = $this->getCategories($activeGroup, $categoriesGroups);
 
         foreach ($portfolio as $Child) {
             /* @var $Child QUI\Projects\Site */
@@ -283,7 +301,9 @@ class Portfolio2022 extends QUI\Control
         $Engine->assign([
             'this'             => $this,
             'portfolio'        => $portfolio,
-            'categories'       => json_decode($categories, true),
+            'categories'       => $categories,
+            'uniqueGroups'     => $uniqueGroups,
+            'activeGroup'      => $activeGroup,
             'displayNum'       => $displayNum,
             'lazyloading'      => $this->getAttribute('data-qui-options-lazyloading'),
             'imgPositionStyle' => $imgPositionStyle,
@@ -312,5 +332,93 @@ class Portfolio2022 extends QUI\Control
         }
 
         return QUI::getRewrite()->getSite();
+    }
+
+    /**
+     * Return array with unique groups
+     *
+     * @param $categoriesArray - data from ajax
+     * @return array
+     */
+    protected function getUniqueGroups ($categoriesArray) {
+        // get array with unique groups
+        $uniqueGroups = [];
+        $ungrouped = '';
+
+        foreach ($categoriesArray as $Categories) {
+            if ($Categories['group'] === 'ungrouped') {
+                $ungrouped = $Categories['group'];
+            }
+
+            else if (!in_array($Categories['group'], $uniqueGroups) && $Categories['group'] !== '') {
+                array_push($uniqueGroups, $Categories['group']);
+            }
+        }
+
+        if ($ungrouped !== '') {
+            array_push($uniqueGroups, $ungrouped);
+        }
+
+        return $uniqueGroups;
+    }
+
+    /**
+     * Sorting categories based on groups.
+     *
+     * @param $categoriesArray - data from ajax
+     * @param $uniqueGroups - unique groups
+     * @return array
+     */
+    protected function sortCategories ($categoriesArray, $uniqueGroups) {
+
+        $categoriesGroups = array();
+
+        foreach ($uniqueGroups as $UniqueGroups) {
+            $groups = array();
+
+            foreach ($categoriesArray as $Categories) {
+                if (strpos($Categories['group'], $UniqueGroups) !== false) {
+                    array_push($groups, $Categories);
+                }
+            }
+
+            $categoriesGroups[$UniqueGroups] = $groups;
+        }
+
+        return $categoriesGroups;
+    }
+
+    /**
+     * Get categories belonging to the active group.
+     * The active group is selected based on the URL.
+     *
+     * @param $categoriesGroups - all categories
+     * @return mixed - array with categories from active group
+     */
+    protected function getCategories ($activeGroup, $categoriesGroups) {
+
+        if ($activeGroup === '') {
+            $keys = array_keys($categoriesGroups);
+            return $categoriesGroups[$keys[0]];
+        }
+
+        return $categoriesGroups[$activeGroup];
+    }
+
+    /**
+     * Getting active group based on URL. If URL is
+     * empty, get first item from $uniqueGroups
+     *
+     * @param $uniqueGroups - Unique groups
+     * @return string - Active group name
+     */
+    protected function getActiveGroup ($uniqueGroups) {
+        if (!isset($_GET['group'])) {
+
+            return $uniqueGroups[0];
+        }
+
+        $urlGroup = $_GET['group'];
+        return urldecode($urlGroup);
     }
 }
