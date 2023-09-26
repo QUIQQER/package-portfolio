@@ -1,3 +1,4 @@
+{if !empty($uniqueGroups)}
 <div class="quiqqer-portfolio-list2022-groups-header-contanier">
     {foreach from=$uniqueGroups item=UniqueGroup}
         {if $UniqueGroup == "ungrouped"}
@@ -17,6 +18,7 @@
         {/if}
     {/foreach}
 </div>
+{/if}
 
 {if $categories && count($categories)}
     {include file="`$categoriesHtml`"}

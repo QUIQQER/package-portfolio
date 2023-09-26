@@ -150,7 +150,7 @@ class Portfolio2022 extends QUI\Control
         $categoriesArray = json_decode($categoriesAjax, true);
 
         foreach ($categoriesArray as &$Category) {
-            if ($Category['group'] === "") {
+            if (isset($Category['group']) && $Category['group'] === "") {
                 $Category['group'] = "ungrouped";
             }
         }
@@ -160,9 +160,14 @@ class Portfolio2022 extends QUI\Control
 
         // sort categories data into groups
         $categoriesGroups = $this->sortCategories($categoriesArray, $uniqueGroups);
-        
+
         $activeGroup = $this->getActiveGroup($uniqueGroups);
-        $categories = $this->getCategories($activeGroup, $categoriesGroups);
+
+        if (empty($categoriesGroups)) {
+            $categories = $categoriesArray;
+        } else {
+            $categories = $this->getCategories($activeGroup, $categoriesGroups);
+        }
 
         foreach ($portfolio as $Child) {
             /* @var $Child QUI\Projects\Site */
@@ -340,22 +345,27 @@ class Portfolio2022 extends QUI\Control
      * @param $categoriesArray - data from ajax
      * @return array
      */
-    protected function getUniqueGroups ($categoriesArray) {
+    protected function getUniqueGroups($categoriesArray)
+    {
         // get array with unique groups
         $uniqueGroups = [];
         $ungrouped = '';
 
         foreach ($categoriesArray as $Categories) {
-            if ($Categories['group'] === 'ungrouped') {
-                $ungrouped = $Categories['group'];
+            if (!isset($Categories['group'])) {
+                continue;
             }
 
-            else if (!in_array($Categories['group'], $uniqueGroups) && $Categories['group'] !== '') {
+            if ($Categories['group'] === 'ungrouped') {
+                $ungrouped = $Categories['group'];
+            } elseif (!in_array($Categories['group'], $uniqueGroups)
+                && $Categories['group'] !== ''
+            ) {
                 array_push($uniqueGroups, $Categories['group']);
             }
         }
 
-        if ($ungrouped !== '') {
+        if (!empty($uniqueGroups) && $ungrouped !== '') {
             array_push($uniqueGroups, $ungrouped);
         }
 
@@ -369,8 +379,8 @@ class Portfolio2022 extends QUI\Control
      * @param $uniqueGroups - unique groups
      * @return array
      */
-    protected function sortCategories ($categoriesArray, $uniqueGroups) {
-
+    protected function sortCategories($categoriesArray, $uniqueGroups)
+    {
         $categoriesGroups = array();
 
         foreach ($uniqueGroups as $UniqueGroups) {
@@ -395,8 +405,8 @@ class Portfolio2022 extends QUI\Control
      * @param $categoriesGroups - all categories
      * @return mixed - array with categories from active group
      */
-    protected function getCategories ($activeGroup, $categoriesGroups) {
-
+    protected function getCategories($activeGroup, $categoriesGroups)
+    {
         if ($activeGroup === '') {
             $keys = array_keys($categoriesGroups);
             return $categoriesGroups[$keys[0]];
@@ -412,9 +422,13 @@ class Portfolio2022 extends QUI\Control
      * @param $uniqueGroups - Unique groups
      * @return string - Active group name
      */
-    protected function getActiveGroup ($uniqueGroups) {
-        if (!isset($_GET['group'])) {
+    protected function getActiveGroup($uniqueGroups)
+    {
+        if (empty($uniqueGroups)) {
+            return '';
+        }
 
+        if (!isset($_GET['group'])) {
             return $uniqueGroups[0];
         }
 
