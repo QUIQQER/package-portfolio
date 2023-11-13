@@ -1,24 +1,5 @@
-{if !empty($uniqueGroups)}
-<div class="quiqqer-portfolio-list2022-groups-header-contanier">
-    {foreach from=$uniqueGroups item=UniqueGroup}
-        {if $UniqueGroup == "ungrouped"}
-            <div class="quiqqer-portfolio-list2022-group-header
-            {if $activeGroup === $UniqueGroup}quiqqer-portfolio-list2022-group-header__active{/if}">
-                <a href="?group={$UniqueGroup|escape:'url'}">
-                    {QUI::getLocale()->get(
-                    'quiqqer/portfolio',
-                    'quiqqer.portfolio.reference.settings.group.empty'
-                    )}</a>
-            </div>
-        {else}
-            <div class="quiqqer-portfolio-list2022-group-header
-            {if $activeGroup === $UniqueGroup}quiqqer-portfolio-list2022-group-header__active{/if}">
-                <a href="?group={$UniqueGroup|escape:'url'}">{$UniqueGroup}</a>
-            </div>
-        {/if}
-    {/foreach}
-</div>
-{/if}
+{* Category groups html *}
+{$categoryGroupsHtml}
 
 {if $categories && count($categories)}
     {include file="`$categoriesHtml`"}

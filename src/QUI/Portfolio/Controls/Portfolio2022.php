@@ -142,15 +142,13 @@ class Portfolio2022 extends QUI\Control
             return '';
         }
 
-        $categoriesAjax = $Site->getAttribute(
-            'quiqqer.portfolio.settings.categories'
-        );
-
         // set "ungrouped" value for empty group index in array
-        $categoriesArray = json_decode($categoriesAjax, true);
+        $categoriesArray = json_decode($Site->getAttribute(
+            'quiqqer.portfolio.settings.categories'
+        ), true);
 
         foreach ($categoriesArray as &$Category) {
-            if (isset($Category['group']) && $Category['group'] === "") {
+            if (isset($Category['group']) && $Category['group'] === '') {
                 $Category['group'] = "ungrouped";
             }
         }
@@ -168,6 +166,13 @@ class Portfolio2022 extends QUI\Control
         } else {
             $categories = $this->getCategories($activeGroup, $categoriesGroups);
         }
+
+        $Engine->assign([
+            'uniqueGroups' => $uniqueGroups,
+            'activeGroup' => $activeGroup
+        ]);
+
+        $categoryGroupsHtml = $Engine->fetch(dirname(__FILE__).'/Portfolio2022.categoryGroups.html');
 
         foreach ($portfolio as $Child) {
             /* @var $Child QUI\Projects\Site */
@@ -304,23 +309,22 @@ class Portfolio2022 extends QUI\Control
         }
 
         $Engine->assign([
-            'this'             => $this,
-            'portfolio'        => $portfolio,
-            'categories'       => $categories,
-            'uniqueGroups'     => $uniqueGroups,
-            'activeGroup'      => $activeGroup,
-            'displayNum'       => $displayNum,
-            'lazyloading'      => $this->getAttribute('data-qui-options-lazyloading'),
+            'this' => $this,
+            'portfolio' => $portfolio,
+            'categories' => $categories,
+            'displayNum' => $displayNum,
+            'lazyloading' => $this->getAttribute('data-qui-options-lazyloading'),
             'imgPositionStyle' => $imgPositionStyle,
-            'gao'              => $gap,
-            'templateClass'    => $templateClass,
-            'showArrow'        => $showArrow,
-            'arrowHtml'        => dirname(__FILE__).'/Portfolio2022.arrow.html',
-            'entryHtml'        => $entryHtml,
-            'categoriesHtml'   => dirname(__FILE__).'/Portfolio2022.categories.html',
-            'imageFormat'      => $imageFormat,
-            'entriesPerLine'   => $entriesPerLine,
-            'openEntry'        => $openEntry
+            'gao' => $gap,
+            'templateClass' => $templateClass,
+            'showArrow' => $showArrow,
+            'arrowHtml' => dirname(__FILE__) . '/Portfolio2022.arrow.html',
+            'entryHtml' => $entryHtml,
+            'categoriesHtml' => dirname(__FILE__) . '/Portfolio2022.categories.html',
+            'imageFormat' => $imageFormat,
+            'entriesPerLine' => $entriesPerLine,
+            'openEntry' => $openEntry,
+            'categoryGroupsHtml' => $categoryGroupsHtml
         ]);
 
         return $Engine->fetch(dirname(__FILE__).'/Portfolio2022.html');
