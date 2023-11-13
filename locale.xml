@@ -415,6 +415,14 @@
             <de><![CDATA[Beschreibung]]></de>
             <en><![CDATA[Description]]></en>
         </locale>
+        <locale name="quiqqer.portfolio.reference.settings.group">
+            <de><![CDATA[Gruppe]]></de>
+            <en><![CDATA[Group]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.reference.settings.group.empty">
+            <de><![CDATA[Nicht gruppiert]]></de>
+            <en><![CDATA[Ungrouped]]></en>
+        </locale>
         <locale name="quiqqer.portfolio.reference.settings.windowAdd.title">
             <de><![CDATA[Kategorie hinzufügen]]></de>
             <en><![CDATA[Add category]]></en>

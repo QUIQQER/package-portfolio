@@ -1,11 +1,63 @@
+/********************/
+/* Portfolio groups */
+/********************/
+.quiqqer-portfolio-list2022-categoryGroups {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.quiqqer-portfolio-list2022-categoryGroups__entry {
+    --_bg: var(--bg, #f5f5f5);
+
+    flex: 0 0 200px;
+    background: var(--_bg);
+}
+
+.quiqqer-portfolio-list2022-categoryGroups__link {
+    color: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+    text-align: center;
+    height: 100%;
+}
+
+.quiqqer-portfolio-list2022-categoryGroups__linkText {
+    font-weight: bolder;
+}
+
+.quiqqer-portfolio-list2022-categoryGroups__entry.active {
+    --_bg: var(--bg--active, var(--qui-color-primary));
+    color: var(--color--active, inherit);
+}
+
+@media screen and (max-width: 767px) {
+    .quiqqer-portfolio-list2022-categoryGroups {
+        gap: 1rem;
+    }
+
+    .quiqqer-portfolio-list2022-categoryGroups__entry {
+        flex: 1;
+    }
+
+    .quiqqer-portfolio-list2022-categoryGroups__link {
+        padding: 1rem;
+    }
+}
+
 /************************/
 /* portfolio categories */
 /************************/
 .quiqqer-portfolio-list2022-categories {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 0 var(--qui-spacing-2xl, 3rem) 0;
+    margin: var(--qui-spacing-2xl, 3rem) 0 var(--qui-spacing-2xl, 3rem) 0;
     padding: 0;
+    justify-content: center;
 }
 
 .quiqqer-portfolio-list2022-categories-entry {
