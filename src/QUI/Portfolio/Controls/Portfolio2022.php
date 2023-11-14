@@ -360,7 +360,7 @@ class Portfolio2022 extends QUI\Control
                 continue;
             }
 
-            if ($Categories['group'] === 'ungrouped') {
+            if ($Categories['group'] === 'others') {
                 $ungrouped = $Categories['group'];
             } elseif (!in_array($Categories['group'], $uniqueGroups)
                 && $Categories['group'] !== ''
