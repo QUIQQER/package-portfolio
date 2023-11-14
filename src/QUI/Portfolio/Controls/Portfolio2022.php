@@ -411,7 +411,7 @@ class Portfolio2022 extends QUI\Control
      */
     protected function getCategories($activeGroup, $categoriesGroups)
     {
-        if ($activeGroup === '') {
+        if (!$activeGroup || !isset($categoriesGroups[$activeGroup])) {
             $keys = array_keys($categoriesGroups);
             return $categoriesGroups[$keys[0]];
         }
