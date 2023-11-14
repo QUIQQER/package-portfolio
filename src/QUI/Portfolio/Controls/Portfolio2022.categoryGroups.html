@@ -5,7 +5,7 @@
             <div class="quiqqer-portfolio-list2022-categoryGroups__entry {if $activeGroup === $UniqueGroup}active{/if}">
                 <a href="?group={$UniqueGroup|escape:'url'}" class="quiqqer-portfolio-list2022-categoryGroups__link">
                     <span class="quiqqer-portfolio-list2022-categoryGroups__linkText">
-                    {if $UniqueGroup === 'ungrouped'}
+                    {if $UniqueGroup === 'others'}
                         {QUI::getLocale()->get(
                         'quiqqer/portfolio',
                         'quiqqer.portfolio.reference.settings.group.empty'

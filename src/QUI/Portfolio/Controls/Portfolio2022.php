@@ -142,14 +142,14 @@ class Portfolio2022 extends QUI\Control
             return '';
         }
 
-        // set "ungrouped" value for empty group index in array
+        // set "others" value for empty group index in array
         $categoriesArray = json_decode($Site->getAttribute(
             'quiqqer.portfolio.settings.categories'
         ), true);
 
         foreach ($categoriesArray as &$Category) {
             if (isset($Category['group']) && $Category['group'] === '') {
-                $Category['group'] = "ungrouped";
+                $Category['group'] = "others";
             }
         }
 

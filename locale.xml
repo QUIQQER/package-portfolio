@@ -420,8 +420,8 @@
             <en><![CDATA[Group]]></en>
         </locale>
         <locale name="quiqqer.portfolio.reference.settings.group.empty">
-            <de><![CDATA[Nicht gruppiert]]></de>
-            <en><![CDATA[Ungrouped]]></en>
+            <de><![CDATA[Sonstige]]></de>
+            <en><![CDATA[Others]]></en>
         </locale>
         <locale name="quiqqer.portfolio.reference.settings.windowAdd.title">
             <de><![CDATA[Kategorie hinzufügen]]></de>
