@@ -23,6 +23,248 @@
             <en><![CDATA[You need to create categories in the parent-page's "Portfolio categories"-settings first.]]></en>
         </locale>
 
+        <!-- Portfolio 2022 -->
+        <locale name="admin.types.portfolio.list2022">
+            <de><![CDATA[Referenzliste 2022]]></de>
+            <en><![CDATA[Portfolio list 2022]]></en>
+        </locale>
+        <locale name="admin.types.portfolio.list2022.desc">
+            <de><![CDATA[Kreative Darstellung der Referenzen und Projekte.]]></de>
+            <en><![CDATA[Creative presentation of references and projects.]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.title">
+            <de><![CDATA[Referenzliste 2022 Einstellungen]]></de>
+            <en><![CDATA[Portfolio list 2022 settings]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.referenceStartNumber">
+            <de><![CDATA[Anzahl der Referenzen zu beginn]]></de>
+            <en><![CDATA[Number of references at the beginning]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.autoloadAfter">
+            <de><![CDATA[Autoload von weiteren Referenzen]]></de>
+            <en><![CDATA[Autoload more portfolio entries]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.autoloadAfter.desc">
+            <de><![CDATA[Die Option bestimmt, wie oft der Benutzer die nächsten Referenzen manuell laden (klicken auf "Mehr Laden" Button) muss, damit diese automatisch geladen werden.]]></de>
+            <en><![CDATA[The option determines how often the user has to load the next references manually (click on "Load more" button) so that they are loaded automatically.]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.autoloadAfter.disabled">
+            <de><![CDATA[Deaktiviert - weitere Referenzen werden nicht automatisch geladen]]></de>
+            <en><![CDATA[Disabled - do not automatically load next portfolio entries]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.autoloadAfter.0">
+            <de><![CDATA[0 - weitere Referenzen werden sofort automatisch nachgeladen]]></de>
+            <en><![CDATA[0 - next portfolio entries will be loaded automatically]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.autoloadAfter.1">
+            <de><![CDATA[1 - nach dem ersten Klick auf den Button]]></de>
+            <en><![CDATA[1 - after the first click on the button]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.autoloadAfter.2">
+            <de><![CDATA[2 - nach dem zweiten Klick auf den Button]]></de>
+            <en><![CDATA[2 - after the second click on the button]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.autoloadAfter.3">
+            <de><![CDATA[3 - nach dem dritten Klick auf den Button]]></de>
+            <en><![CDATA[3 - after the third click on the button]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.autoloadAfter.4">
+            <de><![CDATA[4 - nach dem vierten Klick auf den Button]]></de>
+            <en><![CDATA[4 - after the fourth click on the button]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.template">
+            <de><![CDATA[Template (Vorlage)]]></de>
+            <en><![CDATA[Template]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.template.default">
+            <de><![CDATA[Standard]]></de>
+            <en><![CDATA[Default]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.template.defaultNoHoverEffect">
+            <de><![CDATA[Standard - ohne Mouse-Over Effekt]]></de>
+            <en><![CDATA[Default - with no mouse over effect]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.template.defaultNoHoverEffectNoText">
+            <de><![CDATA[Standard - ohne Mouse-Over Effekt und ohne Text]]></de>
+            <en><![CDATA[Default - with no mouse over effect and no text]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.template.defaultNoHoverEffectNoTextNoBg">
+            <de><![CDATA[Standard - ohne Mouse-Over Effekt, ohne Text und ohne Hintergrundfarbe]]></de>
+            <en><![CDATA[Default - with no mouse over effect, no text and no background color]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.template.textOnImageHiddenCenter1">
+            <de><![CDATA[Versteckter Text zentriert auf dem Bild]]></de>
+            <en><![CDATA[Hidden text centered on the image]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.template.textOnImageHiddenBottom1">
+            <de><![CDATA[Versteckter Text platziert unten auf dem Bild]]></de>
+            <en><![CDATA[Hidden text placed at the bottom on the image]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.template.textOnImageVisibleBottom1">
+            <de><![CDATA[Sichtbarer Text platziert unten auf dem Bild]]></de>
+            <en><![CDATA[Visible text placed at the bottom on the image]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.template.textOnImageVisibleBottomWithArrow1">
+            <de><![CDATA[Sichtbarer Text mit Pfeil platziert unten auf dem Bild]]></de>
+            <en><![CDATA[Visible text with an arrow placed at the bottom on the image]]></en>
+        </locale>
+
+        <locale name="quiqqer.portfolio2022.settings.openBehavior">
+            <de><![CDATA[Referenz öffnen]]></de>
+            <en><![CDATA[Portfolio entry open]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.openBehavior.openInBrowser">
+            <de><![CDATA[In Browser öffnen (Standard Browser Verhalten)]]></de>
+            <en><![CDATA[Open in browser (default behavior)]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.openBehavior.noOpen">
+            <de><![CDATA[Eintrag nicht öffnen]]></de>
+            <en><![CDATA[Do not open entry]]></en>
+        </locale>
+
+        <locale name="quiqqer.portfolio2022.settings.randomButton">
+            <de><![CDATA[Zufalls Button anzeigen]]></de>
+            <en><![CDATA[Show random button]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.imgPosition">
+            <de><![CDATA[Bild Verhalten]]></de>
+            <en><![CDATA[Image behavior]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.imgPosition.contain">
+            <de><![CDATA[Bild vollständig anzeigen]]></de>
+            <en><![CDATA[Show complete image]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.imgPosition.cover">
+            <de><![CDATA[Gesamte Fläche ausfüllen]]></de>
+            <en><![CDATA[Fill the whole area]]></en>
+        </locale>
+
+        <locale name="quiqqer.portfolio2022.settings.design">
+            <de><![CDATA[Diese Einstellungen bestimmte das allgemeine Aussehen der Referenzen-Liste]]></de>
+            <en><![CDATA[This settings affect general portfolio list design]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.entriesPerLine">
+            <de><![CDATA[Anzahl der Einträge pro Zeile]]></de>
+            <en><![CDATA[Entries per line]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.aspectRatio">
+            <de><![CDATA[Bild Seitenverhältnis]]></de>
+            <en><![CDATA[Image aspect ration]]></en>
+        </locale>
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.1-1">
+                <de><![CDATA[1:1 - Quadrat]]></de>
+                <en><![CDATA[1:1 - Square]]></en>
+            </locale>
+
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.3-4">
+                <de><![CDATA[Hochformat 3:4]]></de>
+                <en><![CDATA[Portrait format 3:4]]></en>
+            </locale>
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.2-3">
+                <de><![CDATA[Hochformat 2:3]]></de>
+                <en><![CDATA[Portrait format 2:3]]></en>
+            </locale>
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.3-4">
+                <de><![CDATA[Hochformat 3:4]]></de>
+                <en><![CDATA[Portrait format 3:4]]></en>
+            </locale>
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.4-5">
+                <de><![CDATA[Hochformat 4:5]]></de>
+                <en><![CDATA[Portrait format 4:5]]></en>
+            </locale>
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.9-16">
+                <de><![CDATA[Hochformat 9:16]]></de>
+                <en><![CDATA[Portrait format 9:16]]></en>
+            </locale>
+
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.4-3">
+                <de><![CDATA[Querformat 4:3]]></de>
+                <en><![CDATA[Landscape format 4:3]]></en>
+            </locale>
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.3-2">
+                <de><![CDATA[Querformat 3:2]]></de>
+                <en><![CDATA[Landscape format 3:2]]></en>
+            </locale>
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.5-4">
+                <de><![CDATA[Querformat 5:4]]></de>
+                <en><![CDATA[Landscape format 5:4]]></en>
+            </locale>
+            <locale name="quiqqer.portfolio2022.settings.aspectRatio.16-9">
+                <de><![CDATA[Querformat 16:9]]></de>
+                <en><![CDATA[Landscape format 16:9]]></en>
+            </locale>
+
+        <locale name="quiqqer.portfolio2022.settings.mainColor">
+            <de><![CDATA[Hauptfarbe]]></de>
+            <en><![CDATA[Main color]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.mainColor.desc">
+            <de><![CDATA[Farbe für Hauptelemente, z.B Hintergrund]]></de>
+            <en><![CDATA[Color for main elements, e.g. background.]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.accentColor">
+            <de><![CDATA[Akzentfarbe]]></de>
+            <en><![CDATA[Accent color]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.accentColor.desc">
+            <de><![CDATA[Akzentfarbe, z.B. für Texte auf einem Hintergrund.]]></de>
+            <en><![CDATA[Accent color, e.g. for texts on a background.]]></en>
+        </locale>
+
+        <locale name="quiqqer.portfolio2022.settings.gap">
+            <de><![CDATA[Abstand zwischen Einträgen aktivieren]]></de>
+            <en><![CDATA[Enable space between entries]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.entryMinWidthDesktop">
+            <de><![CDATA[Minimale Eintrag-Breite (in Pixel)]]></de>
+            <en><![CDATA[Minimum entry width (in pixels)]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.entryMinWidthDesktop.desc">
+            <de><![CDATA[Diese Option bestimmt die minimale Breite jedes Eintrages. Diese Einstellung überschreibt "Anzahl der Einträge pro Zeile", wenn die Bedienung erfüllt wird.]]></de>
+            <en>This option determines the minimum width of each entry. This setting overrides "Entries per line" when the operation is fulfilled.</en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.entryMinWidthMobile">
+            <de><![CDATA[Minimale Eintrag-Breite (in Pixel) für mobile Geräte]]></de>
+            <en><![CDATA[Minimum entry width (in pixels) for mobile devices]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.entryMinWidthMobile.desc">
+            <de><![CDATA[Diese Option bestimmt die minimale Breite jedes Eintrages für mobile Geräte. Diese Einstellung überschreibt "Anzahl der Einträge pro Zeile", wenn die Bedienung erfüllt wird.]]></de>
+            <en><![CDATA[This option determines the minimum width of each entry for mobile devices. This setting overrides "Entries per line" when the operation is fulfilled.]]></en>
+        </locale>
+        <!-- Portfolio 2022 - children settings -->
+        <locale name="quiqqer.portfolio2022.settings.children.title">
+            <de><![CDATA[Referenzliste 2022: Einstellungen der Referenzen-Einträgen]]></de>
+            <en><![CDATA[Portfolio list 2022: Settings for the portfolio entries]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.children.maxImageWidth">
+            <de><![CDATA[Breite des Hauptbildes (in Pixel)]]></de>
+            <en><![CDATA[Main image width (in pixel)]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.children.maxImageWidth.desc">
+            <de><![CDATA[Bestimmt die maximale Breite des Bildes über dem Inhalt. Eine "0" (oder kein Wert) bedeutet, dass das Bild 100% breit wird.]]></de>
+            <en><![CDATA[Determines the maximum width of the image over the content. A "0" (or no value) means that the image will be 100% wide.]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.children.maxImageHeight">
+            <de><![CDATA[Höhe des Hauptbildes (in Pixel)]]></de>
+            <en><![CDATA[Main image height (in pixel)]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio2022.settings.children.maxImageHeight.desc">
+            <de><![CDATA[Bestimmt die maximale Höhe des Bildes über dem Inhalt. Eine "0" (oder kein Wert) bedeutet, dass das Bild die maximale Höhe bekommt (abhängig von der Breite).]]></de>
+            <en><![CDATA[Determines the maximum width of the image over the content. A "0" (or no value) means that the image gets the maximum height (depending on the width).]]></en>
+        </locale>
+        <!-- END Portfolio 2022 -->
+
+        <!-- Portfolio reference 2022 -->
+        <locale name="admin.types.portfolio.entry2022">
+            <de><![CDATA[Referenzeintrag 2022]]></de>
+            <en><![CDATA[Portfolio entry 2022]]></en>
+        </locale>
+        <locale name="admin.types.portfolio.entry2022.desc">
+            <de><![CDATA[Kreative Darstellung der Referenzen und Projekte.]]></de>
+            <en><![CDATA[Creative presentation of references and projects.]]></en>
+        </locale>
+        <!-- END Portfolio reference 2022 -->
+
         <locale name="admin.types.portfolio.list">
             <de><![CDATA[Referenzliste]]></de>
             <en><![CDATA[Portfolio list]]></en>
@@ -84,6 +326,19 @@
             <de><![CDATA[Die Webseite besuchen]]></de>
             <en><![CDATA[Visit the website]]></en>
         </locale>
+        <locale name="quiqqer.portfolio.reference.visit.website.text">
+            <de><![CDATA[Die Webseite besuchen]]></de>
+            <en><![CDATA[Visit the website]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.reference.visit.website.button">
+            <de><![CDATA[Website öffnen]]></de>
+            <en><![CDATA[Open website]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.reference.visit.website.buttonTitle">
+            <de><![CDATA[Website von [name] öffnen]]></de>
+            <en><![CDATA[Open [name] website]]></en>
+        </locale>
+
 
         <!-- portfolio brick -->
         <locale name="bricks.control.portfolio.title">
@@ -160,6 +415,14 @@
             <de><![CDATA[Beschreibung]]></de>
             <en><![CDATA[Description]]></en>
         </locale>
+        <locale name="quiqqer.portfolio.reference.settings.group">
+            <de><![CDATA[Gruppe]]></de>
+            <en><![CDATA[Group]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.reference.settings.group.empty">
+            <de><![CDATA[Sonstige]]></de>
+            <en><![CDATA[Others]]></en>
+        </locale>
         <locale name="quiqqer.portfolio.reference.settings.windowAdd.title">
             <de><![CDATA[Kategorie hinzufügen]]></de>
             <en><![CDATA[Add category]]></en>
@@ -177,7 +440,6 @@
         <locale name="quiqqer.portfolio.settings.randomButton">
             <de><![CDATA[Zufalls Button anzeigen]]></de>
             <en><![CDATA[Show random button]]></en>
-            <pl><![CDATA[Pokazać przycisk "losowy"]]></pl>
         </locale>
 
         <locale name="quiqqer.portfolio.settings.imgPosition">
@@ -224,9 +486,97 @@
             <en><![CDATA[Add pages]]></en>
             <pl><![CDATA[Dodawanie stron]]></pl>
         </locale>
+
+
+
+        <locale name="quiqqer.portfolio.reference.frontend.prevButton">
+            <de><![CDATA[Vorheriges Projekt]]></de>
+            <en><![CDATA[Previous project]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.reference.frontend.nextButton">
+            <de><![CDATA[Nächstes Projekt]]></de>
+            <en><![CDATA[Next project]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.reference.frontend.backButton">
+            <de><![CDATA[Zurück zur Übersicht]]></de>
+            <en><![CDATA[Back to project list]]></en>
+        </locale>
     </groups>
 
     <groups name="quiqqer/portfolio" datatype="php">
+        <!-- Portfolio reference 2022 -->
+        <locale name="quiqqer.portfolio.entry2022.settings.title">
+            <de><![CDATA[Referenzeintrag 2022: Einstellungen]]></de>
+            <en><![CDATA[Portfolio entry 2022: Settings]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.settings.mediaFolder">
+            <de><![CDATA[Media Ordner]]></de>
+            <en><![CDATA[Media folder]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.entry2022.settings.showNav">
+            <de><![CDATA[Navigation anzeigen]]></de>
+            <en><![CDATA[Show nav]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.entry2022.settings.showNav.desc">
+            <de><![CDATA[Zeigt Button zum vorherigen / nächsten Projekt.]]></de>
+            <en><![CDATA[Shows button to the previous / next project.]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.entry2022.settings.gallery.title">
+            <de><![CDATA[Zeigt Button zum vorherigen / nächsten Projekt.]]></de>
+            <en><![CDATA[Shows button to the previous / next project.]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.settings.website">
+            <de><![CDATA[URL zur externen Webseite]]></de>
+            <en><![CDATA[Address to the external website]]></en>
+        </locale>
+
+        <!-- Portfolio reference 2022: gallery -->
+        <locale name="quiqqer.portfolio.entry2022.settings.gallery.title">
+            <de><![CDATA[Referenzeintrag 2022: Galerie Einstellungen]]></de>
+            <en><![CDATA[Portfolio entry 2022: Gallery settings]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.entry2022.settings.gallery.enable">
+            <de><![CDATA[Galerie aktivieren]]></de>
+            <en><![CDATA[Enable gallery]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.entry2022.settings.gallery.enable">
+            <de><![CDATA[Galerie aktivieren]]></de>
+            <en><![CDATA[Enable gallery]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.entry2022.settings.gallery.template">
+            <de><![CDATA[Vorlage (Template)]]></de>
+            <en><![CDATA[Template]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.entry2022.settings.gallery.order">
+            <de><![CDATA[Sortierung]]></de>
+            <en><![CDATA[Order]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.entry2022.settings.gallery.scaleImageOnHover">
+            <de><![CDATA[Bild vergrößern beim Mouseover]]></de>
+            <en><![CDATA[Scale image on mouse over]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.entry2022.settings.gallery.scaleImageOnHover.desc">
+            <de><![CDATA[Wenn man mit der maus drüber fährt, wird das Bild vergrößert.]]></de>
+            <en><![CDATA[Random]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.entry2022.settings.gallery.darkenImageOnHover">
+            <de><![CDATA[Bild verdunkeln beim Mouseover]]></de>
+            <en><![CDATA[Darken image on mouse over]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.entry2022.settings.gallery.darkenImageOnHover.desc">
+            <de><![CDATA[Wenn man mit dem Mauszeiger drüber fährt, wird das Bild verdunkelt.]]></de>
+            <en><![CDATA[When you move the mouse pointer over it, the image is darkened.]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.entry2022.settings.gallery.iconOnHover">
+            <de><![CDATA[Extra Symbol anzeigen beim Mouseover]]></de>
+            <en><![CDATA[Show extra symbol on mouse over]]></en>
+        </locale>
+        <locale name="quiqqer.portfolio.entry2022.settings.gallery.iconOnHover.desc">
+            <de><![CDATA[Wenn man mit dem Mauszeiger drüber fährt, wird eine Icon über dem Bild angezeigt.]]></de>
+            <en><![CDATA[When you hover the mouse cursor over it, an icon appears over the image.]]></en>
+        </locale>
+
+
         <!-- portfolio entry -->
         <locale name="quiqqer.portfolio.reference.settings.title">
             <de><![CDATA[Referenz Eigenschaften]]></de>
@@ -235,10 +585,6 @@
         <locale name="quiqqer.portfolio.settings.mediaFolder">
             <de><![CDATA[Media Ordner]]></de>
             <en><![CDATA[Media folder]]></en>
-        </locale>
-        <locale name="quiqqer.portfolio.settings.website">
-            <de><![CDATA[URL zur Webseite]]></de>
-            <en><![CDATA[Adress to the website]]></en>
         </locale>
 
         <!-- portfolio list (site) -->
@@ -264,10 +610,20 @@
             <pl><![CDATA[Więcej]]></pl>
         </locale>
 
+        <locale name="quiqqer.portfolio2022.category.more">
+            <de><![CDATA[Weitere Projekte laden]]></de>
+            <en><![CDATA[Load more projects]]></en>
+        </locale>
+
         <locale name="quiqqer.portfolio.openPortfolio">
             <de><![CDATA[Mehr]]></de>
             <en><![CDATA[More]]></en>
             <en><![CDATA[Więcej]]></en>
+        </locale>
+
+        <locale name="quiqqer.portfolio2022.openPortfolio">
+            <de><![CDATA[Weiter lesen]]></de>
+            <en><![CDATA[Learn more]]></en>
         </locale>
 
 

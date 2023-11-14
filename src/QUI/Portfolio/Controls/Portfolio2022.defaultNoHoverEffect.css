@@ -1,0 +1,50 @@
+:where(.quiqqer-portfolio-list2022__defaultNoHoverEffect) .quiqqer-portfolio-list2022-entry-imageContainer {
+    margin-bottom: var(--qui-spacing, 1rem);
+    position: relative;
+    overflow: hidden;
+}
+
+/* if no text, set no margin */
+:where(.quiqqer-portfolio-list2022__defaultNoHoverEffect.quiqqer-portfolio-list2022__defaultNoHoverEffectNoText) .quiqqer-portfolio-list2022-entry-imageContainer,
+:where(.quiqqer-portfolio-list2022__defaultNoHoverEffect.quiqqer-portfolio-list2022__defaultNoHoverEffectNoTextNoBg) .quiqqer-portfolio-list2022-entry-imageContainer {
+    margin-bottom: 0;
+}
+
+:where(.quiqqer-portfolio-list2022__defaultNoHoverEffect) .quiqqer-portfolio-list2022-entry-imageContainer img {
+    transition: var(--quiqqer-portfolio2022-transition);
+}
+
+
+:where(.quiqqer-portfolio-list2022__defaultNoHoverEffect) .quiqqer-portfolio-list2022-entry-imageContainer-showLabel {
+    align-items: center;
+    color: var(--quiqqer-portfolio2022-accentColor, #fff);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+:where(.quiqqer-portfolio-list2022__default) .quiqqer-portfolio-list2022-entry-imageContainer-showLabel > .quiqqer-portfolio-list2022-entry-imageContainer-showLabel-text {
+    font-size: var(--qui-fs-md, 1.5rem);
+}
+
+:where(.quiqqer-portfolio-list2022__default) .quiqqer-portfolio-list2022-entry-title {
+    font-size: var(--qui-fs-lg, 1.25rem);
+    margin-bottom: calc(0.5 * var(--qui-spacing, 1rem));
+}
+
+:where(.quiqqer-portfolio-list2022__default) .quiqqer-portfolio-list2022-entry-desc {
+    font-size: var(--qui-fs-sm);
+}
+
+/* no text and no background */
+:where(.quiqqer-portfolio-list2022__defaultNoHoverEffect.quiqqer-portfolio-list2022__defaultNoHoverEffectNoTextNoBg) .quiqqer-portfolio-list2022-entry-imageContainer  {
+    background-color: transparent;
+}
+

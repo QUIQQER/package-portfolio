@@ -1,0 +1,72 @@
+{* Category groups html *}
+{$categoryGroupsHtml}
+
+{if $categories && count($categories)}
+    {include file="`$categoriesHtml`"}
+{/if}
+
+{assign var=c value=0}
+<section class="quiqqer-portfolio-list2022 {$templateClass}">
+    <div class="quiqqer-portfolio-list2022-entries">
+
+    {foreach from=$portfolio item=Child}
+    {assign var=impl value=""}
+    {assign var=categories value=$Child->getAttribute('quiqqer.portfolio.settings.categories')}
+    {if $categories}
+        {assign var=impl value=implode(',', $categories)}
+    {/if}
+
+    <div class="quiqqer-portfolio-list2022-entry"
+         data-id="{$Child->getId()}"
+         data-categories=",{$impl},"
+         data-image-format="{$imageFormat}"
+         data-image="{image src=$Child->getAttribute('image_site') onlysrc=1}"
+         data-position="{$imgPositionStyle}"
+         {if $displayNum && $displayNum <= $c}style="display: none"{/if}
+        >
+            {include file="`$entryHtml`"}
+    </div>
+    {assign var=c value=$c+1}
+
+    {/foreach}
+
+    {for $counter=1 to $entriesPerLine - 1}
+        <div class="quiqqer-portfolio-list2022-entry quiqqer-portfolio-list2022-entry__placeholder" data-ignore="1"></div>
+    {/for}
+    </div>
+</section>
+
+{if $lazyloading  && $c > $displayNum}
+<div class="quiqqer-portfolio-more">
+    <button class="btn btn-secondary">
+        {locale group="quiqqer/portfolio" var="quiqqer.portfolio2022.category.more"}
+    </button>
+</div>
+
+<noscript>
+    <style>
+        .quiqqer-portfolio-more {
+            display: none;
+        }
+
+        .quiqqer-portfolio-list2022-entry {
+            display: block !important;
+        }
+
+        .quiqqer-portfolio-categories,
+        .quiqqer-portfolio-line {
+            display: none;
+        }
+
+        .skeletonLoadingEffect {
+            display: none !important;
+        }
+
+        .quiqqer-portfolio-list2022-entry:not(.imageLoaded) .quiqqer-portfolio-list2022-entry-inner figure {
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+    </style>
+</noscript>
+{/if}

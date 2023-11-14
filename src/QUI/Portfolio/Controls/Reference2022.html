@@ -1,0 +1,76 @@
+<section itemscope itemtype="http://schema.org/CreativeWork"
+         data-qui="package/quiqqer/portfolio/bin/controls/Reference"
+         data-siteid="{$Site->getId()}"
+         data-project="{$Site->getProject()->getName()}"
+         data-lang="{$Site->getProject()->getLang()}"
+         style="
+         {if $imgWidth}
+            --quiqqer-portfolio2022-entry-mainImgWidth: {$imgWidth}px;
+         {/if}
+         {if $imgHeight}
+             --quiqqer-portfolio2022-entry-mainImgHeight: {$imgHeight}px;
+         {/if}
+         {if $imgWidth || $imgHeight}
+             --quiqqer-portfolio2022-entry-mainImgAspectRatio: {$imgWidth} / {$imgHeight};
+         {/if}
+         "
+>
+
+    {if $showNav}
+        <div class="quiqqer-portfolio-reference2022-container  quiqqer-portfolio-reference2022-container__nav quiqqer-portfolio-reference2022-container__navTop">
+            {include file="`$navHtml`"}
+        </div>
+    {/if}
+
+    <div class="quiqqer-portfolio-reference2022-container  quiqqer-portfolio-reference2022-container__header">
+        <header class="quiqqer-portfolio-reference2022-header">
+            <h1 itemprop="name" class="quiqqer-portfolio-reference2022-header-title">
+                {$Site->getAttribute('title')}
+            </h1>
+            <p class="quiqqer-portfolio-reference2022-header-desc">
+                {$Site->getAttribute('short')}
+            </p>
+        </header>
+    </div>
+
+    <div class="quiqqer-portfolio-reference2022-container quiqqer-portfolio-reference2022-container__mainImage">
+        {if $Site->getAttribute('image_site')}
+            {image src=$Site->getAttribute('image_site') class="quiqqer-portfolio-reference2022-mainImage" data-zoom="1"}
+        {/if}
+    </div>
+
+    <div class="quiqqer-portfolio-reference2022-container  quiqqer-portfolio-reference2022-container__content">
+        <section class="quiqqer-portfolio-reference2022-content">
+            {$Site->getAttribute('content')}
+        </section>
+    </div>
+
+    {if $website}
+        <div class="quiqqer-portfolio-reference2022-container  quiqqer-portfolio-reference2022-container__websiteBanner">
+            <div class="quiqqer-portfolio-reference2022-websiteBanner">
+                <div class="quiqqer-portfolio-reference2022-websiteBanner-content text-lead">
+                    {locale group='quiqqer/portfolio' var='quiqqer.portfolio.reference.visit.website.text'}
+                </div>
+                <a href="{$website}"
+                   class="button button--callToAction quiqqer-portfolio-reference2022-website-button"
+                   target="_blank"
+                   title="{locale group='quiqqer/portfolio' var='quiqqer.portfolio.reference.visit.website.buttonTitle' name=$Site->getAttribute('title')}"
+                >
+                    {locale group='quiqqer/portfolio' var='quiqqer.portfolio.reference.visit.website.button'}
+                </a>
+            </div>
+        </div>
+    {/if}
+
+    <div class="quiqqer-portfolio-reference2022-container  quiqqer-portfolio-reference2022-container__gallery">
+        {if $Gallery}
+            {$Gallery->create()}
+        {/if}
+    </div>
+
+    {if $showNav}
+        <div class="quiqqer-portfolio-reference2022-container  quiqqer-portfolio-reference2022-container__nav quiqqer-portfolio-reference2022-container__navbottom">
+            {include file="`$navHtml`"}
+        </div>
+    {/if}
+</section>

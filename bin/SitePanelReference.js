@@ -82,12 +82,38 @@ define('package/quiqqer/portfolio/bin/SitePanelReference', [
             }
 
             Ajax.get('package_quiqqer_portfolio_ajax_getCategories', function (categories) {
-                var i, len;
-                var List = new Element('ul');
-
                 if (!categories) {
                     categories = [];
                 }
+
+                // set "empty" value for "group" without value for array
+                categories.forEach((Category) => {
+                    if (Category.group === '') {
+                        Category.group = "empty";
+                    }
+                });
+
+                // get array with unique groups
+                var uniqueGroups = [];
+
+                categories.forEach((Category) => {
+                    if (!uniqueGroups.includes(Category.group) && Category.group !== '') {
+                        uniqueGroups.push(Category.group);
+                    }
+                });
+
+                // sort categories data into groups
+                var categoriesGroups = [];
+
+                uniqueGroups.forEach((UniqueGroups) => {
+                    var groups = [];
+                    categories.forEach((Categories) => {
+                        if (Categories.group.includes(UniqueGroups)) {
+                            groups.push(Categories);
+                        }
+                    });
+                    categoriesGroups.push(groups);
+                });
 
                 if(categories.length === 0) {
                     new Element('span', {
@@ -104,28 +130,50 @@ define('package/quiqqer/portfolio/bin/SitePanelReference', [
                     Input.checked = !Input.checked;
                 };
 
-                for (i = 0, len = categories.length; i < len; i++) {
-                    new Element('li', {
-                        html  : '<input type="checkbox" value="' + categories[i].category + '" />' +
-                        '<span>' + categories[i].category + '</span>',
-                        events: {
-                            click: liClick
-                        }
-                    }).inject(List);
-                }
+                // create HTML element to display on backend
+                var GroupElm = null;
+                var HtmlElm = new Element('div');
+                categoriesGroups.forEach(function (group) {
 
-                List.inject(self.$Elm);
+                    var groupHeader = group[0].group;
 
-                // select current categories
-                for (i = 0, len = siteCategories.length; i < len; i++) {
+                    if (groupHeader === "empty") {
+                        groupHeader = QUILocale.get('quiqqer/portfolio', 'quiqqer.portfolio.reference.settings.group.empty');
+                    }
 
-                    List.getElements(
-                        'input[value="' + siteCategories[i] + '"]'
-                    ).set(
-                        'checked', true
-                    );
+                    // creat container DIV for list and group "header"
+                    GroupElm = new Element('div', {
+                        html  : '<span>' + groupHeader + '<span/>'
+                    });
 
-                }
+                    // creat ul for list
+                    var List = new Element('ul');
+
+                    // creat liist
+                    group.forEach(function (e) {
+                        new Element('li', {
+                            html  : '<input type="checkbox" value="' + e.category + '" />' +
+                                '<span>' + e.category + '</span>',
+                            events: {
+                                click: liClick
+                            }
+                        }).inject(List); //mam to w UL
+                    });
+
+                    // select current categories
+                    siteCategories.forEach( function (e) {
+                        List.getElements(
+                            'input[value="' + e + '"]'
+                        ).set(
+                            'checked', true
+                        );
+                    });
+
+                    List.inject(GroupElm);
+                    GroupElm.inject(HtmlElm);
+                });
+
+                HtmlElm.inject(self.$Elm);
 
                 self.$Panel.Loader.hide();
             }, {

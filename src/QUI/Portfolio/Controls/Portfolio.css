@@ -1,11 +1,9 @@
 
 .quiqqer-portfolio-list,
 .quiqqer-portfolio-categories {
-    clear: both;
-    float: left;
     position: relative;
-    width: 100%;
     z-index: 1;
+    display: flow-root;
 }
 
 .quiqqer-portfolio-animate {
@@ -144,7 +142,7 @@ die untere divs verschoben werden */
     vertical-align: middle;
 }
 
-.quiqqer-portfolio-more {
+.quiqqer-portfolio-more.button {
     clear: both;
     display: block;
     margin: 20px auto 0;

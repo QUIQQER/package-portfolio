@@ -109,6 +109,12 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
                     width    : 200,
                     editable : true
                 }, {
+                    header   : QUILocale.get(lg, 'quiqqer.portfolio.reference.settings.group'),
+                    dataIndex: 'group',
+                    dataType : 'string',
+                    width    : 250,
+                    editable : true
+                }, {
                     header   : QUILocale.get(lg, 'quiqqer.portfolio.reference.settings.description'),
                     dataIndex: 'description',
                     dataType : 'string',
@@ -192,16 +198,18 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
                                 rowData[index] = oldValue;
                             }
 
+
+
                             self.$Grid.setDataByRow(data.row, self.$createRowData(
                                 rowData.category,
-                                rowData.description
+                                rowData.description,
+                                rowData.group
                             ));
                             return;
                         }
                     }
                 }
             });
-
             return this.$Elm;
         },
 
@@ -220,6 +228,7 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
                 return;
             }
 
+
             var data   = [];
             categories = JSON.decode(categories);
 
@@ -227,7 +236,8 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
                 data.push(
                     this.$createRowData(
                         categories[i].category,
-                        categories[i].description
+                        categories[i].description,
+                        categories[i].group
                     )
                 );
             }
@@ -255,7 +265,8 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
             for (var i = 0, len = data.length; i < len; i++) {
                 result.push({
                     category   : data[i].category,
-                    description: data[i].description
+                    description: data[i].description,
+                    group: data[i].group
                 });
             }
 
@@ -342,10 +353,12 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
          *
          * @param {String} category - Category name
          * @param {String} [description] - Description of the category
+         * @group {String} [group] - group of the category
          * @returns {{remove: *, category: *, description: *}}
          */
-        $createRowData: function (category, description) {
+        $createRowData: function (category, description, group) {
             description = description || '';
+            group       = group || '';
 
             return {
                 remove     : {
@@ -359,7 +372,8 @@ define('package/quiqqer/portfolio/bin/SitePanelList', [
                     }
                 },
                 category   : category,
-                description: description
+                description: description,
+                group      : group
             };
         }
     });

@@ -1,0 +1,50 @@
+<div class="quiqqer-portfolio-list2022-entry-inner">
+    <figure>
+        <a href="{url site=$Child}" class="quiqqer-portfolio-list2022-entry-imageContainer">
+            {* Is the image an icon? *}
+            {if strpos($Child->getAttribute('image_site'), 'fa ') === 0}
+                {image src=$Child->getAttribute('image_site')}
+            {else}
+                <noscript>
+                    {image src=$Child->getAttribute('image_site') height="400" style="$imgPositionStyle"}
+                </noscript>
+            {/if}
+        </a>
+
+        <figcaption>
+            <div class="quiqqer-portfolio-list2022-entry-info">
+                <h3 class="quiqqer-portfolio-list2022-entry-title">
+                    {$Child->getAttribute('title')}
+                </h3>
+
+                <div class="quiqqer-portfolio-list2022-entry-desc">
+                    {$Child->getAttribute('short')}
+
+                    {if !$showArrow}
+                        <noscript>
+                            <div class="quiqqer-portfolio-list2022-entry-desc-button">
+                                <a href="{url site=$Child}">
+                                    {locale group="quiqqer/portfolio" var="quiqqer.portfolio2022.openPortfolio"}
+                                </a>
+                            </div>
+                        </noscript>
+                    {/if}
+                </div>
+
+                {if $showArrow}
+                    {include file="`$arrowHtml`"}
+                {/if}
+            </div>
+        </figcaption>
+    </figure>
+
+    <div class="skeletonLoadingEffect"></div>
+
+    <noscript>
+        <style>
+            [data-id="{$Child->getId()}"] {
+                display: inline;
+            }
+        </style>
+    </noscript>
+</div>
