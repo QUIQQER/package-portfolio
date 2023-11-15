@@ -173,6 +173,7 @@ class Portfolio2022 extends QUI\Control
         ]);
 
         $categoryGroupsHtml = $Engine->fetch(dirname(__FILE__).'/Portfolio2022.categoryGroups.html');
+        $wantedPortfolioEntries = [];
 
         foreach ($portfolio as $Child) {
             /* @var $Child QUI\Projects\Site */
@@ -186,7 +187,31 @@ class Portfolio2022 extends QUI\Control
                 $cats = [];
             }
 
+            // reduce array with portfolio entries
+            // if entry category belong to the group that is currently active
+            foreach ($cats as $cat) {
+                // no double entries
+                if (in_array($Child, $wantedPortfolioEntries)) {
+                    continue;
+                }
+
+                foreach ($categoriesArray as $entry) {
+                    if (isset($entry['category'])
+                        && $entry['category'] === $cat
+                        && $entry['group'] === $activeGroup
+                        && !in_array($Child, $wantedPortfolioEntries)
+                    ) {
+                        $wantedPortfolioEntries[] = $Child;
+                        break;
+                    }
+                }
+            }
+
             $Child->setAttribute('quiqqer.portfolio.settings.categories', $cats);
+        }
+
+        if (count($wantedPortfolioEntries) > 0) {
+            $portfolio = $wantedPortfolioEntries;
         }
 
         switch ($this->getAttribute('imgPosition')) {
