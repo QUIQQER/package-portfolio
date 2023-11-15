@@ -198,6 +198,7 @@ class Portfolio2022 extends QUI\Control
                 foreach ($categoriesArray as $entry) {
                     if (isset($entry['category'])
                         && $entry['category'] === $cat
+                        && isset($entry['group'])
                         && $entry['group'] === $activeGroup
                         && !in_array($Child, $wantedPortfolioEntries)
                     ) {
