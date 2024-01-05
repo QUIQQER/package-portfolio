@@ -7,16 +7,17 @@
  * @param string|Integer $siteId - ID of the current page
  * @return array
  */
+
 QUI::$Ajax->registerFunction(
     'package_quiqqer_portfolio_ajax_getImageSliderPrev',
     function ($project, $siteId) {
         $Project = QUI::getProjectManager()->decode($project);
-        $Site    = $Project->get($siteId);
+        $Site = $Project->get($siteId);
 
         try {
             $Sibling = $Site->previousSibling();
         } catch (QUI\Exception $Exception) {
-            $Parent  = $Site->getParent();
+            $Parent = $Site->getParent();
             $Sibling = $Parent->lastChild();
         }
 
@@ -24,7 +25,7 @@ QUI::$Ajax->registerFunction(
 
         $result = QUI::$Ajax->callRequestFunction('package_quiqqer_portfolio_ajax_getImageSlider', [
             'project' => json_encode($Project->toArray()),
-            'siteId'  => $Sibling->getId()
+            'siteId' => $Sibling->getId()
         ]);
 
         return $result['result'];

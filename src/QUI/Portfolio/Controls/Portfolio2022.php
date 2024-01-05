@@ -23,33 +23,33 @@ class Portfolio2022 extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'showRandomButton'                 => false,
-            'limit'                            => false,
-            'qui-class'                        => 'package/quiqqer/portfolio/bin/controls/Portfolio2022',
-            'data-qui-options-nopopups'        => true,
-            'data-qui-options-popuptype'       => 'short',
-            'data-qui-options-useanchor'       => false,
-            'data-qui-options-lazyloading'     => true,
+            'showRandomButton' => false,
+            'limit' => false,
+            'qui-class' => 'package/quiqqer/portfolio/bin/controls/Portfolio2022',
+            'data-qui-options-nopopups' => true,
+            'data-qui-options-popuptype' => 'short',
+            'data-qui-options-useanchor' => false,
+            'data-qui-options-lazyloading' => true,
             'data-qui-options-start-reference' => 3,
-            'parentInputList'                  => false, // for example from qui site select
-            'order'                            => 'c_date DESC',
-            'autoloadAfter'                    => 1, // disabled, 0, 1, 2, 3, 4
+            'parentInputList' => false, // for example from qui site select
+            'order' => 'c_date DESC',
+            'autoloadAfter' => 1, // disabled, 0, 1, 2, 3, 4
 
             // design
-            'template'                         => 'default',
-            'openBehavior'                     => 'openInBrowser', // openInBrowser, noOpen
-            'aspectRatio'                      => '1/1', // any css valid aspect ratio: 1/1, 1/2: 4:3, 16:9, 9:16
-            'imgPosition'                      => 'cover',
-            'entriesPerLine'                   => 3,
-            'gap'                              => '1rem',
-            'mainColor'                        => false,
-            'accentColor'                      => false,
-            'entryMinWidthDesktop'             => 300,
-            'entryMinWidthMobile'              => false
+            'template' => 'default',
+            'openBehavior' => 'openInBrowser', // openInBrowser, noOpen
+            'aspectRatio' => '1/1', // any css valid aspect ratio: 1/1, 1/2: 4:3, 16:9, 9:16
+            'imgPosition' => 'cover',
+            'entriesPerLine' => 3,
+            'gap' => '1rem',
+            'mainColor' => false,
+            'accentColor' => false,
+            'entryMinWidthDesktop' => 300,
+            'entryMinWidthMobile' => false
         ]);
 
         $this->addCSSFile(
-            dirname(__FILE__).'/Portfolio2022.css'
+            dirname(__FILE__) . '/Portfolio2022.css'
         );
 
         parent::__construct($attributes);
@@ -61,19 +61,21 @@ class Portfolio2022 extends QUI\Control
      */
     public function getBody()
     {
-        $Engine               = QUI::getTemplateManager()->getEngine();
-        $Site                 = $this->getSite();
-        $limit                = false;
-        $displayNum           = 3;
-        $entriesPerLine       = 3;
-        $gap                  = false;
+        $Engine = QUI::getTemplateManager()->getEngine();
+        $Site = $this->getSite();
+        $limit = false;
+        $displayNum = 3;
+        $entriesPerLine = 3;
+        $gap = false;
         $entryMinWidthDesktop = 0;
-        $entryMinWidthMobile  = 0;
-        $aspectRatio          = '1/1';
+        $entryMinWidthMobile = 0;
+        $aspectRatio = '1/1';
 
-        if ($this->getAttribute('entriesPerLine') &&
+        if (
+            $this->getAttribute('entriesPerLine') &&
             (int)$this->getAttribute('entriesPerLine') > 0 &&
-            (int)$this->getAttribute('entriesPerLine') < 10) {
+            (int)$this->getAttribute('entriesPerLine') < 10
+        ) {
             $entriesPerLine = (int)$this->getAttribute('entriesPerLine');
         }
 
@@ -93,11 +95,11 @@ class Portfolio2022 extends QUI\Control
         }
 
         if ($this->getAttribute('entryMinWidthDesktop')) {
-            $entryMinWidthDesktop = $this->getAttribute('entryMinWidthDesktop').'px';
+            $entryMinWidthDesktop = $this->getAttribute('entryMinWidthDesktop') . 'px';
         }
 
         if ($this->getAttribute('entryMinWidthMobile')) {
-            $entryMinWidthMobile = $this->getAttribute('entryMinWidthMobile').'px';
+            $entryMinWidthMobile = $this->getAttribute('entryMinWidthMobile') . 'px';
         }
 
         if ($this->getAttribute('aspectRatio')) {
@@ -110,11 +112,11 @@ class Portfolio2022 extends QUI\Control
 
         if ($this->getAttribute('parentInputList')) {
             // for bricks
-            $parents   = $this->getAttribute('parentInputList');
+            $parents = $this->getAttribute('parentInputList');
             $portfolio = Utils::getSitesByInputList($Site->getProject(), $parents, [
                 'where' => [
                     'type' => [
-                        'type'  => 'IN',
+                        'type' => 'IN',
                         'value' => ['quiqqer/portfolio:types/entry2022', 'quiqqer/portfolio:types/entry']
                     ]
                 ],
@@ -126,7 +128,7 @@ class Portfolio2022 extends QUI\Control
             $portfolio = $Site->getChildren([
                 'where' => [
                     'type' => [
-                        'type'  => 'IN',
+                        'type' => 'IN',
                         'value' => ['quiqqer/portfolio:types/entry2022', 'quiqqer/portfolio:types/entry']
                     ]
                 ],
@@ -143,9 +145,12 @@ class Portfolio2022 extends QUI\Control
         }
 
         // set "others" value for empty group index in array
-        $categoriesArray = json_decode($Site->getAttribute(
-            'quiqqer.portfolio.settings.categories'
-        ), true);
+        $categoriesArray = json_decode(
+            $Site->getAttribute(
+                'quiqqer.portfolio.settings.categories'
+            ),
+            true
+        );
 
         foreach ($categoriesArray as &$Category) {
             if (isset($Category['group']) && $Category['group'] === '') {
@@ -172,7 +177,7 @@ class Portfolio2022 extends QUI\Control
             'activeGroup' => $activeGroup
         ]);
 
-        $categoryGroupsHtml = $Engine->fetch(dirname(__FILE__).'/Portfolio2022.categoryGroups.html');
+        $categoryGroupsHtml = $Engine->fetch(dirname(__FILE__) . '/Portfolio2022.categoryGroups.html');
         $wantedPortfolioEntries = [];
 
         foreach ($portfolio as $Child) {
@@ -196,7 +201,8 @@ class Portfolio2022 extends QUI\Control
                 }
 
                 foreach ($categoriesArray as $entry) {
-                    if (isset($entry['category'])
+                    if (
+                        isset($entry['category'])
                         && $entry['category'] === $cat
                         && isset($entry['group'])
                         && $entry['group'] === $activeGroup
@@ -221,12 +227,12 @@ class Portfolio2022 extends QUI\Control
             case 'contain':
             case 'none':
             case 'scale-down':
-                $imgPosition      = $this->getAttribute('imgPosition');
-                $imgPositionStyle = 'object-fit: '.$this->getAttribute('imgPosition').';';
+                $imgPosition = $this->getAttribute('imgPosition');
+                $imgPositionStyle = 'object-fit: ' . $this->getAttribute('imgPosition') . ';';
                 break;
 
             default:
-                $imgPosition      = 'cover';
+                $imgPosition = 'cover';
                 $imgPositionStyle = 'object-fit: cover; -o-object-fit: cover;';
                 break;
         }
@@ -244,57 +250,57 @@ class Portfolio2022 extends QUI\Control
         switch ($this->getAttribute('template')) {
             case 'textOnImageHiddenCenter1':
                 $templateClass = 'quiqqer-portfolio-list2022__textOnImage quiqqer-portfolio-list2022__textOnImage-hiddenCenter1';
-                $entryHtml     = dirname(__FILE__).'/Portfolio2022.textOnImage.html';
-                $css           = '/Portfolio2022.textOnImage.css';
+                $entryHtml = dirname(__FILE__) . '/Portfolio2022.textOnImage.html';
+                $css = '/Portfolio2022.textOnImage.css';
                 break;
 
             case 'textOnImageHiddenBottom1':
                 $templateClass = 'quiqqer-portfolio-list2022__textOnImage quiqqer-portfolio-list2022__textOnImage-hiddenBottom1';
-                $entryHtml     = dirname(__FILE__).'/Portfolio2022.textOnImage.html';
-                $css           = '/Portfolio2022.textOnImage.css';
+                $entryHtml = dirname(__FILE__) . '/Portfolio2022.textOnImage.html';
+                $css = '/Portfolio2022.textOnImage.css';
                 break;
 
             case 'textOnImageVisibleBottom1':
                 $templateClass = 'quiqqer-portfolio-list2022__textOnImage quiqqer-portfolio-list2022__textOnImage-visibleBottom1';
-                $entryHtml     = dirname(__FILE__).'/Portfolio2022.textOnImage.html';
-                $css           = '/Portfolio2022.textOnImage.css';
+                $entryHtml = dirname(__FILE__) . '/Portfolio2022.textOnImage.html';
+                $css = '/Portfolio2022.textOnImage.css';
                 break;
 
             case 'textOnImageVisibleBottomWithArrow1':
-                $showArrow     = true;
+                $showArrow = true;
                 $templateClass = 'quiqqer-portfolio-list2022__textOnImage quiqqer-portfolio-list2022__textOnImage-visibleBottomWithArrow1';
-                $entryHtml     = dirname(__FILE__).'/Portfolio2022.textOnImage.html';
-                $css           = '/Portfolio2022.textOnImage.css';
+                $entryHtml = dirname(__FILE__) . '/Portfolio2022.textOnImage.html';
+                $css = '/Portfolio2022.textOnImage.css';
                 break;
 
             case 'defaultNoHoverEffect':
                 $templateClass = 'quiqqer-portfolio-list2022__defaultNoHoverEffect';
-                $entryHtml     = dirname(__FILE__).'/Portfolio2022.defaultNoHoverEffect.html';
-                $css           = '/Portfolio2022.defaultNoHoverEffect.css';
+                $entryHtml = dirname(__FILE__) . '/Portfolio2022.defaultNoHoverEffect.html';
+                $css = '/Portfolio2022.defaultNoHoverEffect.css';
                 break;
 
             case 'defaultNoHoverEffectNoText':
                 $templateClass = 'quiqqer-portfolio-list2022__defaultNoHoverEffect quiqqer-portfolio-list2022__defaultNoHoverEffectNoText';
-                $entryHtml     = dirname(__FILE__).'/Portfolio2022.defaultNoHoverEffect.html';
-                $css           = '/Portfolio2022.defaultNoHoverEffect.css';
+                $entryHtml = dirname(__FILE__) . '/Portfolio2022.defaultNoHoverEffect.html';
+                $css = '/Portfolio2022.defaultNoHoverEffect.css';
                 break;
 
             case 'defaultNoHoverEffectNoTextNoBg':
                 $templateClass = 'quiqqer-portfolio-list2022__defaultNoHoverEffect quiqqer-portfolio-list2022__defaultNoHoverEffectNoTextNoBg';
-                $entryHtml     = dirname(__FILE__).'/Portfolio2022.defaultNoHoverEffect.html';
-                $css           = '/Portfolio2022.defaultNoHoverEffect.css';
+                $entryHtml = dirname(__FILE__) . '/Portfolio2022.defaultNoHoverEffect.html';
+                $css = '/Portfolio2022.defaultNoHoverEffect.css';
                 break;
 
             case 'default':
             default:
                 $templateClass = 'quiqqer-portfolio-list2022__default';
-                $entryHtml     = dirname(__FILE__).'/Portfolio2022.default.html';
-                $css           = '/Portfolio2022.default.css';
+                $entryHtml = dirname(__FILE__) . '/Portfolio2022.default.html';
+                $css = '/Portfolio2022.default.css';
                 break;
         }
 
         $this->addCSSFile(
-            dirname(__FILE__).$css
+            dirname(__FILE__) . $css
         );
 
         switch ($this->getAttribute('aspectRatio')) {
@@ -316,14 +322,14 @@ class Portfolio2022 extends QUI\Control
         }
 
         $this->setStyles([
-            '--quiqqer-portfolio2022-transition-duration'  => '300ms',
-            '--quiqqer-portfolio2022-transition'           => 'var(--quiqqer-portfolio2022-transition-duration, 300ms) ease all',
-            '--quiqqer-portfolio2022-imgPosition'          => $imgPosition,
-            '--quiqqer-portfolio2022-aspectRation'         => $aspectRatio,
-            '--quiqqer-portfolio2022-entriesPerLine'       => $entriesPerLine,
+            '--quiqqer-portfolio2022-transition-duration' => '300ms',
+            '--quiqqer-portfolio2022-transition' => 'var(--quiqqer-portfolio2022-transition-duration, 300ms) ease all',
+            '--quiqqer-portfolio2022-imgPosition' => $imgPosition,
+            '--quiqqer-portfolio2022-aspectRation' => $aspectRatio,
+            '--quiqqer-portfolio2022-entriesPerLine' => $entriesPerLine,
             '--quiqqer-portfolio2022-entryMinWidthDesktop' => $entryMinWidthDesktop,
-            '--quiqqer-portfolio2022-entryMinWidthMobile'  => $entryMinWidthMobile,
-            '--quiqqer-portfolio2022-arrowHeight'          => '80px',
+            '--quiqqer-portfolio2022-entryMinWidthMobile' => $entryMinWidthMobile,
+            '--quiqqer-portfolio2022-arrowHeight' => '80px',
         ]);
 
         if ($this->getAttribute('mainColor')) {
@@ -353,7 +359,7 @@ class Portfolio2022 extends QUI\Control
             'categoryGroupsHtml' => $categoryGroupsHtml
         ]);
 
-        return $Engine->fetch(dirname(__FILE__).'/Portfolio2022.html');
+        return $Engine->fetch(dirname(__FILE__) . '/Portfolio2022.html');
     }
 
     /**
@@ -388,7 +394,8 @@ class Portfolio2022 extends QUI\Control
 
             if ($Categories['group'] === 'others') {
                 $ungrouped = $Categories['group'];
-            } elseif (!in_array($Categories['group'], $uniqueGroups)
+            } elseif (
+                !in_array($Categories['group'], $uniqueGroups)
                 && $Categories['group'] !== ''
             ) {
                 array_push($uniqueGroups, $Categories['group']);
@@ -411,10 +418,10 @@ class Portfolio2022 extends QUI\Control
      */
     protected function sortCategories($categoriesArray, $uniqueGroups)
     {
-        $categoriesGroups = array();
+        $categoriesGroups = [];
 
         foreach ($uniqueGroups as $UniqueGroups) {
-            $groups = array();
+            $groups = [];
 
             foreach ($categoriesArray as $Categories) {
                 if (strpos($Categories['group'], $UniqueGroups) !== false) {

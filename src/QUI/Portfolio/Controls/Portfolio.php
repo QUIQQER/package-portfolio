@@ -23,22 +23,22 @@ class Portfolio extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'showRandomButton'                 => false,
-            'limit'                            => false,
-            'entry-effect'                     => 'style3',
-            'entry-width'                      => false,
-            'qui-class'                        => 'package/quiqqer/portfolio/bin/controls/Portfolio',
-            'data-qui-options-nopopups'        => false,
-            'data-qui-options-popuptype'       => 'short',
-            'data-qui-options-useanchor'       => false,
-            'data-qui-options-lazyloading'     => true,
+            'showRandomButton' => false,
+            'limit' => false,
+            'entry-effect' => 'style3',
+            'entry-width' => false,
+            'qui-class' => 'package/quiqqer/portfolio/bin/controls/Portfolio',
+            'data-qui-options-nopopups' => false,
+            'data-qui-options-popuptype' => 'short',
+            'data-qui-options-useanchor' => false,
+            'data-qui-options-lazyloading' => true,
             'data-qui-options-start-reference' => 3,
-            'parentInputList'                  => false, // for example from qui site select
-            'order'                            => 'c_date DESC'
+            'parentInputList' => false, // for example from qui site select
+            'order' => 'c_date DESC'
         ]);
 
         $this->addCSSFile(
-            dirname(__FILE__).'/Portfolio.css'
+            dirname(__FILE__) . '/Portfolio.css'
         );
 
 
@@ -54,14 +54,14 @@ class Portfolio extends QUI\Control
             case 'style6':
             case 'style7':
                 $effectFile = dirname(__FILE__)
-                              .'/Portfolio.'
-                              .$this->getAttribute('entry-effect').'.css';
+                    . '/Portfolio.'
+                    . $this->getAttribute('entry-effect') . '.css';
 
-                $this->addCSSClass('quiqqer-portfolio-'.$this->getAttribute('entry-effect'));
+                $this->addCSSClass('quiqqer-portfolio-' . $this->getAttribute('entry-effect'));
                 break;
 
             default:
-                $effectFile = dirname(__FILE__).'/Portfolio.style3.css';
+                $effectFile = dirname(__FILE__) . '/Portfolio.style3.css';
                 $this->addCSSClass('quiqqer-portfolio-style3');
                 break;
         }
@@ -75,9 +75,9 @@ class Portfolio extends QUI\Control
      */
     public function getBody()
     {
-        $Engine     = QUI::getTemplateManager()->getEngine();
-        $Site       = $this->getSite();
-        $limit      = false;
+        $Engine = QUI::getTemplateManager()->getEngine();
+        $Site = $this->getSite();
+        $limit = false;
         $displayNum = 3;
 
         if ($this->getAttribute('limit')) {
@@ -86,7 +86,7 @@ class Portfolio extends QUI\Control
 
         if ($this->getAttribute('parentInputList')) {
             // for bricks
-            $parents   = $this->getAttribute('parentInputList');
+            $parents = $this->getAttribute('parentInputList');
             $portfolio = Utils::getSitesByInputList($Site->getProject(), $parents, [
                 'where' => [
                     'type' => 'quiqqer/portfolio:types/entry'
@@ -178,17 +178,17 @@ class Portfolio extends QUI\Control
         }
 
         $Engine->assign([
-            'this'        => $this,
-            'cssClass'    => $cssClass,
-            'portfolio'   => $portfolio,
-            'categories'  => json_decode($categories, true),
+            'this' => $this,
+            'cssClass' => $cssClass,
+            'portfolio' => $portfolio,
+            'categories' => json_decode($categories, true),
             'imgPosition' => $imgPosition,
-            'displayNum'  => $displayNum,
+            'displayNum' => $displayNum,
             'lazyloading' => $this->getAttribute('data-qui-options-lazyloading')
         ]);
 
 
-        return $Engine->fetch(dirname(__FILE__).'/Portfolio.html');
+        return $Engine->fetch(dirname(__FILE__) . '/Portfolio.html');
     }
 
     /**

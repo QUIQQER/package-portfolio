@@ -30,7 +30,7 @@ class PortfolioList
         }
 
         $Project = $Parent->getProject();
-        $Site    = new QUI\Projects\Site\Edit($Project, $newId);
+        $Site = new QUI\Projects\Site\Edit($Project, $newId);
 
         $Site->setAttribute('release_from', date('Y-m-d H:i:s'));
         $Site->setAttribute('type', 'quiqqer/portfolio:types/entry');
