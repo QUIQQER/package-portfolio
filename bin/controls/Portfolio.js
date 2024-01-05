@@ -510,6 +510,10 @@ define('package/quiqqer/portfolio/bin/controls/Portfolio', [
             var hidden = this.$List.getElements('[data-available="1"]:display(none)'),
                 more   = this.getElm().getElement('.quiqqer-portfolio-more');
 
+            if (!more) {
+                return;
+            }
+
             if (!hidden.length) {
                 more.setStyle('visibility', 'hidden');
                 more.style.setProperty('display', 'none', 'important');

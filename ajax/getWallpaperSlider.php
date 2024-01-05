@@ -7,11 +7,12 @@
  * @param string|Integer $siteId - ID of the current page
  * @return array
  */
+
 QUI::$Ajax->registerFunction(
     'package_quiqqer_portfolio_ajax_getWallpaperSlider',
     function ($project, $siteId) {
         $Project = QUI::getProjectManager()->decode($project);
-        $Site    = $Project->get($siteId);
+        $Site = $Project->get($siteId);
 
         $Control = new QUI\Portfolio\Controls\Reference([
             'Site' => $Site
@@ -20,9 +21,9 @@ QUI::$Ajax->registerFunction(
         $List = $Control->getList();
 
         $Slider = new QUI\Bricks\Controls\Slider\PromosliderWallpaper2Content([
-            'pagefit'           => false,
-            'position'          => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-position'),
-            'size'              => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-size'),
+            'pagefit' => false,
+            'position' => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-position'),
+            'size' => $List->getAttribute('quiqqer.portfolio.settings.portfolioPopup.wallpaper-size'),
             'preloadFirstImage' => false
         ]);
 
@@ -39,7 +40,7 @@ QUI::$Ajax->registerFunction(
 
         return [
             'html' => $Slider->create(),
-            'css'  => QUI\Control\Manager::getCSS()
+            'css' => QUI\Control\Manager::getCSS()
         ];
     },
     ['project', 'siteId']
