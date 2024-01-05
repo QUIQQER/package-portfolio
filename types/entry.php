@@ -1,7 +1,7 @@
 <?php
 
 $Reference = new QUI\Portfolio\Controls\Reference([
-    'Site'      => $Site,
+    'Site' => $Site,
     'sliderpos' => 'bottom'
 ]);
 

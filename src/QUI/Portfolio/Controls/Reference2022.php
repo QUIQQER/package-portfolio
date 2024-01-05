@@ -24,7 +24,7 @@ class Reference2022 extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'imageWidth'  => false, // in pixel, 0 (or false) = 100% widht
+            'imageWidth' => false, // in pixel, 0 (or false) = 100% widht
             'imageHeight' => 300 // in pixel, 0 (or false) = auto image height
         ]);
 
@@ -33,7 +33,7 @@ class Reference2022 extends QUI\Control
         $this->addCSSClass('quiqqer-portfolio-reference');
 
         $this->addCSSFile(
-            dirname(__FILE__).'/Reference2022.css'
+            dirname(__FILE__) . '/Reference2022.css'
         );
     }
 
@@ -50,13 +50,13 @@ class Reference2022 extends QUI\Control
             return '';
         }
 
-        $Site    = $this->getSite();
-        $List    = $this->getList();
+        $Site = $this->getSite();
+        $List = $this->getList();
         $showNav = false;
-        $Next    = null;
-        $Prev    = null;
-        $Parent  = null;
-        $images  = $this->getImages();
+        $Next = null;
+        $Prev = null;
+        $Parent = null;
+        $images = $this->getImages();
 
         if ($Site->getAttribute('quiqqer.portfolio.entry2022.settings.showNav')) {
             $showNav = true;
@@ -96,22 +96,30 @@ class Reference2022 extends QUI\Control
         // Gallery
         $Gallery = null;
 
-        if ($Site->getAttribute('quiqqer.portfolio.entry2022.settings.gallery.enable') &&
+        if (
+            $Site->getAttribute('quiqqer.portfolio.entry2022.settings.gallery.enable') &&
             QUI::getPackageManager()->isInstalled('quiqqer/gallery') &&
             class_exists('QUI\Gallery\Bricks\GridAdvanced') &&
-            $this->getSite()->getAttribute('quiqqer.portfolio.settings.mediaFolder')) {
+            $this->getSite()->getAttribute('quiqqer.portfolio.settings.mediaFolder')
+        ) {
             $Gallery = new QUI\Gallery\Bricks\GridAdvanced([
-                'max'                => 24,
-                'addGap'             => true,
-                'showImageTitle'     => false,
-                'folderId'           => $Site->getAttribute('quiqqer.portfolio.settings.mediaFolder'),
-                'order'              => $Site->getAttribute('quiqqer.portfolio.entry2022.settings.gallery.order'),
-                'scaleImageOnHover'  => $Site->getAttribute('quiqqer.portfolio.entry2022.settings.gallery.scaleImageOnHover'),
-                'darkenImageOnHover' => $Site->getAttribute('quiqqer.portfolio.entry2022.settings.gallery.darkenImageOnHover'),
-                'iconOnHover'        => $Site->getAttribute('quiqqer.portfolio.entry2022.settings.gallery.iconOnHover'),
-                'usePagination'      => false,
-                'titleClickable'     => 1, // 1 = open image
-                'template'           => $Site->getAttribute('quiqqer.portfolio.entry2022.settings.gallery.template') // template number or name
+                'max' => 24,
+                'addGap' => true,
+                'showImageTitle' => false,
+                'folderId' => $Site->getAttribute('quiqqer.portfolio.settings.mediaFolder'),
+                'order' => $Site->getAttribute('quiqqer.portfolio.entry2022.settings.gallery.order'),
+                'scaleImageOnHover' => $Site->getAttribute(
+                    'quiqqer.portfolio.entry2022.settings.gallery.scaleImageOnHover'
+                ),
+                'darkenImageOnHover' => $Site->getAttribute(
+                    'quiqqer.portfolio.entry2022.settings.gallery.darkenImageOnHover'
+                ),
+                'iconOnHover' => $Site->getAttribute('quiqqer.portfolio.entry2022.settings.gallery.iconOnHover'),
+                'usePagination' => false,
+                'titleClickable' => 1,
+                // 1 = open image
+                'template' => $Site->getAttribute('quiqqer.portfolio.entry2022.settings.gallery.template')
+                // template number or name
             ]);
         }
 
@@ -122,31 +130,31 @@ class Reference2022 extends QUI\Control
             $website = $Site->getAttribute('quiqqer.portfolio.settings.website');
 
             if (strpos($website, 'http://') === false && strpos($website, 'https://') === false) {
-                $website = 'http://'.$website;
+                $website = 'http://' . $website;
             }
         }
 
         // image dimension
         $imgHeight = $this->getImageDimension()['height'];
-        $imgWidth  = $this->getImageDimension()['width'];
+        $imgWidth = $this->getImageDimension()['width'];
 
         $Engine->assign([
-            'this'    => $this,
-            'Site'    => $Site,
+            'this' => $this,
+            'Site' => $Site,
             'showNav' => $showNav,
-            'Next'    => $Next,
-            'Prev'    => $Prev,
-            'Parent'  => $Parent,
+            'Next' => $Next,
+            'Prev' => $Prev,
+            'Parent' => $Parent,
             'website' => $website,
 
             'imgHeight' => $imgHeight,
-            'imgWidth'  => $imgWidth,
+            'imgWidth' => $imgWidth,
 
             'Gallery' => $Gallery,
-            'navHtml' => dirname(__FILE__).'/Reference2022.nav.html',
+            'navHtml' => dirname(__FILE__) . '/Reference2022.nav.html',
         ]);
 
-        return $Engine->fetch(dirname(__FILE__).'/Reference2022.html');
+        return $Engine->fetch(dirname(__FILE__) . '/Reference2022.html');
     }
 
     /**
@@ -156,14 +164,14 @@ class Reference2022 extends QUI\Control
      */
     public function getImages()
     {
-        $images      = [];
+        $images = [];
         $imageFolder = $this->getSite()->getAttribute(
             'quiqqer.portfolio.settings.mediaFolder'
         );
 
         try {
             $siteImage = $this->getSite()->getAttribute('image_site');
-            $images[]  = QUI\Projects\Media\Utils::getImageByUrl($siteImage);
+            $images[] = QUI\Projects\Media\Utils::getImageByUrl($siteImage);
         } catch (QUI\Exception $Exception) {
         }
 
@@ -178,7 +186,7 @@ class Reference2022 extends QUI\Control
         } catch (QUI\Exception $Exception) {
             QUI\System\Log::addDebug($Exception->getMessage(), [
                 'control' => '\QUI\Portfolio\Controls\Reference',
-                'Site'    => $this->getSite()->__toString()
+                'Site' => $this->getSite()->__toString()
             ]);
         }
 
@@ -226,20 +234,24 @@ class Reference2022 extends QUI\Control
 
         $dim = [
             'height' => false,
-            'width'  => false
+            'width' => false
         ];
 
         if (!$List) {
             return $dim;
         }
 
-        if ($List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageWidth') ||
-            $List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageWidth') > 0) {
+        if (
+            $List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageWidth') ||
+            $List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageWidth') > 0
+        ) {
             $dim['width'] = $List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageWidth');
         }
 
-        if ($List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageHeight') ||
-            $List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageHeight') > 0) {
+        if (
+            $List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageHeight') ||
+            $List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageHeight') > 0
+        ) {
             $dim['height'] = $List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageHeight');
         }
 
