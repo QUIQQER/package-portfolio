@@ -1,7 +1,7 @@
 {
-    "name": "quiqqer\/portfolio",
+    "name": "quiqqer/portfolio",
     "type": "quiqqer-module",
-    "description": "Manage your references \/ customer projects and present them on your website.",
+    "description": "Manage your references / customer projects and present them on your website.",
     "license": [
         "PCSG QL-1.0",
         "GPL-3.0+"
@@ -10,23 +10,65 @@
         {
             "name": "Henning Leutz",
             "email": "support@pcsg.de",
-            "homepage": "http:\/\/www.pcsg.de",
+            "homepage": "http://www.pcsg.de",
             "role": "Developer"
         }
     ],
     "support": {
         "email": "support@pcsg.de",
-        "url": "http:\/\/www.pcsg.de"
+        "url": "http://www.pcsg.de"
     },
     "require": {
         "php": ">=5.3",
-        "quiqqer\/quiqqer": "*@dev",
-        "quiqqer\/gallery": "*@dev",
-        "quiqqer\/bricks": "*@dev"
+        "quiqqer/quiqqer": "*@dev",
+        "quiqqer/gallery": "*@dev",
+        "quiqqer/bricks": "*@dev"
     },
     "autoload": {
         "psr-4": {
-            "QUI\\Portfolio\\": "src\/QUI\/Portfolio"
+            "QUI\\Portfolio\\": "src/QUI/Portfolio"
         }
+    },
+    "scripts": {
+        "test": [
+            "@dev:lint",
+            "@dev:phpunit"
+        ],
+        "dev:phpunit": "./tools/phpunit",
+        "dev:lint": [
+            "@dev:lint:phpstan",
+            "@dev:lint:style"
+        ],
+        "dev:lint:phpstan": "./tools/phpstan",
+        "dev:lint:style": "./tools/phpcs",
+        "dev:lint:style:fix": "./tools/phpcbf",
+        "dev:init": [
+            "@dev:init:check-requirements",
+            "@dev:init:tools",
+            "@dev:init:git-hooks"
+        ],
+        "dev:init:check-requirements": [
+            "which composer > /dev/null || (echo 'Error: composer has to be globally installed'; exit 1)",
+            "which phive > /dev/null || (echo 'Error: PHIVE has to be globally installed'; exit 1)"
+        ],
+        "dev:init:tools": "phive install --temporary",
+        "dev:init:git-hooks": "./tools/captainhook install --only-enabled --force"
+    },
+    "scripts-aliases": {
+        "test": [
+            "dev:test"
+        ]
+    },
+    "scripts-descriptions": {
+        "test": "Runs linting, static analysis, and unit tests.",
+        "dev:phpunit": "Run PHPUnit test suites",
+        "dev:lint": "Run PHPStan and code style check",
+        "dev:lint:phpstan": "Run PHPStan",
+        "dev:lint:style": "Run code style check (PHP_CodeSniffer)",
+        "dev:lint:style:fix": "Try to fix code style errors automatically",
+        "dev:init": "Initialize the developer tooling (tools and git hooks)",
+        "dev:init:check-requirements": "Check if the necessary requirements are met",
+        "dev:init:tools": "Install all developer tools (requires PHIVE)",
+        "dev:init:git-hooks": "Install all git hooks (may require tools to be installed)"
     }
 }
