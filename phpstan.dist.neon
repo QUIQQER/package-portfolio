@@ -6,9 +6,10 @@ parameters:
     paths:
         - src
         - ajax
+        - types
     bootstrapFiles:
         - tests/phpstan-bootstrap.php
-
+    tipsOfTheDay: false
     customRulesetUsed: true
 services:
     -
