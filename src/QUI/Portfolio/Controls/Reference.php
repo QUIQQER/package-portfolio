@@ -7,6 +7,7 @@
 namespace QUI\Portfolio\Controls;
 
 use QUI;
+use QUI\Exception;
 
 /**
  * Class Reference - A portfolio entry
@@ -19,7 +20,7 @@ class Reference extends QUI\Control
      * constructor
      * @param array $attributes
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         // default options
         $this->setAttributes([
@@ -37,16 +38,11 @@ class Reference extends QUI\Control
 
     /**
      * @return string
+     * @throws Exception
      */
-    public function getBody()
+    public function getBody(): string
     {
-        try {
-            $Engine = QUI::getTemplateManager()->getEngine();
-        } catch (QUI\Exception $Exception) {
-            QUI\System\Log::addDebug($Exception->getMessage());
-
-            return '';
-        }
+        $Engine = QUI::getTemplateManager()->getEngine();
 
         $Site = $this->getSite();
         $List = $this->getList();
@@ -62,12 +58,12 @@ class Reference extends QUI\Control
 
         try {
             $Next = $Site->nextSibling();
-        } catch (QUI\Exception $Exception) {
+        } catch (QUI\Exception) {
         }
 
         try {
             $Prev = $Site->previousSibling();
-        } catch (QUI\Exception $Exception) {
+        } catch (QUI\Exception) {
         }
 
         $showArrows = false;
@@ -88,8 +84,8 @@ class Reference extends QUI\Control
 
         foreach ($images as $Image) {
             /* @var $Image QUI\Projects\Media\Image */
-            $Slider->addSlide($Image->getUrl());
-            $Slider->addMobileSlide($Image->getUrl());
+            $Slider->addSlide($Image->getUrl(), '', '');
+            $Slider->addMobileSlide($Image->getUrl(), '', '');
         }
 
         // website
@@ -98,7 +94,7 @@ class Reference extends QUI\Control
         if ($Site->getAttribute('quiqqer.portfolio.settings.website')) {
             $website = $Site->getAttribute('quiqqer.portfolio.settings.website');
 
-            if (strpos($website, 'http://') === false && strpos($website, 'https://') === false) {
+            if (!str_contains($website, 'http://') && !str_contains($website, 'https://')) {
                 $website = 'http://' . $website;
             }
         }
@@ -122,8 +118,9 @@ class Reference extends QUI\Control
      * Return the images
      *
      * @return array
+     * @throws Exception
      */
-    public function getImages()
+    public function getImages(): array
     {
         $images = [];
         $imageFolder = $this->getSite()->getAttribute(
@@ -133,7 +130,7 @@ class Reference extends QUI\Control
         try {
             $siteImage = $this->getSite()->getAttribute('image_site');
             $images[] = QUI\Projects\Media\Utils::getImageByUrl($siteImage);
-        } catch (QUI\Exception $Exception) {
+        } catch (QUI\Exception) {
         }
 
 
@@ -156,9 +153,10 @@ class Reference extends QUI\Control
 
     /**
      * Return current site
-     * @return QUI\Projects\Site
+     * @return QUI\Interfaces\Projects\Site
+     * @throws Exception
      */
-    protected function getSite()
+    protected function getSite(): QUI\Interfaces\Projects\Site
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');
@@ -171,8 +169,9 @@ class Reference extends QUI\Control
      * Return the portfolio list
      *
      * @return QUI\Projects\Site
+     * @throws Exception
      */
-    public function getList()
+    public function getList(): QUI\Interfaces\Projects\Site
     {
         $Site = $this->getSite();
 

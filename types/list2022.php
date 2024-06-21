@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @var QUI\Projects\Project $Project
+ * @var QUI\Projects\Site $Site
+ * @var QUI\Interfaces\Template\EngineInterface $Engine
+ * @var QUI\Template $Template
+ **/
+
 $Portfolio2022 = new QUI\Portfolio\Controls\Portfolio2022([
     'template' => $Site->getAttribute('quiqqer.portfolio2022.settings.template'),
     'openBehavior' => $Site->getAttribute('quiqqer.portfolio2022.settings.openBehavior'),

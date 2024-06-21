@@ -20,7 +20,7 @@ class Reference2022 extends QUI\Control
      * constructor
      * @param array $attributes
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         // default options
         $this->setAttributes([
@@ -40,15 +40,9 @@ class Reference2022 extends QUI\Control
     /**
      * @return string
      */
-    public function getBody()
+    public function getBody(): string
     {
-        try {
-            $Engine = QUI::getTemplateManager()->getEngine();
-        } catch (QUI\Exception $Exception) {
-            QUI\System\Log::addDebug($Exception->getMessage());
-
-            return '';
-        }
+        $Engine = QUI::getTemplateManager()->getEngine();
 
         $Site = $this->getSite();
         $List = $this->getList();
@@ -64,17 +58,17 @@ class Reference2022 extends QUI\Control
 
         try {
             $Next = $Site->nextSibling();
-        } catch (QUI\Exception $Exception) {
+        } catch (QUI\Exception) {
         }
 
         try {
             $Prev = $Site->previousSibling();
-        } catch (QUI\Exception $Exception) {
+        } catch (QUI\Exception) {
         }
 
         try {
             $Parent = $Site->getParent();
-        } catch (QUI\Exception $Exception) {
+        } catch (QUI\Exception) {
         }
 
         $showArrows = false;
@@ -129,7 +123,7 @@ class Reference2022 extends QUI\Control
         if ($Site->getAttribute('quiqqer.portfolio.settings.website')) {
             $website = $Site->getAttribute('quiqqer.portfolio.settings.website');
 
-            if (strpos($website, 'http://') === false && strpos($website, 'https://') === false) {
+            if (!str_contains($website, 'http://') && !str_contains($website, 'https://')) {
                 $website = 'http://' . $website;
             }
         }
@@ -162,7 +156,7 @@ class Reference2022 extends QUI\Control
      *
      * @return array
      */
-    public function getImages()
+    public function getImages(): array
     {
         $images = [];
         $imageFolder = $this->getSite()->getAttribute(
@@ -172,7 +166,7 @@ class Reference2022 extends QUI\Control
         try {
             $siteImage = $this->getSite()->getAttribute('image_site');
             $images[] = QUI\Projects\Media\Utils::getImageByUrl($siteImage);
-        } catch (QUI\Exception $Exception) {
+        } catch (QUI\Exception) {
         }
 
 
@@ -195,9 +189,9 @@ class Reference2022 extends QUI\Control
 
     /**
      * Return current site
-     * @return QUI\Projects\Site
+     * @return QUI\Interfaces\Projects\Site
      */
-    protected function getSite()
+    protected function getSite(): QUI\Interfaces\Projects\Site
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');
@@ -211,7 +205,7 @@ class Reference2022 extends QUI\Control
      *
      * @return null|QUI\Projects\Site
      */
-    public function getList()
+    public function getList(): QUI\Interfaces\Projects\Site|null
     {
         $Site = $this->getSite();
 
@@ -228,7 +222,7 @@ class Reference2022 extends QUI\Control
         return null;
     }
 
-    public function getImageDimension()
+    public function getImageDimension(): array
     {
         $List = $this->getList();
 
