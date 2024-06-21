@@ -7,6 +7,7 @@
 namespace QUI\Portfolio\Controls;
 
 use QUI;
+use QUI\Exception;
 use QUI\Projects\Site\Utils;
 
 /**
@@ -19,7 +20,7 @@ class Portfolio2022 extends QUI\Control
      * constructor
      * @param array $attributes
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         // default options
         $this->setAttributes([
@@ -59,7 +60,7 @@ class Portfolio2022 extends QUI\Control
      * @return string
      * @throws QUI\Exception
      */
-    public function getBody()
+    public function getBody(): string
     {
         $Engine = QUI::getTemplateManager()->getEngine();
         $Site = $this->getSite();
@@ -303,23 +304,10 @@ class Portfolio2022 extends QUI\Control
             dirname(__FILE__) . $css
         );
 
-        switch ($this->getAttribute('aspectRatio')) {
-            case '4/3':
-            case '3/2':
-            case '5/4':
-            case '16/9':
-                $imageFormat = 'landscape';
-                break;
-
-            case '1/1':
-            case '3/4':
-            case '2/3':
-            case '4/5':
-            case '9/16':
-            default:
-                $imageFormat = 'portrait';
-                break;
-        }
+        $imageFormat = match ($this->getAttribute('aspectRatio')) {
+            '4/3', '3/2', '5/4', '16/9' => 'landscape',
+            default => 'portrait',
+        };
 
         $this->setStyles([
             '--quiqqer-portfolio2022-transition-duration' => '300ms',
@@ -364,9 +352,10 @@ class Portfolio2022 extends QUI\Control
 
     /**
      * Return current site
-     * @return QUI\Projects\Site
+     * @return QUI\Interfaces\Projects\Site
+     * @throws Exception
      */
-    protected function getSite()
+    protected function getSite(): QUI\Interfaces\Projects\Site
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');
@@ -381,7 +370,7 @@ class Portfolio2022 extends QUI\Control
      * @param $categoriesArray - data from ajax
      * @return array
      */
-    protected function getUniqueGroups($categoriesArray)
+    protected function getUniqueGroups($categoriesArray): array
     {
         // get array with unique groups
         $uniqueGroups = [];
@@ -398,12 +387,12 @@ class Portfolio2022 extends QUI\Control
                 !in_array($Categories['group'], $uniqueGroups)
                 && $Categories['group'] !== ''
             ) {
-                array_push($uniqueGroups, $Categories['group']);
+                $uniqueGroups[] = $Categories['group'];
             }
         }
 
         if (!empty($uniqueGroups) && $ungrouped !== '') {
-            array_push($uniqueGroups, $ungrouped);
+            $uniqueGroups[] = $ungrouped;
         }
 
         return $uniqueGroups;
@@ -416,7 +405,7 @@ class Portfolio2022 extends QUI\Control
      * @param $uniqueGroups - unique groups
      * @return array
      */
-    protected function sortCategories($categoriesArray, $uniqueGroups)
+    protected function sortCategories($categoriesArray, $uniqueGroups): array
     {
         $categoriesGroups = [];
 
@@ -424,8 +413,8 @@ class Portfolio2022 extends QUI\Control
             $groups = [];
 
             foreach ($categoriesArray as $Categories) {
-                if (strpos($Categories['group'], $UniqueGroups) !== false) {
-                    array_push($groups, $Categories);
+                if (str_contains($Categories['group'], $UniqueGroups)) {
+                    $groups[] = $Categories;
                 }
             }
 
@@ -442,7 +431,7 @@ class Portfolio2022 extends QUI\Control
      * @param $categoriesGroups - all categories
      * @return mixed - array with categories from active group
      */
-    protected function getCategories($activeGroup, $categoriesGroups)
+    protected function getCategories($activeGroup, $categoriesGroups): mixed
     {
         if (!$activeGroup || !isset($categoriesGroups[$activeGroup])) {
             $keys = array_keys($categoriesGroups);
@@ -459,7 +448,7 @@ class Portfolio2022 extends QUI\Control
      * @param $uniqueGroups - Unique groups
      * @return string - Active group name
      */
-    protected function getActiveGroup($uniqueGroups)
+    protected function getActiveGroup($uniqueGroups): string
     {
         if (empty($uniqueGroups)) {
             return '';

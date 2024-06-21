@@ -7,6 +7,7 @@
 namespace QUI\Portfolio\Controls;
 
 use QUI;
+use QUI\Exception;
 use QUI\Projects\Site\Utils;
 
 /**
@@ -19,7 +20,7 @@ class Portfolio extends QUI\Control
      * constructor
      * @param array $attributes
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         // default options
         $this->setAttributes([
@@ -73,7 +74,7 @@ class Portfolio extends QUI\Control
      * @return string
      * @throws QUI\Exception
      */
-    public function getBody()
+    public function getBody(): string
     {
         $Engine = QUI::getTemplateManager()->getEngine();
         $Site = $this->getSite();
@@ -158,16 +159,10 @@ class Portfolio extends QUI\Control
                 break;
         }
 
-        switch ($this->getAttribute('img-position')) {
-            case 'cover':
-                $imgPosition = 'object-fit: cover; -o-object-fit: cover;';
-                break;
-
-            case 'contain':
-            default:
-                $imgPosition = 'object-fit: contain; -o-object-fit: contain;';
-                break;
-        }
+        $imgPosition = match ($this->getAttribute('img-position')) {
+            'cover' => 'object-fit: cover; -o-object-fit: cover;',
+            default => 'object-fit: contain; -o-object-fit: contain;',
+        };
 
         if ($this->getAttribute('data-qui-options-start-reference')) {
             $displayNum = (int)$this->getAttribute('data-qui-options-start-reference');
@@ -193,9 +188,11 @@ class Portfolio extends QUI\Control
 
     /**
      * Return current site
-     * @return QUI\Projects\Site
+     *
+     * @return QUI\Interfaces\Projects\Site
+     * @throws Exception
      */
-    protected function getSite()
+    protected function getSite(): QUI\Interfaces\Projects\Site
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');

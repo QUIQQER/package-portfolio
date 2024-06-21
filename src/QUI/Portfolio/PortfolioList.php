@@ -7,6 +7,7 @@
 namespace QUI\Portfolio;
 
 use QUI;
+use QUI\Projects\Site\Edit;
 
 /**
  * Class PortfolioList
@@ -20,17 +21,17 @@ class PortfolioList
      * event on child create
      *
      * @param integer $newId
-     * @param \QUI\Projects\Site\Edit $Parent
+     * @param QUI\Interfaces\Projects\Site $Parent
      * @throws QUI\Exception
      */
-    public static function onChildCreate($newId, $Parent)
+    public static function onChildCreate(int $newId, QUI\Interfaces\Projects\Site $Parent): void
     {
         if ($Parent->getAttribute('type') !== 'quiqqer/portfolio:types/list') {
             return;
         }
 
         $Project = $Parent->getProject();
-        $Site = new QUI\Projects\Site\Edit($Project, $newId);
+        $Site = new Edit($Project, $newId);
 
         $Site->setAttribute('release_from', date('Y-m-d H:i:s'));
         $Site->setAttribute('type', 'quiqqer/portfolio:types/entry');

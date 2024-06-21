@@ -6,6 +6,7 @@
 
 namespace QUI\Portfolio\Bricks;
 
+use Exception;
 use QUI;
 
 /**
@@ -16,8 +17,9 @@ class PortfolioList extends QUI\Control
 {
     /**
      * @return string
+     * @throws Exception
      */
-    public function getBody()
+    public function getBody(): string
     {
         $Portfolio = new QUI\Portfolio\Controls\Portfolio([
             'showRandomButton' => $this->getAttribute('showRandomButton'),
