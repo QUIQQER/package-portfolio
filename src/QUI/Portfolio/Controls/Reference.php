@@ -142,9 +142,9 @@ class Reference extends QUI\Control
                 $images = $Folder->getImages();
             }
         } catch (QUI\Exception $Exception) {
-            QUI\System\Log::addDebug($Exception->getMessage(), [
+            QUI\System\Log::addWarning($Exception->getMessage(), [
                 'control' => '\QUI\Portfolio\Controls\Reference',
-                'Site' => $this->getSite()->__toString()
+                'Site' => $this->getSite()->getId()
             ]);
         }
 
