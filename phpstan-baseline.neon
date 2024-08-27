@@ -16,11 +16,6 @@ parameters:
 			path: src/QUI/Portfolio/Controls/Reference.php
 
 		-
-			message: "#^Call to an undefined method QUI\\\\Interfaces\\\\Projects\\\\Site\\:\\:__toString\\(\\)\\.$#"
-			count: 1
-			path: src/QUI/Portfolio/Controls/Reference.php
-
-		-
 			message: "#^Method QUI\\\\Portfolio\\\\Controls\\\\Reference\\:\\:getList\\(\\) should return QUI\\\\Projects\\\\Site but returns QUI\\\\Interfaces\\\\Projects\\\\Site\\.$#"
 			count: 1
 			path: src/QUI/Portfolio/Controls/Reference.php
