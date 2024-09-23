@@ -33,7 +33,6 @@ class PortfolioList
         $Project = $Parent->getProject();
         $Site = new Edit($Project, $newId);
 
-        $Site->setAttribute('release_from', date('Y-m-d H:i:s'));
         $Site->setAttribute('type', 'quiqqer/portfolio:types/entry');
         $Site->setAttribute('nav_hide', 1);
         $Site->save();
