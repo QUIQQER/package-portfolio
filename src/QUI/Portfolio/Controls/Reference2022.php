@@ -171,16 +171,15 @@ class Reference2022 extends QUI\Control
 
 
         try {
-            /* @var $Folder QUI\Projects\Media\Folder */
             $Folder = QUI\Projects\Media\Utils::getMediaItemByUrl($imageFolder);
 
-            if (QUI\Projects\Media\Utils::isFolder($Folder)) {
+            if (QUI\Projects\Media\Utils::isFolder($Folder) && method_exists($Folder, 'getImages')) {
                 $images = $Folder->getImages();
             }
         } catch (QUI\Exception $Exception) {
             QUI\System\Log::addDebug($Exception->getMessage(), [
                 'control' => '\QUI\Portfolio\Controls\Reference',
-                'Site' => $this->getSite()->__toString()
+                'Site' => $this->getSite()->getId()
             ]);
         }
 
@@ -202,8 +201,6 @@ class Reference2022 extends QUI\Control
 
     /**
      * Return the portfolio list
-     *
-     * @return null|QUI\Projects\Site
      */
     public function getList(): QUI\Interfaces\Projects\Site|null
     {
@@ -235,17 +232,11 @@ class Reference2022 extends QUI\Control
             return $dim;
         }
 
-        if (
-            $List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageWidth') ||
-            $List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageWidth') > 0
-        ) {
+        if ((int)$List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageWidth') > 0) {
             $dim['width'] = $List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageWidth');
         }
 
-        if (
-            $List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageHeight') ||
-            $List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageHeight') > 0
-        ) {
+        if ((int)$List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageHeight') > 0) {
             $dim['height'] = $List->getAttribute('quiqqer.portfolio2022.settings.children.maxImageHeight');
         }
 

@@ -135,10 +135,9 @@ class Reference extends QUI\Control
 
 
         try {
-            /* @var $Folder QUI\Projects\Media\Folder */
             $Folder = QUI\Projects\Media\Utils::getMediaItemByUrl($imageFolder);
 
-            if (QUI\Projects\Media\Utils::isFolder($Folder)) {
+            if (QUI\Projects\Media\Utils::isFolder($Folder) && method_exists($Folder, 'getImages')) {
                 $images = $Folder->getImages();
             }
         } catch (QUI\Exception $Exception) {
@@ -168,7 +167,7 @@ class Reference extends QUI\Control
     /**
      * Return the portfolio list
      *
-     * @return QUI\Projects\Site
+     * @return QUI\Interfaces\Projects\Site
      * @throws Exception
      */
     public function getList(): QUI\Interfaces\Projects\Site
